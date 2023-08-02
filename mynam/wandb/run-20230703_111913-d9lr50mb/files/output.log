@@ -1,3 +1,0 @@
-
-Config(regression=True, use_dnn=False, num_epochs=100, batch_size=64, shuffle=True, early_stopping_patience=50, decay_rate=0, logdir='output', wandb=False, log_loss_frequency=20, lr=0.002566450340713971, l2_regularization=5.008987711695775e-05, output_regularization=0.008243186154060039, dropout=0.7, feature_dropout=0.05, num_basis_functions=64, hidden_sizes=[64, 32], activation='exu')
-Finished Training.

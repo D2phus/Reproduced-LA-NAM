@@ -1,2 +1,0 @@
-
-Config(regression=True, use_dnn=False, num_epochs=10, batch_size=64, shuffle=True, early_stopping_patience=50, decay_rate=0.005, logdir='output', wandb=False, log_loss_frequency=20, lr=0.008387804172908957, l2_regularization=0, output_regularization=0, dropout=0, feature_dropout=0, num_basis_functions=64, hidden_sizes=[64, 32], activation='relu')
