@@ -27,6 +27,16 @@ def task():
     gen_funcs_name = [lambda func=x: func.__name__ for x in gen_funcs]
     return gen_funcs, gen_funcs_name
 
+def sparse_task():
+    """
+    Returns:
+    gen_funcs: list of length in_features
+    """
+    gen_funcs = [pow_shape, exp_shape1, exp_shape2, zero_shape, zero_shape, zero_shape, zero_shape, zero_shape]
+    gen_funcs_name = [lambda func=x: func.__name__ for x in gen_funcs]
+    return gen_funcs, gen_funcs_name
+
+
 def get_linear_examples(num_samples=200, 
                         slope=0.1,
                         bias=0.2,

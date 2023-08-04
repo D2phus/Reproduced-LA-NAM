@@ -9,6 +9,8 @@ import numpy as np
 from laplace.curvature import BackPackGGN
 from laplace import Laplace
 
+from LANAM.utils.plotting import *
+
 def marglik_training(model,
                      train_loader,
                      loader_fnn, 
@@ -25,8 +27,8 @@ def marglik_training(model,
                      n_epochs = 300,
                      lr_hyp = 1e-1,
                      n_epochs_burnin=0, 
-                     n_hypersteps=10, 
-                     marglik_frequency = 1,
+                     n_hypersteps=30, 
+                     marglik_frequency = 20,
                      
                      prior_prec_init=1.0, 
                      sigma_noise_init=1.0, 
@@ -36,12 +38,14 @@ def marglik_training(model,
     online learning the hyper-parameters.
     the prior p(\theta_i)=N(\theta_i; 0, \gamma^2)
     Args:
-    prior_structure: ['scalar', 'layerwise', 'diagonal'], corresponding to the same prior for all parameters / same prior for each weight / different prior for each parameter.
-    
+    -----------
+    temperature: higher temperature leads to a more concentrated prior.
     """    
     log_frequency = 50
     
     in_features = model.in_features
+    
+    model.temperature = temperature
     
     N = len(train_loader.dataset)
     P = torch.stack([torch.tensor(len(parameters_to_vector(fnn.parameters()))) for fnn in model.feature_nns]) # (in_features), number of parameters in each feature network 
@@ -83,6 +87,7 @@ def marglik_training(model,
     best_model_dict = None
     margliks = list()
     losses = list()
+    perfs = list()
     for epoch in range(n_epochs):
         epochs_loss = 0.0
         epoch_perf = 0
@@ -91,6 +96,7 @@ def marglik_training(model,
             if likelihood == 'regression':
                 sigma_noise = log_sigma_noise.exp().detach()
                 crit_factor = temperature / (2 * sigma_noise.square()) #  of shape (in_features)
+                #crit_factor = temperature / (2 * sigma_noise.sum().square()) #  
             else:
                 crit_factor = temperature
             prior_prec = log_prior_prec.exp().detach()
@@ -98,6 +104,7 @@ def marglik_training(model,
             delta = expand_prior_precision(prior_prec, model) # prior precision, of shape (in_features, num_params)
             
             f, _= model(X)
+            #step_loss = crit_factor*criterion(f, y) + 0.5*torch.sum((delta * theta * theta).sum(dim=1) / N)
             step_loss = criterion(f, y) + 0.5 * torch.sum((delta * theta * theta).sum(dim=1) / N / crit_factor)
             step_loss.backward()
             optimizer.step()
@@ -106,11 +113,12 @@ def marglik_training(model,
             if likelihood == 'regression': 
                 epoch_perf += (f.detach() - y).square().sum()
             else:
-                epoch_perf += torch.sum(torch.argmax(f.detach(), dim=-1) == y).item()
+                epoch_perf += torch.sum(torch.argmax(f.detach(), dim=-1) == y) # the number of correct prediction.
             if scheduler_cls is not None:
                 scheduler.step()
             
-        losses.append(epochs_loss / N)   
+        losses.append(epochs_loss / N)  
+        perfs.append(epoch_perf / N)
         # optimize hyper-parameters
         if epoch >= n_epochs_burnin and epoch % marglik_frequency == 0:
             # fit laplace approximation 
@@ -119,7 +127,7 @@ def marglik_training(model,
             
             model.sigma_noise = sigma_noise
             model.prior_precision = prior_prec
-            model.fit(loader_fnn)
+            model.fit(epoch_perf, loader_fnn)
             
             # maximize the marginal likelihood
             for _ in range(n_hypersteps):
@@ -128,6 +136,7 @@ def marglik_training(model,
                     sigma_noise = None 
                 else:
                     sigma_noise = log_sigma_noise.exp()
+                    #sigma_noise = None
                     
                 prior_prec = log_prior_prec.exp()
                 neg_log_marglik = -model.log_marginal_likelihood(prior_prec, sigma_noise)
@@ -140,7 +149,7 @@ def marglik_training(model,
                 best_model_dict = deepcopy(model.state_dict())
                 best_marglik = margliks[-1]
         if epoch % log_frequency == 0:
-            print(f'EPOCH={epoch+1}: epoch_loss={losses[-1]: .3f}')
+            print(f'EPOCH={epoch+1}: epoch_loss={losses[-1]: .3f}, epoch_perf={perfs[-1]: .3f}')
             
     print('MARGLIK: finished training. Recover best model and fit Laplace.')
     if best_model_dict is not None: 

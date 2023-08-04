@@ -27,6 +27,7 @@ class ToyDataset(torch.utils.data.Dataset):
         dataset generated with additive model consisted of synthetic functions. 
         
         Args:
+        -----------
         task_name: indicates the name for this task
         num_samples: the number of samples
         [x_start, x_end]: the x-value range for sampling. X is sampled uniformly.
@@ -34,10 +35,13 @@ class ToyDataset(torch.utils.data.Dataset):
         gen_funcs: list of synthetic functions for input features
         gen_func_names: list of synthetic function names
         
-        Property: 
+        Attrs:
+        -----------
         X of shape (batch_size, in_features)
         y of shape (batch_size)
         fnn of shape (batch_size, in_features)
+        loader: data loader for X, y
+        loader_fnn: list, data loader for each input dimensional
         """
         super(ToyDataset, self).__init__()
         self.num_samples = num_samples
@@ -57,7 +61,8 @@ class ToyDataset(torch.utils.data.Dataset):
         
         self.y = self.fnn.sum(dim=1).reshape(-1, 1) # of shape (batch_size)
         if not use_test:
-            self.y = self.y + torch.normal(mean=torch.zeros_like(self.y), std=sigma)
+            noise = torch.randn_like(self.y) * self.sigma
+            self.y = self.y + noise
         self.get_loaders()
         
        

@@ -13,8 +13,7 @@ def polynomial_basis_function(x, power):
 
     
 class BayesianLinearRegression(): 
-    """Bayesian Linear Regression with Gaussian prior and likelihood."""
-    def __init__(self, X, y, bf, bf_args=None, sigma_noise=1.0, prior_var=1.0):
+    def __init__(self, X, y, bf='identity', bf_args=None, sigma_noise=1.0, prior_var=1.0):
         """
         Bayesian linear basis regression.  \hat{y} = \sum \omega^T \Phi(x) + \epsilon.
         

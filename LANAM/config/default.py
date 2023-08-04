@@ -12,7 +12,7 @@ def defaults() -> Config:
         
         regression=True,
         
-        num_epochs=150,
+        num_epochs=400,
         batch_size=128,
         
         ## logs

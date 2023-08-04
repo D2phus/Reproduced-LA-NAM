@@ -9,7 +9,7 @@ def train(config,
          ):
         optimizer = torch.optim.Adam(model.parameters(), lr=config.lr) 
         
-        criterion = nn.MSELoss() if config.regression else nn.CrossEntropyLoss()
+        criterion = nn.MSELoss(reduction='sum') if config.regression else nn.CrossEntropyLoss(reduction='sum')
         
         losses_train = []
         losses_val = []
@@ -23,10 +23,12 @@ def train(config,
             # print statistics
             if epoch % config.log_loss_frequency == 0: 
                 print(f"=============EPOCH {epoch+1}==============")
-                print(f"loss_train: {(loss_train.detach().cpu().numpy().item()): .3f}, loss_val: {(loss_val.detach().cpu().numpy().item()): .3f}")
+                avg_loss_train = loss_train.detach().cpu().numpy().item() / len(dataloader_train.dataset)
+                avg_loss_val = loss_val.detach().cpu().numpy().item() / len(dataloader_val.dataset)
+                print(f"loss_train: {avg_loss_train: .3f}, loss_val: {avg_loss_val: .3f}")
                 
         print("Finished Training.")
-        return sum(losses_train)
+        return losses_train[-1]
             
 
 def train_epoch(criterion, 
@@ -34,22 +36,24 @@ def train_epoch(criterion,
                 dataloader: torch.utils.data.DataLoader, 
                 optimizer: torch.optim.Adam):
     model.train()
-    avg_loss = 0.0
+    loss = 0.0
     for batch in dataloader:
         features, targets = batch
 
         optimizer.zero_grad()
 
-        out, fnn = model(features)
-
-        step_loss = criterion(out, targets)
-
+        outs = model(features)
+        if type(outs) is tuple: 
+            step_loss = criterion(outs[0], targets)
+        else: 
+            step_loss = criterion(outs, targets)
+            
         step_loss.backward()
         optimizer.step()
 
-        avg_loss += step_loss
+        loss += step_loss
         
-    return avg_loss / len(dataloader)
+    return loss
     
 def  evaluate_epoch(criterion, 
                     model: nn.Module, 
@@ -59,15 +63,18 @@ def  evaluate_epoch(criterion,
     Perform an epoch of evaluation on dataloader 
     """
     model.eval()
-    avg_loss = 0.0
+    loss = 0.0
     for batch in dataloader:
                 # Accumulates loss in dataset.
         with torch.no_grad():
             features, targets = batch
     
-            out, fnn = model(features)
+            outs = model(features)
+            if type(outs) is tuple: 
+                step_loss = criterion(outs[0], targets)
+            else: 
+                step_loss = criterion(outs, targets)
 
-            step_loss = criterion(out, targets)
-            avg_loss += step_loss
+            loss += step_loss
 
-    return avg_loss / len(dataloader)
+    return loss
