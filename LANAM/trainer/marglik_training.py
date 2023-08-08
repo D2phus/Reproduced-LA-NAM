@@ -10,25 +10,27 @@ from laplace.curvature import BackPackGGN
 from laplace import Laplace
 
 from LANAM.utils.plotting import *
+import wandb
 
 def marglik_training(model,
                      train_loader,
                      loader_fnn, 
                      likelihood, 
                      
+                     use_wandb=False,
+                     testset=None,
                      backend=BackPackGGN,
-                     hessian_structure='full',
                      
                      optimizer_cls=torch.optim.Adam, 
                      optimizer_kwargs=None, 
                      scheduler_cls=None,
                      scheduler_kwargs=None,
                      
-                     n_epochs = 300,
+                     n_epochs = 400,
                      lr_hyp = 1e-1,
-                     n_epochs_burnin=0, 
+                     n_epochs_burnin=50, 
                      n_hypersteps=30, 
-                     marglik_frequency = 20,
+                     marglik_frequency = 100,
                      
                      prior_prec_init=1.0, 
                      sigma_noise_init=1.0, 
@@ -41,6 +43,9 @@ def marglik_training(model,
     -----------
     temperature: higher temperature leads to a more concentrated prior.
     """    
+    if use_wandb and testset is None:
+        raise ValueError('test set is required for WandB logging.')
+        
     log_frequency = 50
     
     in_features = model.in_features
@@ -96,7 +101,6 @@ def marglik_training(model,
             if likelihood == 'regression':
                 sigma_noise = log_sigma_noise.exp().detach()
                 crit_factor = temperature / (2 * sigma_noise.square()) #  of shape (in_features)
-                #crit_factor = temperature / (2 * sigma_noise.sum().square()) #  
             else:
                 crit_factor = temperature
             prior_prec = log_prior_prec.exp().detach()
@@ -104,7 +108,6 @@ def marglik_training(model,
             delta = expand_prior_precision(prior_prec, model) # prior precision, of shape (in_features, num_params)
             
             f, _= model(X)
-            #step_loss = crit_factor*criterion(f, y) + 0.5*torch.sum((delta * theta * theta).sum(dim=1) / N)
             step_loss = criterion(f, y) + 0.5 * torch.sum((delta * theta * theta).sum(dim=1) / N / crit_factor)
             step_loss.backward()
             optimizer.step()
@@ -119,42 +122,77 @@ def marglik_training(model,
             
         losses.append(epochs_loss / N)  
         perfs.append(epoch_perf / N)
+        
+        if use_wandb:
+            # saving model training loss and metrics
+            wandb.log({
+                    'MAP loss': losses[-1], 
+                    'Metrics': perfs[-1], 
+            })
+        
         # optimize hyper-parameters
-        if epoch >= n_epochs_burnin and epoch % marglik_frequency == 0:
-            # fit laplace approximation 
-            sigma_noise = 1 if likelihood == 'classification' else log_sigma_noise.exp()
-            prior_prec = log_prior_prec.exp()
+        if (epoch % marglik_frequency) != 0 or epoch < n_epochs_burnin:
+            continue
+
+        # fit laplace approximation 
+        sigma_noise = 1 if likelihood == 'classification' else log_sigma_noise.exp()
+        prior_prec = log_prior_prec.exp()
             
-            model.sigma_noise = sigma_noise
-            model.prior_precision = prior_prec
-            model.fit(epoch_perf, loader_fnn)
+        model.sigma_noise = sigma_noise
+        model.prior_precision = prior_prec
+        model.fit(epoch_perf, loader_fnn)
             
-            # maximize the marginal likelihood
-            for _ in range(n_hypersteps):
-                hyper_optimizer.zero_grad()
-                if likelihood == 'classification': # sigma_noise will be constant 1 for classification. 
-                    sigma_noise = None 
-                else:
-                    sigma_noise = log_sigma_noise.exp()
-                    #sigma_noise = None
+        # maximize the marginal likelihood
+        for _ in range(n_hypersteps):
+            hyper_optimizer.zero_grad()
+            if likelihood == 'classification': # sigma_noise will be constant 1 for classification. 
+                sigma_noise = None 
+            else:
+                sigma_noise = log_sigma_noise.exp()
+                #sigma_noise = None
                     
-                prior_prec = log_prior_prec.exp()
-                neg_log_marglik = -model.log_marginal_likelihood(prior_prec, sigma_noise)
-                neg_log_marglik.backward()
-                hyper_optimizer.step()
-                margliks.append(neg_log_marglik.item())
+            prior_prec = log_prior_prec.exp()
+            neg_log_marglik = -model.log_marginal_likelihood(prior_prec, sigma_noise)
+            neg_log_marglik.backward()
+            hyper_optimizer.step()
+            margliks.append(neg_log_marglik.item())
             
+            if use_wandb:
+                 # saving negative marginal likelihood
+                wandb.log({
+                        'Negative marginal likelihood': margliks[-1], 
+                })
+                
             # best model selection.
-            if margliks[-1] < best_marglik:
-                best_model_dict = deepcopy(model.state_dict())
-                best_marglik = margliks[-1]
+        if margliks[-1] < best_marglik:
+            best_model_dict = deepcopy(model.state_dict())
+            best_marglik = margliks[-1]
+            
         if epoch % log_frequency == 0:
-            print(f'EPOCH={epoch+1}: epoch_loss={losses[-1]: .3f}, epoch_perf={perfs[-1]: .3f}')
+                if use_wandb:
+                    X, y, fnn = testset.X, testset.y, testset.fnn
+                    f_mu, f_var, f_mu_fnn, f_var_fnn = model.predict(X)
+
+                    additive_noise = model.additive_sigma_noise.detach().square()
+                    noise = model.sigma_noise.reshape(1, -1, 1).detach().square()
+                    pred_var_fnn = f_var_fnn + noise
+                    pred_var = f_var + additive_noise
+                    std = np.sqrt(pred_var.flatten().detach().numpy())
+                    fig_addi, fig_indiv = plot_uncertainty(X, y, fnn, f_mu, pred_var, f_mu_fnn, pred_var_fnn, plot_additive=True, plot_individual=True)
+                    
+                    wandb.log({
+                    'Additive sigma noise': additive_noise.numpy().item(),
+                    'Predictive posterior std mean': std.mean().item(),
+                    'Additive fitting': wandb.Image(fig_addi), 
+                    'Individual fitting': wandb.Image(fig_indiv),
+                })
+            #print(f'EPOCH={epoch+1}: epoch_loss={losses[-1]: .3f}, epoch_perf={perfs[-1]: .3f}')
+            #print(prior_prec, sigma_noise)
             
     print('MARGLIK: finished training. Recover best model and fit Laplace.')
     if best_model_dict is not None: 
         model.load_state_dict(best_model_dict)
-    return model, margliks, losses
+    return model, margliks, losses, perfs
 
 
 def expand_prior_precision(prior_prec, model):

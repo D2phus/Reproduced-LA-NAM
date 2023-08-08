@@ -8,9 +8,11 @@ def defaults() -> Config:
         # device='cuda' if torch.cuda.is_available() else 'cpu',
         
         # seed=2023, 
-        experiment_name="nam-sparse-features-2",
+        experiment_name="LANAM-Grid-1",
+        data_dir = '.LANAM/data/dataset'
         
-        regression=True,
+        likelihood='regression',
+        prior_sigma_noise=0.7,
         
         num_epochs=400,
         batch_size=128,
@@ -21,9 +23,13 @@ def defaults() -> Config:
         
         # for tuning
         lr=1e-2,
+        lr_hyp = 1e-1,
+        n_epochs_burnin=50, 
+        n_hypersteps=30, 
+        marglik_frequency = 100,
         hidden_sizes=[64],  #hidden linear layers' size 
         activation=True, # use activation or not   
-        activation_cls='gelu', 
+        activation_cls='relu', 
     )
 
     return config

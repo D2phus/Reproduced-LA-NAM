@@ -1,7 +1,8 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-
+from nam.trainer.losses import penalized_loss
+ 
 def train(config, 
           model: nn.Module, 
           dataloader_train: torch.utils.data.DataLoader, 
@@ -9,8 +10,8 @@ def train(config,
          ):
         optimizer = torch.optim.Adam(model.parameters(), lr=config.lr) 
         
-        criterion = nn.MSELoss(reduction='sum') if config.regression else nn.CrossEntropyLoss(reduction='sum')
-        
+        criterion = nn.MSELoss(reduction='sum') if config.likelihood == 'regression' else nn.CrossEntropyLoss(reduction='sum')
+
         losses_train = []
         losses_val = []
         for epoch in range(config.num_epochs):
@@ -30,7 +31,6 @@ def train(config,
         print("Finished Training.")
         return losses_train[-1]
             
-
 def train_epoch(criterion, 
                 model: nn.Module, 
                 dataloader: torch.utils.data.DataLoader, 
@@ -42,11 +42,8 @@ def train_epoch(criterion,
 
         optimizer.zero_grad()
 
-        outs = model(features)
-        if type(outs) is tuple: 
-            step_loss = criterion(outs[0], targets)
-        else: 
-            step_loss = criterion(outs, targets)
+        outs, _ = model(features)
+        step_loss = criterion(outs.reshape(-1, 1), targets)
             
         step_loss.backward()
         optimizer.step()
@@ -69,11 +66,8 @@ def  evaluate_epoch(criterion,
         with torch.no_grad():
             features, targets = batch
     
-            outs = model(features)
-            if type(outs) is tuple: 
-                step_loss = criterion(outs[0], targets)
-            else: 
-                step_loss = criterion(outs, targets)
+            outs, _ = model(features)
+            step_loss = criterion(outs, targets)
 
             loss += step_loss
 

@@ -15,7 +15,6 @@ from typing import List
 from .featurenn import FeatureNN
 from .utils import *
 
-import multiprocessing 
 
 class LaNAM(nn.Module):
     def __init__(
@@ -38,22 +37,25 @@ class LaNAM(nn.Module):
             """
             super(LaNAM, self).__init__()
             self.config = config
-            self.likelihood = 'regression' if self.config.regression else 'classification'
-            self.lossfunc = nn.MSELoss(reduction='sum') if self.config.regression else nn.CrossEntropyLoss(reduction='sum')
             self.in_features = in_features
+        
             self.subset_of_weights = subset_of_weights 
             self.hessian_structure = hessian_structure
-            # we have individual prior for each feature neural networks
             self.temperature = temperature
+            # individual prior for each feature network
             self.prior_mean = prior_mean
             self.prior_precision = prior_precision
             self.sigma_noise = sigma_noise
-            # note 
-            self._feature_nns = None
-            #self.feature_nns = self.init_feature_nns()
+            
             self.n_outputs = 1
             
+            self._feature_nns = None
+            
+            self.likelihood = self.config.likelihood
+            self.lossfunc = nn.MSELoss(reduction='sum') if self.likelihood == 'regression' else nn.CrossEntropyLoss(reduction='sum')
             self.factor = 0.5 if self.likelihood=='regression' else 1# constant factor from loss to log likelihood 
+            
+            
             
     def extra_repr(self):
         self.feature_nns
@@ -147,7 +149,7 @@ class LaNAM(nn.Module):
                          temperature=self.temperature)
                 for index in range(self.in_features)
             ])
-        else: # update
+        else: # update prior
             for index in range(self.in_features): 
                 self._feature_nns[index].prior_precision = self.prior_precision[index]
                 self._feature_nns[index].sigma_noise = self.sigma_noise[index]
@@ -156,7 +158,9 @@ class LaNAM(nn.Module):
     
     def _features_output(self, inputs: torch.Tensor) -> Sequence[torch.Tensor]:
         """
-        Return list [torch.Tensor of shape (batch_size, 1)]: the outputs of feature neural nets
+        Returns: 
+        ---------
+        list [torch.Tensor of shape (batch_size, 1)]: outputs of feature neural nets
         """
         return [self.feature_nns[index](inputs[:, index]) for index in range(self.in_features)] # feature of shape (1, batch_size)
             
@@ -166,8 +170,11 @@ class LaNAM(nn.Module):
         inputs of shape (batch_size, in_features): input samples, 
         
         Returns: 
-        nam output of shape (batch_size, 1): add up the outputs of feature nets and bias
-        fnn outputs of shape (batch_size, in_features): output of each feature net
+        ----------
+        out of shape (batch_size, 1): 
+            output of additive models.
+        fnn of shape (batch_size, in_features): 
+            output of each feature net
         """
         fnn = self._features_output(inputs) # list [Tensor(batch_size,  1)]
         out = torch.stack(fnn, dim=-1).sum(dim=-1) # sum along the features => of shape (batch_size)
@@ -177,7 +184,10 @@ class LaNAM(nn.Module):
         """fit Laplace approximation for each feature neural net.
         Args:
         --------
-        loss: the summed loss of additive models on the training data.
+        loss: 
+            the summed loss of additive models on the training data. 
+        loader_fnn: list 
+            data loaders for feature networks.  
         """
         if override:
             self.loss = 0
@@ -194,30 +204,23 @@ class LaNAM(nn.Module):
         for index in range(self.in_features):
             self.feature_nns[index].fit(loader_fnn[index], override=override) 
         self.n_data += N
-        
-    #def fit(self, loader_fnn, override=True): 
-    #    """fit Laplace approximation for each feature neural net."""
-    #    if type(loader_fnn) is not list: 
-    #        loader_fnn = [loader_fnn]
-    #    
-    #    for index in range(self.in_features):
-    #        self.feature_nns[index].fit(loader_fnn[index], override=override) 
             
     @property 
     def posterior_covariance(self):
         """block-diagonal posterior covariance. """
-        #pos_cov = [self.feature_nns[index].posterior_covariance for index in range(self.in_features)] 
-        #return torch.block_diag(*pos_cov)
-        tril_factor = _precision_to_scale_tril(self.posterior_precision)
-        return tril_factor@tril_factor.T
+        factor = self.pos_cov_scale
+        return factor@factor.T
+    
+    @property
+    def pos_cov_scale(self):
+        """the lower-triangular factor of posterior covariance."""
+        return _precision_to_scale_tril(self.posterior_precision)
     
     @property
     def posterior_precision(self): 
         """block-diagonal posterior precision. """
         pos_prec = [self.feature_nns[index].posterior_precision for index in range(self.in_features)] 
         return torch.block_diag(*pos_prec)
-        #tril_factor = _precision_to_scale_tril(self.posterior_covariance)
-        #return tril_factor@tril_factor.T
     
     def predict(self, x, pred_type='glm', link_approx='probit'): 
         """can only be called after calling `fit` method.
@@ -250,12 +253,11 @@ class LaNAM(nn.Module):
     
     @property
     def log_likelihood(self): 
-        """log likelihood after method `fit` has been called.
-        The log-likelihood is computed based on the *overall* loss. """
+        """compute log likelihood after method `fit` has been called. """
         factor = - self._H_factor
         if self.likelihood == 'regression':
             c = self.n_data * self.n_outputs * torch.log(self.additive_sigma_noise * sqrt(2 * pi))
-            return factor * self.loss - c
+            return factor * self.loss - c # additive loss
         else:
             # for classification Xent == log Cat
             return factor * self.loss
@@ -277,7 +279,7 @@ class LaNAM(nn.Module):
         return self.log_likelihood - log_marglik
     
     def predictive_samples(self, x, n_samples=5):
-        """Sample from the posterior predictive on input data x.
+        """Sample from the posterior predictive of NAM with linearized Laplace on input data x. 
 
         Args:
         ----------

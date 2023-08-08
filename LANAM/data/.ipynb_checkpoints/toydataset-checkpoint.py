@@ -65,6 +65,7 @@ class ToyDataset(torch.utils.data.Dataset):
             self.y = self.y + noise
         self.get_loaders()
         
+        
        
     def __len__(self):
         return len(self.X)
@@ -72,21 +73,23 @@ class ToyDataset(torch.utils.data.Dataset):
     def __getitem__(self, idx: int) -> Tuple[torch.Tensor, ...]:
         return self.X[idx], self.y[idx]
 
-    def plot(self):
+    def plot(self, additive=True):
         """
         plot each features on the whole dataset.
         """
         cols = 3
         rows = math.ceil(self.in_features / cols)
-        fig, axs = plt.subplots(rows, cols)
+        figsize = (2*cols ,2*rows)
+        fig, axs = plt.subplots(rows, cols, figsize=figsize)
         axs = axs.ravel() # 
         fig.tight_layout()
         for index in range(self.in_features): 
-            axs[index].plot(self.X[:, index], self.fnn[:, index], '.')
+            axs[index].plot(self.X[:, index], self.fnn[:, index], '.', color='royalblue')
             axs[index].set_title(f"X{index}")
         
-        fig, axs = plt.subplots()
-        axs.plot(self.X[:, 0], self.y, '.')
+        if additive:
+            fig, axs = plt.subplots()
+            axs.plot(self.X[:, 0], self.y, '.', color='royalblue')
     
     def get_loaders(self): 
         """
