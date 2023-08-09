@@ -77,7 +77,7 @@ class ToyDataset(torch.utils.data.Dataset):
         """
         plot each features on the whole dataset.
         """
-        cols = 3
+        cols = 4
         rows = math.ceil(self.in_features / cols)
         figsize = (2*cols ,2*rows)
         fig, axs = plt.subplots(rows, cols, figsize=figsize)

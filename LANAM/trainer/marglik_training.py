@@ -12,6 +12,8 @@ from laplace import Laplace
 from LANAM.utils.plotting import *
 import wandb
 
+import time
+
 def marglik_training(model,
                      train_loader,
                      loader_fnn, 
@@ -45,6 +47,9 @@ def marglik_training(model,
     """    
     if use_wandb and testset is None:
         raise ValueError('test set is required for WandB logging.')
+    start = time.time()
+    # get device
+    device = parameters_to_vector(model.parameters()).device
         
     log_frequency = 50
     
@@ -58,14 +63,14 @@ def marglik_training(model,
     # set up hyperparameters and loss function
     hyperparameters = list()
     log_prior_prec_init = np.log(temperature*prior_prec_init)
-    log_prior_prec = torch.ones(in_features) * log_prior_prec_init
+    log_prior_prec = torch.ones(in_features, device=device) * log_prior_prec_init
     log_prior_prec.requires_grad = True # note to require grad
     hyperparameters.append(log_prior_prec)
 
     if likelihood == 'regression': 
         criterion = nn.MSELoss(reduction='mean')
         log_sigma_noise_init = np.log(sigma_noise_init)
-        log_sigma_noise = torch.ones(in_features)*log_sigma_noise_init
+        log_sigma_noise = torch.ones(in_features, device=device)*log_sigma_noise_init
         log_sigma_noise.requires_grad = True
         hyperparameters.append(log_sigma_noise)
     elif likelihood == 'classification':
@@ -97,6 +102,7 @@ def marglik_training(model,
         epochs_loss = 0.0
         epoch_perf = 0
         for X, y in train_loader:
+            X, y = X.to(device), y.to(device)
             optimizer.zero_grad()
             if likelihood == 'regression':
                 sigma_noise = log_sigma_noise.exp().detach()
@@ -126,7 +132,7 @@ def marglik_training(model,
         if use_wandb:
             # saving model training loss and metrics
             wandb.log({
-                    'MAP loss': losses[-1], 
+                    'MAP_loss': losses[-1], 
                     'Metrics': perfs[-1], 
             })
         
@@ -160,7 +166,8 @@ def marglik_training(model,
             if use_wandb:
                  # saving negative marginal likelihood
                 wandb.log({
-                        'Negative marginal likelihood': margliks[-1], 
+                        'Negative_marginal_likelihood': margliks[-1], 
+                        'Sigma_noise': model.additive_sigma_noise.detach().numpy().item(),
                 })
                 
             # best model selection.
@@ -181,15 +188,19 @@ def marglik_training(model,
                     fig_addi, fig_indiv = plot_uncertainty(X, y, fnn, f_mu, pred_var, f_mu_fnn, pred_var_fnn, plot_additive=True, plot_individual=True)
                     
                     wandb.log({
-                    'Additive sigma noise': additive_noise.numpy().item(),
-                    'Predictive posterior std mean': std.mean().item(),
-                    'Additive fitting': wandb.Image(fig_addi), 
-                    'Individual fitting': wandb.Image(fig_indiv),
+                    'Predictive_posterior_std_mean': std.mean().item(),
+                    'Additive_fitting': wandb.Image(fig_addi), 
+                    'Individual_fitting': wandb.Image(fig_indiv),
                 })
-            #print(f'EPOCH={epoch+1}: epoch_loss={losses[-1]: .3f}, epoch_perf={perfs[-1]: .3f}')
-            #print(prior_prec, sigma_noise)
+                print(f'EPOCH={epoch+1}: epoch_loss={losses[-1]: .3f}, epoch_perf={perfs[-1]: .3f}')
+                print(prior_prec, sigma_noise)
             
     print('MARGLIK: finished training. Recover best model and fit Laplace.')
+    run_time = time.time() - start
+    if use_wandb:
+        wandb.log({
+            'Run_time': run_time
+        })
     if best_model_dict is not None: 
         model.load_state_dict(best_model_dict)
     return model, margliks, losses, perfs

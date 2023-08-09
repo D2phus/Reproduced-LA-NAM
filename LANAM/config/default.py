@@ -5,11 +5,9 @@ from .base import Config
 
 def defaults() -> Config:
     config = Config(
-        # device='cuda' if torch.cuda.is_available() else 'cpu',
         
-        # seed=2023, 
         experiment_name="LANAM-Grid-1",
-        data_dir = '.LANAM/data/dataset'
+        data_path = 'LANAM/data/datasets',
         
         likelihood='regression',
         prior_sigma_noise=0.7,

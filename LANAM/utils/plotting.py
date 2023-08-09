@@ -52,7 +52,7 @@ def plot_uncertainty(X, y, fnn, f_mu, f_var, f_mu_fnn, f_var_fnn, predictive_sam
     fig_indiv, fig_addi = None, None
     if plot_individual:
         in_features = f_mu_fnn.shape[1]
-        cols = 3
+        cols = 4
         rows = math.ceil(in_features / cols)
         figsize = (2*cols ,2*rows)  
         fig_indiv, axs = plt.subplots(rows, cols, figsize=figsize)
@@ -68,7 +68,7 @@ def plot_uncertainty(X, y, fnn, f_mu, f_var, f_mu_fnn, f_var_fnn, predictive_sam
             
         for index in range(in_features): 
             lconf, hconf = f_mu_fnn[:, index]-2*std_fnn[:, index], f_mu_fnn[:, index]+2*std_fnn[:, index]
-            customize_ylim = (np.min(f_mu_fnn[:, index]).item()-1, np.max(f_mu_fnn[:, index]).item()+1)
+            customize_ylim = (np.min(f_mu_fnn[:, index]).item()-1.25, np.max(f_mu_fnn[:, index]).item()+1.25)
             axs[index].set_ylim(customize_ylim)
             #print(customize_ylim)
             plt.setp(axs[index], ylim=customize_ylim)
@@ -81,7 +81,7 @@ def plot_uncertainty(X, y, fnn, f_mu, f_var, f_mu_fnn, f_var_fnn, predictive_sam
 
     if plot_additive: 
         fig_addi, axs = plt. subplots()
-        customize_ylim = (np.min(f_mu).item()-1, np.max(f_mu).item()+1)    
+        customize_ylim = (np.min(f_mu).item()-1.75, np.max(f_mu).item()+1.75)    
         plt.setp(axs, ylim=customize_ylim)
         axs.plot(X[:, 0], y, '--', label="targeted", color="gray")
         axs.plot(X[:, 0], f_mu, '-', label="prediction", color="royalblue")
@@ -99,19 +99,23 @@ def plot_mean(X, y, fnn, f_mu, f_mu_fnn, plot_additive=False, plot_individual=Tr
     fig_indiv, fig_addi = None, None
     if plot_individual:
         in_features = f_mu_fnn.shape[1]
-        cols = 3 
+        cols = 4 
         rows = math.ceil(in_features / cols)
         figsize = (2*cols ,2*rows)
         fig_indiv, axs = plt.subplots(rows, cols, figsize=figsize)
         axs = axs.ravel() # 
         fig_indiv.tight_layout()
-        plt.setp(axs, ylim=(-4, 4))
+        
         for index in range(in_features):
+            customize_ylim = (np.min(f_mu_fnn[:, index]).item()-1.25, np.max(f_mu_fnn[:, index]).item()+1.25)
+            axs[index].set_ylim(customize_ylim)
             axs[index].plot(X[:, index], fnn[:, index].detach().numpy(), color='gray')
             axs[index].plot(X[:, index], f_mu_fnn[: ,index].detach().numpy(), color='royalblue')
         
     if plot_additive: 
         fig_addi, axs = plt.subplots()
+        customize_ylim = (np.min(f_mu).item()-1.75, np.max(f_mu).item()+1.75)    
+        plt.setp(axs, ylim=customize_ylim)
         axs.plot(X[:, 0], y, '--', label="targeted", color="gray")
         axs.plot(X[:, 0], f_mu, '-', label="prediction", color="royalblue")
         
