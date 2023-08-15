@@ -2,8 +2,8 @@
 import torch
 import torch.nn as nn
 from torch.nn.utils import parameters_to_vector, vector_to_parameters
-from laplace import Laplace
-from nam.models.activation import ExU
+from .laplace import laplace
+from .activation import ExU
 
 
 class FeatureNN(nn.Module):

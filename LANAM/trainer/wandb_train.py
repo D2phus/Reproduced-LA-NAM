@@ -1,20 +1,21 @@
+import time 
+from copy import deepcopyimport os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir))) # 
+from .marglik_training import *
+from LANAM.models import LaNAM
+from LANAM.utils.plotting import *
+from LANAM.config.default import defaults
+
 import torch 
 import torch.nn as nn
 import torch.nn.functional as F 
 from torch.nn.utils import parameters_to_vector
-
-from copy import deepcopy
-
 import numpy as np
+
 from laplace.curvature import BackPackGGN
 from laplace import Laplace
 
-from LANAM.models import LaNAM
-from LANAM.utils.plotting import *
-from LANAM.config.default import defaults
-from .marglik_training import *
-
-import time 
 import wandb
 
 def wandb_training(config,
@@ -26,6 +27,7 @@ def wandb_training(config,
     run = wandb.init()
     
     config.update(**wandb.config)
+    config.hidden_sizes = [config.hidden_sizes]
     print(f'Configuration: \n {config}')
     
     likelihood = config.likelihood
@@ -38,7 +40,6 @@ def wandb_training(config,
     in_features = testset.in_features
     model = LaNAM(config=config, name=f'LA-NAM-{config.activation_cls}', in_features=in_features)
     
-    wandb.watch(model, log_freq=config.log_loss_frequency)
     print(f'Model summary: \n {model}')
     
     model, margliks, losses, perfs = marglik_training(model, train_loader, loader_fnn, use_wandb=True, testset=testset, likelihood=likelihood, optimizer_kwargs=optimizer_kwargs, lr_hyp=lr_hyp, n_epochs_burnin=n_epochs_burnin, n_hypersteps=n_hypersteps, marglik_frequency=marglik_frequency)

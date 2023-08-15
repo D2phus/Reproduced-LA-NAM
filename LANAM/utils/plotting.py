@@ -96,6 +96,8 @@ def plot_mean(X, y, fnn, f_mu, f_mu_fnn, plot_additive=False, plot_individual=Tr
     f_mu_fnn = f_mu_fnn - Ef_mu_fnn 
     fnn = fnn - fnn.mean(dim=0).reshape(1, -1)
     
+    f_mu, f_mu_fnn = f_mu.flatten().detach().numpy(), f_mu_fnn.flatten(1).detach().numpy() # of shpe (batch_size)
+    
     fig_indiv, fig_addi = None, None
     if plot_individual:
         in_features = f_mu_fnn.shape[1]
@@ -109,8 +111,8 @@ def plot_mean(X, y, fnn, f_mu, f_mu_fnn, plot_additive=False, plot_individual=Tr
         for index in range(in_features):
             customize_ylim = (np.min(f_mu_fnn[:, index]).item()-1.25, np.max(f_mu_fnn[:, index]).item()+1.25)
             axs[index].set_ylim(customize_ylim)
-            axs[index].plot(X[:, index], fnn[:, index].detach().numpy(), color='gray')
-            axs[index].plot(X[:, index], f_mu_fnn[: ,index].detach().numpy(), color='royalblue')
+            axs[index].plot(X[:, index], fnn[:, index], color='gray')
+            axs[index].plot(X[:, index], f_mu_fnn[: ,index], color='royalblue')
         
     if plot_additive: 
         fig_addi, axs = plt.subplots()

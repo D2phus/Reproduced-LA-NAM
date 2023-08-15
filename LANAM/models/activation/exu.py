@@ -18,7 +18,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 class BatchGradExU(BatchGradBase):
     def __init__(self):
-        super().__init__(derivatives=ExUDerivatives(), params=["weights", "bias"])
+        super().__init__(derivatives=ExUDerivatives(), params=["weight", "bias"])
         
 
 class ExU(torch.nn.Module):
@@ -36,15 +36,14 @@ class ExU(torch.nn.Module):
         super(ExU, self).__init__()
         self.in_features = in_features
         self.out_features = out_features
-        self.weights = Parameter(torch.Tensor(in_features, out_features))
+        self.weight = Parameter(torch.Tensor(in_features, out_features))
         self.bias = Parameter(torch.Tensor(in_features))
-        self.n = 1
         self.reset_parameters()
 
     def reset_parameters(self) -> None:
-        ## Page(4): initializing the weights using a normal distribution
+        ## Page(4): initializing the weight using a normal distribution
         ##          N(x; 0:5) with x 2 [3; 4] works well in practice.
-        torch.nn.init.trunc_normal_(self.weights, mean=4.0, std=0.5)
+        torch.nn.init.trunc_normal_(self.weight, mean=4.0, std=0.5)
         torch.nn.init.trunc_normal_(self.bias, std=0.5)
 
     def forward(
@@ -53,7 +52,7 @@ class ExU(torch.nn.Module):
         n: int = 1,
     ) -> torch.Tensor:
         self.n = n
-        output = (inputs - self.bias).matmul(torch.exp(self.weights))
+        output = (inputs - self.bias).matmul(torch.exp(self.weight))
 
         # ReLU activations capped at n (ReLU-n)
         output = F.relu(output)

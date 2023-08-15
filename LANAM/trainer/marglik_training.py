@@ -12,6 +12,7 @@ from laplace import Laplace
 from LANAM.utils.plotting import *
 import wandb
 
+import os
 import time
 
 def marglik_training(model,
@@ -50,6 +51,8 @@ def marglik_training(model,
     start = time.time()
     # get device
     device = parameters_to_vector(model.parameters()).device
+    if use_wandb:
+        wandb.watch(model, log_freq=config.log_loss_frequency) # log gradients
         
     log_frequency = 50
     
@@ -203,6 +206,7 @@ def marglik_training(model,
         })
     if best_model_dict is not None: 
         model.load_state_dict(best_model_dict)
+        model.save(os.path.join(wandb.run.dir, 'model.h5')) # save model
     return model, margliks, losses, perfs
 
 
