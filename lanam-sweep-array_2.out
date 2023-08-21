@@ -1,0 +1,870 @@
+wandb: Currently logged in as: xinyu-zhang. Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.15.8 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.5
+wandb: Run data is saved locally in /scratch/work/zhangx18/Reproduced-LA-NAM/wandb/run-20230815_165601-70a1kt1w
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run scarlet-bee-116
+wandb: ⭐️ View project at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic
+wandb: 🚀 View run at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic/runs/70a1kt1w
+wandb: \ 1 of 3 files downloaded...wandb:   3 of 3 files downloaded.  
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.005 MB of 0.005 MB uploaded (0.000 MB deduped)wandb: \ 0.005 MB of 0.005 MB uploaded (0.000 MB deduped)wandb: | 0.005 MB of 0.047 MB uploaded (0.000 MB deduped)wandb: / 0.005 MB of 0.047 MB uploaded (0.000 MB deduped)wandb: - 0.005 MB of 0.047 MB uploaded (0.000 MB deduped)wandb: 🚀 View run scarlet-bee-116 at: https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic/runs/70a1kt1w
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230815_165601-70a1kt1w/logs
+wandb: Agent Starting Run: pj35s0xf with config:
+wandb: 	activation_cls: exu
+wandb: 	hidden_sizes: 64
+wandb: 	lr: 0.1
+wandb: wandb version 0.15.8 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.5
+wandb: Run data is saved locally in /scratch/work/zhangx18/Reproduced-LA-NAM/wandb/run-20230815_165643-pj35s0xf
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run crisp-sweep-1
+wandb: ⭐️ View project at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0
+wandb: 🧹 View sweep at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/sweeps/d2tncz4q
+wandb: 🚀 View run at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/pj35s0xf
+/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/torch/nn/init.py:176: UserWarning: mean is more than 2 std from [a, b] in nn.init.trunc_normal_. The distribution of values may be incorrect.
+  return _no_grad_trunc_normal_(tensor, mean, std, a, b)
+Create sweep with ID: d2tncz4q
+Sweep URL: https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/sweeps/d2tncz4q
+Configuration: 
+ Config(experiment_name='LANAM-Grid-2', data_path='LANAM/data/datasets', likelihood='regression', prior_sigma_noise=0.7, num_epochs=400, batch_size=128, wandb=False, log_loss_frequency=100, lr=0.1, lr_hyp=0.1, n_epochs_burnin=50, n_hypersteps=30, marglik_frequency=100, hidden_sizes=[64], activation=True, activation_cls='exu')
+Model summary: 
+ LaNAM(
+  (lossfunc): MSELoss()
+  (_feature_nns): ModuleList(
+    (0-3): 4 x FeatureNN(
+      (model): Sequential(
+        (0): ExU(in_features=1, out_features=64)
+        (1): Linear(in_features=64, out_features=1, bias=True)
+      )
+    )
+  )
+)
+[Epoch=100, n_hypersteps=0]: prior precision: [1. 1. 1. 1.], sigma noise: [1. 1. 1. 1.]
+[Epoch=100, n_hypersteps=1]: prior precision: [0.9048374 0.9048374 0.9048374 1.105171 ], sigma noise: [1.105171  1.105171  1.105171  1.1051708]
+[Epoch=100, n_hypersteps=2]: prior precision: [0.8193343  0.8194063  0.81926024 1.2196746 ], sigma noise: [1.0382833 1.0382833 1.0382833 1.0432068]
+[Epoch=100, n_hypersteps=3]: prior precision: [0.74286735 0.7431261  0.7426039  1.3414807 ], sigma noise: [0.9729816 0.9729816 0.9729816 0.9825876]
+[Epoch=100, n_hypersteps=4]: prior precision: [0.67479885 0.6753959  0.6741972  1.4653004 ], sigma noise: [0.9501328 0.9501328 0.9501328 0.9678181]
+[Epoch=100, n_hypersteps=5]: prior precision: [0.61448604 0.6156025  0.613372   1.5808321 ], sigma noise: [0.9633146 0.9633146 0.9633146 0.9898883]
+[Epoch=100, n_hypersteps=6]: prior precision: [0.56129056 0.56312853 0.55947304 1.6736664 ], sigma noise: [0.993053  0.993053  0.993053  1.0293008]
+[Epoch=100, n_hypersteps=7]: prior precision: [0.51458716 0.51736164 0.5118665  1.7317781 ], sigma noise: [1.0242746 1.0242746 1.0242746 1.0713274]
+[Epoch=100, n_hypersteps=8]: prior precision: [0.47377264 0.47770312 0.4699472  1.7521743 ], sigma noise: [1.0431195 1.0431195 1.0431195 1.1008945]
+[Epoch=100, n_hypersteps=9]: prior precision: [0.43827263 0.44357616 0.43314478 1.7400562 ], sigma noise: [1.0433571 1.0433571 1.0433571 1.1098448]
+[Epoch=100, n_hypersteps=10]: prior precision: [0.40754744 0.41443327 0.40092757 1.7039834 ], sigma noise: [1.0280439 1.0280439 1.0280439 1.1007894]
+[Epoch=100, n_hypersteps=11]: prior precision: [0.3810967  0.3897628  0.37280577 1.6526126 ], sigma noise: [1.0042361 1.0042361 1.0042362 1.0816407]
+[Epoch=100, n_hypersteps=12]: prior precision: [0.35846177 0.36909315 0.34833243 1.5935305 ], sigma noise: [0.9799164  0.97991633 0.97991645 1.0618535 ]
+[Epoch=100, n_hypersteps=13]: prior precision: [0.33922735 0.351996   0.32710344 1.5330442 ], sigma noise: [0.96246463 0.9624646  0.96246475 1.0504984 ]
+[Epoch=100, n_hypersteps=14]: prior precision: [0.32302102 0.33808687 0.30875653 1.4762143 ], sigma noise: [0.95614463 0.9561445  0.95614475 1.0529301 ]
+[Epoch=100, n_hypersteps=15]: prior precision: [0.309512   0.32702518 0.29296938 1.4268734 ], sigma noise: [0.96061283 0.9606127  0.960613   1.0688943 ]
+[Epoch=100, n_hypersteps=16]: prior precision: [0.29840896 0.31851152 0.27945685 1.387631  ], sigma noise: [0.972208  0.9722079 0.9722083 1.0942346]
+[Epoch=100, n_hypersteps=17]: prior precision: [0.2894569  0.31228492 0.26796842 1.3599181 ], sigma noise: [0.9856576  0.98565733 0.9856579  1.1226175 ]
+[Epoch=100, n_hypersteps=18]: prior precision: [0.28243387 0.30811855 0.25828466 1.3441354 ], sigma noise: [0.9954995 0.9954992 0.9954999 1.146726 ]
+[Epoch=100, n_hypersteps=19]: prior precision: [0.27714732 0.30581567 0.25021425 1.3398789 ], sigma noise: [0.9979069  0.9979066  0.99790746 1.1607019 ]
+[Epoch=100, n_hypersteps=20]: prior precision: [0.27343023 0.30520463 0.24359074 1.346169  ], sigma noise: [0.9920403  0.99203986 0.9920408  1.1627588 ]
+[Epoch=100, n_hypersteps=21]: prior precision: [0.2711377  0.306134   0.23826957 1.3616248 ], sigma noise: [0.97988564 0.97988516 0.9798863  1.1554682 ]
+[Epoch=100, n_hypersteps=22]: prior precision: [0.27014318 0.30846813 0.23412508 1.3845441 ], sigma noise: [0.96516734 0.9651668  0.96516806 1.144236  ]
+[Epoch=100, n_hypersteps=23]: prior precision: [0.27033508 0.31208232 0.23104799 1.412925  ], sigma noise: [0.95209587 0.9520952  0.95209664 1.1354473 ]
+[Epoch=100, n_hypersteps=24]: prior precision: [0.27161354 0.31685805 0.22894286 1.4444634 ], sigma noise: [0.94401395 0.94401324 0.94401485 1.1343693 ]
+[Epoch=100, n_hypersteps=25]: prior precision: [0.2738876  0.3226791  0.22772586 1.4765872 ], sigma noise: [0.94223005 0.9422292  0.94223106 1.1432339 ]
+[Epoch=100, n_hypersteps=26]: prior precision: [0.27707207 0.32942742 0.2273229  1.506587  ], sigma noise: [0.9457317  0.9457307  0.94573283 1.160734  ]
+[Epoch=100, n_hypersteps=27]: prior precision: [0.28108513 0.33697966 0.22766767 1.5318577 ], sigma noise: [0.9518009  0.95179963 0.9518022  1.1828    ]
+[Epoch=100, n_hypersteps=28]: prior precision: [0.2858459  0.34520432 0.22869995 1.550231  ], sigma noise: [0.9570534  0.95705205 0.957055   1.2038404 ]
+[Epoch=100, n_hypersteps=29]: prior precision: [0.29127237 0.35395953 0.23036417 1.560309  ], sigma noise: [0.9586542  0.9586526  0.95865595 1.2185937 ]
+[Epoch=200, n_hypersteps=0]: prior precision: [0.29727945 0.36309195 0.23260804 1.5616714 ], sigma noise: [0.9553477 0.9553459 0.9553496 1.2243284]
+[Epoch=200, n_hypersteps=1]: prior precision: [0.29956514 0.34372568 0.23330027 1.5044442 ], sigma noise: [0.9189315  0.92247885 0.9189334  1.1745368 ]
+[Epoch=200, n_hypersteps=2]: prior precision: [0.29839352 0.31854483 0.23255047 1.4179136 ], sigma noise: [0.8671376  0.8752874  0.86713946 1.1031098 ]
+[Epoch=200, n_hypersteps=3]: prior precision: [0.29420716 0.29122573 0.23051089 1.317648  ], sigma noise: [0.8112672  0.82545274 0.8112689  1.0263057 ]
+[Epoch=200, n_hypersteps=4]: prior precision: [0.28755298 0.26384297 0.22736287 1.213547  ], sigma noise: [0.76167786 0.7852386  0.76167953 0.9585617 ]
+[Epoch=200, n_hypersteps=5]: prior precision: [0.279015   0.2376674  0.22330357 1.11221   ], sigma noise: [0.7282775  0.76671076 0.7282792  0.9137973 ]
+[Epoch=200, n_hypersteps=6]: prior precision: [0.26916224 0.21345    0.218534   1.0179634 ], sigma noise: [0.7154026 0.7738552 0.7154044 0.8975317]
+[Epoch=200, n_hypersteps=7]: prior precision: [0.25851348 0.19158107 0.21324892 0.9334461 ], sigma noise: [0.72019565 0.80271447 0.72019756 0.90517515]
+[Epoch=200, n_hypersteps=8]: prior precision: [0.24751721 0.17220011 0.20762965 0.86001873], sigma noise: [0.73726773 0.8481693  0.7372699  0.92929554]
+[Epoch=200, n_hypersteps=9]: prior precision: [0.23654321 0.1552789  0.2018388  0.7981071 ], sigma noise: [0.7608704  0.90516627 0.7608728  0.9623188 ]
+[Epoch=200, n_hypersteps=10]: prior precision: [0.22588286 0.14068434 0.19601765 0.74749017], sigma noise: [0.78491086 0.9670657  0.7849135  0.99612266]
+[Epoch=200, n_hypersteps=11]: prior precision: [0.21575493 0.12822534 0.1902851  0.70754516], sigma noise: [0.803474   1.0246767  0.80347687 1.0225399 ]
+[Epoch=200, n_hypersteps=12]: prior precision: [0.20631449 0.11768631 0.18473813 0.6774431 ], sigma noise: [0.8122708  1.0681297  0.81227386 1.0354744 ]
+[Epoch=200, n_hypersteps=13]: prior precision: [0.19766311 0.10885024 0.17945316 0.65629107], sigma noise: [0.80974287 1.0910687  0.8097459  1.0326921 ]
+[Epoch=200, n_hypersteps=14]: prior precision: [0.18985933 0.10151201 0.1744881  0.64322317], sigma noise: [0.7969248 1.0930916 0.7969278 1.0156902]
+[Epoch=200, n_hypersteps=15]: prior precision: [0.18292817 0.0954857  0.16988458 0.6374478 ], sigma noise: [0.7765547  1.0787021  0.77655756 0.98835295]
+[Epoch=200, n_hypersteps=16]: prior precision: [0.17686957 0.09060679 0.1656704  0.6382609 ], sigma noise: [0.7521941  1.05511    0.75219685 0.9556455 ]
+[Epoch=200, n_hypersteps=17]: prior precision: [0.17166558 0.08673255 0.16186196 0.64504176], sigma noise: [0.7275966  1.0306499  0.72759914 0.9227247 ]
+[Epoch=200, n_hypersteps=18]: prior precision: [0.16728596 0.08374051 0.15846626 0.65722525], sigma noise: [0.7061762  1.0135658  0.70617867 0.8942284 ]
+[Epoch=200, n_hypersteps=19]: prior precision: [0.16369274 0.08152615 0.15548292 0.6742699 ], sigma noise: [0.69040835 1.0103872  0.6904107  0.87347853]
+[Epoch=200, n_hypersteps=20]: prior precision: [0.16084318 0.08000072 0.15290564 0.6956148 ], sigma noise: [0.6812965  1.0243293  0.6812988  0.86178535]
+[Epoch=200, n_hypersteps=21]: prior precision: [0.15869221 0.07908855 0.15072377 0.72064066], sigma noise: [0.67826766 1.0550431  0.6782699  0.85834414]
+[Epoch=200, n_hypersteps=22]: prior precision: [0.15719385 0.07872515 0.14892323 0.74863195], sigma noise: [0.67954355 1.0993938  0.6795458  0.8607568 ]
+[Epoch=200, n_hypersteps=23]: prior precision: [0.15630202 0.07885516 0.14748746 0.77874905], sigma noise: [0.68270046 1.1518606  0.6827027  0.8657674 ]
+[Epoch=200, n_hypersteps=24]: prior precision: [0.15597095 0.07943054 0.14639804 0.81001884], sigma noise: [0.6852428  1.20449    0.68524516 0.87000364]
+[Epoch=200, n_hypersteps=25]: prior precision: [0.15615515 0.08040909 0.14563513 0.84134054], sigma noise: [0.68515265 1.2478529  0.685155   0.87071   ]
+[Epoch=200, n_hypersteps=26]: prior precision: [0.15680927 0.08175369 0.14517781 0.87152404], sigma noise: [0.681303   1.2740977  0.68130535 0.8663283 ]
+[Epoch=200, n_hypersteps=27]: prior precision: [0.15788768 0.08343092 0.14500436 0.8993548 ], sigma noise: [0.6735967  1.2803695  0.67359895 0.8567088 ]
+[Epoch=200, n_hypersteps=28]: prior precision: [0.15934417 0.0854102  0.14509237 0.9236835 ], sigma noise: [0.6628303 1.2696189 0.6628325 0.8429325]
+[Epoch=200, n_hypersteps=29]: prior precision: [0.1611313  0.08766223 0.14541878 0.9435263 ], sigma noise: [0.65040535 1.2488786  0.65040743 0.82691056]
+[Epoch=300, n_hypersteps=0]: prior precision: [0.16320036 0.09015718 0.14596008 0.9581589 ], sigma noise: [0.63798153 1.2269384  0.6379836  0.8109055 ]
+[Epoch=300, n_hypersteps=1]: prior precision: [0.16535912 0.09086023 0.14660552 0.95080364], sigma noise: [0.62771386 1.2139865  0.6277158  0.7975807 ]
+[Epoch=300, n_hypersteps=2]: prior precision: [0.16756265 0.08994371 0.14733751 0.92545265], sigma noise: [0.62048674 1.2152702  0.62048864 0.788169  ]
+[Epoch=300, n_hypersteps=3]: prior precision: [0.16976643 0.08768194 0.14813843 0.8868268 ], sigma noise: [0.61637133 1.2319314  0.6163732  0.78278893]
+[Epoch=300, n_hypersteps=4]: prior precision: [0.17192706 0.08439413 0.14899068 0.83954054], sigma noise: [0.6146702  1.26124    0.61467206 0.78051025]
+[Epoch=300, n_hypersteps=5]: prior precision: [0.17400321 0.08039882 0.14987698 0.7876214 ], sigma noise: [0.6141951  1.297364   0.61419696 0.7797341 ]
+[Epoch=300, n_hypersteps=6]: prior precision: [0.17595655 0.07598387 0.15078054 0.73430574], sigma noise: [0.61364967 1.3323575  0.6136515  0.77871424]
+[Epoch=300, n_hypersteps=7]: prior precision: [0.1777527  0.07139057 0.15168518 0.6820139 ], sigma noise: [0.61199474 1.3581024  0.61199653 0.7760574 ]
+[Epoch=300, n_hypersteps=8]: prior precision: [0.17936221 0.0668086  0.15257569 0.63242525], sigma noise: [0.6086958 1.3692724 0.6086976 0.7710615]
+[Epoch=300, n_hypersteps=9]: prior precision: [0.1807613  0.06237791 0.15343781 0.5866012 ], sigma noise: [0.6037976  1.3654946  0.6037994  0.76381385]
+[Epoch=300, n_hypersteps=10]: prior precision: [0.1819324  0.05819466 0.15425865 0.5451205 ], sigma noise: [0.5978406 1.3511486 0.5978424 0.7550684]
+[Epoch=300, n_hypersteps=11]: prior precision: [0.18286473 0.05431872 0.15502681 0.5082063 ], sigma noise: [0.5916689  1.3334069  0.59167063 0.74597615]
+[Epoch=300, n_hypersteps=12]: prior precision: [0.18355411 0.05078166 0.15573245 0.4758361 ], sigma noise: [0.58617264 1.3197697  0.58617437 0.73773336]
+[Epoch=300, n_hypersteps=13]: prior precision: [0.18400314 0.04759396 0.15636748 0.44782925], sigma noise: [0.5820128 1.3157744 0.5820145 0.7312159]
+[Epoch=300, n_hypersteps=14]: prior precision: [0.18422058 0.04475136 0.15692568 0.42391348], sigma noise: [0.5794131  1.323488   0.57941484 0.726712  ]
+[Epoch=300, n_hypersteps=15]: prior precision: [0.18422069 0.04223984 0.15740263 0.40377262], sigma noise: [0.5781118  1.3412285  0.57811356 0.72386986]
+[Epoch=300, n_hypersteps=16]: prior precision: [0.18402258 0.04003963 0.15779583 0.38707858], sigma noise: [0.5774919  1.3642788  0.57749355 0.7218794 ]
+[Epoch=300, n_hypersteps=17]: prior precision: [0.18364906 0.03812799 0.15810458 0.3735122 ], sigma noise: [0.57682276 1.3862611  0.5768245  0.719794  ]
+[Epoch=300, n_hypersteps=18]: prior precision: [0.18312566 0.03648126 0.15832996 0.3627749 ], sigma noise: [0.57551205 1.4011906  0.5755138  0.716857  ]
+[Epoch=300, n_hypersteps=19]: prior precision: [0.18247972 0.03507621 0.15847462 0.35459426], sigma noise: [0.57327926 1.4057503  0.573281   0.7127221 ]
+[Epoch=300, n_hypersteps=20]: prior precision: [0.18173927 0.03389074 0.15854259 0.34872562], sigma noise: [0.5702088 1.4005471 0.5702105 0.7075127]
+[Epoch=300, n_hypersteps=21]: prior precision: [0.18093221 0.03290441 0.15853922 0.344951  ], sigma noise: [0.5666862 1.3896127 0.5666879 0.7017311]
+[Epoch=300, n_hypersteps=22]: prior precision: [0.18008544 0.03209856 0.1584709  0.34307656], sigma noise: [0.5632477  1.3786228  0.56324935 0.696061  ]
+[Epoch=300, n_hypersteps=23]: prior precision: [0.17922428 0.03145629 0.15834484 0.3429285 ], sigma noise: [0.56038576 1.3727382  0.56038743 0.69112027]
+[Epoch=300, n_hypersteps=24]: prior precision: [0.17837183 0.03096241 0.1581688  0.34434953], sigma noise: [0.55837166 1.3748379  0.5583734  0.68724144]
+[Epoch=300, n_hypersteps=25]: prior precision: [0.17754875 0.03060327 0.15795094 0.34719452], sigma noise: [0.5571661  1.3847122  0.5571678  0.68436813]
+[Epoch=300, n_hypersteps=26]: prior precision: [0.17677282 0.03036654 0.15769964 0.3513265 ], sigma noise: [0.5564581  1.3993546  0.55645984 0.6821109 ]
+[Epoch=300, n_hypersteps=27]: prior precision: [0.17605895 0.03024119 0.15742315 0.35661268], sigma noise: [0.5558081  1.4141223  0.5558098  0.67992944]
+[Epoch=300, n_hypersteps=28]: prior precision: [0.17541899 0.03021715 0.15712959 0.3629214 ], sigma noise: [0.5548254 1.4244846 0.5548271 0.6773514]
+[Epoch=300, n_hypersteps=29]: prior precision: [0.17486185 0.03028523 0.15682665 0.37011886], sigma noise: [0.55330676 1.4278343  0.5533084  0.6741377 ]
+[Epoch=400, n_hypersteps=0]: prior precision: [0.1743935  0.03043697 0.15652156 0.37806693], sigma noise: [0.55129105 1.4244989  0.55129266 0.6703427 ]
+[Epoch=400, n_hypersteps=1]: prior precision: [0.17378473 0.03039226 0.15607223 0.38498992], sigma noise: [0.5479834 1.4051989 0.547985  0.6650293]
+[Epoch=400, n_hypersteps=2]: prior precision: [0.1730658  0.0301711  0.1555026  0.39078826], sigma noise: [0.5442024 1.3801029 0.544204  0.6591814]
+[Epoch=400, n_hypersteps=3]: prior precision: [0.17226718 0.02979789 0.15483731 0.39539665], sigma noise: [0.5409149  1.3604364  0.5409165  0.65394247]
+[Epoch=400, n_hypersteps=4]: prior precision: [0.17141868 0.02929942 0.15410088 0.39878651], sigma noise: [0.53885365 1.354123   0.5388552  0.6501647 ]
+[Epoch=400, n_hypersteps=5]: prior precision: [0.17054841 0.02870315 0.153317   0.4009665 ], sigma noise: [0.53821546 1.3631525  0.53821707 0.64806366]
+[Epoch=400, n_hypersteps=6]: prior precision: [0.16968219 0.02803569 0.15250814 0.40198025], sigma noise: [0.53861225 1.3836035  0.53861386 0.64717436]
+[Epoch=400, n_hypersteps=7]: prior precision: [0.16884314 0.02732176 0.15169498 0.40190282], sigma noise: [0.53929347 1.4074779  0.5392951  0.64662284]
+[Epoch=400, n_hypersteps=8]: prior precision: [0.16805115 0.02658346 0.15089616 0.4008356 ], sigma noise: [0.5394969  1.4256638  0.53949845 0.6455363 ]
+[Epoch=400, n_hypersteps=9]: prior precision: [0.1673229  0.02583987 0.15012807 0.39889976], sigma noise: [0.53875166 1.4317962  0.5387533  0.64338684]
+[Epoch=400, n_hypersteps=10]: prior precision: [0.16667166 0.02510698 0.14940466 0.39622983], sigma noise: [0.537023  1.4251461 0.5370246 0.640146 ]
+[Epoch=400, n_hypersteps=11]: prior precision: [0.16610736 0.02439768 0.14873748 0.39296713], sigma noise: [0.5346791  1.4105031  0.53468066 0.6362368 ]
+wandb: Waiting for W&B process to finish... (success).
+wandb: 
+wandb: Run history:
+wandb:                          Loss █▇▆▆▆▆▆▆▆▆▆▆▆▄▃▂▃▁▂▃▄▂▁▂▂▁▂▁▁▁▁▁▂▂▁▂▂▁▂▁
+wandb:                       Metrics ██▇▇▇▇▇▇▇▇▇▇▇▄▃▃▃▁▂▃▄▂▁▂▂▁▂▁▁▁▁▂▂▂▂▂▂▁▃▁
+wandb:  Negative_marginal_likelihood ██████████▄▂▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁
+wandb: Predictive_posterior_std_mean █▂▂▁
+wandb:                   Sigma_noise ▆▆▇█▇▆▇▇▆▇▇▃▁▃▅▄▃▂▄▄▃▃▄▄▃▃▄▃▃▄▃▃▃▃▃▃▃▃▃▃
+wandb: 
+wandb: Run summary:
+wandb:                          Loss 2.94146
+wandb:                       Metrics 2.91247
+wandb:  Negative_marginal_likelihood 2013.74146
+wandb: Predictive_posterior_std_mean 1.72621
+wandb:                   Sigma_noise 1.71967
+wandb: 
+wandb: 🚀 View run crisp-sweep-1 at: https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/pj35s0xf
+wandb: Synced 6 W&B file(s), 8 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230815_165643-pj35s0xf/logs
+wandb: Agent Starting Run: wv2mae3g with config:
+wandb: 	activation_cls: exu
+wandb: 	hidden_sizes: 64
+wandb: 	lr: 0.01
+wandb: wandb version 0.15.8 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.5
+wandb: Run data is saved locally in /scratch/work/zhangx18/Reproduced-LA-NAM/wandb/run-20230815_165810-wv2mae3g
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dulcet-sweep-2
+wandb: ⭐️ View project at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0
+wandb: 🧹 View sweep at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/sweeps/d2tncz4q
+wandb: 🚀 View run at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/wv2mae3g
+/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/torch/nn/init.py:176: UserWarning: mean is more than 2 std from [a, b] in nn.init.trunc_normal_. The distribution of values may be incorrect.
+  return _no_grad_trunc_normal_(tensor, mean, std, a, b)
+[Epoch=400, n_hypersteps=12]: prior precision: [0.16563666 0.02372203 0.14813569 0.389254  ], sigma noise: [0.5323174  1.3955059  0.53231895 0.6323317 ]
+[Epoch=400, n_hypersteps=13]: prior precision: [0.1652631  0.02308748 0.14760612 0.38522848], sigma noise: [0.53051007 1.3871607  0.5305116  0.62906575]
+[Epoch=400, n_hypersteps=14]: prior precision: [0.16498749 0.02249927 0.14715333 0.3810205 ], sigma noise: [0.52955866 1.3890314  0.5295602  0.6267663 ]
+[Epoch=400, n_hypersteps=15]: prior precision: [0.16480796 0.02196073 0.14677987 0.37674865], sigma noise: [0.5293762  1.400153   0.52937776 0.6253292 ]
+[Epoch=400, n_hypersteps=16]: prior precision: [0.16472045 0.02147366 0.14648631 0.3725185 ], sigma noise: [0.5295591  1.4158015  0.52956057 0.6243058 ]
+[Epoch=400, n_hypersteps=17]: prior precision: [0.16471875 0.02103864 0.14627151 0.36842123], sigma noise: [0.52959746 1.4295894  0.52959895 0.62313944]
+[Epoch=400, n_hypersteps=18]: prior precision: [0.16479513 0.02065533 0.14613281 0.36453342], sigma noise: [0.5291073  1.4362813  0.52910876 0.6214174 ]
+[Epoch=400, n_hypersteps=19]: prior precision: [0.16494043 0.02032266 0.14606623 0.36091724], sigma noise: [0.5279777 1.4341829 0.5279792 0.619026 ]
+[Epoch=400, n_hypersteps=20]: prior precision: [0.1651445  0.02003906 0.14606656 0.3576212 ], sigma noise: [0.52638936 1.425708   0.52639085 0.61616385]
+[Epoch=400, n_hypersteps=21]: prior precision: [0.16539651 0.01980255 0.14612769 0.35468104], sigma noise: [0.52471405 1.4158982  0.52471554 0.6132294 ]
+[Epoch=400, n_hypersteps=22]: prior precision: [0.16568513 0.01961089 0.1462427  0.35212094], sigma noise: [0.52333975 1.4099016  0.52334124 0.6106332 ]
+[Epoch=400, n_hypersteps=23]: prior precision: [0.16599905 0.0194616  0.14640419 0.34995455], sigma noise: [0.5224942  1.4106814  0.5224957  0.60861194]
+[Epoch=400, n_hypersteps=24]: prior precision: [0.16632716 0.01935208 0.14660433 0.34818614], sigma noise: [0.5221493 1.417918  0.5221508 0.6071314]
+[Epoch=400, n_hypersteps=25]: prior precision: [0.16665882 0.01927959 0.14683512 0.34681198], sigma noise: [0.52205586 1.4284153  0.52205735 0.6059276 ]
+[Epoch=400, n_hypersteps=26]: prior precision: [0.16698413 0.01924136 0.14708851 0.3458212 ], sigma noise: [0.5218814 1.4376928 0.5218829 0.6046539]
+[Epoch=400, n_hypersteps=27]: prior precision: [0.16729417 0.01923455 0.14735661 0.34519684], sigma noise: [0.5213721  1.4421237  0.52137357 0.60304964]
+[Epoch=400, n_hypersteps=28]: prior precision: [0.1675812  0.01925633 0.14763184 0.34491673], sigma noise: [0.5204596 1.4406376 0.520461  0.6010476]
+[Epoch=400, n_hypersteps=29]: prior precision: [0.16783874 0.01930385 0.14790703 0.34495452], sigma noise: [0.51927435 1.435067   0.51927584 0.59878385]
+MARGLIK: finished training. Recover best model and fit Laplace.
+Configuration: 
+ Config(experiment_name='LANAM-Grid-2', data_path='LANAM/data/datasets', likelihood='regression', prior_sigma_noise=0.7, num_epochs=400, batch_size=128, wandb=False, log_loss_frequency=100, lr=0.01, lr_hyp=0.1, n_epochs_burnin=50, n_hypersteps=30, marglik_frequency=100, hidden_sizes=[64], activation=True, activation_cls='exu')
+Model summary: 
+ LaNAM(
+  (lossfunc): MSELoss()
+  (_feature_nns): ModuleList(
+    (0-3): 4 x FeatureNN(
+      (model): Sequential(
+        (0): ExU(in_features=1, out_features=64)
+        (1): Linear(in_features=64, out_features=1, bias=True)
+      )
+    )
+  )
+)
+[Epoch=100, n_hypersteps=0]: prior precision: [1. 1. 1. 1.], sigma noise: [1. 1. 1. 1.]
+[Epoch=100, n_hypersteps=1]: prior precision: [0.9048374 0.9048374 0.9048374 1.105171 ], sigma noise: [0.9048374 0.9048374 0.9048374 0.9048374]
+[Epoch=100, n_hypersteps=2]: prior precision: [0.81963515 0.8196231  0.8205538  1.2209438 ], sigma noise: [0.8188678  0.81889224 0.818894   0.8188708 ]
+[Epoch=100, n_hypersteps=3]: prior precision: [0.7440121  0.74401635 0.7477287  1.3477744 ], sigma noise: [0.7413309 0.741423  0.7414285 0.7413424]
+[Epoch=100, n_hypersteps=4]: prior precision: [0.6776469 0.67773   0.6872374 1.4856479], sigma noise: [0.6715678  0.6717939  0.67180485 0.67159677]
+[Epoch=100, n_hypersteps=5]: prior precision: [0.6202342  0.62052757 0.64003193 1.6337506 ], sigma noise: [0.60902625 0.6094827  0.6095005  0.6090858 ]
+[Epoch=100, n_hypersteps=6]: prior precision: [0.5714091  0.57220197 0.6066206  1.7899766 ], sigma noise: [0.55327046 0.55409664 0.5541223  0.5533809 ]
+[Epoch=100, n_hypersteps=7]: prior precision: [0.53087837 0.5325262  0.5866643  1.9502736 ], sigma noise: [0.503999   0.5053965  0.50543123 0.5041915 ]
+[Epoch=100, n_hypersteps=8]: prior precision: [0.49830872 0.5012073  0.5789659  2.1081367 ], sigma noise: [0.46106637 0.4633278  0.46337417 0.46138802]
+[Epoch=100, n_hypersteps=9]: prior precision: [0.473411   0.47781554 0.5818948  2.2548153 ], sigma noise: [0.42449003 0.42803872 0.42810386 0.4250152 ]
+[Epoch=100, n_hypersteps=10]: prior precision: [0.4556877  0.46182522 0.59389883 2.3806188 ], sigma noise: [0.3944266  0.3998432  0.39994088 0.39525905]
+[Epoch=100, n_hypersteps=11]: prior precision: [0.44438532 0.4525726  0.613686   2.4773638 ], sigma noise: [0.37103716 0.37905896 0.37921402 0.37231737]
+[Epoch=100, n_hypersteps=12]: prior precision: [0.43896192 0.44934946 0.64020276 2.5405169 ], sigma noise: [0.35428792 0.36574566 0.36598954 0.35617828]
+[Epoch=100, n_hypersteps=13]: prior precision: [0.4387598 0.4514352 0.6724984 2.5697937], sigma noise: [0.34377566 0.35951117 0.35987848 0.3464474 ]
+[Epoch=100, n_hypersteps=14]: prior precision: [0.44317913 0.45821252 0.7095848  2.5683832 ], sigma noise: [0.338758   0.35959056 0.36011198 0.34238154]
+[Epoch=100, n_hypersteps=15]: prior precision: [0.45175955 0.46904787 0.7501972  2.5415666 ], sigma noise: [0.3383323  0.3650768  0.36577943 0.34307545]
+[Epoch=100, n_hypersteps=16]: prior precision: [0.46403256 0.48342606 0.79264486 2.4954436 ], sigma noise: [0.34159046 0.37510148 0.37600967 0.3476242 ]
+[Epoch=100, n_hypersteps=17]: prior precision: [0.47943065 0.50076383 0.83464235 2.43632   ], sigma noise: [0.34768173 0.38887948 0.3900149  0.35518536]
+[Epoch=100, n_hypersteps=18]: prior precision: [0.4975493  0.5204885  0.87333953 2.3699594 ], sigma noise: [0.35581222 0.4056686  0.40705058 0.36497137]
+[Epoch=100, n_hypersteps=19]: prior precision: [0.5177525 0.5419143 0.9056137 2.301393 ], sigma noise: [0.36523235 0.42470732 0.42634955 0.37622353]
+[Epoch=100, n_hypersteps=20]: prior precision: [0.5393847 0.5642623 0.9286565 2.2348645], sigma noise: [0.3752252  0.44516277 0.4470702  0.38819692]
+[Epoch=100, n_hypersteps=21]: prior precision: [0.5618807  0.5866347  0.94062215 2.1736345 ], sigma noise: [0.3851133  0.46611142 0.46827564 0.40016717]
+[Epoch=100, n_hypersteps=22]: prior precision: [0.58442485 0.6080074  0.94100624 2.1201298 ], sigma noise: [0.39428657 0.48655656 0.48895353 0.41145682]
+[Epoch=100, n_hypersteps=23]: prior precision: [0.6061634  0.62735635 0.9305745  2.0759988 ], sigma noise: [0.40223256 0.5054869  0.5080765  0.42147124]
+[Epoch=100, n_hypersteps=24]: prior precision: [0.6260904 0.6437355 0.9110607 2.0421197], sigma noise: [0.40855855 0.52196294 0.5246911  0.42973328]
+[Epoch=100, n_hypersteps=25]: prior precision: [0.6434426  0.65633976 0.8846808  2.018915  ], sigma noise: [0.41300562 0.53520834 0.5380139  0.43590692]
+[Epoch=100, n_hypersteps=26]: prior precision: [0.6575681  0.66462594 0.8537869  2.0061305 ], sigma noise: [0.4154464  0.54468817 0.5475094  0.4398062 ]
+[Epoch=100, n_hypersteps=27]: prior precision: [0.66797894 0.66838264 0.82063866 2.0032594 ], sigma noise: [0.41587943 0.5501501  0.55293196 0.4413905 ]
+[Epoch=100, n_hypersteps=28]: prior precision: [0.67433995 0.6677399  0.7872648  2.009435  ], sigma noise: [0.41440725 0.551629   0.55432886 0.4407488 ]
+[Epoch=100, n_hypersteps=29]: prior precision: [0.6766757  0.66309476 0.7553848  2.0235398 ], sigma noise: [0.41121498 0.549415   0.55200595 0.43807748]
+[Epoch=200, n_hypersteps=0]: prior precision: [0.67529064 0.65506405 0.72638136 2.0442257 ], sigma noise: [0.40655228 0.54400194 0.54647315 0.4336563 ]
+[Epoch=200, n_hypersteps=1]: prior precision: [0.65773517 0.63754046 0.6929544  2.0438552 ], sigma noise: [0.40201792 0.538822   0.5411781  0.4291492 ]
+[Epoch=200, n_hypersteps=2]: prior precision: [0.6293357  0.61323696 0.6577047  2.0245843 ], sigma noise: [0.39774793 0.534189   0.5364431  0.42474553]
+[Epoch=200, n_hypersteps=3]: prior precision: [0.59442055 0.58462876 0.62270534 1.9894329 ], sigma noise: [0.39385712 0.5303718  0.5325426  0.42060575]
+[Epoch=200, n_hypersteps=4]: prior precision: [0.55627954 0.55381054 0.5895256  1.9418678 ], sigma noise: [0.39043248 0.52758414 0.5296925  0.41685492]
+[Epoch=200, n_hypersteps=5]: prior precision: [0.5173903  0.52244866 0.55928314 1.8854433 ], sigma noise: [0.38752893 0.52597475 0.52804214 0.4135781 ]
+[Epoch=200, n_hypersteps=6]: prior precision: [0.47958627 0.4918266  0.53270787 1.8235279 ], sigma noise: [0.38517025 0.52562535 0.5276705  0.41081828]
+[Epoch=200, n_hypersteps=7]: prior precision: [0.4439968  0.46287304 0.51020193 1.7591293 ], sigma noise: [0.3833487  0.5265474  0.52858514 0.40857717]
+[Epoch=200, n_hypersteps=8]: prior precision: [0.4113681  0.43619922 0.4919274  1.6948066 ], sigma noise: [0.38202423 0.52868503 0.5307248  0.40681833]
+[Epoch=200, n_hypersteps=9]: prior precision: [0.38208267 0.41218743 0.4778566  1.632632  ], sigma noise: [0.38113475 0.5319204  0.5339642  0.4054728 ]
+[Epoch=200, n_hypersteps=10]: prior precision: [0.35642287 0.39101642 0.4678392  1.5742028 ], sigma noise: [0.38059348 0.53607994 0.5381211  0.40444657]
+[Epoch=200, n_hypersteps=11]: prior precision: [0.33427903 0.37274256 0.4616392  1.5206901 ], sigma noise: [0.38030368 0.5409453  0.54296815 0.40362948]
+[Epoch=200, n_hypersteps=12]: prior precision: [0.3155769  0.35731173 0.4589732  1.4728905 ], sigma noise: [0.38016212 0.54626626 0.5482441  0.4029043 ]
+[Epoch=200, n_hypersteps=13]: prior precision: [0.29997152 0.3446133  0.45952955 1.4312897 ], sigma noise: [0.3800709  0.5517744  0.55367005 0.40215585]
+[Epoch=200, n_hypersteps=14]: prior precision: [0.28726327 0.33448398 0.46296623 1.3961228 ], sigma noise: [0.3799299  0.55719924 0.5589651  0.40127906]
+[Epoch=200, n_hypersteps=15]: prior precision: [0.27720702 0.32673967 0.46893686 1.3674335 ], sigma noise: [0.3796638  0.56228775 0.56386757 0.40018597]
+[Epoch=200, n_hypersteps=16]: prior precision: [0.26966834 0.32119444 0.47707537 1.3451154 ], sigma noise: [0.37919927 0.56681854 0.5681499  0.39881033]
+[Epoch=200, n_hypersteps=17]: prior precision: [0.2642969  0.31769422 0.48696327 1.3289574 ], sigma noise: [0.37849587 0.5706171  0.5716351  0.39711055]
+[Epoch=200, n_hypersteps=18]: prior precision: [0.2609137 0.3160563 0.4981716 1.3186685], sigma noise: [0.37753314 0.57357055 0.5742087  0.3950705 ]
+[Epoch=200, n_hypersteps=19]: prior precision: [0.2593379  0.31613013 0.51022446 1.3138982 ], sigma noise: [0.37630656 0.5756302  0.57582563 0.39269838]
+[Epoch=200, n_hypersteps=20]: prior precision: [0.25944412 0.31775358 0.52262014 1.314244  ], sigma noise: [0.37483567 0.57681614 0.5765109  0.3900239 ]
+[Epoch=200, n_hypersteps=21]: prior precision: [0.26107576 0.3207814  0.5348404  1.3192697 ], sigma noise: [0.37315485 0.57720876 0.57635397 0.38709468]
+[Epoch=200, n_hypersteps=22]: prior precision: [0.2641922  0.3250469  0.54637235 1.3284957 ], sigma noise: [0.37131378 0.5769429  0.5754985  0.38397142]
+[Epoch=200, n_hypersteps=23]: prior precision: [0.26854792 0.33038864 0.55673915 1.341412  ], sigma noise: [0.36936817 0.5761937  0.5741276  0.38072288]
+[Epoch=200, n_hypersteps=24]: prior precision: [0.2740735  0.3366391  0.56551385 1.3574674 ], sigma noise: [0.36737502 0.57515913 0.57244945 0.37742072]
+[Epoch=200, n_hypersteps=25]: prior precision: [0.28055388 0.34363404 0.57237655 1.3760705 ], sigma noise: [0.36539352 0.57404464 0.57067764 0.37413448]
+[Epoch=200, n_hypersteps=26]: prior precision: [0.28794998 0.35120136 0.5771179  1.3965969 ], sigma noise: [0.36347452 0.57304883 0.5690158  0.3709271 ]
+[Epoch=200, n_hypersteps=27]: prior precision: [0.29608792 0.35914704 0.5796692  1.4183948 ], sigma noise: [0.36167055 0.5723439  0.5676434  0.3678512 ]
+[Epoch=200, n_hypersteps=28]: prior precision: [0.30468598 0.36724147 0.5800712  1.4407908 ], sigma noise: [0.36002192 0.57206947 0.56670374 0.3649462 ]
+[Epoch=200, n_hypersteps=29]: prior precision: [0.31364673 0.37526572 0.57849604 1.463102  ], sigma noise: [0.35854903 0.5723203  0.5662946  0.36223668]
+[Epoch=300, n_hypersteps=0]: prior precision: [0.3226916 0.383009  0.5752208 1.4846637], sigma noise: [0.35726023 0.57314295 0.56646466 0.35973188]
+[Epoch=300, n_hypersteps=1]: prior precision: [0.33055654 0.38871673 0.5728704  1.5205852 ], sigma noise: [0.355326   0.5711884  0.56427985 0.3565792 ]
+[Epoch=300, n_hypersteps=2]: prior precision: [0.3369142  0.3923076  0.57150996 1.5696392 ], sigma noise: [0.35287464 0.56694645 0.560194   0.35292035]
+[Epoch=300, n_hypersteps=3]: prior precision: [0.34167784 0.3938388  0.57118547 1.6306784 ], sigma noise: [0.3500591  0.5610539  0.5547938  0.34892175]
+[Epoch=300, n_hypersteps=4]: prior precision: [0.3448639  0.393444   0.57190865 1.7025124 ], sigma noise: [0.3470514  0.554222   0.54873323 0.3447612 ]
+[Epoch=300, n_hypersteps=5]: prior precision: [0.3463868  0.3913594  0.57364106 1.7837901 ], sigma noise: [0.34402668 0.5471626  0.54267246 0.34061474]
+[Epoch=300, n_hypersteps=6]: prior precision: [0.3464414  0.38785183 0.5762971  1.872891  ], sigma noise: [0.34115428 0.5405315  0.5372231  0.33664384]
+[Epoch=300, n_hypersteps=7]: prior precision: [0.3451863  0.38323975 0.5797524  1.9678357 ], sigma noise: [0.3385732 0.5348775 0.5329028 0.332984 ]
+[Epoch=300, n_hypersteps=8]: prior precision: [0.34267104 0.37783554 0.58381724 2.06623   ], sigma noise: [0.33639517 0.5306116  0.5301024  0.32973498]
+[Epoch=300, n_hypersteps=9]: prior precision: [0.33932665 0.37193137 0.58826256 2.1652606 ], sigma noise: [0.33468598 0.5279839  0.529066   0.3269545 ]
+[Epoch=300, n_hypersteps=10]: prior precision: [0.3351479  0.36577296 0.5928383  2.2617583 ], sigma noise: [0.3334692  0.52708304 0.5298818  0.32465592]
+[Epoch=300, n_hypersteps=11]: prior precision: [0.33048418 0.3596015  0.597246   2.3523436 ], sigma noise: [0.3327231  0.52784073 0.53248495 0.32281017]
+[Epoch=300, n_hypersteps=12]: prior precision: [0.32544187 0.3536197  0.60119313 2.433652  ], sigma noise: [0.33238584 0.5300524  0.5366689  0.32135266]
+[Epoch=300, n_hypersteps=13]: prior precision: [0.3203633  0.34795833 0.6043954  2.502614  ], sigma noise: [0.33235806 0.5333985  0.54210526 0.32019275]
+[Epoch=300, n_hypersteps=14]: prior precision: [0.3154591  0.34273976 0.60662955 2.556749  ], sigma noise: [0.3325314  0.53747743 0.5483743  0.31922573]
+[Epoch=300, n_hypersteps=15]: prior precision: [0.31088054 0.33806512 0.6077304  2.5944154 ], sigma noise: [0.33279318 0.5418457  0.55499774 0.31834453]
+[Epoch=300, n_hypersteps=16]: prior precision: [0.30659056 0.33397952 0.607609   2.6149662 ], sigma noise: [0.33302334 0.54606026 0.5614846  0.31745067]
+[Epoch=300, n_hypersteps=17]: prior precision: [0.30294874 0.3305141  0.60626566 2.6187828 ], sigma noise: [0.33313435 0.5497192  0.5673756  0.3164624 ]
+[Epoch=300, n_hypersteps=18]: prior precision: [0.2998793  0.32769218 0.60380095 2.6071827 ], sigma noise: [0.33304334 0.5525006  0.57228714 0.31532034]
+[Epoch=300, n_hypersteps=19]: prior precision: [0.2974156  0.32549703 0.60038996 2.5822296 ], sigma noise: [0.33271104 0.5541896  0.5759508  0.3139901 ]
+[Epoch=300, n_hypersteps=20]: prior precision: [0.29581714 0.32391965 0.59628767 2.5464911 ], sigma noise: [0.33212334 0.5546982  0.5782377  0.3124622 ]
+[Epoch=300, n_hypersteps=21]: prior precision: [0.29476175 0.32294998 0.5917958  2.5027833 ], sigma noise: [0.33129337 0.55406517 0.579165   0.31074995]
+[Epoch=300, n_hypersteps=22]: prior precision: [0.29426742 0.3225608  0.58722544 2.4539397 ], sigma noise: [0.3302524  0.55244064 0.5788859  0.30888548]
+[Epoch=300, n_hypersteps=23]: prior precision: [0.29415467 0.32270527 0.5828784  2.4026294 ], sigma noise: [0.32906058 0.5500654  0.57766414 0.30691504]
+wandb: Waiting for W&B process to finish... (success).
+wandb: 
+wandb: Run history:
+wandb:                          Loss █▄▂▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                       Metrics █▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:  Negative_marginal_likelihood █▄▂▁▂▂▁▁▁▁▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▂▂▂▂▂▂▂▂▂▂
+wandb: Predictive_posterior_std_mean █▅▁▃
+wandb:                   Sigma_noise █▅▃▂▁▁▁▂▂▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+wandb: 
+wandb: Run summary:
+wandb:                          Loss 0.81751
+wandb:                       Metrics 0.80578
+wandb:  Negative_marginal_likelihood 1476.19421
+wandb: Predictive_posterior_std_mean 0.93565
+wandb:                   Sigma_noise 0.92444
+wandb: 
+wandb: 🚀 View run dulcet-sweep-2 at: https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/wv2mae3g
+wandb: Synced 6 W&B file(s), 8 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230815_165810-wv2mae3g/logs
+wandb: Agent Starting Run: deornnf8 with config:
+wandb: 	activation_cls: exu
+wandb: 	hidden_sizes: 64
+wandb: 	lr: 0.001
+wandb: wandb version 0.15.8 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.5
+wandb: Run data is saved locally in /scratch/work/zhangx18/Reproduced-LA-NAM/wandb/run-20230815_165939-deornnf8
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run stellar-sweep-3
+wandb: ⭐️ View project at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0
+wandb: 🧹 View sweep at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/sweeps/d2tncz4q
+wandb: 🚀 View run at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/deornnf8
+/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/torch/nn/init.py:176: UserWarning: mean is more than 2 std from [a, b] in nn.init.trunc_normal_. The distribution of values may be incorrect.
+  return _no_grad_trunc_normal_(tensor, mean, std, a, b)
+[Epoch=300, n_hypersteps=24]: prior precision: [0.29443115 0.3233598  0.57902265 2.3512304 ], sigma noise: [0.3277809  0.54723686 0.575836   0.30489334]
+[Epoch=300, n_hypersteps=25]: prior precision: [0.29496488 0.3244548  0.57588387 2.3017564 ], sigma noise: [0.3264788  0.5442713  0.57377005 0.3028777 ]
+[Epoch=300, n_hypersteps=26]: prior precision: [0.29589537 0.3259543  0.5736178  2.2558277 ], sigma noise: [0.3252226  0.5414707  0.5718254  0.30092233]
+[Epoch=300, n_hypersteps=27]: prior precision: [0.29721764 0.32779422 0.572323   2.2146769 ], sigma noise: [0.32407972 0.5390953  0.5703148  0.29907328]
+[Epoch=300, n_hypersteps=28]: prior precision: [0.29871088 0.32991016 0.5719938  2.179178  ], sigma noise: [0.32308888 0.53734106 0.56947696 0.29736426]
+[Epoch=300, n_hypersteps=29]: prior precision: [0.30060557 0.33221132 0.5725914  2.149886  ], sigma noise: [0.32228443 0.53632206 0.569457   0.2958142 ]
+[Epoch=400, n_hypersteps=0]: prior precision: [0.30271003 0.3346359  0.5739937  2.1270797 ], sigma noise: [0.32166794 0.5360675  0.5703001  0.2944262 ]
+[Epoch=400, n_hypersteps=1]: prior precision: [0.31398425 0.33676746 0.5778452  2.0891383 ], sigma noise: [0.32177162 0.53744566 0.5732421  0.29331735]
+[Epoch=400, n_hypersteps=2]: prior precision: [0.33334914 0.33853307 0.58365196 2.0396914 ], sigma noise: [0.32248655 0.5401421  0.577903   0.2924287 ]
+[Epoch=400, n_hypersteps=3]: prior precision: [0.35990486 0.33991596 0.5907967  1.9824355 ], sigma noise: [0.32367536 0.54371774 0.58374196 0.291681  ]
+[Epoch=400, n_hypersteps=4]: prior precision: [0.3933837  0.34086287 0.598588   1.9208454 ], sigma noise: [0.32520238 0.5476619  0.59011704 0.2909875 ]
+[Epoch=400, n_hypersteps=5]: prior precision: [0.4330719  0.34135014 0.6063093  1.8579837 ], sigma noise: [0.3269185  0.5514561  0.59635586 0.29026562]
+[Epoch=400, n_hypersteps=6]: prior precision: [0.47767124 0.34138504 0.6132653  1.7964005 ], sigma noise: [0.3286941 0.5546273 0.6018317 0.2894466]
+[Epoch=400, n_hypersteps=7]: prior precision: [0.5254069  0.34098586 0.6188834  1.7381102 ], sigma noise: [0.33042273 0.55680835 0.60603786 0.28848165]
+[Epoch=400, n_hypersteps=8]: prior precision: [0.57348084 0.34020752 0.62274617 1.6846148 ], sigma noise: [0.33203158 0.55777454 0.6086449  0.28734496]
+[Epoch=400, n_hypersteps=9]: prior precision: [0.6181073  0.3390882  0.62463695 1.6369648 ], sigma noise: [0.33347598 0.55746245 0.609535   0.2860334 ]
+[Epoch=400, n_hypersteps=10]: prior precision: [0.65522134 0.3377252  0.62455124 1.595827  ], sigma noise: [0.33475226 0.55596113 0.6088023  0.28456438]
+[Epoch=400, n_hypersteps=11]: prior precision: [0.6812568  0.33618435 0.6226893  1.5615591 ], sigma noise: [0.33588    0.5534909  0.6067245  0.28297177]
+[Epoch=400, n_hypersteps=12]: prior precision: [0.69419867 0.3345555  0.6194145  1.5342762 ], sigma noise: [0.3369118  0.55036646 0.60371184 0.28130066]
+[Epoch=400, n_hypersteps=13]: prior precision: [0.69377655 0.33291587 0.6151868  1.5139064 ], sigma noise: [0.33791417 0.54694486 0.6002432  0.27960172]
+[Epoch=400, n_hypersteps=14]: prior precision: [0.68137133 0.33136246 0.6105197  1.5002357 ], sigma noise: [0.33896375 0.5435833  0.5968009  0.27792516]
+[Epoch=400, n_hypersteps=15]: prior precision: [0.6599862  0.32993913 0.6058757  1.4929408 ], sigma noise: [0.3401366  0.5405987  0.5938132  0.27631536]
+[Epoch=400, n_hypersteps=16]: prior precision: [0.6327948  0.3286971  0.60166967 1.4916115 ], sigma noise: [0.34149426 0.53823364 0.59160817 0.27480608]
+[Epoch=400, n_hypersteps=17]: prior precision: [0.60280913 0.3276726  0.5982281  1.4957665 ], sigma noise: [0.34307644 0.5366344  0.5903881  0.27341738]
+[Epoch=400, n_hypersteps=18]: prior precision: [0.5725985  0.32690057 0.59575593 1.5048606 ], sigma noise: [0.3449024  0.5358451  0.5902173  0.27215442]
+[Epoch=400, n_hypersteps=19]: prior precision: [0.544146   0.32639173 0.5943388  1.5182928 ], sigma noise: [0.34696147 0.5358105  0.5910268  0.27100825]
+[Epoch=400, n_hypersteps=20]: prior precision: [0.5188505  0.32613924 0.5939765  1.5354071 ], sigma noise: [0.3492161 0.5363926 0.5926347 0.2699584]
+[Epoch=400, n_hypersteps=21]: prior precision: [0.4975881 0.3261276 0.5945628 1.5554992], sigma noise: [0.35161236 0.5373972  0.5947745  0.2689768 ]
+[Epoch=400, n_hypersteps=22]: prior precision: [0.48081243 0.3263347  0.5959167  1.5778238 ], sigma noise: [0.3540873  0.53859496 0.5971328  0.26803213]
+[Epoch=400, n_hypersteps=23]: prior precision: [0.46870202 0.32672605 0.59781486 1.601605  ], sigma noise: [0.35656053 0.53975534 0.5993898  0.26709428]
+[Epoch=400, n_hypersteps=24]: prior precision: [0.4610805  0.32724673 0.6000063  1.6260533 ], sigma noise: [0.35897145 0.5406769  0.6012591  0.26613772]
+[Epoch=400, n_hypersteps=25]: prior precision: [0.45762384 0.32785937 0.60225135 1.6503835 ], sigma noise: [0.36125952 0.54120344 0.6025217  0.26514432]
+[Epoch=400, n_hypersteps=26]: prior precision: [0.4580078 0.3285444 0.6043489 1.673841 ], sigma noise: [0.3633889  0.54124844 0.6030493  0.26410434]
+[Epoch=400, n_hypersteps=27]: prior precision: [0.46185324 0.32927823 0.6061319  1.6957282 ], sigma noise: [0.36534852 0.54078996 0.60281414 0.26301685]
+[Epoch=400, n_hypersteps=28]: prior precision: [0.46866927 0.33002868 0.60748255 1.7154299 ], sigma noise: [0.36714008 0.5398783  0.6018845  0.26188862]
+[Epoch=400, n_hypersteps=29]: prior precision: [0.47790724 0.33077106 0.6083516  1.7324408 ], sigma noise: [0.3687846  0.5386169  0.60040766 0.2607326 ]
+MARGLIK: finished training. Recover best model and fit Laplace.
+Configuration: 
+ Config(experiment_name='LANAM-Grid-2', data_path='LANAM/data/datasets', likelihood='regression', prior_sigma_noise=0.7, num_epochs=400, batch_size=128, wandb=False, log_loss_frequency=100, lr=0.001, lr_hyp=0.1, n_epochs_burnin=50, n_hypersteps=30, marglik_frequency=100, hidden_sizes=[64], activation=True, activation_cls='exu')
+Model summary: 
+ LaNAM(
+  (lossfunc): MSELoss()
+  (_feature_nns): ModuleList(
+    (0-3): 4 x FeatureNN(
+      (model): Sequential(
+        (0): ExU(in_features=1, out_features=64)
+        (1): Linear(in_features=64, out_features=1, bias=True)
+      )
+    )
+  )
+)
+[Epoch=100, n_hypersteps=0]: prior precision: [1. 1. 1. 1.], sigma noise: [1. 1. 1. 1.]
+[Epoch=100, n_hypersteps=1]: prior precision: [0.9048374 0.9048374 0.9048374 0.9048374], sigma noise: [0.9048374 0.9048374 0.9048374 0.9048374]
+[Epoch=100, n_hypersteps=2]: prior precision: [0.8191029  0.81911963 0.8191406  0.81911963], sigma noise: [0.82028294 0.8205927  0.8205286  0.82049894]
+[Epoch=100, n_hypersteps=3]: prior precision: [0.7420552  0.7421207  0.74219507 0.7421199 ], sigma noise: [0.74784636 0.74945605 0.7491209  0.74896914]
+[Epoch=100, n_hypersteps=4]: prior precision: [0.67296606 0.673129   0.6732989  0.67312646], sigma noise: [0.69113487 0.6964633  0.6953523  0.69485766]
+[Epoch=100, n_hypersteps=5]: prior precision: [0.61112654 0.6114509  0.61176574 0.61144704], sigma noise: [0.65451384 0.6672201  0.6646115  0.6634549 ]
+[Epoch=100, n_hypersteps=6]: prior precision: [0.5558642  0.5564109  0.5569223  0.55640894], sigma noise: [0.63790727 0.66085124 0.65625393 0.6542105 ]
+[Epoch=100, n_hypersteps=7]: prior precision: [0.5065438 0.5073571 0.5081145 0.5073641], sigma noise: [0.63660574 0.6714198  0.6645954  0.66154826]
+[Epoch=100, n_hypersteps=8]: prior precision: [0.46256742 0.4636743  0.46472156 0.46369907], sigma noise: [0.6455004  0.69359267 0.6843271  0.6801743 ]
+[Epoch=100, n_hypersteps=9]: prior precision: [0.42338178 0.42478994 0.42616558 0.42484337], sigma noise: [0.660461   0.72350377 0.71151644 0.7061281 ]
+[Epoch=100, n_hypersteps=10]: prior precision: [0.38847393 0.39018032 0.3919151  0.39027232], sigma noise: [0.6779789  0.75784534 0.74279755 0.73602104]
+[Epoch=100, n_hypersteps=11]: prior precision: [0.3573801  0.3593698  0.36148906 0.35951155], sigma noise: [0.6948617 0.7931874 0.7747551 0.7664475]
+[Epoch=100, n_hypersteps=12]: prior precision: [0.32968506 0.331932   0.33445513 0.33213466], sigma noise: [0.7083224  0.825863   0.8038663  0.79395205]
+[Epoch=100, n_hypersteps=13]: prior precision: [0.30500823 0.30748662 0.31043026 0.30776146], sigma noise: [0.7163312 0.8524359 0.8269577 0.8154837]
+[Epoch=100, n_hypersteps=14]: prior precision: [0.28301102 0.28569815 0.28907576 0.28605455], sigma noise: [0.7179118  0.8704265  0.84185755 0.8290038 ]
+[Epoch=100, n_hypersteps=15]: prior precision: [0.26338542 0.2662703  0.27009538 0.26671734], sigma noise: [0.71310246 0.878808   0.8477653  0.8338133 ]
+[Epoch=100, n_hypersteps=16]: prior precision: [0.24586728 0.24894351 0.2532297  0.24948932], sigma noise: [0.7026673  0.8780012  0.8451891  0.83045715]
+[Epoch=100, n_hypersteps=17]: prior precision: [0.23021488 0.23348948 0.23825045 0.23414116], sigma noise: [0.68782854 0.8695179  0.8355903  0.82037425]
+[Epoch=100, n_hypersteps=18]: prior precision: [0.2162208  0.21970887 0.22496031 0.22047178], sigma noise: [0.66999733 0.85552967 0.8209932  0.80552596]
+[Epoch=100, n_hypersteps=19]: prior precision: [0.20370303 0.20742509 0.21318488 0.20830488], sigma noise: [0.6506435  0.83852506 0.8036784  0.78810555]
+[Epoch=100, n_hypersteps=20]: prior precision: [0.19248576 0.1964821  0.20277058 0.19748372], sigma noise: [0.63116777 0.8210686  0.7859701  0.7703359 ]
+[Epoch=100, n_hypersteps=21]: prior precision: [0.18242426 0.1867432  0.19358368 0.18787228], sigma noise: [0.61276615 0.8055975  0.7700555  0.75430185]
+[Epoch=100, n_hypersteps=22]: prior precision: [0.17339492 0.17808461 0.18550354 0.17934696], sigma noise: [0.5964048  0.79420435 0.7577915  0.7417662 ]
+[Epoch=100, n_hypersteps=23]: prior precision: [0.16528475 0.17039534 0.1784207  0.17179729], sigma noise: [0.5827255 0.7883976 0.750501  0.7339786]
+[Epoch=100, n_hypersteps=24]: prior precision: [0.15799811 0.16357511 0.1722361  0.16512363], sigma noise: [0.57188445 0.7889254  0.74881864 0.73153657]
+[Epoch=100, n_hypersteps=25]: prior precision: [0.15144575 0.15753241 0.16685794 0.15923685], sigma noise: [0.56374955 0.7957466  0.752673   0.73435426]
+[Epoch=100, n_hypersteps=26]: prior precision: [0.14554775 0.15218538 0.16220371 0.15405357], sigma noise: [0.5577935  0.80812514 0.76136434 0.7417608 ]
+[Epoch=100, n_hypersteps=27]: prior precision: [0.1402392  0.14745818 0.15819684 0.1495003 ], sigma noise: [0.5533394  0.8247646  0.77370465 0.75262433]
+[Epoch=100, n_hypersteps=28]: prior precision: [0.13545625 0.1432826  0.15476787 0.14550996], sigma noise: [0.5496564  0.8439277  0.78815377 0.76549137]
+[Epoch=100, n_hypersteps=29]: prior precision: [0.13115388 0.1395985  0.1518554  0.14202264], sigma noise: [0.5460232 0.8635697 0.8029633 0.7787344]
+[Epoch=200, n_hypersteps=0]: prior precision: [0.12727891 0.13635272 0.14940539 0.1389852 ], sigma noise: [0.5418818  0.88154954 0.8163714  0.79072994]
+[Epoch=200, n_hypersteps=1]: prior precision: [0.13276339 0.13355668 0.1476627  0.13635412], sigma noise: [0.5278091 0.8643234 0.8009735 0.7755267]
+[Epoch=200, n_hypersteps=2]: prior precision: [0.14205411 0.13117412 0.14656702 0.13409887], sigma noise: [0.50658137 0.8263781  0.76748276 0.7430976 ]
+[Epoch=200, n_hypersteps=3]: prior precision: [0.15449937 0.12918165 0.14607915 0.1322005 ], sigma noise: [0.48063678 0.7767512  0.7233562  0.70047885]
+[Epoch=200, n_hypersteps=4]: prior precision: [0.17003228 0.12756373 0.14617395 0.13064714], sigma noise: [0.45206538 0.7216665  0.67401934 0.6528259 ]
+[Epoch=200, n_hypersteps=5]: prior precision: [0.18881577 0.12631121 0.14683704 0.12943284], sigma noise: [0.42263973 0.6656548  0.62355    0.6040257 ]
+[Epoch=200, n_hypersteps=6]: prior precision: [0.21114954 0.12542076 0.14806625 0.12855661], sigma noise: [0.39387318 0.6121813  0.5751492  0.5571222 ]
+[Epoch=200, n_hypersteps=7]: prior precision: [0.23743816 0.12489222 0.14986292 0.12802285], sigma noise: [0.36708987 0.5640879  0.5314908  0.51464367]
+[Epoch=200, n_hypersteps=8]: prior precision: [0.26818034 0.12472508 0.15223368 0.12783402], sigma noise: [0.3434731  0.5238393  0.49494076 0.47880504]
+[Epoch=200, n_hypersteps=9]: prior precision: [0.3039676  0.12491667 0.15518266 0.12799563], sigma noise: [0.32403135 0.4934701  0.46750262 0.4514655 ]
+[Epoch=200, n_hypersteps=10]: prior precision: [0.34548736 0.12546219 0.15871032 0.12850283], sigma noise: [0.30943272 0.47418475 0.45042163 0.43377292]
+[Epoch=200, n_hypersteps=11]: prior precision: [0.39352882 0.12634967 0.16280605 0.12934709], sigma noise: [0.2998008  0.46596906 0.44379124 0.42580602]
+[Epoch=200, n_hypersteps=12]: prior precision: [0.44899005 0.12756336 0.16745363 0.13051423], sigma noise: [0.29468736 0.46777746 0.44669902 0.42668688]
+[Epoch=200, n_hypersteps=13]: prior precision: [0.5128859  0.1290747  0.17262138 0.13198137], sigma noise: [0.29325983 0.4780749  0.4577547  0.43505985]
+[Epoch=200, n_hypersteps=14]: prior precision: [0.58635587 0.13085572 0.17826588 0.1337165 ], sigma noise: [0.2945244  0.4952316  0.47545198 0.44943678]
+[Epoch=200, n_hypersteps=15]: prior precision: [0.6706706  0.13286997 0.18433134 0.13568106], sigma noise: [0.29746944 0.51757485 0.49821758 0.46827462]
+[Epoch=200, n_hypersteps=16]: prior precision: [0.7672375  0.13507949 0.19075316 0.13783367], sigma noise: [0.3011475  0.5432965  0.5243077  0.48992354]
+[Epoch=200, n_hypersteps=17]: prior precision: [0.87760144 0.1374457  0.19745803 0.14013454], sigma noise: [0.3047366  0.57038033 0.5517275  0.51258194]
+[Epoch=200, n_hypersteps=18]: prior precision: [1.0034423  0.13993064 0.2043693  0.14254215], sigma noise: [0.3075893  0.5966487  0.5782717  0.53436464]
+[Epoch=200, n_hypersteps=19]: prior precision: [1.1465638  0.14249672 0.21140334 0.14501897], sigma noise: [0.30925864 0.61995536 0.60172206 0.5534688 ]
+[Epoch=200, n_hypersteps=20]: prior precision: [1.288295   0.14511384 0.21847822 0.14753251], sigma noise: [0.30897576 0.6384555  0.6201554  0.56839925]
+[Epoch=200, n_hypersteps=21]: prior precision: [1.4258361  0.14775029 0.22551638 0.1500553 ], sigma noise: [0.3070521  0.65086615 0.63223666 0.57815707]
+[Epoch=200, n_hypersteps=22]: prior precision: [1.5555742  0.15038227 0.23244378 0.15256464], sigma noise: [0.3036238  0.65661067 0.6373899  0.5823283 ]
+[Epoch=200, n_hypersteps=23]: prior precision: [1.674879   0.15299276 0.23919804 0.15504241], sigma noise: [0.29906934 0.65582865 0.6357998  0.5810727 ]
+[Epoch=200, n_hypersteps=24]: prior precision: [1.7810539  0.15556747 0.24572523 0.15747637], sigma noise: [0.29345495 0.6492615  0.6282907  0.57502776]
+[Epoch=200, n_hypersteps=25]: prior precision: [1.8721752  0.15809837 0.25198153 0.15985847], sigma noise: [0.28710327 0.63809395 0.61613196 0.56518006]
+[Epoch=200, n_hypersteps=26]: prior precision: [1.9467283  0.16058168 0.2579342  0.16218731], sigma noise: [0.28024969 0.623774   0.6008401  0.5527203 ]
+[Epoch=200, n_hypersteps=27]: prior precision: [2.0038376  0.16301735 0.26356    0.16446166], sigma noise: [0.27322364 0.60785025 0.58400565 0.5389244 ]
+[Epoch=200, n_hypersteps=28]: prior precision: [2.0432575  0.16540715 0.26884368 0.16668542], sigma noise: [0.26628911 0.591839   0.5671565  0.5250461 ]
+[Epoch=200, n_hypersteps=29]: prior precision: [2.0652885  0.16775566 0.2737757  0.16886042], sigma noise: [0.25969547 0.5771252  0.5516567  0.5122309 ]
+[Epoch=300, n_hypersteps=0]: prior precision: [2.0710647  0.17006277 0.2783478  0.17099187], sigma noise: [0.25358772 0.5648708  0.53862983 0.5014451 ]
+[Epoch=300, n_hypersteps=1]: prior precision: [2.0724785  0.17210811 0.2832346  0.17297892], sigma noise: [0.24796689 0.55300045 0.5265484  0.4911679 ]
+[Epoch=300, n_hypersteps=2]: prior precision: [2.0698943  0.17389849 0.28841183 0.1748307 ], sigma noise: [0.2429659  0.5425496  0.51633656 0.4822325 ]
+[Epoch=300, n_hypersteps=3]: prior precision: [2.0636888  0.17544444 0.2938482  0.176546  ], sigma noise: [0.23868482 0.5343232  0.5087004  0.47529396]
+[Epoch=300, n_hypersteps=4]: prior precision: [2.0542223  0.17675988 0.29950806 0.1781284 ], sigma noise: [0.23517396 0.5288499  0.50408953 0.4707763 ]
+[Epoch=300, n_hypersteps=5]: prior precision: [2.041843   0.17785384 0.30534074 0.17958182], sigma noise: [0.23243092 0.5263599  0.5026864  0.4688633 ]
+/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/utils/plotting.py:58: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  fig_indiv, axs = plt.subplots(rows, cols, figsize=figsize)
+[Epoch=300, n_hypersteps=6]: prior precision: [2.0268745  0.1787337  0.3112892  0.18090571], sigma noise: [0.23040946 0.52678925 0.50440574 0.46949902]
+[Epoch=300, n_hypersteps=7]: prior precision: [2.0096493  0.17940938 0.31728226 0.18209566], sigma noise: [0.22901374 0.52981716 0.5089256  0.4724084 ]
+[Epoch=300, n_hypersteps=8]: prior precision: [1.9904567  0.17989041 0.32324532 0.1831484 ], sigma noise: [0.2281256 0.5349084 0.5157213 0.477138 ]
+[Epoch=300, n_hypersteps=9]: prior precision: [1.9695694  0.18018325 0.32909265 0.18406014], sigma noise: [0.22760965 0.541376   0.52411246 0.48310322]
+[Epoch=300, n_hypersteps=10]: prior precision: [1.947244   0.18029526 0.3347375  0.18482785], sigma noise: [0.22732536 0.5484459  0.5333166  0.48964587]
+[Epoch=300, n_hypersteps=11]: prior precision: [1.9237257  0.18023369 0.34009677 0.18544811], sigma noise: [0.2271465  0.5553309  0.5425149  0.49609697]
+[Epoch=300, n_hypersteps=12]: prior precision: [1.899234   0.18001017 0.34509358 0.18592328], sigma noise: [0.22696967 0.56131065 0.5509271  0.50183773]
+[Epoch=300, n_hypersteps=13]: prior precision: [1.8739624  0.17963661 0.3496626  0.18625283], sigma noise: [0.2267178  0.5657984  0.5578885  0.50636405]
+[Epoch=300, n_hypersteps=14]: prior precision: [1.84809    0.17912824 0.35374686 0.18644156], sigma noise: [0.22634843 0.56840366 0.56291634 0.50932735]
+[Epoch=300, n_hypersteps=15]: prior precision: [1.8217841  0.17850056 0.35730845 0.18649767], sigma noise: [0.22583249 0.5689575  0.56575626 0.5105663 ]
+[Epoch=300, n_hypersteps=16]: prior precision: [1.7951981  0.17776641 0.3603263  0.18642932], sigma noise: [0.22517431 0.5675145  0.5663998  0.51010805]
+[Epoch=300, n_hypersteps=17]: prior precision: [1.7684584  0.17694442 0.36279365 0.18624981], sigma noise: [0.22439544 0.56432843 0.56506526 0.50814795]
+[Epoch=300, n_hypersteps=18]: prior precision: [1.7416674  0.17605533 0.3647205  0.18597077], sigma noise: [0.22352916 0.55980045 0.56215465 0.50501406]
+[Epoch=300, n_hypersteps=19]: prior precision: [1.7149451  0.17511564 0.3661307  0.18560897], sigma noise: [0.2226281  0.55443305 0.5581972  0.50112665]
+[Epoch=300, n_hypersteps=20]: prior precision: [1.688377   0.17414267 0.3670589  0.18517655], sigma noise: [0.22175115 0.54875976 0.55377966 0.49693903]
+[Epoch=300, n_hypersteps=21]: prior precision: [1.662033   0.17315173 0.36754164 0.18468842], sigma noise: [0.22095089 0.54329723 0.5494801  0.4928974 ]
+[Epoch=300, n_hypersteps=22]: prior precision: [1.635986   0.17215809 0.36762574 0.18415864], sigma noise: [0.22029424 0.5384947  0.54581034 0.48939252]
+[Epoch=300, n_hypersteps=23]: prior precision: [1.6102972  0.17117603 0.3673611  0.18360147], sigma noise: [0.21981461 0.53469265 0.5431716  0.48673168]
+[Epoch=300, n_hypersteps=24]: prior precision: [1.5849983  0.17021528 0.36679232 0.18302844], sigma noise: [0.21953827 0.53210104 0.5418213  0.48511025]
+[Epoch=300, n_hypersteps=25]: prior precision: [1.5601463  0.16928422 0.36595666 0.18245053], sigma noise: [0.21947074 0.53079623 0.54186    0.48460117]
+[Epoch=300, n_hypersteps=26]: prior precision: [1.5357674  0.1683891  0.3648942  0.18187086], sigma noise: [0.2196032 0.5307193 0.5432344 0.4851589]
+[Epoch=300, n_hypersteps=27]: prior precision: [1.5118675  0.16753677 0.3636372  0.18129638], sigma noise: [0.21990483 0.53169924 0.54575336 0.48663107]
+[Epoch=300, n_hypersteps=28]: prior precision: [1.488474   0.16672657 0.36221287 0.18073426], sigma noise: [0.22034165 0.5334744  0.5491149  0.488782  ]
+[Epoch=300, n_hypersteps=29]: prior precision: [1.4655973  0.16596192 0.3606514  0.18018048], sigma noise: [0.220862   0.53573036 0.55294406 0.49132746]
+[Epoch=400, n_hypersteps=0]: prior precision: [1.4432503  0.16524243 0.35897103 0.17963876], sigma noise: [0.2214214  0.5381304  0.55683476 0.4939624 ]
+[Epoch=400, n_hypersteps=1]: prior precision: [1.4175192  0.1644925  0.3569617  0.17907472], sigma noise: [0.22165762 0.5356916  0.5544532  0.49219093]
+[Epoch=400, n_hypersteps=2]: prior precision: [1.3890651  0.16372246 0.35468832 0.17849499], sigma noise: [0.22161645 0.52913123 0.54672855 0.48664403]
+[Epoch=400, n_hypersteps=3]: prior precision: [1.3584924  0.16294715 0.35222384 0.17791551], sigma noise: [0.22138752 0.5195415  0.5350924  0.47830635]
+[Epoch=400, n_hypersteps=4]: prior precision: [1.3263706  0.16217583 0.349643   0.17735302], sigma noise: [0.2210977  0.5082181  0.52121615 0.46836007]
+[Epoch=400, n_hypersteps=5]: prior precision: [1.2931824  0.16142377 0.34701797 0.17681731], sigma noise: [0.22090308 0.49649388 0.50677776 0.45802927]
+[Epoch=400, n_hypersteps=6]: prior precision: [1.259364   0.1607053  0.34441534 0.17632523], sigma noise: [0.22097574 0.4856016  0.4932818  0.44846055]
+[Epoch=400, n_hypersteps=7]: prior precision: [1.2253007  0.16003183 0.34189662 0.17588942], sigma noise: [0.22149332 0.476569   0.48193023 0.440611  ]
+[Epoch=400, n_hypersteps=8]: prior precision: [1.1913031  0.1594106  0.33950618 0.1755145 ], sigma noise: [0.22261128 0.47012728 0.4735458  0.43517843]
+[Epoch=400, n_hypersteps=9]: prior precision: [1.1576486  0.15885046 0.33728242 0.17521052], sigma noise: [0.22443771 0.46667042 0.46854    0.43254358]
+[Epoch=400, n_hypersteps=10]: prior precision: [1.1245574  0.15835367 0.335248   0.17497656], sigma noise: [0.22701783 0.46624866 0.46692827 0.43276542]
+[Epoch=400, n_hypersteps=11]: prior precision: [1.0922028  0.15791918 0.33340636 0.17480947], sigma noise: [0.23032103 0.468594   0.46837947 0.4356004 ]
+[Epoch=400, n_hypersteps=12]: prior precision: [1.0607091  0.15753993 0.3317623  0.1746982 ], sigma noise: [0.23424506 0.47317195 0.472288   0.44055772]
+[Epoch=400, n_hypersteps=13]: prior precision: [1.0301808  0.15720984 0.33030522 0.17463432], sigma noise: [0.23863012 0.4792619  0.47785407 0.4469577 ]
+[Epoch=400, n_hypersteps=14]: prior precision: [1.000685   0.15692227 0.3290184  0.1746022 ], sigma noise: [0.24327889 0.48603883 0.48417497 0.45401224]
+[Epoch=400, n_hypersteps=15]: prior precision: [0.9722747  0.15667087 0.32789093 0.17459153], sigma noise: [0.24797975 0.4926665  0.4903433  0.4609116 ]
+[Epoch=400, n_hypersteps=16]: prior precision: [0.9449895  0.15644884 0.32690325 0.17459214], sigma noise: [0.2525347  0.4983885  0.49554348 0.466913  ]
+[Epoch=400, n_hypersteps=17]: prior precision: [0.9188384  0.1562506  0.32604173 0.17459494], sigma noise: [0.25677416 0.502611   0.4991417  0.47142717]
+[Epoch=400, n_hypersteps=18]: prior precision: [0.8938208  0.1560701  0.32529473 0.1745942 ], sigma noise: [0.26057494 0.50495994 0.50075054 0.47407436]
+[Epoch=400, n_hypersteps=19]: prior precision: [0.86992276 0.15590505 0.32465687 0.17458853], sigma noise: [0.26386878 0.5053075  0.50025296 0.47472164]
+[Epoch=400, n_hypersteps=20]: prior precision: [0.84713197 0.15575759 0.32412934 0.17457563], sigma noise: [0.26664594 0.5037689  0.4977929  0.47347194]
+[Epoch=400, n_hypersteps=21]: prior precision: [0.8254154  0.15562609 0.3237151  0.17455973], sigma noise: [0.2689502  0.50066364 0.4937277  0.47063753]
+[Epoch=400, n_hypersteps=22]: prior precision: [0.8047474  0.15551235 0.32341498 0.1745429 ], sigma noise: [0.27087617 0.4964535  0.48856238 0.4666768 ]
+[Epoch=400, n_hypersteps=23]: prior precision: [0.78509665 0.1554222  0.32323503 0.17453219], sigma noise: [0.27255744 0.4916734  0.48287243 0.4621242 ]
+[Epoch=400, n_hypersteps=24]: prior precision: [0.7664293  0.15535866 0.32317844 0.17453332], sigma noise: [0.27415085 0.4868686  0.47723156 0.4575219 ]
+[Epoch=400, n_hypersteps=25]: prior precision: [0.74870896 0.15531951 0.32324994 0.17455225], sigma noise: [0.27581298 0.4825277  0.47214687 0.45335355]
+[Epoch=400, n_hypersteps=26]: prior precision: [0.7318982  0.15530764 0.32344598 0.1745933 ], sigma noise: [0.2776887  0.47903875 0.4680156  0.45000628]
+[Epoch=400, n_hypersteps=27]: prior precision: [0.71594536 0.15532617 0.32376534 0.17465469], sigma noise: [0.2798907  0.47666106 0.46509156 0.44773665]
+[Epoch=400, n_hypersteps=28]: prior precision: [0.7008155  0.15537348 0.32419774 0.1747372 ], sigma noise: [0.2824825  0.47550222 0.46347782 0.446653  ]
+wandb: Waiting for W&B process to finish... (success).
+wandb: 
+wandb: Run history:
+wandb:                          Loss █▆▅▅▄▄▄▄▄▄▃▃▃▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                       Metrics █▆▅▄▄▄▄▄▄▄▄▄▃▃▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:  Negative_marginal_likelihood █▇▇▆▆▆▆▆▆▆       ▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁
+wandb: Predictive_posterior_std_mean █▂▂▁
+wandb:                   Sigma_noise █▅▄▄▅▆▆▅▅▅▅▄▃▁▁▂▂▃▃▂▂▁▁▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb:                          Loss 0.71985
+wandb:                       Metrics 0.70178
+wandb:  Negative_marginal_likelihood 1459.22632
+wandb: Predictive_posterior_std_mean 0.85627
+wandb:                   Sigma_noise 0.84951
+wandb: 
+wandb: 🚀 View run stellar-sweep-3 at: https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/deornnf8
+wandb: Synced 6 W&B file(s), 8 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230815_165939-deornnf8/logs
+wandb: Agent Starting Run: cttp0gve with config:
+wandb: 	activation_cls: exu
+wandb: 	hidden_sizes: 1024
+wandb: 	lr: 0.1
+wandb: wandb version 0.15.8 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.5
+wandb: Run data is saved locally in /scratch/work/zhangx18/Reproduced-LA-NAM/wandb/run-20230815_170106-cttp0gve
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run twilight-sweep-4
+wandb: ⭐️ View project at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0
+wandb: 🧹 View sweep at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/sweeps/d2tncz4q
+wandb: 🚀 View run at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/cttp0gve
+/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/torch/nn/init.py:176: UserWarning: mean is more than 2 std from [a, b] in nn.init.trunc_normal_. The distribution of values may be incorrect.
+  return _no_grad_trunc_normal_(tensor, mean, std, a, b)
+Exception in thread Thread-14 (_run_job):
+Traceback (most recent call last):
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/agents/pyagent.py", line 298, in _run_job
+    self._function()
+  File "/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/trainer/wandb_train.py", line 43, in wandb_training
+    model, margliks, losses, perfs = marglik_training(model, train_loader, loader_fnn, use_wandb=True, testset=testset, likelihood=likelihood, optimizer_kwargs=optimizer_kwargs, lr_hyp=lr_hyp, n_epochs_burnin=n_epochs_burnin, n_hypersteps=n_hypersteps, marglik_frequency=marglik_frequency)
+  File "/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/trainer/marglik_training.py", line 118, in marglik_training
+    step_loss.backward()
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/torch/_tensor.py", line 487, in backward
+    torch.autograd.backward(
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/torch/autograd/__init__.py", line 200, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/wandb_torch.py", line 282, in <lambda>
+    handle = var.register_hook(lambda grad: _callback(grad, log_track))
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/wandb_torch.py", line 280, in _callback
+    self.log_tensor_stats(grad.data, name)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/wandb_torch.py", line 256, in log_tensor_stats
+    wandb.run._log(
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1526, in _log
+    self._partial_history_callback(data, step, commit)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1396, in _partial_history_callback
+    self._backend.interface.publish_partial_history(
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 584, in publish_partial_history
+    self._publish_partial_history(partial_history)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 89, in _publish_partial_history
+    self._publish(rec)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 51, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 221, in send_record_publish
+    self.send_server_request(server_req)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 155, in send_server_request
+    self._send_message(msg)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 152, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/agents/pyagent.py", line 303, in _run_job
+    wandb.finish(exit_code=1)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 3700, in finish
+    wandb.run.finish(exit_code=exit_code, quiet=quiet)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 389, in wrapper
+    return func(self, *args, **kwargs)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 330, in wrapper
+    return func(self, *args, **kwargs)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1878, in finish
+    return self._finish(exit_code, quiet)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1885, in _finish
+    with telemetry.context(run=self) as tel:
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/telemetry.py", line 42, in __exit__
+    self._run._telemetry_callback(self._obj)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 710, in _telemetry_callback
+    self._telemetry_flush()
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 721, in _telemetry_flush
+    self._backend.interface._publish_telemetry(self._telemetry_obj)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 101, in _publish_telemetry
+    self._publish(rec)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 51, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 221, in send_record_publish
+    self.send_server_request(server_req)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 155, in send_server_request
+    self._send_message(msg)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 152, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+wandb: While tearing down the service manager. The following error has occurred: [Errno 32] Broken pipe
+wandb: Agent Starting Run: sempp96t with config:
+wandb: 	activation_cls: exu
+wandb: 	hidden_sizes: 1024
+wandb: 	lr: 0.01
+Traceback (most recent call last):
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1150, in init
+    wi.setup(kwargs)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 208, in setup
+    with telemetry.context(obj=self._init_telemetry_obj) as tel:
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/telemetry.py", line 42, in __exit__
+    self._run._telemetry_callback(self._obj)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 710, in _telemetry_callback
+    self._telemetry_flush()
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 721, in _telemetry_flush
+    self._backend.interface._publish_telemetry(self._telemetry_obj)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 101, in _publish_telemetry
+    self._publish(rec)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 51, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 221, in send_record_publish
+    self.send_server_request(server_req)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 155, in send_server_request
+    self._send_message(msg)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 152, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in thread Thread-17 (_run_job):
+Traceback (most recent call last):
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1150, in init
+    wi.setup(kwargs)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 208, in setup
+    with telemetry.context(obj=self._init_telemetry_obj) as tel:
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/telemetry.py", line 42, in __exit__
+    self._run._telemetry_callback(self._obj)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 710, in _telemetry_callback
+    self._telemetry_flush()
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 721, in _telemetry_flush
+    self._backend.interface._publish_telemetry(self._telemetry_obj)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 101, in _publish_telemetry
+    self._publish(rec)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 51, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 221, in send_record_publish
+    self.send_server_request(server_req)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 155, in send_server_request
+    self._send_message(msg)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 152, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/agents/pyagent.py", line 298, in _run_job
+    self._function()
+  File "/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/trainer/wandb_train.py", line 25, in wandb_training
+    run = wandb.init()
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1192, in init
+    raise Error("An unexpected error occurred") from error_seen
+wandb.errors.Error: An unexpected error occurred
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/agents/pyagent.py", line 303, in _run_job
+    wandb.finish(exit_code=1)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 3700, in finish
+    wandb.run.finish(exit_code=exit_code, quiet=quiet)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 389, in wrapper
+    return func(self, *args, **kwargs)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 330, in wrapper
+    return func(self, *args, **kwargs)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1878, in finish
+    return self._finish(exit_code, quiet)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1885, in _finish
+    with telemetry.context(run=self) as tel:
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/telemetry.py", line 42, in __exit__
+    self._run._telemetry_callback(self._obj)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 710, in _telemetry_callback
+    self._telemetry_flush()
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 721, in _telemetry_flush
+    self._backend.interface._publish_telemetry(self._telemetry_obj)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 101, in _publish_telemetry
+    self._publish(rec)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 51, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 221, in send_record_publish
+    self.send_server_request(server_req)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 155, in send_server_request
+    self._send_message(msg)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 152, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+wandb: Agent Starting Run: fjbffyzi with config:
+wandb: 	activation_cls: exu
+wandb: 	hidden_sizes: 1024
+wandb: 	lr: 0.001
+Traceback (most recent call last):
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1150, in init
+    wi.setup(kwargs)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 208, in setup
+    with telemetry.context(obj=self._init_telemetry_obj) as tel:
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/telemetry.py", line 42, in __exit__
+    self._run._telemetry_callback(self._obj)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 710, in _telemetry_callback
+    self._telemetry_flush()
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 721, in _telemetry_flush
+    self._backend.interface._publish_telemetry(self._telemetry_obj)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 101, in _publish_telemetry
+    self._publish(rec)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 51, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 221, in send_record_publish
+    self.send_server_request(server_req)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 155, in send_server_request
+    self._send_message(msg)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 152, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+Exception in thread Thread-18 (_run_job):
+Traceback (most recent call last):
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1150, in init
+    wi.setup(kwargs)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 208, in setup
+    with telemetry.context(obj=self._init_telemetry_obj) as tel:
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/telemetry.py", line 42, in __exit__
+    self._run._telemetry_callback(self._obj)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 710, in _telemetry_callback
+    self._telemetry_flush()
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 721, in _telemetry_flush
+    self._backend.interface._publish_telemetry(self._telemetry_obj)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 101, in _publish_telemetry
+    self._publish(rec)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 51, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 221, in send_record_publish
+    self.send_server_request(server_req)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 155, in send_server_request
+    self._send_message(msg)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 152, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/agents/pyagent.py", line 298, in _run_job
+    self._function()
+  File "/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/trainer/wandb_train.py", line 25, in wandb_training
+    run = wandb.init()
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1192, in init
+    raise Error("An unexpected error occurred") from error_seen
+wandb.errors.Error: An unexpected error occurred
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/agents/pyagent.py", line 303, in _run_job
+    wandb.finish(exit_code=1)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 3700, in finish
+    wandb.run.finish(exit_code=exit_code, quiet=quiet)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 389, in wrapper
+    return func(self, *args, **kwargs)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 330, in wrapper
+    return func(self, *args, **kwargs)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1878, in finish
+    return self._finish(exit_code, quiet)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 1885, in _finish
+    with telemetry.context(run=self) as tel:
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/telemetry.py", line 42, in __exit__
+    self._run._telemetry_callback(self._obj)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 710, in _telemetry_callback
+    self._telemetry_flush()
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 721, in _telemetry_flush
+    self._backend.interface._publish_telemetry(self._telemetry_obj)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_shared.py", line 101, in _publish_telemetry
+    self._publish(rec)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/interface/interface_sock.py", line 51, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 221, in send_record_publish
+    self.send_server_request(server_req)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 155, in send_server_request
+    self._send_message(msg)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 152, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-03/6a700484/lib/python3.10/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+[Epoch=400, n_hypersteps=29]: prior precision: [0.6864736  0.1554447  0.32473204 0.17484108], sigma noise: [0.2854667  0.47552583 0.46312764 0.44672054]
+MARGLIK: finished training. Recover best model and fit Laplace.
+Configuration: 
+ Config(experiment_name='LANAM-Grid-2', data_path='LANAM/data/datasets', likelihood='regression', prior_sigma_noise=0.7, num_epochs=400, batch_size=128, wandb=False, log_loss_frequency=100, lr=0.1, lr_hyp=0.1, n_epochs_burnin=50, n_hypersteps=30, marglik_frequency=100, hidden_sizes=[1024], activation=True, activation_cls='exu')
+Model summary: 
+ LaNAM(
+  (lossfunc): MSELoss()
+  (_feature_nns): ModuleList(
+    (0-3): 4 x FeatureNN(
+      (model): Sequential(
+        (0): ExU(in_features=1, out_features=1024)
+        (1): Linear(in_features=1024, out_features=1, bias=True)
+      )
+    )
+  )
+)
+[Epoch=100, n_hypersteps=0]: prior precision: [1. 1. 1. 1.], sigma noise: [1. 1. 1. 1.]
+[Epoch=100, n_hypersteps=1]: prior precision: [0.9048374 0.9048374 0.9048374 0.9048374], sigma noise: [1.105171 1.105171 1.105171 1.105171]
+[Epoch=100, n_hypersteps=2]: prior precision: [0.81908584 0.8190622  0.8190587  0.81907445], sigma noise: [1.0378752 1.0378752 1.0378752 1.0378752]
+[Epoch=100, n_hypersteps=3]: prior precision: [0.74199605 0.7419148  0.741903   0.74195683], sigma noise: [0.97292536 0.97292536 0.97292536 0.97292536]
+[Epoch=100, n_hypersteps=4]: prior precision: [0.6728351  0.6726561  0.67263025 0.6727488 ], sigma noise: [0.9520939 0.9520939 0.9520939 0.9520939]
+[Epoch=100, n_hypersteps=5]: prior precision: [0.610896   0.6105758  0.6105297  0.61074144], sigma noise: [0.96768075 0.96768075 0.96768075 0.96768075]
+[Epoch=100, n_hypersteps=6]: prior precision: [0.5555041  0.55499893 0.5549263  0.55526006], sigma noise: [1.0001048 1.0001048 1.0001048 1.0001048]
+[Epoch=100, n_hypersteps=7]: prior precision: [0.506023   0.50529057 0.50518554 0.5056689 ], sigma noise: [1.0344979 1.0344979 1.0344979 1.0344979]
+[Epoch=100, n_hypersteps=8]: prior precision: [0.4618583  0.46085948 0.4607165  0.4613749 ], sigma noise: [1.05675 1.05675 1.05675 1.05675]
+[Epoch=100, n_hypersteps=9]: prior precision: [0.42245972 0.4211594  0.4209735  0.42182985], sigma noise: [1.0599428 1.0599428 1.0599428 1.0599428]
+[Epoch=100, n_hypersteps=10]: prior precision: [0.3873219  0.38568944 0.38545656 0.38653043], sigma noise: [1.0467701 1.0467701 1.0467701 1.0467701]
+[Epoch=100, n_hypersteps=11]: prior precision: [0.355984   0.35399368 0.35371026 0.3550181 ], sigma noise: [1.0243397 1.0243397 1.0243397 1.0243397]
+[Epoch=100, n_hypersteps=12]: prior precision: [0.32802865 0.3256592  0.3253225  0.32687774], sigma noise: [1.000882 1.000882 1.000882 1.000882]
+[Epoch=100, n_hypersteps=13]: prior precision: [0.3030798  0.30031422 0.29992214 0.3017352 ], sigma noise: [0.9842047 0.9842047 0.9842047 0.9842047]
+[Epoch=100, n_hypersteps=14]: prior precision: [0.2808001  0.27762544 0.27717635 0.27925515], sigma noise: [0.97912496 0.97912496 0.97912496 0.97912496]
+[Epoch=100, n_hypersteps=15]: prior precision: [0.2608883  0.25729498 0.25678787 0.259138  ], sigma noise: [0.98570913 0.9857092  0.9857092  0.9857092 ]
+[Epoch=100, n_hypersteps=16]: prior precision: [0.24307643 0.23905773 0.23849186 0.241117  ], sigma noise: [1.0004574 1.0004575 1.0004575 1.0004575]
+[Epoch=100, n_hypersteps=17]: prior precision: [0.22712657 0.22267811 0.22205321 0.22495542], sigma noise: [1.018025 1.018025 1.018025 1.018025]
+[Epoch=100, n_hypersteps=18]: prior precision: [0.21282798 0.20794736 0.20726335 0.21044347], sigma noise: [1.0325329 1.032533  1.032533  1.032533 ]
+[Epoch=100, n_hypersteps=19]: prior precision: [0.19999446 0.19468065 0.19393781 0.19739555], sigma noise: [1.0394158 1.039416  1.0394161 1.039416 ]
+[Epoch=100, n_hypersteps=20]: prior precision: [0.18846165 0.18271473 0.18191336 0.18564783], sigma noise: [1.0371424 1.0371425 1.0371425 1.0371425]
+[Epoch=100, n_hypersteps=21]: prior precision: [0.1780845  0.17190534 0.17104596 0.17505565], sigma noise: [1.027385  1.0273852 1.0273852 1.0273851]
+[Epoch=100, n_hypersteps=22]: prior precision: [0.16873524 0.16212516 0.16120832 0.16549139], sigma noise: [1.0139645 1.0139647 1.0139648 1.0139647]
+[Epoch=100, n_hypersteps=23]: prior precision: [0.16030125 0.15326178 0.15228808 0.15684254], sigma noise: [1.0015233 1.0015234 1.0015235 1.0015234]
+[Epoch=100, n_hypersteps=24]: prior precision: [0.15268324 0.14521603 0.14418614 0.14900987], sigma noise: [0.9940865  0.99408674 0.9940868  0.9940867 ]
+[Epoch=100, n_hypersteps=25]: prior precision: [0.1457937  0.13790035 0.13681489 0.14190578], sigma noise: [0.99369043 0.9936907  0.9936908  0.99369067]
+[Epoch=100, n_hypersteps=26]: prior precision: [0.13955542 0.13123736 0.13009697 0.135453  ], sigma noise: [0.9998225  0.99982285 0.9998229  0.99982274]
+[Epoch=100, n_hypersteps=27]: prior precision: [0.13390025 0.12515868 0.12396397 0.12958322], sigma noise: [1.0098803 1.0098807 1.0098808 1.0098805]
+[Epoch=100, n_hypersteps=28]: prior precision: [0.12876797 0.11960383 0.11835538 0.12423609], sigma noise: [1.0201452 1.0201457 1.0201458 1.0201455]
+[Epoch=100, n_hypersteps=29]: prior precision: [0.12410533 0.11451924 0.1132176  0.11935819], sigma noise: [1.0270287 1.0270292 1.0270293 1.027029 ]
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=21146170.0. Some of your processes may have been killed by the cgroup out-of-memory handler.
+srun: error: csl47: task 0: Out Of Memory
+srun: launch/slurm: _step_signal: Terminating StepId=21146170.0

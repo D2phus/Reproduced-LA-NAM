@@ -1,0 +1,806 @@
+wandb: Currently logged in as: xinyu-zhang. Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.15.8 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.5
+wandb: Run data is saved locally in /scratch/work/zhangx18/Reproduced-LA-NAM/wandb/run-20230815_165601-7cxu6ite
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run different-fog-115
+wandb: ⭐️ View project at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic
+wandb: 🚀 View run at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic/runs/7cxu6ite
+wandb: \ 1 of 3 files downloaded...wandb:   3 of 3 files downloaded.  
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.005 MB of 0.005 MB uploaded (0.000 MB deduped)wandb: \ 0.005 MB of 0.005 MB uploaded (0.000 MB deduped)wandb: | 0.005 MB of 0.005 MB uploaded (0.000 MB deduped)wandb: / 0.005 MB of 0.005 MB uploaded (0.000 MB deduped)wandb: 🚀 View run different-fog-115 at: https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic/runs/7cxu6ite
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230815_165601-7cxu6ite/logs
+wandb: Agent Starting Run: td4oqi4g with config:
+wandb: 	activation_cls: leakyrelu
+wandb: 	hidden_sizes: 64
+wandb: 	lr: 0.1
+wandb: wandb version 0.15.8 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.5
+wandb: Run data is saved locally in /scratch/work/zhangx18/Reproduced-LA-NAM/wandb/run-20230815_165642-td4oqi4g
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run olive-sweep-1
+wandb: ⭐️ View project at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0
+wandb: 🧹 View sweep at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/sweeps/3nlgh559
+wandb: 🚀 View run at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/td4oqi4g
+Create sweep with ID: 3nlgh559
+Sweep URL: https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/sweeps/3nlgh559
+Configuration: 
+ Config(experiment_name='LANAM-Grid-2', data_path='LANAM/data/datasets', likelihood='regression', prior_sigma_noise=0.7, num_epochs=400, batch_size=128, wandb=False, log_loss_frequency=100, lr=0.1, lr_hyp=0.1, n_epochs_burnin=50, n_hypersteps=30, marglik_frequency=100, hidden_sizes=[64], activation=True, activation_cls='leakyrelu')
+Model summary: 
+ LaNAM(
+  (lossfunc): MSELoss()
+  (_feature_nns): ModuleList(
+    (0-3): 4 x FeatureNN(
+      (model): Sequential(
+        (0): Linear(in_features=1, out_features=64, bias=True)
+        (1): LeakyReLU(negative_slope=0.01)
+        (2): Linear(in_features=64, out_features=1, bias=True)
+      )
+    )
+  )
+)
+[Epoch=100, n_hypersteps=0]: prior precision: [1. 1. 1. 1.], sigma noise: [1. 1. 1. 1.]
+[Epoch=100, n_hypersteps=1]: prior precision: [0.9048374 0.9048374 0.9048374 0.9048374], sigma noise: [0.9048374 0.9048374 0.9048374 0.9048374]
+[Epoch=100, n_hypersteps=2]: prior precision: [0.81942147 0.8192021  0.81919193 0.9337985 ], sigma noise: [0.81882745 0.8188265  0.81882685 0.81881994]
+[Epoch=100, n_hypersteps=3]: prior precision: [0.7431831 0.7424006 0.7423646 0.9914687], sigma noise: [0.74117464 0.7411712  0.7411728  0.74114716]
+[Epoch=100, n_hypersteps=4]: prior precision: [0.6755339  0.6737409  0.67365974 1.0600984 ], sigma noise: [0.6711729  0.67116493 0.67117    0.67110825]
+[Epoch=100, n_hypersteps=5]: prior precision: [0.61587197 0.61254275 0.6123949  1.1247272 ], sigma noise: [0.60820436 0.6081892  0.60820144 0.6080792 ]
+[Epoch=100, n_hypersteps=6]: prior precision: [0.5635892 0.5581459 0.5579097 1.168727 ], sigma noise: [0.55174005 0.5517145  0.5517399  0.5515232 ]
+[Epoch=100, n_hypersteps=7]: prior precision: [0.5180796 0.5099181 0.5095733 1.1886007], sigma noise: [0.50134516 0.5013049  0.50135297 0.5009943 ]
+[Epoch=100, n_hypersteps=8]: prior precision: [0.47874674 0.46726093 0.46678945 1.1942383 ], sigma noise: [0.45668855 0.45662776 0.45671302 0.4561444 ]
+[Epoch=100, n_hypersteps=9]: prior precision: [0.44501495 0.42961347 0.42900148 1.1992707 ], sigma noise: [0.41755623 0.41746658 0.41761115 0.4167342 ]
+[Epoch=100, n_hypersteps=10]: prior precision: [0.41633552 0.39645526 0.39569324 1.2148459 ], sigma noise: [0.38386405 0.38373336 0.38397014 0.38264203]
+[Epoch=100, n_hypersteps=11]: prior precision: [0.39219496 0.36730692 0.3663911  1.2449216 ], sigma noise: [0.3556557  0.35546628 0.35584286 0.35386026]
+[Epoch=100, n_hypersteps=12]: prior precision: [0.37212178 0.3417305  0.3406623  1.2866112 ], sigma noise: [0.33305973 0.33278707 0.33336833 0.330455  ]
+[Epoch=100, n_hypersteps=13]: prior precision: [0.355687   0.3193284  0.31811413 1.3321931 ], sigma noise: [0.31618103 0.31579375 0.31666178 0.3124697 ]
+[Epoch=100, n_hypersteps=14]: prior precision: [0.34250242 0.29974192 0.29839092 1.3697414 ], sigma noise: [0.30495176 0.30441368 0.3056616  0.29979303]
+[Epoch=100, n_hypersteps=15]: prior precision: [0.332219   0.28264955 0.28117338 1.3881509 ], sigma noise: [0.29904035 0.29831347 0.30003792 0.2920747 ]
+[Epoch=100, n_hypersteps=16]: prior precision: [0.32452703 0.26776448 0.26617646 1.3850766 ], sigma noise: [0.29789412 0.29694036 0.29923832 0.2887562 ]
+[Epoch=100, n_hypersteps=17]: prior precision: [0.31915885 0.254833   0.25314558 1.3664439 ], sigma noise: [0.30086482 0.2996452  0.30261636 0.28917816]
+[Epoch=100, n_hypersteps=18]: prior precision: [0.31587425 0.2436309  0.24185546 1.3414786 ], sigma noise: [0.3073094  0.3057829  0.3095335  0.29267454]
+[Epoch=100, n_hypersteps=19]: prior precision: [0.31446317 0.2339617  0.23210627 1.3192297 ], sigma noise: [0.31662527 0.31474784 0.319394   0.298612  ]
+[Epoch=100, n_hypersteps=20]: prior precision: [0.31474027 0.22565316 0.22372283 1.3057265 ], sigma noise: [0.32823673 0.32596174 0.33162895 0.3063896 ]
+[Epoch=100, n_hypersteps=21]: prior precision: [0.31653726 0.21855491 0.21655196 1.3021208 ], sigma noise: [0.3415654  0.33884603 0.34566417 0.31542495]
+[Epoch=100, n_hypersteps=22]: prior precision: [0.31970304 0.21253584 0.21045884 1.3052001 ], sigma noise: [0.3560062  0.35279942 0.3608927  0.32514626]
+[Epoch=100, n_hypersteps=23]: prior precision: [0.32409415 0.20748156 0.20532714 1.309259  ], sigma noise: [0.3709196  0.367192   0.37666538 0.3349969 ]
+[Epoch=100, n_hypersteps=24]: prior precision: [0.32957417 0.20329233 0.20105557 1.3085749 ], sigma noise: [0.385644   0.38137814 0.39230022 0.34445244]
+[Epoch=100, n_hypersteps=25]: prior precision: [0.3360091  0.19988151 0.1975559  1.3000894 ], sigma noise: [0.39952585 0.39472592 0.40711263 0.35304415]
+[Epoch=100, n_hypersteps=26]: prior precision: [0.34326026 0.19717361 0.19475105 1.2847451 ], sigma noise: [0.41196075 0.40665653 0.4204598  0.36038256]
+[Epoch=100, n_hypersteps=27]: prior precision: [0.35118777 0.19510245 0.19257419 1.2667397 ], sigma noise: [0.42243713 0.4166842  0.431788   0.36617526]
+[Epoch=100, n_hypersteps=28]: prior precision: [0.35964426 0.19361034 0.1909673  1.2515252 ], sigma noise: [0.43057197 0.424449   0.440674   0.37023553]
+[Epoch=100, n_hypersteps=29]: prior precision: [0.36847636 0.1926466  0.18987982 1.2435695 ], sigma noise: [0.4361342  0.4297366  0.44685435 0.37248197]
+[Epoch=200, n_hypersteps=0]: prior precision: [0.37752342 0.19216669 0.1892677  1.2445822 ], sigma noise: [0.43905082 0.4324832  0.45023555 0.37293008]
+[Epoch=200, n_hypersteps=1]: prior precision: [0.38090816 0.18993372 0.18867587 1.1753143 ], sigma noise: [0.4389455  0.43236154 0.45054016 0.37145764]
+[Epoch=200, n_hypersteps=2]: prior precision: [0.37908694 0.18621771 0.18810806 1.0873903 ], sigma noise: [0.43609536 0.42963347 0.4480361  0.36826688]
+[Epoch=200, n_hypersteps=3]: prior precision: [0.37280604 0.1813085  0.18756938 0.99275595], sigma noise: [0.4308937  0.42466888 0.44311735 0.363615  ]
+[Epoch=200, n_hypersteps=4]: prior precision: [0.36295986 0.17549418 0.18706554 0.89822644], sigma noise: [0.42381093 0.4179104  0.4362645  0.35779536]
+[Epoch=200, n_hypersteps=5]: prior precision: [0.35047603 0.16904488 0.18660401 0.80798006], sigma noise: [0.41535836 0.40984032 0.42800596 0.35112053]
+[Epoch=200, n_hypersteps=6]: prior precision: [0.33623075 0.16220231 0.18619083 0.72449535], sigma noise: [0.4060573  0.40095228 0.41888598 0.3439084 ]
+[Epoch=200, n_hypersteps=7]: prior precision: [0.32100004 0.15517431 0.18583395 0.6490781 ], sigma noise: [0.3964138  0.3917281  0.40943798 0.33646986]
+[Epoch=200, n_hypersteps=8]: prior precision: [0.30543494 0.14813288 0.18553829 0.5822198 ], sigma noise: [0.38689917 0.38261896 0.40016323 0.3290984 ]
+[Epoch=200, n_hypersteps=9]: prior precision: [0.29005522 0.14121519 0.18531007 0.52386254], sigma noise: [0.37793493 0.37403098 0.391515   0.32206085]
+[Epoch=200, n_hypersteps=10]: prior precision: [0.2752579  0.13452663 0.18515217 0.47359672], sigma noise: [0.36988097 0.36631295 0.38388535 0.31558856]
+[Epoch=200, n_hypersteps=11]: prior precision: [0.26132807 0.12814406 0.18506733 0.43080887], sigma noise: [0.3630263  0.35974723 0.3775952  0.30986992]
+[Epoch=200, n_hypersteps=12]: prior precision: [0.24845745 0.12212025 0.18505533 0.3947881 ], sigma noise: [0.35758236 0.35454205 0.37288573 0.30504313]
+[Epoch=200, n_hypersteps=13]: prior precision: [0.23675975 0.11648817 0.18511316 0.36479938], sigma noise: [0.3536793  0.35082737 0.3699143  0.3011919 ]
+[Epoch=200, n_hypersteps=14]: prior precision: [0.22628954 0.11126483 0.18523876 0.34013256], sigma noise: [0.35136577 0.34865344 0.3687519  0.29834318]
+[Epoch=200, n_hypersteps=15]: prior precision: [0.21705262 0.10645477 0.18542579 0.32013127], sigma noise: [0.35061163 0.34799352 0.3693857  0.29646876]
+[Epoch=200, n_hypersteps=16]: prior precision: [0.20902659 0.10205334 0.18566635 0.30420768], sigma noise: [0.35131478 0.34874964 0.3717232  0.29549015]
+[Epoch=200, n_hypersteps=17]: prior precision: [0.2021647  0.09804913 0.18595104 0.29184812], sigma noise: [0.35330996 0.35076118 0.37559968 0.29528666]
+[Epoch=200, n_hypersteps=18]: prior precision: [0.1964056  0.094426   0.18626912 0.28261152], sigma noise: [0.35637933 0.35381544 0.38078666 0.29570568]
+[Epoch=200, n_hypersteps=19]: prior precision: [0.19168161 0.09116492 0.18661107 0.27612433], sigma noise: [0.36026463 0.3576597  0.38700095 0.29657412]
+[Epoch=200, n_hypersteps=20]: prior precision: [0.18791984 0.08824523 0.18696547 0.27207273], sigma noise: [0.36468115 0.36201486 0.39391688 0.2977106 ]
+[Epoch=200, n_hypersteps=21]: prior precision: [0.18504931 0.08564556 0.18732178 0.27019486], sigma noise: [0.36933246 0.3665905  0.40118074 0.29893696]
+[Epoch=200, n_hypersteps=22]: prior precision: [0.18299986 0.08334466 0.18766955 0.27027154], sigma noise: [0.3739265  0.3711006  0.40842906 0.30008888]
+[Epoch=200, n_hypersteps=23]: prior precision: [0.18170317 0.08132178 0.18799745 0.27211824], sigma noise: [0.37819222 0.37528044 0.41530812 0.30102432]
+[Epoch=200, n_hypersteps=24]: prior precision: [0.18109451 0.07955693 0.18829769 0.27557755], sigma noise: [0.38189518 0.37890136 0.42149705 0.30162987]
+[Epoch=200, n_hypersteps=25]: prior precision: [0.18111324 0.07803131 0.18856224 0.28051147], sigma noise: [0.38485068 0.38178372 0.42672858 0.30182457]
+[Epoch=200, n_hypersteps=26]: prior precision: [0.18170093 0.0767271  0.18878606 0.28679496], sigma noise: [0.38693318 0.38380593 0.4308073  0.30156106]
+[Epoch=200, n_hypersteps=27]: prior precision: [0.18280168 0.07562798 0.18896574 0.2943102 ], sigma noise: [0.38808104 0.38490906 0.433622   0.3008245 ]
+[Epoch=200, n_hypersteps=28]: prior precision: [0.18436068 0.07471847 0.18910003 0.30294114], sigma noise: [0.38829613 0.3850962  0.4351506  0.29962987]
+[Epoch=200, n_hypersteps=29]: prior precision: [0.18632421 0.07398439 0.18919003 0.3125684 ], sigma noise: [0.38763922 0.38442802 0.4354572  0.2980177 ]
+[Epoch=300, n_hypersteps=0]: prior precision: [0.18863837 0.07341247 0.1892381  0.32306522], sigma noise: [0.38622132 0.3830139  0.43468243 0.29604906]
+[Epoch=300, n_hypersteps=1]: prior precision: [0.18714744 0.07242554 0.18663752 0.31788263], sigma noise: [0.38428554 0.38121864 0.43317667 0.29392132]
+[Epoch=300, n_hypersteps=2]: prior precision: [0.18249144 0.07109208 0.18184608 0.30264398], sigma noise: [0.38199225 0.37918603 0.43115976 0.29170388]
+[Epoch=300, n_hypersteps=3]: prior precision: [0.17542738 0.0694825  0.17536914 0.2816117 ], sigma noise: [0.3795084  0.37706697 0.42886537 0.28946823]
+[Epoch=300, n_hypersteps=4]: prior precision: [0.16671129 0.0676652  0.16770513 0.2578667 ], sigma noise: [0.37699655 0.37500963 0.42652306 0.28728336]
+[Epoch=300, n_hypersteps=5]: prior precision: [0.1570207  0.06570409 0.15930642 0.23354341], sigma noise: [0.37460497 0.3731501  0.42434442 0.28521168]
+[Epoch=300, n_hypersteps=6]: prior precision: [0.1469181  0.06365642 0.15055944 0.21004024], sigma noise: [0.37245974 0.3716048  0.4225108  0.28330532]
+[Epoch=300, n_hypersteps=7]: prior precision: [0.13684039 0.06157205 0.14177531 0.18820034], sigma noise: [0.3706583  0.37046415 0.4211645  0.28160352]
+[Epoch=300, n_hypersteps=8]: prior precision: [0.1271054  0.05949279 0.13319206 0.16846325], sigma noise: [0.36926576 0.3697886  0.42040217 0.28013077]
+[Epoch=300, n_hypersteps=9]: prior precision: [0.11792735 0.05745275 0.12498063 0.15098885], sigma noise: [0.36831325 0.36960644 0.42027342 0.27889624]
+[Epoch=300, n_hypersteps=10]: prior precision: [0.10943573 0.05547866 0.1172552  0.13575481], sigma noise: [0.3677988  0.36991388 0.42077968 0.27789393]
+[Epoch=300, n_hypersteps=11]: prior precision: [0.10169583 0.05359087 0.11008479 0.12262966], sigma noise: [0.36768985 0.37067708 0.42187884 0.27710432]
+[Epoch=300, n_hypersteps=12]: prior precision: [0.09472661 0.05180408 0.10350165 0.11142502], sigma noise: [0.36792788 0.37183592 0.42349118 0.2764967 ]
+[Epoch=300, n_hypersteps=13]: prior precision: [0.08851344 0.05012815 0.09751133 0.10193075], sigma noise: [0.36843455 0.37330928 0.4255036  0.27603227]
+[Epoch=300, n_hypersteps=14]: prior precision: [0.08302166 0.04856899 0.09210198 0.09393723], sigma noise: [0.3691186  0.3750014  0.42778185 0.27566737]
+[Epoch=300, n_hypersteps=15]: prior precision: [0.07820319 0.04712926 0.08724964 0.08724796], sigma noise: [0.36988306 0.37680954 0.4301797  0.27535725]
+[Epoch=300, n_hypersteps=16]: prior precision: [0.07400525 0.0458093  0.08292125 0.0816862 ], sigma noise: [0.37063298 0.37863094 0.43254986 0.27505907]
+[Epoch=300, n_hypersteps=17]: prior precision: [0.07037323 0.04460745 0.07908098 0.07709713], sigma noise: [0.3712823  0.3803702  0.43475518 0.27473503]
+[Epoch=300, n_hypersteps=18]: prior precision: [0.06725416 0.04352067 0.0756916  0.07334762], sigma noise: [0.37175936 0.38194555 0.43667737 0.2743542 ]
+[Epoch=300, n_hypersteps=19]: prior precision: [0.0645979  0.04254505 0.07271554 0.07032481], sigma noise: [0.37201107 0.38329405 0.43822587 0.2738942 ]
+[Epoch=300, n_hypersteps=20]: prior precision: [0.06235899 0.04167587 0.07011676 0.06793375], sigma noise: [0.37200564 0.38437474 0.43934253 0.27334177]
+[Epoch=300, n_hypersteps=21]: prior precision: [0.06049501 0.04090801 0.06786229 0.06609505], sigma noise: [0.37173364 0.38517043 0.44000563 0.2726929 ]
+[Epoch=300, n_hypersteps=22]: prior precision: [0.05896872 0.04023615 0.06592039 0.06474258], sigma noise: [0.37120628 0.3856873  0.44022843 0.27195194]
+[Epoch=300, n_hypersteps=23]: prior precision: [0.05774675 0.03965491 0.06426258 0.06382124], sigma noise: [0.37045354 0.38595265 0.4400554  0.27113068]
+[Epoch=300, n_hypersteps=24]: prior precision: [0.05680022 0.03915882 0.0628633  0.06328502], sigma noise: [0.36951977 0.38601124 0.43955734 0.27024657]
+[Epoch=300, n_hypersteps=25]: prior precision: [0.05610235 0.03874261 0.06169863 0.06309533], sigma noise: [0.36845937 0.3859206  0.43882456 0.26932094]
+[Epoch=300, n_hypersteps=26]: prior precision: [0.05563057 0.03840099 0.06074813 0.06321947], sigma noise: [0.36733174 0.3857458  0.43795556 0.26837713]
+[Epoch=300, n_hypersteps=27]: prior precision: [0.0553639  0.03812891 0.05999183 0.06362943], sigma noise: [0.36619657 0.38555345 0.43704948 0.26743838]
+[Epoch=300, n_hypersteps=28]: prior precision: [0.05528412 0.03792135 0.05941284 0.06430073], sigma noise: [0.3651086  0.38540658 0.4362013  0.26652616]
+[Epoch=300, n_hypersteps=29]: prior precision: [0.05537412 0.03777363 0.05899612 0.06521144], sigma noise: [0.36411488 0.3853599  0.43548962 0.2656586 ]
+[Epoch=400, n_hypersteps=0]: prior precision: [0.05561915 0.03768105 0.05872601 0.06634139], sigma noise: [0.36325082 0.385456   0.4349787  0.26484933]
+[Epoch=400, n_hypersteps=1]: prior precision: [0.05565952 0.03762626 0.05829778 0.06495683], sigma noise: [0.36279523 0.38601065 0.43486953 0.26420704]
+[Epoch=400, n_hypersteps=2]: prior precision: [0.05551325 0.03760628 0.05773237 0.0617633 ], sigma noise: [0.36271855 0.38699514 0.43513972 0.26371878]
+[Epoch=400, n_hypersteps=3]: prior precision: [0.05520035 0.03761803 0.05705051 0.05744916], sigma noise: [0.36296916 0.38835374 0.4357282  0.26336306]
+[Epoch=400, n_hypersteps=4]: prior precision: [0.05474404 0.03765847 0.05627332 0.05258482], sigma noise: [0.3634794  0.39000937 0.4365392  0.26311195]
+[Epoch=400, n_hypersteps=5]: prior precision: [0.05416838 0.0377246  0.05542022 0.04759552], sigma noise: [0.3641718  0.39187047 0.4374586  0.26293394]
+[Epoch=400, n_hypersteps=6]: prior precision: [0.05349766 0.0378135  0.0545097  0.04277039], sigma noise: [0.36496532 0.39383918 0.43836603 0.26279658]
+[Epoch=400, n_hypersteps=7]: prior precision: [0.05275454 0.03792241 0.05355839 0.03828629], sigma noise: [0.36578143 0.3958186  0.43914035 0.26266927]
+[Epoch=400, n_hypersteps=8]: prior precision: [0.05196087 0.03804851 0.05258072 0.03423529], sigma noise: [0.36655095 0.39772072 0.4396778  0.26252532]
+[Epoch=400, n_hypersteps=9]: prior precision: [0.05113633 0.03818903 0.0515905  0.03065006], sigma noise: [0.3672172  0.39947298 0.43989754 0.2623438 ]
+[Epoch=400, n_hypersteps=10]: prior precision: [0.05029873 0.03834145 0.05059892 0.02752468], sigma noise: [0.36774096 0.40102255 0.43974626 0.26211026]
+[Epoch=400, n_hypersteps=11]: prior precision: [0.04946484 0.03850321 0.04961573 0.02483056], sigma noise: [0.36810118 0.4023399  0.43920386 0.2618176 ]
+wandb: Waiting for W&B process to finish... (success).
+wandb: 
+wandb: Run history:
+wandb:                          Loss █▄▃▂▂▂▃▂▂▂▁▂▁▁▂▁▁▁▂▁▁▁▁▁▂▁▂▁▁▁▁▂▁▁▁▁▁▁▁▁
+wandb:                       Metrics █▃▂▁▂▁▂▁▁▁▁▂▁▁▂▁▁▁▂▂▁▁▂▁▂▁▂▁▁▁▁▂▁▁▁▁▁▁▁▁
+wandb:  Negative_marginal_likelihood █▅▃▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: Predictive_posterior_std_mean █▃▁▁
+wandb:                   Sigma_noise █▅▄▂▁▁▁▁▂▂▂▂▂▂▂▁▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+wandb: 
+wandb: Run summary:
+wandb:                          Loss 0.54445
+wandb:                       Metrics 0.5405
+wandb:  Negative_marginal_likelihood 1219.02722
+wandb: Predictive_posterior_std_mean 0.74618
+wandb:                   Sigma_noise 0.74386
+wandb: 
+wandb: 🚀 View run olive-sweep-1 at: https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/td4oqi4g
+wandb: Synced 6 W&B file(s), 8 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230815_165642-td4oqi4g/logs
+wandb: Agent Starting Run: px1hovwx with config:
+wandb: 	activation_cls: leakyrelu
+wandb: 	hidden_sizes: 64
+wandb: 	lr: 0.01
+wandb: wandb version 0.15.8 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.5
+wandb: Run data is saved locally in /scratch/work/zhangx18/Reproduced-LA-NAM/wandb/run-20230815_165810-px1hovwx
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run eternal-sweep-2
+wandb: ⭐️ View project at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0
+wandb: 🧹 View sweep at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/sweeps/3nlgh559
+wandb: 🚀 View run at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/px1hovwx
+[Epoch=400, n_hypersteps=12]: prior precision: [0.04864816 0.03867183 0.04864992 0.02252751], sigma noise: [0.36829528 0.4034192  0.43827984 0.26146537]
+[Epoch=400, n_hypersteps=13]: prior precision: [0.04785933 0.0388451  0.04770802 0.02057134], sigma noise: [0.36833704 0.40427715 0.43701333 0.26105943]
+[Epoch=400, n_hypersteps=14]: prior precision: [0.04710821 0.03902082 0.04679572 0.01891829], sigma noise: [0.36825508 0.4049493  0.43546492 0.26061064]
+[Epoch=400, n_hypersteps=15]: prior precision: [0.04640191 0.03919706 0.04591642 0.01752754], sigma noise: [0.36808804 0.40548593 0.43371445 0.2601334 ]
+[Epoch=400, n_hypersteps=16]: prior precision: [0.04574572 0.03937187 0.04507415 0.01636274], sigma noise: [0.36788017 0.40594578 0.4318453  0.25964403]
+[Epoch=400, n_hypersteps=17]: prior precision: [0.04514344 0.03954363 0.04427055 0.01539205], sigma noise: [0.3676771  0.40639052 0.42994356 0.25915924]
+[Epoch=400, n_hypersteps=18]: prior precision: [0.04459797 0.03971071 0.04350873 0.01458815], sigma noise: [0.36752155 0.40687865 0.42808458 0.25869444]
+[Epoch=400, n_hypersteps=19]: prior precision: [0.04411047 0.0398717  0.0427894  0.01392787], sigma noise: [0.36744997 0.4074601  0.4263342  0.25826266]
+[Epoch=400, n_hypersteps=20]: prior precision: [0.0436821  0.04002531 0.04211289 0.01339184], sigma noise: [0.36748916 0.40817264 0.42473564 0.25787312]
+[Epoch=400, n_hypersteps=21]: prior precision: [0.04331146 0.04017051 0.04147854 0.0129636 ], sigma noise: [0.36765414 0.4090388  0.42331314 0.257531  ]
+[Epoch=400, n_hypersteps=22]: prior precision: [0.04299667 0.04030629 0.04088625 0.01262951], sigma noise: [0.3679486  0.4100653  0.4220728  0.25723726]
+[Epoch=400, n_hypersteps=23]: prior precision: [0.04273645 0.04043189 0.04033579 0.01237822], sigma noise: [0.36836448 0.41124293 0.4210042  0.25698867]
+[Epoch=400, n_hypersteps=24]: prior precision: [0.0425294  0.04054664 0.03982545 0.01220033], sigma noise: [0.36888406 0.41254878 0.42008224 0.2567787 ]
+[Epoch=400, n_hypersteps=25]: prior precision: [0.04237234 0.04065013 0.03935315 0.01208768], sigma noise: [0.3694825  0.41394845 0.4192713  0.25659826]
+[Epoch=400, n_hypersteps=26]: prior precision: [0.04226241 0.04074197 0.03891919 0.01203354], sigma noise: [0.370129   0.41540045 0.41852838 0.25643677]
+[Epoch=400, n_hypersteps=27]: prior precision: [0.04219597 0.04082209 0.03852134 0.0120322 ], sigma noise: [0.3707922  0.4168603  0.41781247 0.256283  ]
+[Epoch=400, n_hypersteps=28]: prior precision: [0.04217007 0.04089043 0.03815925 0.01207868], sigma noise: [0.37144098 0.4182845  0.41707966 0.2561265 ]
+[Epoch=400, n_hypersteps=29]: prior precision: [0.04218103 0.04094717 0.03783111 0.01216877], sigma noise: [0.3720487  0.41963443 0.41629153 0.25595844]
+MARGLIK: finished training. Recover best model and fit Laplace.
+Configuration: 
+ Config(experiment_name='LANAM-Grid-2', data_path='LANAM/data/datasets', likelihood='regression', prior_sigma_noise=0.7, num_epochs=400, batch_size=128, wandb=False, log_loss_frequency=100, lr=0.01, lr_hyp=0.1, n_epochs_burnin=50, n_hypersteps=30, marglik_frequency=100, hidden_sizes=[64], activation=True, activation_cls='leakyrelu')
+Model summary: 
+ LaNAM(
+  (lossfunc): MSELoss()
+  (_feature_nns): ModuleList(
+    (0-3): 4 x FeatureNN(
+      (model): Sequential(
+        (0): Linear(in_features=1, out_features=64, bias=True)
+        (1): LeakyReLU(negative_slope=0.01)
+        (2): Linear(in_features=64, out_features=1, bias=True)
+      )
+    )
+  )
+)
+[Epoch=100, n_hypersteps=0]: prior precision: [1. 1. 1. 1.], sigma noise: [1. 1. 1. 1.]
+[Epoch=100, n_hypersteps=1]: prior precision: [0.9048374 0.9048374 0.9048374 1.105171 ], sigma noise: [0.9048374 0.9048374 0.9048374 0.9048374]
+[Epoch=100, n_hypersteps=2]: prior precision: [0.8197441  0.81952035 0.819212   1.2204541 ], sigma noise: [0.8188278  0.8188336  0.81882215 0.81881535]
+[Epoch=100, n_hypersteps=3]: prior precision: [0.7443856 0.7435658 0.7424375 1.3453516], sigma noise: [0.74117416 0.7411952  0.741155   0.7411303 ]
+[Epoch=100, n_hypersteps=4]: prior precision: [0.6784062 0.6764804 0.6738311 1.4779068], sigma noise: [0.6711678  0.6712174  0.67112625 0.6710672 ]
+[Epoch=100, n_hypersteps=5]: prior precision: [0.6214177 0.6177581 0.6127239 1.613735 ], sigma noise: [0.608186   0.6082818  0.60811305 0.60799646]
+[Epoch=100, n_hypersteps=6]: prior precision: [0.5729765  0.56687754 0.55847013 1.7452421 ], sigma noise: [0.55169326 0.551858   0.55157995 0.5513735 ]
+[Epoch=100, n_hypersteps=7]: prior precision: [0.53258425 0.523302   0.5104538  1.8623904 ], sigma noise: [0.5012451  0.5015083  0.5010829  0.50074095]
+[Epoch=100, n_hypersteps=8]: prior precision: [0.499678   0.48648158 0.46809322 1.956072  ], sigma noise: [0.45649657 0.45689732 0.45627683 0.45573482]
+[Epoch=100, n_hypersteps=9]: prior precision: [0.47364485 0.45585936 0.43084335 2.0221272 ], sigma noise: [0.41721427 0.4178058  0.41692752 0.4160929 ]
+[Epoch=100, n_hypersteps=10]: prior precision: [0.45383927 0.43088266 0.3981988  2.062555  ], sigma noise: [0.3832886  0.3841441  0.38292283 0.38166296]
+[Epoch=100, n_hypersteps=11]: prior precision: [0.43963236 0.41101342 0.36969253 2.0836492 ], sigma noise: [0.3547337  0.35595444 0.35427254 0.35240045]
+[Epoch=100, n_hypersteps=12]: prior precision: [0.43042192 0.3957403  0.3448948  2.0936325 ], sigma noise: [0.3316536  0.3333745  0.3310747  0.32833624]
+[Epoch=100, n_hypersteps=13]: prior precision: [0.4256632  0.38458887 0.32341182 2.1006699 ], sigma noise: [0.31414855 0.31653816 0.3134232  0.3094957 ]
+[Epoch=100, n_hypersteps=14]: prior precision: [0.42486167 0.37712568 0.30488306 2.1113605 ], sigma noise: [0.30217654 0.30542743 0.3012695  0.2957795 ]
+[Epoch=100, n_hypersteps=15]: prior precision: [0.42758125 0.37296087 0.2889806  2.1295202 ], sigma noise: [0.2954534 0.2997681 0.2943259 0.2868742]
+[Epoch=100, n_hypersteps=16]: prior precision: [0.43345574 0.37174752 0.27540728 2.155633  ], sigma noise: [0.29347134 0.29905555 0.29208314 0.2822617 ]
+[Epoch=100, n_hypersteps=17]: prior precision: [0.44213063 0.3731764  0.26389852 2.18707   ], sigma noise: [0.2956099  0.30267614 0.2939196  0.28130972]
+[Epoch=100, n_hypersteps=18]: prior precision: [0.45328498 0.3769697  0.2542162  2.2187638 ], sigma noise: [0.3012395  0.3100161  0.29920387 0.2833648 ]
+[Epoch=100, n_hypersteps=19]: prior precision: [0.46657965 0.38287085 0.2461515  2.244098  ], sigma noise: [0.30976555 0.32050303 0.30733943 0.28780022]
+[Epoch=100, n_hypersteps=20]: prior precision: [0.48166662 0.39063504 0.23951854 2.2566383 ], sigma noise: [0.32062143 0.3335927  0.31775847 0.29402387]
+[Epoch=100, n_hypersteps=21]: prior precision: [0.4981584  0.40001786 0.23415503 2.2520878 ], sigma noise: [0.3332425  0.3487328  0.32989922 0.30147082]
+[Epoch=100, n_hypersteps=22]: prior precision: [0.5156061  0.41076592 0.22992069 2.2295463 ], sigma noise: [0.34704164 0.3653282  0.34318158 0.30959764]
+[Epoch=100, n_hypersteps=23]: prior precision: [0.53350735 0.42260674 0.2266902  2.1916003 ], sigma noise: [0.36139995 0.3827205  0.35699973 0.3178873 ]
+[Epoch=100, n_hypersteps=24]: prior precision: [0.5512918  0.43524343 0.22435729 2.1432934 ], sigma noise: [0.37567595 0.4001904  0.3707334  0.32586342]
+[Epoch=100, n_hypersteps=25]: prior precision: [0.5683465  0.44835323 0.22282565 2.0909336 ], sigma noise: [0.3892326  0.41698372 0.38377103 0.3331089 ]
+[Epoch=100, n_hypersteps=26]: prior precision: [0.58404285 0.461589   0.22201301 2.0409155 ], sigma noise: [0.40147588 0.43235832 0.3955469  0.33928376]
+[Epoch=100, n_hypersteps=27]: prior precision: [0.5977879  0.47458634 0.2218488  1.998895  ], sigma noise: [0.41189614 0.44564313 0.40557972 0.34413698]
+[Epoch=100, n_hypersteps=28]: prior precision: [0.6090654  0.48697752 0.22226852 1.9690436 ], sigma noise: [0.42010418 0.45629603 0.41350272 0.34751055]
+[Epoch=100, n_hypersteps=29]: prior precision: [0.61748356 0.49840844 0.22321399 1.953669  ], sigma noise: [0.42585483 0.46394983 0.419086   0.3493362 ]
+[Epoch=200, n_hypersteps=0]: prior precision: [0.6228208  0.5085603  0.22463498 1.9531006 ], sigma noise: [0.42905468 0.46843633 0.42224166 0.34962654]
+[Epoch=200, n_hypersteps=1]: prior precision: [0.6236319  0.5111023  0.22642437 2.0414255 ], sigma noise: [0.42932087 0.46904334 0.42259747 0.34823382]
+[Epoch=200, n_hypersteps=2]: prior precision: [0.62026674 0.50678664 0.22854583 2.1822531 ], sigma noise: [0.42690194 0.46610484 0.4203851  0.3453299 ]
+[Epoch=200, n_hypersteps=3]: prior precision: [0.61331064 0.49673578 0.23096359 2.3666186 ], sigma noise: [0.42216235 0.46012357 0.41594532 0.34113124]
+[Epoch=200, n_hypersteps=4]: prior precision: [0.6034875  0.4822382  0.23364833 2.5907714 ], sigma noise: [0.41554597 0.45171103 0.40969554 0.33588427]
+[Epoch=200, n_hypersteps=5]: prior precision: [0.591606   0.46458757 0.23657152 2.851194  ], sigma noise: [0.40754128 0.44153175 0.4020972  0.32985288]
+[Epoch=200, n_hypersteps=6]: prior precision: [0.5784663  0.44497743 0.23970509 3.1414912 ], sigma noise: [0.398653   0.4302573  0.3936296  0.32330763]
+[Epoch=200, n_hypersteps=7]: prior precision: [0.5648176  0.42444068 0.2430244  3.4493458 ], sigma noise: [0.38937718 0.41853085 0.38476768 0.31651646]
+[Epoch=200, n_hypersteps=8]: prior precision: [0.55132633 0.4038247  0.24650362 3.7540927 ], sigma noise: [0.3801827  0.40694213 0.37596223 0.30973625]
+[Epoch=200, n_hypersteps=9]: prior precision: [0.53854865 0.3837911  0.25011662 4.0273595 ], sigma noise: [0.3714959  0.39600974 0.36762527 0.30320495]
+[Epoch=200, n_hypersteps=10]: prior precision: [0.526941   0.36483052 0.25383264 4.2393665 ], sigma noise: [0.36368796 0.38616928 0.3601191  0.2971337 ]
+[Epoch=200, n_hypersteps=11]: prior precision: [0.516825   0.34728274 0.25762266 4.369012  ], sigma noise: [0.357065   0.37776598 0.35374403 0.29169908]
+[Epoch=200, n_hypersteps=12]: prior precision: [0.5084327  0.33136252 0.26145503 4.4103584 ], sigma noise: [0.3518601  0.37104997 0.3487306  0.28703582]
+[Epoch=200, n_hypersteps=13]: prior precision: [0.50189316 0.31718615 0.2652961  4.37164   ], sigma noise: [0.3482279  0.3661752  0.34523243 0.28323132]
+[Epoch=200, n_hypersteps=14]: prior precision: [0.49725667 0.3047933  0.26910606 4.269782  ], sigma noise: [0.3462411  0.36320138 0.34332392 0.280322  ]
+[Epoch=200, n_hypersteps=15]: prior precision: [0.4945002  0.29416868 0.2728437  4.124857  ], sigma noise: [0.34589323 0.36209968 0.3430008  0.27829358]
+[Epoch=200, n_hypersteps=16]: prior precision: [0.4935395  0.28525802 0.27646586 3.95648   ], sigma noise: [0.34710225 0.36276048 0.34418428 0.2770846 ]
+[Epoch=200, n_hypersteps=17]: prior precision: [0.49425438 0.2779825  0.2799264  3.7818685 ], sigma noise: [0.34971857 0.36500362 0.3467277  0.27659342]
+[Epoch=200, n_hypersteps=18]: prior precision: [0.49645764 0.27224764 0.2831792  3.614977  ], sigma noise: [0.35353324 0.3685888  0.35042632 0.27668756]
+[Epoch=200, n_hypersteps=19]: prior precision: [0.49995232 0.26795143 0.286183   3.4662378 ], sigma noise: [0.35828978 0.37322798 0.35502836 0.27721465]
+[Epoch=200, n_hypersteps=20]: prior precision: [0.50448537 0.26498923 0.28889805 3.3426673 ], sigma noise: [0.36369574 0.37859765 0.36024672 0.27801362]
+[Epoch=200, n_hypersteps=21]: prior precision: [0.50978684 0.2632564  0.29128972 3.2482896 ], sigma noise: [0.36943808 0.3843539  0.36577415 0.2789256 ]
+[Epoch=200, n_hypersteps=22]: prior precision: [0.5155702  0.26264882 0.2933303  3.1846578 ], sigma noise: [0.37519786 0.39014974 0.37129888 0.27980363]
+[Epoch=200, n_hypersteps=23]: prior precision: [0.5215468  0.26306498 0.2949998  3.151436  ], sigma noise: [0.3806694  0.3956535  0.37652388 0.28052026]
+[Epoch=200, n_hypersteps=24]: prior precision: [0.52741575 0.26440415 0.2962836  3.1469462 ], sigma noise: [0.385578   0.40056825 0.38118342 0.28097305]
+[Epoch=200, n_hypersteps=25]: prior precision: [0.53291255 0.26656622 0.29718018 3.168539  ], sigma noise: [0.3896967  0.40464926 0.38506058 0.28108776]
+[Epoch=200, n_hypersteps=26]: prior precision: [0.53779936 0.2694514  0.29769155 3.2128112 ], sigma noise: [0.39285982 0.40771917 0.3879982  0.2808192 ]
+[Epoch=200, n_hypersteps=27]: prior precision: [0.54186344 0.27295965 0.29783258 3.2757206 ], sigma noise: [0.39497155 0.40967622 0.38990653 0.28015026]
+[Epoch=200, n_hypersteps=28]: prior precision: [0.54497874 0.27698848 0.29762855 3.3525722 ], sigma noise: [0.39600846 0.41049728 0.3907668  0.27908945]
+[Epoch=200, n_hypersteps=29]: prior precision: [0.54705316 0.28143442 0.29710862 3.4380777 ], sigma noise: [0.39601696 0.41023442 0.39062718 0.27766737]
+[Epoch=300, n_hypersteps=0]: prior precision: [0.54807186 0.28619096 0.29631144 3.5264227 ], sigma noise: [0.3951049  0.40900528 0.38959476 0.27593273]
+[Epoch=300, n_hypersteps=1]: prior precision: [0.5490689  0.2903324  0.29528323 3.5735962 ], sigma noise: [0.3931245  0.40655714 0.38748768 0.27381635]
+[Epoch=300, n_hypersteps=2]: prior precision: [0.5500194  0.2937971  0.29406828 3.5789065 ], sigma noise: [0.39031675 0.4031617  0.38454562 0.27141008]
+[Epoch=300, n_hypersteps=3]: prior precision: [0.5509041 0.2965467 0.2927114 3.5464542], sigma noise: [0.38695663 0.39912558 0.38103983 0.2688141 ]
+[Epoch=300, n_hypersteps=4]: prior precision: [0.55171996 0.29856902 0.29125696 3.4838362 ], sigma noise: [0.38333228 0.39476687 0.37725314 0.26613107]
+[Epoch=300, n_hypersteps=5]: prior precision: [0.5524725  0.29987508 0.28974852 3.4004328 ], sigma noise: [0.37972575 0.39039302 0.37346143 0.26346052]
+[Epoch=300, n_hypersteps=6]: prior precision: [0.553155   0.30049777 0.2882282  3.306013  ], sigma noise: [0.37639573 0.3862831  0.36991593 0.2608933 ]
+[Epoch=300, n_hypersteps=7]: prior precision: [0.55378336 0.30048746 0.28673202 3.2096329 ], sigma noise: [0.37356406 0.38267344 0.36683202 0.258507  ]
+[Epoch=300, n_hypersteps=8]: prior precision: [0.55435973 0.29990977 0.28529096 3.118909  ], sigma noise: [0.37140542 0.37974703 0.3643773  0.2563619 ]
+[Epoch=300, n_hypersteps=9]: prior precision: [0.55487883 0.29884076 0.2839303  3.0397077 ], sigma noise: [0.37004    0.37762737 0.3626662  0.25449803]
+[Epoch=300, n_hypersteps=10]: prior precision: [0.5553295  0.29736075 0.2826695  2.976102  ], sigma noise: [0.36953005 0.3763758  0.3617572  0.25293395]
+[Epoch=300, n_hypersteps=11]: prior precision: [0.5556982  0.29555336 0.2815245  2.9305048 ], sigma noise: [0.36987984 0.37599337 0.36165208 0.25166693]
+[Epoch=300, n_hypersteps=12]: prior precision: [0.5559687  0.2935012  0.28050277 2.9038756 ], sigma noise: [0.37103903 0.3764246  0.36230174 0.25067475]
+[Epoch=300, n_hypersteps=13]: prior precision: [0.5561301  0.29128247 0.2796092  2.89599   ], sigma noise: [0.37290812 0.3775656  0.36361125 0.24991925]
+[Epoch=300, n_hypersteps=14]: prior precision: [0.55615956 0.28897044 0.27884498 2.9056513 ], sigma noise: [0.3753478  0.37927324 0.36544892 0.24935035]
+[Epoch=300, n_hypersteps=15]: prior precision: [0.556034  0.2866317 0.2782071 2.9308436], sigma noise: [0.37818915 0.38137707 0.367656   0.24891126]
+[Epoch=300, n_hypersteps=16]: prior precision: [0.5557543  0.28432533 0.27768707 2.9688935 ], sigma noise: [0.381246   0.38369158 0.37005916 0.24854329]
+[Epoch=300, n_hypersteps=17]: prior precision: [0.5553115  0.2821025  0.27727914 3.0165353 ], sigma noise: [0.38432738 0.38603023 0.37248328 0.24819058]
+[Epoch=300, n_hypersteps=18]: prior precision: [0.5547069  0.28000563 0.2769717  3.0700362 ], sigma noise: [0.38725197 0.38821825 0.37476486 0.24780376]
+[Epoch=300, n_hypersteps=19]: prior precision: [0.553957  0.2780704 0.2767538 3.1253572], sigma noise: [0.3898605  0.39010474 0.37676018 0.24734288]
+[Epoch=300, n_hypersteps=20]: prior precision: [0.5530945  0.2763261  0.27661693 3.1784484 ], sigma noise: [0.39202622 0.39157215 0.3783586  0.24677911]
+[Epoch=300, n_hypersteps=21]: prior precision: [0.55215377 0.27479464 0.27655402 3.2254703 ], sigma noise: [0.3936632  0.39254355 0.37948605 0.24609548]
+[Epoch=300, n_hypersteps=22]: prior precision: [0.55116826 0.27349108 0.276556   3.2632113 ], sigma noise: [0.39472988 0.39298525 0.38010874 0.24528661]
+[Epoch=300, n_hypersteps=23]: prior precision: [0.55019283 0.27242538 0.2766182  3.2894068 ], sigma noise: [0.3952301  0.39290634 0.38023338 0.24435791]
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.198 MB of 0.198 MB uploaded (0.000 MB deduped)wandb: \ 0.209 MB of 0.287 MB uploaded (0.000 MB deduped)wandb: | 0.209 MB of 0.287 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb:                          Loss █▂▂▂▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                       Metrics █▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:  Negative_marginal_likelihood █▅▃▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: Predictive_posterior_std_mean █▃▁▁
+wandb:                   Sigma_noise █▅▄▂▁▁▁▁▂▂▂▂▂▂▁▁▁▂▂▂▂▂▂▁▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+wandb: 
+wandb: Run summary:
+wandb:                          Loss 0.48193
+wandb:                       Metrics 0.47463
+wandb:  Negative_marginal_likelihood 1204.34192
+wandb: Predictive_posterior_std_mean 0.71062
+wandb:                   Sigma_noise 0.70513
+wandb: 
+wandb: 🚀 View run eternal-sweep-2 at: https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/px1hovwx
+wandb: Synced 6 W&B file(s), 8 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230815_165810-px1hovwx/logs
+wandb: Agent Starting Run: 52szkrnr with config:
+wandb: 	activation_cls: leakyrelu
+wandb: 	hidden_sizes: 64
+wandb: 	lr: 0.001
+wandb: wandb version 0.15.8 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.5
+wandb: Run data is saved locally in /scratch/work/zhangx18/Reproduced-LA-NAM/wandb/run-20230815_165932-52szkrnr
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run gentle-sweep-3
+wandb: ⭐️ View project at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0
+wandb: 🧹 View sweep at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/sweeps/3nlgh559
+wandb: 🚀 View run at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/52szkrnr
+[Epoch=300, n_hypersteps=24]: prior precision: [0.5492791  0.2716015  0.27673247 3.3029463 ], sigma noise: [0.39520964 0.39235494 0.37990344 0.24332397]
+[Epoch=300, n_hypersteps=25]: prior precision: [0.5484658  0.27101967 0.276892   3.303947  ], sigma noise: [0.39474952 0.39141107 0.37919372 0.24220659]
+[Epoch=300, n_hypersteps=26]: prior precision: [0.54779744 0.27067485 0.2770901  3.2936766 ], sigma noise: [0.39395657 0.39017785 0.3782004  0.24103266]
+[Epoch=300, n_hypersteps=27]: prior precision: [0.54730916 0.27055722 0.2773254  3.2743182 ], sigma noise: [0.39295375 0.38877192 0.37703362 0.23983176]
+[Epoch=300, n_hypersteps=28]: prior precision: [0.54702526 0.27065387 0.277591   3.2486053 ], sigma noise: [0.39186868 0.3873131  0.37580544 0.23863384]
+[Epoch=300, n_hypersteps=29]: prior precision: [0.5469574  0.27094692 0.27788413 3.219581  ], sigma noise: [0.39082354 0.38591522 0.37462476 0.237467  ]
+[Epoch=400, n_hypersteps=0]: prior precision: [0.54709476 0.27141622 0.27819926 3.1902127 ], sigma noise: [0.3899263  0.38467792 0.37358716 0.23635554]
+[Epoch=400, n_hypersteps=1]: prior precision: [0.54512966 0.26969016 0.2786144  3.1918287 ], sigma noise: [0.38926867 0.3835196  0.3728519  0.23533499]
+[Epoch=400, n_hypersteps=2]: prior precision: [0.5414005  0.26606843 0.2791157  3.2215116 ], sigma noise: [0.38891253 0.38251245 0.37246454 0.23441665]
+[Epoch=400, n_hypersteps=3]: prior precision: [0.536316  0.260904  0.2796883 3.2753103], sigma noise: [0.38889277 0.38170132 0.37244743 0.23360519]
+[Epoch=400, n_hypersteps=4]: prior precision: [0.53033155 0.2545727  0.28031343 3.3483593 ], sigma noise: [0.3892156  0.38110328 0.37279934 0.2328989 ]
+[Epoch=400, n_hypersteps=5]: prior precision: [0.52388984 0.24744327 0.28097337 3.434867  ], sigma noise: [0.3898603  0.3807094  0.3734952  0.23229006]
+[Epoch=400, n_hypersteps=6]: prior precision: [0.5174155  0.23985521 0.28165022 3.52819   ], sigma noise: [0.3907826  0.38048896 0.37448993 0.23176599]
+[Epoch=400, n_hypersteps=7]: prior precision: [0.5112778  0.23210555 0.2823257  3.621118  ], sigma noise: [0.39191955 0.3803938  0.37572187 0.2313104 ]
+[Epoch=400, n_hypersteps=8]: prior precision: [0.50576097 0.22444132 0.28298193 3.7062933 ], sigma noise: [0.39319488 0.3803654  0.3771189  0.23090497]
+[Epoch=400, n_hypersteps=9]: prior precision: [0.5010993  0.21706104 0.28360552 3.7769747 ], sigma noise: [0.3945268  0.38034132 0.37860388 0.23053092]
+[Epoch=400, n_hypersteps=10]: prior precision: [0.4974438  0.21011567 0.2841793  3.8278697 ], sigma noise: [0.39583465 0.3802603  0.38010082 0.23017052]
+[Epoch=400, n_hypersteps=11]: prior precision: [0.49487504 0.20371445 0.28469154 3.8558133 ], sigma noise: [0.39704493 0.38006938 0.38153994 0.22980836]
+[Epoch=400, n_hypersteps=12]: prior precision: [0.49342138 0.19792888 0.2851323  3.8601649 ], sigma noise: [0.39809713 0.37972748 0.38286275 0.22943231]
+[Epoch=400, n_hypersteps=13]: prior precision: [0.49304387 0.19280244 0.28549474 3.8427663 ], sigma noise: [0.39894825 0.37920862 0.3840267  0.22903405]
+[Epoch=400, n_hypersteps=14]: prior precision: [0.49365994 0.18835539 0.28577423 3.8074791 ], sigma noise: [0.39957464 0.3785035  0.3850068  0.2286094 ]
+[Epoch=400, n_hypersteps=15]: prior precision: [0.49513593 0.18458949 0.28596956 3.7595098 ], sigma noise: [0.39997303 0.37761858 0.38579577 0.22815803]
+[Epoch=400, n_hypersteps=16]: prior precision: [0.49731475 0.1814918  0.28608146 3.7046168 ], sigma noise: [0.4001594  0.3765753  0.38640407 0.22768323]
+[Epoch=400, n_hypersteps=17]: prior precision: [0.50002086 0.17904134 0.28611287 3.6484423 ], sigma noise: [0.40016574 0.37540677 0.38685676 0.22719108]
+[Epoch=400, n_hypersteps=18]: prior precision: [0.5030512  0.17720942 0.28606877 3.59595   ], sigma noise: [0.40003538 0.37415403 0.3871904  0.22668977]
+[Epoch=400, n_hypersteps=19]: prior precision: [0.5062013  0.17596425 0.28595552 3.55115   ], sigma noise: [0.3998197  0.3728625  0.3874479  0.22618856]
+[Epoch=400, n_hypersteps=20]: prior precision: [0.5092935  0.17526726 0.28578216 3.516894  ], sigma noise: [0.39957199 0.3715766  0.38767543 0.22569692]
+[Epoch=400, n_hypersteps=21]: prior precision: [0.51214164 0.17507832 0.28555828 3.4948857 ], sigma noise: [0.39934233 0.37033847 0.38791677 0.22522362]
+[Epoch=400, n_hypersteps=22]: prior precision: [0.514592   0.17535155 0.28529057 3.4857042 ], sigma noise: [0.39917377 0.36918223 0.38821042 0.22477601]
+[Epoch=400, n_hypersteps=23]: prior precision: [0.51654303 0.17604494 0.2849884  3.4889207 ], sigma noise: [0.39909956 0.36813378 0.3885853  0.22435944]
+[Epoch=400, n_hypersteps=24]: prior precision: [0.51790696 0.17711145 0.28466097 3.503237  ], sigma noise: [0.3991402  0.3672085  0.38905978 0.22397693]
+[Epoch=400, n_hypersteps=25]: prior precision: [0.5186432  0.17850108 0.28431717 3.5266662 ], sigma noise: [0.39930308 0.36641118 0.38964027 0.22362903]
+[Epoch=400, n_hypersteps=26]: prior precision: [0.5187548  0.18016401 0.28396505 3.5566323 ], sigma noise: [0.39958277 0.365737   0.3903208  0.22331402]
+[Epoch=400, n_hypersteps=27]: prior precision: [0.5182967  0.18204817 0.2836099  3.5902119 ], sigma noise: [0.39996225 0.36517218 0.3910847  0.22302815]
+[Epoch=400, n_hypersteps=28]: prior precision: [0.51734847 0.18410122 0.28326    3.6243355 ], sigma noise: [0.4004163  0.3646972  0.39190748 0.22276624]
+[Epoch=400, n_hypersteps=29]: prior precision: [0.5160128  0.18627127 0.2829164  3.6560607 ], sigma noise: [0.4009137  0.3642887  0.3927596  0.22252218]
+MARGLIK: finished training. Recover best model and fit Laplace.
+Configuration: 
+ Config(experiment_name='LANAM-Grid-2', data_path='LANAM/data/datasets', likelihood='regression', prior_sigma_noise=0.7, num_epochs=400, batch_size=128, wandb=False, log_loss_frequency=100, lr=0.001, lr_hyp=0.1, n_epochs_burnin=50, n_hypersteps=30, marglik_frequency=100, hidden_sizes=[64], activation=True, activation_cls='leakyrelu')
+Model summary: 
+ LaNAM(
+  (lossfunc): MSELoss()
+  (_feature_nns): ModuleList(
+    (0-3): 4 x FeatureNN(
+      (model): Sequential(
+        (0): Linear(in_features=1, out_features=64, bias=True)
+        (1): LeakyReLU(negative_slope=0.01)
+        (2): Linear(in_features=64, out_features=1, bias=True)
+      )
+    )
+  )
+)
+[Epoch=100, n_hypersteps=0]: prior precision: [1. 1. 1. 1.], sigma noise: [1. 1. 1. 1.]
+[Epoch=100, n_hypersteps=1]: prior precision: [0.9048374 0.9048374 0.9048374 0.9048374], sigma noise: [0.9048374 0.9048374 0.9048374 0.9048374]
+[Epoch=100, n_hypersteps=2]: prior precision: [0.8192909  0.81922674 0.8191229  0.8193059 ], sigma noise: [0.8188488  0.8188489  0.81884074 0.8188425 ]
+[Epoch=100, n_hypersteps=3]: prior precision: [0.7427303  0.74249333 0.7421226  0.74279517], sigma noise: [0.7412555  0.74125594 0.74122626 0.7412327 ]
+[Epoch=100, n_hypersteps=4]: prior precision: [0.67452615 0.6739645  0.6731132  0.6747029 ], sigma noise: [0.6713729  0.6713738  0.67130375 0.67131907]
+[Epoch=100, n_hypersteps=5]: prior precision: [0.6140562  0.61297816 0.61139196 0.61444455], sigma noise: [0.60861087 0.60861295 0.6084768  0.60850644]
+[Epoch=100, n_hypersteps=6]: prior precision: [0.5607106  0.55889106 0.55628484 0.5614556 ], sigma noise: [0.5524794  0.55248415 0.55224717 0.55229765]
+[Epoch=100, n_hypersteps=7]: prior precision: [0.51389545 0.5110829  0.5071533  0.5151892 ], sigma noise: [0.5025985  0.50260895 0.50222373 0.50230247]
+[Epoch=100, n_hypersteps=8]: prior precision: [0.47303778 0.46896598 0.46339777 0.47512016], sigma noise: [0.45871484 0.45873666 0.45813656 0.45825168]
+[Epoch=100, n_hypersteps=9]: prior precision: [0.4375943  0.43198502 0.4244622  0.44074583], sigma noise: [0.4207196  0.42076287 0.41985363 0.42001358]
+[Epoch=100, n_hypersteps=10]: prior precision: [0.40704304 0.39962146 0.38983297 0.41158813], sigma noise: [0.3886574  0.38873854 0.38738728 0.38759908]
+[Epoch=100, n_hypersteps=11]: prior precision: [0.3808918  0.37139285 0.35904494 0.38716453], sigma noise: [0.3626946  0.3628383  0.36086434 0.3611329 ]
+[Epoch=100, n_hypersteps=12]: prior precision: [0.3586791  0.34685954 0.33167505 0.36703208], sigma noise: [0.34300947 0.34324905 0.34042147 0.34075055]
+[Epoch=100, n_hypersteps=13]: prior precision: [0.3399851  0.3256135  0.30734026 0.35076714], sigma noise: [0.32961255 0.3299875  0.32604107 0.32643113]
+[Epoch=100, n_hypersteps=14]: prior precision: [0.3244138  0.30728355 0.28569898 0.33795342], sigma noise: [0.32220438 0.32275623 0.31741032 0.31786227]
+[Epoch=100, n_hypersteps=15]: prior precision: [0.31161213 0.2915391  0.2664473  0.3282053 ], sigma noise: [0.32019582 0.3209647  0.31393927 0.31445432]
+[Epoch=100, n_hypersteps=16]: prior precision: [0.30126655 0.27807897 0.2493066  0.3211752 ], sigma noise: [0.32285583 0.32388183 0.31488964 0.31547356]
+[Epoch=100, n_hypersteps=17]: prior precision: [0.2930894  0.26663738 0.23403953 0.3165571 ], sigma noise: [0.32944885 0.3307739  0.31950915 0.32017148]
+[Epoch=100, n_hypersteps=18]: prior precision: [0.2868339  0.25697565 0.22043014 0.3140684 ], sigma noise: [0.33929142 0.34096116 0.32708952 0.32784316]
+[Epoch=100, n_hypersteps=19]: prior precision: [0.2822794  0.24889007 0.20829298 0.3134688 ], sigma noise: [0.35173985 0.3538043  0.33696342 0.337825  ]
+[Epoch=100, n_hypersteps=20]: prior precision: [0.2792322  0.24219547 0.19745907 0.3145272 ], sigma noise: [0.3661551  0.36866632 0.3484789  0.3494705 ]
+[Epoch=100, n_hypersteps=21]: prior precision: [0.27752098 0.23673435 0.18778409 0.31705248], sigma noise: [0.38187072 0.38487834 0.36098173 0.3621272 ]
+[Epoch=100, n_hypersteps=22]: prior precision: [0.27699912 0.23237263 0.17914188 0.32085782], sigma noise: [0.39817855 0.40172505 0.373811   0.37513733]
+[Epoch=100, n_hypersteps=23]: prior precision: [0.27753296 0.2289851  0.17142138 0.3257711 ], sigma noise: [0.41433966 0.4184536  0.38631672 0.38785037]
+[Epoch=100, n_hypersteps=24]: prior precision: [0.27900124 0.22646916 0.16452245 0.33162263], sigma noise: [0.42961702 0.43430704 0.3978892  0.39965382]
+[Epoch=100, n_hypersteps=25]: prior precision: [0.28129038 0.22473234 0.15835272 0.33825094], sigma noise: [0.44332346 0.44857246 0.4079977  0.41001004]
+[Epoch=100, n_hypersteps=26]: prior precision: [0.28429633 0.22369842 0.15283982 0.3454975 ], sigma noise: [0.4548722  0.46063563 0.41622066 0.41849023]
+[Epoch=100, n_hypersteps=27]: prior precision: [0.28792563 0.22329721 0.1479144  0.35320753], sigma noise: [0.46382147 0.4700295  0.42226806 0.42479458]
+[Epoch=100, n_hypersteps=28]: prior precision: [0.29209733 0.22346881 0.14351982 0.36122242], sigma noise: [0.46990433 0.47646728 0.42599255 0.42876482]
+[Epoch=100, n_hypersteps=29]: prior precision: [0.29672557 0.2241628  0.13960165 0.3693999 ], sigma noise: [0.47303608 0.4798541  0.4273832  0.4303795 ]
+[Epoch=200, n_hypersteps=0]: prior precision: [0.3017315  0.22533278 0.13611443 0.3775979 ], sigma noise: [0.47330812 0.48027748 0.42654985 0.42974374]
+[Epoch=200, n_hypersteps=1]: prior precision: [0.30646494 0.2259855  0.13299377 0.38626423], sigma noise: [0.4692115  0.47612768 0.42246917 0.4258033 ]
+[Epoch=200, n_hypersteps=2]: prior precision: [0.31088176 0.2261533  0.13021047 0.39526865], sigma noise: [0.46141604 0.46811318 0.41563734 0.4190561 ]
+[Epoch=200, n_hypersteps=3]: prior precision: [0.31494248 0.22587724 0.12773798 0.40449598], sigma noise: [0.45070338 0.45705798 0.40661985 0.4100724 ]
+[Epoch=200, n_hypersteps=4]: prior precision: [0.3186272  0.22520255 0.12554957 0.41382626], sigma noise: [0.4378959  0.44382766 0.3960137  0.39945638]
+[Epoch=200, n_hypersteps=5]: prior precision: [0.32192442 0.22418419 0.12362362 0.42317602], sigma noise: [0.42380708 0.4292747  0.38441116 0.38781315]
+[Epoch=200, n_hypersteps=6]: prior precision: [0.32483208 0.22287562 0.12193687 0.43243942], sigma noise: [0.4092045  0.41420147 0.37238464 0.37572584]
+[Epoch=200, n_hypersteps=7]: prior precision: [0.32735425 0.22133166 0.1204715  0.4415331 ], sigma noise: [0.39478815 0.39933625 0.3604682  0.36374   ]
+[Epoch=200, n_hypersteps=8]: prior precision: [0.32950348 0.21960635 0.11920755 0.45037186], sigma noise: [0.38117644 0.38531646 0.3491436  0.35234997]
+[Epoch=200, n_hypersteps=9]: prior precision: [0.33129767 0.2177498  0.11813002 0.45886457], sigma noise: [0.36889508 0.3726829  0.3388367  0.3419886 ]
+[Epoch=200, n_hypersteps=10]: prior precision: [0.33275932 0.21580763 0.11722576 0.46696088], sigma noise: [0.35837045 0.3618707  0.3299024  0.33301622]
+[Epoch=200, n_hypersteps=11]: prior precision: [0.3339129  0.21382096 0.11648481 0.47458023], sigma noise: [0.34992048 0.35320234 0.32261518 0.32571113]
+[Epoch=200, n_hypersteps=12]: prior precision: [0.33478191 0.2118275  0.11588933 0.4816344 ], sigma noise: [0.34375072 0.34688324 0.3171526  0.32025945]
+[Epoch=200, n_hypersteps=13]: prior precision: [0.33537337 0.20986152 0.11543862 0.4880406 ], sigma noise: [0.33994853 0.34300002 0.31359705 0.3167471 ]
+[Epoch=200, n_hypersteps=14]: prior precision: [0.33570716 0.20794775 0.11511348 0.49372762], sigma noise: [0.33849072 0.34152558 0.31193814 0.31516308]
+[Epoch=200, n_hypersteps=15]: prior precision: [0.3357999  0.20610473 0.11491042 0.49859574], sigma noise: [0.3392512  0.34233135 0.31206638 0.31540146]
+[Epoch=200, n_hypersteps=16]: prior precision: [0.3356755  0.20434533 0.11482482 0.5025505 ], sigma noise: [0.34201428 0.34519655 0.31380078 0.3172763 ]
+[Epoch=200, n_hypersteps=17]: prior precision: [0.33534658 0.20267773 0.11484113 0.5055333 ], sigma noise: [0.3464898  0.34982428 0.3168872  0.32053456]
+[Epoch=200, n_hypersteps=18]: prior precision: [0.33481917 0.20111053 0.11494926 0.50748444], sigma noise: [0.3523261  0.35585633 0.32102805 0.3248716 ]
+[Epoch=200, n_hypersteps=19]: prior precision: [0.33412227 0.19965725 0.11514285 0.5083734 ], sigma noise: [0.35912755 0.36288974 0.3258953  0.32994923]
+[Epoch=200, n_hypersteps=20]: prior precision: [0.3332666  0.19831398 0.11541387 0.5081918 ], sigma noise: [0.36646768 0.37048885 0.33113286 0.33541095]
+[Epoch=200, n_hypersteps=21]: prior precision: [0.33225578 0.19707823 0.11575034 0.5069582 ], sigma noise: [0.37391198 0.3782067  0.33640316 0.3409012 ]
+[Epoch=200, n_hypersteps=22]: prior precision: [0.33111194 0.19595459 0.11614527 0.5047648 ], sigma noise: [0.38103813 0.38560975 0.34138018 0.34608945]
+[Epoch=200, n_hypersteps=23]: prior precision: [0.32985884 0.19493508 0.11660324 0.5016838 ], sigma noise: [0.38746247 0.39230078 0.3457831  0.3506833 ]
+[Epoch=200, n_hypersteps=24]: prior precision: [0.32851508 0.19401906 0.11711112 0.4978381 ], sigma noise: [0.3928641 0.3979465 0.3493868 0.3544478]
+[Epoch=200, n_hypersteps=25]: prior precision: [0.32708827 0.19320112 0.117664   0.4933925 ], sigma noise: [0.39700344 0.40229514 0.35202795 0.35721433]
+[Epoch=200, n_hypersteps=26]: prior precision: [0.325611   0.19248377 0.11825719 0.48849052], sigma noise: [0.39973602 0.40519717 0.353618   0.3588902 ]
+[Epoch=200, n_hypersteps=27]: prior precision: [0.32410398 0.19186354 0.1188818  0.48330107], sigma noise: [0.40101779 0.40660152 0.35414177 0.35945538]
+[Epoch=200, n_hypersteps=28]: prior precision: [0.32260153 0.19133715 0.11953102 0.47800937], sigma noise: [0.40090138 0.40655857 0.35364562 0.35896024]
+[Epoch=200, n_hypersteps=29]: prior precision: [0.32113442 0.19090395 0.12020233 0.47277093], sigma noise: [0.3995225  0.4052096  0.35223278 0.3575151 ]
+[Epoch=300, n_hypersteps=0]: prior precision: [0.31972227 0.19055973 0.12089224 0.46774212], sigma noise: [0.39708617 0.40276536 0.35005435 0.35527572]
+[Epoch=300, n_hypersteps=1]: prior precision: [0.31825045 0.19039705 0.12156647 0.46385252], sigma noise: [0.3936322  0.39936486 0.3471372  0.3523025 ]
+[Epoch=300, n_hypersteps=2]: prior precision: [0.3167491  0.19040553 0.12221942 0.46110165], sigma noise: [0.38947102 0.39531815 0.34369975 0.3488236 ]
+[Epoch=300, n_hypersteps=3]: prior precision: [0.315272   0.19057666 0.12285432 0.4594845 ], sigma noise: [0.3849271  0.39095    0.33997372 0.34507716]
+[Epoch=300, n_hypersteps=4]: prior precision: [0.3138484  0.19090006 0.12346885 0.45898595], sigma noise: [0.3803165  0.38657793 0.3361894  0.3412955 ]
+[Epoch=300, n_hypersteps=5]: prior precision: [0.31250143 0.19135831 0.12405291 0.45953777], sigma noise: [0.37592852 0.38249642 0.33256012 0.33769295]
+/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/utils/plotting.py:58: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  fig_indiv, axs = plt.subplots(rows, cols, figsize=figsize)
+[Epoch=300, n_hypersteps=6]: prior precision: [0.311264   0.19194266 0.12461285 0.4610675 ], sigma noise: [0.37201238 0.37895718 0.32926318 0.3344559 ]
+[Epoch=300, n_hypersteps=7]: prior precision: [0.31015778 0.19263065 0.12514988 0.4634962 ], sigma noise: [0.36876598 0.37616336 0.32644826 0.33173236]
+[Epoch=300, n_hypersteps=8]: prior precision: [0.30919996 0.19341215 0.12566255 0.46674117], sigma noise: [0.36632913 0.37425846 0.32421726 0.3296271 ]
+[Epoch=300, n_hypersteps=9]: prior precision: [0.30841303 0.19426797 0.12615015 0.47065842], sigma noise: [0.3647792  0.37332454 0.32262632 0.32819876]
+[Epoch=300, n_hypersteps=10]: prior precision: [0.30779228 0.19518381 0.12660916 0.47510606], sigma noise: [0.36413172 0.3733823  0.32168987 0.32745764]
+[Epoch=300, n_hypersteps=11]: prior precision: [0.30733496 0.19614099 0.12704517 0.47993982], sigma noise: [0.3643457  0.37438917 0.32137462 0.32737142]
+[Epoch=300, n_hypersteps=12]: prior precision: [0.3070322  0.19712053 0.12744762 0.48496917], sigma noise: [0.36532858 0.37624854 0.32161415 0.32786715]
+[Epoch=300, n_hypersteps=13]: prior precision: [0.306871   0.19809607 0.1278197  0.49005497], sigma noise: [0.36694604 0.37882125 0.32229704 0.32884178]
+[Epoch=300, n_hypersteps=14]: prior precision: [0.30684078 0.19905524 0.1281609  0.49501988], sigma noise: [0.36903408 0.38193238 0.3233108  0.3301686 ]
+[Epoch=300, n_hypersteps=15]: prior precision: [0.30692735 0.19998068 0.12846862 0.49971923], sigma noise: [0.37140852 0.38538074 0.32451934 0.33170784]
+[Epoch=300, n_hypersteps=16]: prior precision: [0.3071064  0.20085059 0.12875016 0.5040136 ], sigma noise: [0.37387908 0.38895297 0.32578957 0.33331686]
+[Epoch=300, n_hypersteps=17]: prior precision: [0.30736107 0.20165329 0.12901083 0.5077667 ], sigma noise: [0.37626326 0.39244592 0.32699507 0.33486134]
+[Epoch=300, n_hypersteps=18]: prior precision: [0.30767688 0.20237803 0.12924573 0.51087576], sigma noise: [0.3783972  0.3956701  0.32802022 0.33622205]
+[Epoch=300, n_hypersteps=19]: prior precision: [0.30803874 0.20301157 0.12945572 0.5132588 ], sigma noise: [0.38014734 0.39846537 0.32878146 0.33730328]
+[Epoch=300, n_hypersteps=20]: prior precision: [0.3084328  0.2035508  0.12963763 0.51489365], sigma noise: [0.38141808 0.40071413 0.32921565 0.33803758]
+[Epoch=300, n_hypersteps=21]: prior precision: [0.30884555 0.20399348 0.12978809 0.5157562 ], sigma noise: [0.38215473 0.4023467  0.32929397 0.33838844]
+[Epoch=300, n_hypersteps=22]: prior precision: [0.30925903 0.20433481 0.12991285 0.51590306], sigma noise: [0.3823456  0.40334016 0.3290125  0.33834958]
+[Epoch=300, n_hypersteps=23]: prior precision: [0.30966896 0.20457703 0.13000928 0.51538557], sigma noise: [0.38201913 0.4037184  0.32839417 0.3379428 ]
+[Epoch=300, n_hypersteps=24]: prior precision: [0.31006095 0.20472562 0.13008413 0.514312  ], sigma noise: [0.3812399  0.40354967 0.32748368 0.3372145 ]
+[Epoch=300, n_hypersteps=25]: prior precision: [0.31043488 0.20478511 0.13013978 0.51276344], sigma noise: [0.38009962 0.40293682 0.3263356  0.33623087]
+[Epoch=300, n_hypersteps=26]: prior precision: [0.31078452 0.20476002 0.13018095 0.510829  ], sigma noise: [0.3787078  0.40200675 0.32502863 0.3350708 ]
+[Epoch=300, n_hypersteps=27]: prior precision: [0.31111008 0.20465922 0.13020194 0.5086308 ], sigma noise: [0.37718278 0.40089712 0.32363924 0.33381918]
+[Epoch=300, n_hypersteps=28]: prior precision: [0.3114043  0.20449354 0.1302058  0.50629056], sigma noise: [0.37564275 0.39974588 0.32224783 0.332561  ]
+[Epoch=300, n_hypersteps=29]: prior precision: [0.31167755 0.20427762 0.13019368 0.5039345 ], sigma noise: [0.37419593 0.39868322 0.32092592 0.3313734 ]
+[Epoch=400, n_hypersteps=0]: prior precision: [0.3119197  0.20401806 0.13016324 0.5016654 ], sigma noise: [0.3729348  0.39781994 0.31973258 0.33032286]
+[Epoch=400, n_hypersteps=1]: prior precision: [0.31248343 0.20314598 0.1302961  0.50005525], sigma noise: [0.3717316  0.3968496  0.31863162 0.32929513]
+[Epoch=400, n_hypersteps=2]: prior precision: [0.3133388  0.20174044 0.13057673 0.49908498], sigma noise: [0.3706677  0.39588848 0.3176748  0.32835063]
+[Epoch=400, n_hypersteps=3]: prior precision: [0.3144469  0.19989105 0.13099122 0.49876204], sigma noise: [0.36981064 0.3950326  0.3169009  0.32754084]
+[Epoch=400, n_hypersteps=4]: prior precision: [0.31575122 0.19768411 0.13152573 0.4990344 ], sigma noise: [0.36920926 0.3943555  0.31633946 0.32690233]
+[Epoch=400, n_hypersteps=5]: prior precision: [0.31720874 0.19521    0.13217182 0.49984887], sigma noise: [0.36889178 0.3939041  0.31600225 0.32645538]
+[Epoch=400, n_hypersteps=6]: prior precision: [0.31878135 0.19255239 0.1329112  0.5011318 ], sigma noise: [0.3688638  0.39369738 0.31589085 0.32620725]
+[Epoch=400, n_hypersteps=7]: prior precision: [0.3204238  0.18978505 0.13372889 0.50278974], sigma noise: [0.36911213 0.39373    0.31599888 0.32614797]
+[Epoch=400, n_hypersteps=8]: prior precision: [0.32208407 0.18698016 0.13462256 0.5047494 ], sigma noise: [0.36960334 0.39397314 0.31629694 0.32625556]
+[Epoch=400, n_hypersteps=9]: prior precision: [0.32372457 0.18419781 0.13557166 0.50690204], sigma noise: [0.37029138 0.39437836 0.31675592 0.32649767]
+[Epoch=400, n_hypersteps=10]: prior precision: [0.3253046  0.18148807 0.1365632  0.5091658 ], sigma noise: [0.3711188  0.39488378 0.31733066 0.32683483]
+[Epoch=400, n_hypersteps=11]: prior precision: [0.32678014 0.17889453 0.1375949  0.51144266], sigma noise: [0.3720237  0.39542276 0.3179813  0.3272232 ]
+[Epoch=400, n_hypersteps=12]: prior precision: [0.32813188 0.17645475 0.1386473  0.51366705], sigma noise: [0.37294367 0.39592907 0.3186682  0.32761896]
+[Epoch=400, n_hypersteps=13]: prior precision: [0.3293272  0.17419651 0.1397054  0.515743  ], sigma noise: [0.37382075 0.39633974 0.31934762 0.3279836 ]
+[Epoch=400, n_hypersteps=14]: prior precision: [0.33035088 0.17213742 0.1407655  0.51759845], sigma noise: [0.37460607 0.396605   0.31998318 0.32828337]
+[Epoch=400, n_hypersteps=15]: prior precision: [0.3311947  0.17029293 0.14181367 0.5191846 ], sigma noise: [0.37526125 0.39668745 0.32054827 0.32849303]
+[Epoch=400, n_hypersteps=16]: prior precision: [0.33184698 0.16867441 0.14284055 0.52046996], sigma noise: [0.37576368 0.39656487 0.32102564 0.32859918]
+[Epoch=400, n_hypersteps=17]: prior precision: [0.3323021  0.1672813  0.14384083 0.5214277 ], sigma noise: [0.376105   0.3962349  0.32141057 0.32859594]
+[Epoch=400, n_hypersteps=18]: prior precision: [0.3325556  0.16611405 0.14481106 0.5220408 ], sigma noise: [0.3762906 0.3957123 0.3217048 0.3284885]
+[Epoch=400, n_hypersteps=19]: prior precision: [0.33262998 0.16516997 0.14574039 0.52232724], sigma noise: [0.3763381  0.39502224 0.32191962 0.32829037]
+[Epoch=400, n_hypersteps=20]: prior precision: [0.33253682 0.1644407  0.14662    0.5223114 ], sigma noise: [0.3762751  0.39420316 0.32207233 0.3280202 ]
+[Epoch=400, n_hypersteps=21]: prior precision: [0.33229184 0.16392268 0.14744584 0.5220153 ], sigma noise: [0.37613535 0.39329854 0.3221837  0.32770208]
+[Epoch=400, n_hypersteps=22]: prior precision: [0.33191705 0.16359945 0.14821993 0.5214879 ], sigma noise: [0.37595612 0.3923542  0.32227522 0.32736206]
+[Epoch=400, n_hypersteps=23]: prior precision: [0.3314384  0.16345584 0.14893524 0.52076656], sigma noise: [0.37577504 0.39141878 0.32236552 0.32702628]
+[Epoch=400, n_hypersteps=24]: prior precision: [0.33087844 0.16348466 0.14959039 0.51990914], sigma noise: [0.37562636 0.39053088 0.32247803 0.32671818]
+[Epoch=400, n_hypersteps=25]: prior precision: [0.3302656  0.16367148 0.15018182 0.51895237], sigma noise: [0.3755376  0.38972437 0.32263058 0.32645717]
+[Epoch=400, n_hypersteps=26]: prior precision: [0.3296181  0.16399077 0.15071885 0.51795995], sigma noise: [0.37552872 0.38902232 0.32283643 0.32625622]
+[Epoch=400, n_hypersteps=27]: prior precision: [0.32895508 0.16443437 0.15118983 0.5169704 ], sigma noise: [0.37560943 0.38843578 0.32310423 0.32612237]
+[Epoch=400, n_hypersteps=28]: prior precision: [0.32829726 0.16498557 0.15160243 0.5160397 ], sigma noise: [0.37578222 0.3879681  0.32343364 0.3260563 ]
+wandb: Waiting for W&B process to finish... (success).
+wandb: 
+wandb: Run history:
+wandb:                          Loss █▇▅▅▄▃▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                       Metrics █▇▅▅▄▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:  Negative_marginal_likelihood █▅▃▂▂▃▃▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: Predictive_posterior_std_mean █▄▂▁
+wandb:                   Sigma_noise █▅▃▂▁▁▁▂▂▂▂▂▂▁▁▁▁▁▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb:                          Loss 0.48811
+wandb:                       Metrics 0.48194
+wandb:  Negative_marginal_likelihood 1221.48657
+wandb: Predictive_posterior_std_mean 0.71312
+wandb:                   Sigma_noise 0.7091
+wandb: 
+wandb: 🚀 View run gentle-sweep-3 at: https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/52szkrnr
+wandb: Synced 6 W&B file(s), 8 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230815_165932-52szkrnr/logs
+wandb: Agent Starting Run: 6q9yxxhk with config:
+wandb: 	activation_cls: leakyrelu
+wandb: 	hidden_sizes: 1024
+wandb: 	lr: 0.1
+wandb: wandb version 0.15.8 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.5
+wandb: Run data is saved locally in /scratch/work/zhangx18/Reproduced-LA-NAM/wandb/run-20230815_170055-6q9yxxhk
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run wise-sweep-4
+wandb: ⭐️ View project at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0
+wandb: 🧹 View sweep at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/sweeps/3nlgh559
+wandb: 🚀 View run at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/6q9yxxhk
+[Epoch=400, n_hypersteps=29]: prior precision: [0.32764795 0.1656264  0.15195087 0.51516485], sigma noise: [0.3760397  0.38761377 0.32381636 0.32605544]
+MARGLIK: finished training. Recover best model and fit Laplace.
+Configuration: 
+ Config(experiment_name='LANAM-Grid-2', data_path='LANAM/data/datasets', likelihood='regression', prior_sigma_noise=0.7, num_epochs=400, batch_size=128, wandb=False, log_loss_frequency=100, lr=0.1, lr_hyp=0.1, n_epochs_burnin=50, n_hypersteps=30, marglik_frequency=100, hidden_sizes=[1024], activation=True, activation_cls='leakyrelu')
+Model summary: 
+ LaNAM(
+  (lossfunc): MSELoss()
+  (_feature_nns): ModuleList(
+    (0-3): 4 x FeatureNN(
+      (model): Sequential(
+        (0): Linear(in_features=1, out_features=1024, bias=True)
+        (1): LeakyReLU(negative_slope=0.01)
+        (2): Linear(in_features=1024, out_features=1, bias=True)
+      )
+    )
+  )
+)
+[Epoch=100, n_hypersteps=0]: prior precision: [1. 1. 1. 1.], sigma noise: [1. 1. 1. 1.]
+[Epoch=100, n_hypersteps=1]: prior precision: [0.9048374 0.9048374 0.9048374 0.9048374], sigma noise: [0.9048374 0.9048374 0.9048374 0.9048374]
+[Epoch=100, n_hypersteps=2]: prior precision: [0.819117   0.8191229  0.81911695 0.8191067 ], sigma noise: [0.81884277 0.81884843 0.8188476  0.8188388 ]
+[Epoch=100, n_hypersteps=3]: prior precision: [0.7421122  0.74213076 0.7421112  0.7420764 ], sigma noise: [0.74123174 0.7412518  0.74124926 0.74121696]
+[Epoch=100, n_hypersteps=4]: prior precision: [0.673114  0.6731507 0.6731101 0.6730339], sigma noise: [0.6713113 0.6713579 0.6713529 0.6712759]
+[Epoch=100, n_hypersteps=5]: prior precision: [0.61143863 0.6114958  0.61142814 0.6112929 ], sigma noise: [0.60847956 0.60856855 0.60856074 0.60840946]
+[Epoch=100, n_hypersteps=6]: prior precision: [0.55643374 0.5565089  0.55641085 0.55619913], sigma noise: [0.5522277 0.55238   0.5523697 0.5521032]
+[Epoch=100, n_hypersteps=7]: prior precision: [0.50748277 0.50756764 0.5074399  0.50713503], sigma noise: [0.5021474  0.5023917  0.50237983 0.5019407 ]
+[Epoch=100, n_hypersteps=8]: prior precision: [0.46400774 0.46408755 0.46393573 0.46352187], sigma noise: [0.45794195 0.45831805 0.45830655 0.4576132 ]
+[Epoch=100, n_hypersteps=9]: prior precision: [0.4254707  0.42552432 0.4253595  0.42482144], sigma noise: [0.4194396  0.42000428 0.41999614 0.41893148]
+[Epoch=100, n_hypersteps=10]: prior precision: [0.39137378 0.39137423 0.39121324 0.39053577], sigma noise: [0.3866012  0.38743535 0.3874351  0.385832  ]
+[Epoch=100, n_hypersteps=11]: prior precision: [0.36125797 0.36117375 0.3610385  0.3602067 ], sigma noise: [0.35950106 0.3607171  0.36073068 0.35835832]
+[Epoch=100, n_hypersteps=12]: prior precision: [0.33470166 0.33449802 0.3344146  0.3334135 ], sigma noise: [0.33825397 0.3399984  0.340033   0.33659217]
+[Epoch=100, n_hypersteps=13]: prior precision: [0.31131786 0.31095898 0.3109559  0.30977127], sigma noise: [0.32287952 0.32532567 0.3253897  0.32052636]
+[Epoch=100, n_hypersteps=14]: prior precision: [0.29075274 0.2902035  0.29030988 0.28892857], sigma noise: [0.31316558 0.3164994  0.31660062 0.30993682]
+[Epoch=100, n_hypersteps=15]: prior precision: [0.2726837  0.27191174 0.27215478 0.27056605], sigma noise: [0.3086387 0.3130451 0.3131947 0.3043483]
+[Epoch=100, n_hypersteps=16]: prior precision: [0.2568187  0.25579533 0.2561984  0.25439507], sigma noise: [0.30865595 0.31431744 0.3145276  0.30311862]
+[Epoch=100, n_hypersteps=17]: prior precision: [0.24289536 0.2415964  0.24217844 0.24015643], sigma noise: [0.3125316  0.3196335  0.31991905 0.30555794]
+[Epoch=100, n_hypersteps=18]: prior precision: [0.23067965 0.22908555 0.22986047 0.22761883], sigma noise: [0.31961045 0.32834646 0.3287262  0.3110018 ]
+[Epoch=100, n_hypersteps=19]: prior precision: [0.21996425 0.21805999 0.21903606 0.21657762], sigma noise: [0.32927904 0.33985186 0.34034976 0.3188297 ]
+[Epoch=100, n_hypersteps=20]: prior precision: [0.21056654 0.20834114 0.20952195 0.20685273], sigma noise: [0.3409477  0.3535597  0.354206   0.32845098]
+[Epoch=100, n_hypersteps=21]: prior precision: [0.2023263  0.19977275 0.20115735 0.19828609], sigma noise: [0.35402423 0.3688599  0.36969128 0.3392901 ]
+[Epoch=100, n_hypersteps=22]: prior precision: [0.19510396 0.19221823 0.19380188 0.1907398 ], sigma noise: [0.36790046 0.3851006  0.38616037 0.35077867]
+[Epoch=100, n_hypersteps=23]: prior precision: [0.18877824 0.18555875 0.18733338 0.18409385], sigma noise: [0.38195506 0.4015868  0.40292183 0.3623625 ]
+[Epoch=100, n_hypersteps=24]: prior precision: [0.18324406 0.17969106 0.1816461  0.17824443], sigma noise: [0.3955728  0.4176008  0.41925815 0.37351605]
+[Epoch=100, n_hypersteps=25]: prior precision: [0.17841081 0.17452596 0.17664917 0.17310175], sigma noise: [0.40817446 0.4324408  0.43446293 0.38376683]
+[Epoch=100, n_hypersteps=26]: prior precision: [0.17420074 0.16998647 0.17226462 0.16858846], sigma noise: [0.4192515  0.44546974 0.44788855 0.3927183 ]
+[Epoch=100, n_hypersteps=27]: prior precision: [0.17054719 0.16600648 0.16842593 0.1646379 ], sigma noise: [0.42839646 0.45616424 0.45899746 0.40006545]
+[Epoch=100, n_hypersteps=28]: prior precision: [0.16739315 0.16252935 0.16507645 0.16119298], sigma noise: [0.43532497 0.46415317 0.4674032  0.40560675]
+[Epoch=100, n_hypersteps=29]: prior precision: [0.16469038 0.15950662 0.16216852 0.15820481], sigma noise: [0.4398866  0.46923828 0.4728906  0.4092445 ]
+[Epoch=200, n_hypersteps=0]: prior precision: [0.16239786 0.15689701 0.15966202 0.15563169], sigma noise: [0.44206256 0.47139683 0.47542107 0.41097698]
+[Epoch=200, n_hypersteps=1]: prior precision: [0.16016355 0.15418047 0.15745826 0.15329705], sigma noise: [0.4416037  0.47019735 0.47520038 0.41071653]
+[Epoch=200, n_hypersteps=2]: prior precision: [0.15799463 0.1513897  0.15553664 0.15118596], sigma noise: [0.43876314 0.46599948 0.47248733 0.40864608]
+[Epoch=200, n_hypersteps=3]: prior precision: [0.1558986  0.14855514 0.15387975 0.14928575], sigma noise: [0.4338854  0.4592802  0.4676497  0.40501425]
+[Epoch=200, n_hypersteps=4]: prior precision: [0.15388277 0.14570464 0.15247267 0.14758554], sigma noise: [0.4273758  0.45058638 0.461131   0.40011737]
+[Epoch=200, n_hypersteps=5]: prior precision: [0.15195417 0.14286333 0.1513028  0.14607589], sigma noise: [0.4196735  0.44049242 0.4534184  0.39428276]
+[Epoch=200, n_hypersteps=6]: prior precision: [0.1501192  0.14005357 0.15035918 0.14474835], sigma noise: [0.41122672 0.42956567 0.44501573 0.38784948]
+[Epoch=200, n_hypersteps=7]: prior precision: [0.14838378 0.13729483 0.14963226 0.14359543], sigma noise: [0.4024713  0.41833925 0.4364197  0.3811593 ]
+[Epoch=200, n_hypersteps=8]: prior precision: [0.14675288 0.13460378 0.1491129  0.14261012], sigma noise: [0.3938152  0.40729335 0.4281018  0.37454125]
+[Epoch=200, n_hypersteps=9]: prior precision: [0.14523037 0.13199446 0.14879219 0.14178593], sigma noise: [0.38562378 0.39684182 0.42048872 0.3683009 ]
+[Epoch=200, n_hypersteps=10]: prior precision: [0.14381912 0.12947801 0.1486611  0.14111656], sigma noise: [0.37820956 0.38732225 0.41395167 0.36270803]
+[Epoch=200, n_hypersteps=11]: prior precision: [0.14252065 0.12706324 0.1487104  0.14059499], sigma noise: [0.37182167 0.37899187 0.4087987  0.35798705]
+[Epoch=200, n_hypersteps=12]: prior precision: [0.14133528 0.12475672 0.14893016 0.14021409], sigma noise: [0.36664224 0.37202424 0.40526053 0.3543102 ]
+[Epoch=200, n_hypersteps=13]: prior precision: [0.14026205 0.12256282 0.14930882 0.13996634], sigma noise: [0.36277983 0.36651143 0.4034874  0.35178787]
+[Epoch=200, n_hypersteps=14]: prior precision: [0.13929869 0.12048393 0.14983411 0.13984378], sigma noise: [0.36027157 0.36246824 0.40354556 0.35046718]
+[Epoch=200, n_hypersteps=15]: prior precision: [0.1384415  0.11852091 0.15049243 0.13983731], sigma noise: [0.35908452 0.35983846 0.40541595 0.35033116]
+[Epoch=200, n_hypersteps=16]: prior precision: [0.137686   0.11667318 0.15126905 0.13993788], sigma noise: [0.35912272 0.3585062  0.40899742 0.3513041 ]
+[Epoch=200, n_hypersteps=17]: prior precision: [0.13702685 0.11493897 0.15214871 0.1401356 ], sigma noise: [0.36023796 0.35830608 0.414111   0.35325477]
+[Epoch=200, n_hypersteps=18]: prior precision: [0.13645788 0.1133156  0.15311462 0.14042027], sigma noise: [0.36223924 0.35903624 0.42050746 0.3560083 ]
+[Epoch=200, n_hypersteps=19]: prior precision: [0.13597234 0.11179958 0.15414944 0.14078131], sigma noise: [0.3649045  0.3604723  0.42787573 0.3593567 ]
+[Epoch=200, n_hypersteps=20]: prior precision: [0.13556357 0.11038706 0.15523545 0.1412087 ], sigma noise: [0.3679942  0.36238018 0.435854   0.3630715 ]
+[Epoch=200, n_hypersteps=21]: prior precision: [0.1352246  0.10907382 0.1563552  0.14169207], sigma noise: [0.37126794 0.36452955 0.44404724 0.36691713]
+[Epoch=200, n_hypersteps=22]: prior precision: [0.13494883 0.10785554 0.15749153 0.14222156], sigma noise: [0.37449378 0.3667034  0.45204416 0.37066635]
+[Epoch=200, n_hypersteps=23]: prior precision: [0.1347298  0.10672797 0.15862836 0.14278743], sigma noise: [0.37746263 0.36871147 0.4594466  0.37410948]
+[Epoch=200, n_hypersteps=24]: prior precision: [0.13456166 0.10568687 0.15975104 0.14338142], sigma noise: [0.38       0.37039882 0.46589616 0.37707153]
+[Epoch=200, n_hypersteps=25]: prior precision: [0.13443887 0.10472818 0.16084681 0.14399561], sigma noise: [0.38197353 0.37164897 0.47109896 0.37941623]
+[Epoch=200, n_hypersteps=26]: prior precision: [0.134357   0.10384797 0.16190474 0.14462304], sigma noise: [0.3832978  0.37238872 0.4748503  0.38105547]
+[Epoch=200, n_hypersteps=27]: prior precision: [0.13431206 0.10304267 0.16291644 0.14525793], sigma noise: [0.38393614 0.37258756 0.47704616 0.38195148]
+[Epoch=200, n_hypersteps=28]: prior precision: [0.1343007  0.10230884 0.16387579 0.14589554], sigma noise: [0.38389862 0.37225622 0.4776903  0.3821125 ]
+[Epoch=200, n_hypersteps=29]: prior precision: [0.13432023 0.10164328 0.16477877 0.14653185], sigma noise: [0.38323763 0.37144023 0.47688752 0.38159242]
+[Epoch=300, n_hypersteps=0]: prior precision: [0.13436821 0.10104299 0.16562326 0.14716369], sigma noise: [0.38204277 0.3702154  0.47482657 0.38048288]
+[Epoch=300, n_hypersteps=1]: prior precision: [0.13438798 0.10037535 0.16622092 0.14768118], sigma noise: [0.37996003 0.36816898 0.47065604 0.3782553 ]
+[Epoch=300, n_hypersteps=2]: prior precision: [0.1343833  0.09965208 0.16659029 0.14809194], sigma noise: [0.37719753 0.36549145 0.46486202 0.37514433]
+[Epoch=300, n_hypersteps=3]: prior precision: [0.13435838 0.09888441 0.16675319 0.14840446], sigma noise: [0.37399358 0.36239886 0.45798913 0.37141627]
+[Epoch=300, n_hypersteps=4]: prior precision: [0.1343175  0.09808291 0.16673361 0.14862779], sigma noise: [0.37060007 0.35911915 0.45059097 0.36734965]
+[Epoch=300, n_hypersteps=5]: prior precision: [0.13426493 0.09725739 0.1665565  0.14877124], sigma noise: [0.36726612 0.35587794 0.44319057 0.36321706]
+[Epoch=300, n_hypersteps=6]: prior precision: [0.13420467 0.09641673 0.16624685 0.148844  ], sigma noise: [0.36422336 0.3528851  0.43624908 0.3592686 ]
+[Epoch=300, n_hypersteps=7]: prior precision: [0.13414021 0.09556897 0.16582839 0.14885496], sigma noise: [0.3616734  0.35032293 0.43014538 0.35571864]
+[Epoch=300, n_hypersteps=8]: prior precision: [0.1340742  0.09472122 0.16532297 0.1488124 ], sigma noise: [0.35977647 0.3483368  0.42515898 0.35273466]
+[Epoch=300, n_hypersteps=9]: prior precision: [0.13400877 0.09387966 0.16475011 0.14872386], sigma noise: [0.35864282 0.3470269  0.42146918 0.35043108]
+[Epoch=300, n_hypersteps=10]: prior precision: [0.13394544 0.09304947 0.16412625 0.14859593], sigma noise: [0.35832864 0.34644485 0.41915798 0.34886557]
+[Epoch=300, n_hypersteps=11]: prior precision: [0.13388455 0.09223501 0.16346502 0.14843433], sigma noise: [0.35883513 0.34659258 0.41821384 0.34804028]
+[Epoch=300, n_hypersteps=12]: prior precision: [0.13382594 0.09143981 0.16277736 0.14824378], sigma noise: [0.36011043 0.34742436 0.41854542 0.34790617]
+[Epoch=300, n_hypersteps=13]: prior precision: [0.1337687  0.09066659 0.16207197 0.14802827], sigma noise: [0.36205503 0.34885272 0.41998887 0.34837064]
+[Epoch=300, n_hypersteps=14]: prior precision: [0.13371152 0.08991753 0.16135485 0.147791  ], sigma noise: [0.36453116 0.35075632 0.42232588 0.3493077 ]
+[Epoch=300, n_hypersteps=15]: prior precision: [0.13365291 0.08919405 0.16063058 0.14753462], sigma noise: [0.36737257 0.35299045 0.4252988  0.35056916]
+[Epoch=300, n_hypersteps=16]: prior precision: [0.13359079 0.08849728 0.15990229 0.14726143], sigma noise: [0.37039816 0.35539857 0.42862844 0.35199752]
+[Epoch=300, n_hypersteps=17]: prior precision: [0.1335235  0.08782806 0.15917252 0.14697343], sigma noise: [0.3734236  0.3578233  0.4320344  0.35343742]
+[Epoch=300, n_hypersteps=18]: prior precision: [0.1334494  0.08718681 0.15844359 0.14667259], sigma noise: [0.37627518 0.36011794 0.4352505  0.35474715]
+[Epoch=300, n_hypersteps=19]: prior precision: [0.13336718 0.08657401 0.15771778 0.1463609 ], sigma noise: [0.37880102 0.36215544 0.43804428 0.35580742]
+[Epoch=300, n_hypersteps=20]: prior precision: [0.13327599 0.08598977 0.15699783 0.14604051], sigma noise: [0.38088173 0.36383605 0.44023344 0.35652864]
+[Epoch=300, n_hypersteps=21]: prior precision: [0.13317572 0.08543409 0.15628724 0.1457137 ], sigma noise: [0.38243574 0.36509308 0.4416952  0.35685447]
+[Epoch=300, n_hypersteps=22]: prior precision: [0.13306645 0.08490717 0.15558964 0.14538293], sigma noise: [0.38342366 0.3658949  0.44237348 0.35676336]
+[Epoch=300, n_hypersteps=23]: prior precision: [0.13294904 0.08440907 0.15490936 0.14505094], sigma noise: [0.38384834 0.36624414 0.44227707 0.35626698]
+[Epoch=300, n_hypersteps=24]: prior precision: [0.13282494 0.08393974 0.15425122 0.14472057], sigma noise: [0.3837509  0.36617562 0.44147548 0.35540625]
+[Epoch=300, n_hypersteps=25]: prior precision: [0.13269562 0.0834991  0.15362033 0.14439468], sigma noise: [0.3832054  0.36575007 0.4400875  0.35424596]
+[Epoch=300, n_hypersteps=26]: prior precision: [0.13256302 0.08308705 0.15302195 0.1440762 ], sigma noise: [0.3823098  0.36504847 0.43826762 0.3528679 ]
+[Epoch=300, n_hypersteps=27]: prior precision: [0.13242933 0.0827034  0.1524609  0.14376797], sigma noise: [0.38117763 0.36416423 0.4361905  0.3513637 ]
+[Epoch=300, n_hypersteps=28]: prior precision: [0.13229664 0.08234794 0.15194175 0.14347258], sigma noise: [0.37992707 0.36319572 0.43403116 0.34982723]
+[Epoch=300, n_hypersteps=29]: prior precision: [0.13216709 0.08202034 0.15146828 0.14319235], sigma noise: [0.37867397 0.36223826 0.4319615  0.34834802]
+[Epoch=400, n_hypersteps=0]: prior precision: [0.1320424  0.08172021 0.15104343 0.14292924], sigma noise: [0.377521   0.36137724 0.43013313 0.34700495]
+[Epoch=400, n_hypersteps=1]: prior precision: [0.13167706 0.08134968 0.15042627 0.14250836], sigma noise: [0.3754665  0.35994074 0.42724225 0.3449374 ]
+[Epoch=400, n_hypersteps=2]: prior precision: [0.13109776 0.0809187  0.14964387 0.14194861], sigma noise: [0.37275407 0.35811198 0.42362633 0.3423424 ]
+[Epoch=400, n_hypersteps=3]: prior precision: [0.13033149 0.08043692 0.14872317 0.14126837], sigma noise: [0.36965045 0.35609576 0.4196562  0.33943328]
+[Epoch=400, n_hypersteps=4]: prior precision: [0.12940474 0.07991347 0.14769062 0.14048557], sigma noise: [0.3664215  0.3541006  0.41569874 0.3364221 ]
+[Epoch=400, n_hypersteps=5]: prior precision: [0.12834308 0.07935695 0.1465709  0.13961716], sigma noise: [0.36331272 0.352322   0.41208655 0.3335038 ]
+[Epoch=400, n_hypersteps=6]: prior precision: [0.12717059 0.07877515 0.14538682 0.13867897], sigma noise: [0.36053172 0.3509296  0.40909812 0.33084324]
+[Epoch=400, n_hypersteps=7]: prior precision: [0.12590991 0.07817514 0.14415854 0.13768554], sigma noise: [0.358236   0.35005337 0.40694255 0.32856557]
+[Epoch=400, n_hypersteps=8]: prior precision: [0.12458162 0.07756317 0.1429037  0.13665   ], sigma noise: [0.35652578 0.34977812 0.40574887 0.32675007]
+[Epoch=400, n_hypersteps=9]: prior precision: [0.12320447 0.07694471 0.14163736 0.13558419], sigma noise: [0.35544184 0.35013723 0.40556592 0.32542875]
+[Epoch=400, n_hypersteps=10]: prior precision: [0.12179516 0.07632441 0.14037232 0.13449854], sigma noise: [0.3549681  0.35111332 0.4063618  0.32458842]
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.208 MB of 0.208 MB uploaded (0.000 MB deduped)wandb: \ 0.297 MB of 0.297 MB uploaded (0.000 MB deduped)wandb: | 0.297 MB of 0.297 MB uploaded (0.000 MB deduped)wandb: 
+wandb: Run history:
+wandb:                          Loss █▅▅▄▄▃▃▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                       Metrics █▂▂▂▁▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:  Negative_marginal_likelihood █▅▄▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁
+wandb: Predictive_posterior_std_mean █▄▂▁
+wandb:                   Sigma_noise █▅▃▂▁▁▁▁▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+wandb: 
+wandb: Run summary:
+wandb:                          Loss 0.51647
+wandb:                       Metrics 0.50249
+wandb:  Negative_marginal_likelihood 1282.77307
+wandb: Predictive_posterior_std_mean 0.74088
+wandb:                   Sigma_noise 0.73165
+wandb: 
+wandb: 🚀 View run wise-sweep-4 at: https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/6q9yxxhk
+wandb: Synced 6 W&B file(s), 8 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230815_170055-6q9yxxhk/logs
+wandb: Sweep Agent: Waiting for job.
+wandb: Job received.
+wandb: Agent Starting Run: fynax22z with config:
+wandb: 	activation_cls: leakyrelu
+wandb: 	hidden_sizes: 1024
+wandb: 	lr: 0.01
+wandb: wandb version 0.15.8 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.5
+wandb: Run data is saved locally in /scratch/work/zhangx18/Reproduced-LA-NAM/wandb/run-20230815_171135-fynax22z
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run robust-sweep-5
+wandb: ⭐️ View project at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0
+wandb: 🧹 View sweep at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/sweeps/3nlgh559
+wandb: 🚀 View run at https://wandb.ai/xinyu-zhang/LANAM-grid-basic-synthetic-3.0/runs/fynax22z
+[Epoch=400, n_hypersteps=11]: prior precision: [0.12036837 0.07570627 0.13911852 0.13340223], sigma noise: [0.35503808 0.352642   0.40803498 0.32417652]
+[Epoch=400, n_hypersteps=12]: prior precision: [0.11893686 0.0750936  0.13788396 0.13230313], sigma noise: [0.35554558 0.3546197  0.41042617 0.32410952]
+[Epoch=400, n_hypersteps=13]: prior precision: [0.11751172 0.07448916 0.13667504 0.13120808], sigma noise: [0.35635626 0.3569133  0.4133304  0.32428342]
+[Epoch=400, n_hypersteps=14]: prior precision: [0.11610249 0.0738953  0.13549644 0.13012296], sigma noise: [0.35732245 0.3593723  0.41651297 0.32458475]
+[Epoch=400, n_hypersteps=15]: prior precision: [0.1147173  0.07331388 0.13435203 0.12905282], sigma noise: [0.35829648 0.36184207 0.41973218 0.32490164]
+[Epoch=400, n_hypersteps=16]: prior precision: [0.11336297 0.07274657 0.13324498 0.12800203], sigma noise: [0.35914364 0.3641765  0.42276132 0.32513353]
+[Epoch=400, n_hypersteps=17]: prior precision: [0.11204524 0.07219476 0.13217783 0.12697446], sigma noise: [0.3597531  0.36625096 0.4254026  0.32519886]
+[Epoch=400, n_hypersteps=18]: prior precision: [0.11076903 0.07165965 0.13115263 0.12597345], sigma noise: [0.36004567 0.36797005 0.427503   0.32504034]
+[Epoch=400, n_hypersteps=19]: prior precision: [0.10953842 0.07114231 0.13017155 0.12500188], sigma noise: [0.35997784 0.36927432 0.42896935 0.32462785]
+[Epoch=400, n_hypersteps=20]: prior precision: [0.10835667 0.07064371 0.12923655 0.12406231], sigma noise: [0.35954326 0.3701433  0.42977092 0.3239581 ]
+[Epoch=400, n_hypersteps=21]: prior precision: [0.10722644 0.07016473 0.12834962 0.12315698], sigma noise: [0.35876903 0.37059367 0.4299371  0.32305256]
+[Epoch=400, n_hypersteps=22]: prior precision: [0.10614988 0.0697061  0.12751289 0.12228786], sigma noise: [0.35771078 0.37067565 0.4295501  0.32195318]
+[Epoch=400, n_hypersteps=23]: prior precision: [0.10512856 0.06926849 0.1267282  0.12145659], sigma noise: [0.35644534 0.37046507 0.42873433 0.32071707]
+[Epoch=400, n_hypersteps=24]: prior precision: [0.10416351 0.06885244 0.12599728 0.1206645 ], sigma noise: [0.35506245 0.3700558  0.42764002 0.31941023]
+[Epoch=400, n_hypersteps=25]: prior precision: [0.10325538 0.0684584  0.12532115 0.11991256], sigma noise: [0.35365587 0.36954787 0.42642766 0.3181011 ]
+[Epoch=400, n_hypersteps=26]: prior precision: [0.10240433 0.06808662 0.12470061 0.11920141], sigma noise: [0.3523145  0.3690402  0.42525038 0.3168546 ]
+[Epoch=400, n_hypersteps=27]: prior precision: [0.10161008 0.06773723 0.12413599 0.11853134], sigma noise: [0.35111538 0.36861983 0.42424095 0.31572685]
+[Epoch=400, n_hypersteps=28]: prior precision: [0.100872   0.06741011 0.123627   0.11790236], sigma noise: [0.35011798 0.36835736 0.4235063  0.31476113]
+[Epoch=400, n_hypersteps=29]: prior precision: [0.10018907 0.06710503 0.12317283 0.11731425], sigma noise: [0.34936082 0.3682994  0.42311698 0.31398523]
+MARGLIK: finished training. Recover best model and fit Laplace.
+Configuration: 
+ Config(experiment_name='LANAM-Grid-2', data_path='LANAM/data/datasets', likelihood='regression', prior_sigma_noise=0.7, num_epochs=400, batch_size=128, wandb=False, log_loss_frequency=100, lr=0.01, lr_hyp=0.1, n_epochs_burnin=50, n_hypersteps=30, marglik_frequency=100, hidden_sizes=[1024], activation=True, activation_cls='leakyrelu')
+Model summary: 
+ LaNAM(
+  (lossfunc): MSELoss()
+  (_feature_nns): ModuleList(
+    (0-3): 4 x FeatureNN(
+      (model): Sequential(
+        (0): Linear(in_features=1, out_features=1024, bias=True)
+        (1): LeakyReLU(negative_slope=0.01)
+        (2): Linear(in_features=1024, out_features=1, bias=True)
+      )
+    )
+  )
+)
+[Epoch=100, n_hypersteps=0]: prior precision: [1. 1. 1. 1.], sigma noise: [1. 1. 1. 1.]
+[Epoch=100, n_hypersteps=1]: prior precision: [0.9048374 0.9048374 0.9048374 0.9048374], sigma noise: [0.9048374 0.9048374 0.9048374 0.9048374]
+[Epoch=100, n_hypersteps=2]: prior precision: [0.82712096 0.8217698  0.82081217 0.8197304 ], sigma noise: [0.81888396 0.8188988  0.81890726 0.81882876]
+[Epoch=100, n_hypersteps=3]: prior precision: [0.77930903 0.7533989  0.74901026 0.7444552 ], sigma noise: [0.741383   0.74143934 0.7414713  0.7411813 ]
+[Epoch=100, n_hypersteps=4]: prior precision: [0.7678379  0.70356065 0.69116575 0.6788931 ], sigma noise: [0.67166704 0.6718105  0.6718896  0.67119354]
+[Epoch=100, n_hypersteps=5]: prior precision: [0.7843105 0.6751885 0.649216  0.6230539], sigma noise: [0.60915625 0.6094606  0.609624   0.6082534 ]
+[Epoch=100, n_hypersteps=6]: prior precision: [0.8198964  0.66756743 0.62415504 0.5770414 ], sigma noise: [0.55336905 0.55394065 0.55424565 0.5518394 ]
+[Epoch=100, n_hypersteps=7]: prior precision: [0.86983234 0.6772553  0.61516607 0.540956  ], sigma noise: [0.5039375  0.5049184  0.50545084 0.5015236 ]
+[Epoch=100, n_hypersteps=8]: prior precision: [0.93182766 0.70077246 0.6201473  0.5147639 ], sigma noise: [0.46062434 0.4622002  0.46308166 0.45697716]
+[Epoch=100, n_hypersteps=9]: prior precision: [1.0046754  0.73570096 0.63685733 0.49817884], sigma noise: [0.4233367  0.42575124 0.4271481  0.41797206]
+[Epoch=100, n_hypersteps=10]: prior precision: [1.087412   0.7805654  0.6635347  0.49061716], sigma noise: [0.3921201  0.39569214 0.3978237  0.38437122]
+[Epoch=100, n_hypersteps=11]: prior precision: [1.1785927  0.83443207 0.69895387 0.49129283], sigma noise: [0.36710232 0.3722329  0.37537056 0.35608685]
+[Epoch=100, n_hypersteps=12]: prior precision: [1.2754078  0.89651155 0.74223435 0.49941847], sigma noise: [0.34836313 0.3555189  0.35997015 0.33299646]
+[Epoch=100, n_hypersteps=13]: prior precision: [1.3725662 0.9657298 0.7925767 0.5142815], sigma noise: [0.33576715 0.34544083 0.35151902 0.3148361 ]
+[Epoch=100, n_hypersteps=14]: prior precision: [1.4615253 1.0402128 0.8489532 0.5353109], sigma noise: [0.32887894 0.34155232 0.34955478 0.3011351 ]
+[Epoch=100, n_hypersteps=15]: prior precision: [1.5316836  1.1166751  0.90975004 0.5620355 ], sigma noise: [0.32702947 0.34316456 0.35337445 0.29124627]
+[Epoch=100, n_hypersteps=16]: prior precision: [1.5743215  1.1899333  0.97238076 0.59403795], sigma noise: [0.32945812 0.3495119  0.36221683 0.28443936]
+[Epoch=100, n_hypersteps=17]: prior precision: [1.5863633 1.2531402 1.0329891 0.6308728], sigma noise: [0.33541682 0.35985678 0.3753643  0.27999184]
+[Epoch=100, n_hypersteps=18]: prior precision: [1.5703999  1.2993144  1.0865942  0.67198026], sigma noise: [0.344202   0.3735032  0.39214265 0.27724373]
+[Epoch=100, n_hypersteps=19]: prior precision: [1.5321758 1.3236841 1.1279472 0.7166391], sigma noise: [0.3551407  0.38975632 0.41186073 0.27562216]
+[Epoch=100, n_hypersteps=20]: prior precision: [1.4782859  1.3251231  1.1529553  0.76380086], sigma noise: [0.36756548 0.40786904 0.43373394 0.2746502 ]
+[Epoch=100, n_hypersteps=21]: prior precision: [1.4149705 1.3057812 1.1598413 0.8120071], sigma noise: [0.38080212 0.42700577 0.4568242  0.27394906]
+[Epoch=100, n_hypersteps=22]: prior precision: [1.3476499 1.2697045 1.1493118 0.8594323], sigma noise: [0.3941759  0.44623983 0.4800228  0.27323464]
+[Epoch=100, n_hypersteps=23]: prior precision: [1.2808288  1.22156    1.1238848  0.90390944], sigma noise: [0.40703714 0.46459314 0.50209326 0.27231005]
+[Epoch=100, n_hypersteps=24]: prior precision: [1.218109  1.165858  1.0869846 0.9432236], sigma noise: [0.41879734 0.48111275 0.5217804  0.27105293]
+[Epoch=100, n_hypersteps=25]: prior precision: [1.1622423 1.1065936 1.0422337 0.9753526], sigma noise: [0.4289647  0.49496576 0.5379618  0.26940095]
+[Epoch=100, n_hypersteps=26]: prior precision: [1.1151704  1.0471226  0.9930319  0.99873537], sigma noise: [0.43717116 0.50552636 0.54979813 0.2673367 ]
+[Epoch=100, n_hypersteps=27]: prior precision: [1.0780905  0.99016035 0.9423559  1.0125905 ], sigma noise: [0.44318724 0.5124329  0.55683404 0.2648748 ]
+[Epoch=100, n_hypersteps=28]: prior precision: [1.0515379 0.9378283 0.8926962 1.0169488], sigma noise: [0.44692376 0.51560456 0.5590256  0.26205105]
+[Epoch=100, n_hypersteps=29]: prior precision: [1.0355134  0.8917133  0.84605783 1.012634  ], sigma noise: [0.44842398 0.51522124 0.5566993  0.25891498]
+[Epoch=200, n_hypersteps=0]: prior precision: [1.0296135  0.8529235  0.80399245 1.000962  ], sigma noise: [0.44784844 0.51167655 0.55046684 0.2555247 ]
+[Epoch=200, n_hypersteps=1]: prior precision: [1.0143306  0.8092347  0.75920826 0.9821736 ], sigma noise: [0.44374403 0.5032479  0.538331   0.2517207 ]
+[Epoch=200, n_hypersteps=2]: prior precision: [0.99205446 0.7638924  0.7141856  0.9582323 ], sigma noise: [0.43671057 0.49102876 0.5218271  0.24759786]
+[Epoch=200, n_hypersteps=3]: prior precision: [0.9654355  0.71947074 0.67083573 0.9310875 ], sigma noise: [0.4274501  0.47618127 0.5024835  0.24325514]
+[Epoch=200, n_hypersteps=4]: prior precision: [0.9370903  0.6779248  0.63056856 0.902579  ], sigma noise: [0.41671762 0.459849   0.4817174  0.23879576]
+[Epoch=200, n_hypersteps=5]: prior precision: [0.9093957  0.6406567  0.59436166 0.8742851 ], sigma noise: [0.40528116 0.4431018  0.46078122 0.23432907]
+[Epoch=200, n_hypersteps=6]: prior precision: [0.8843674 0.608597  0.5628361 0.8475412], sigma noise: [0.39388818 0.42690158 0.4407392  0.2299692 ]
+[Epoch=200, n_hypersteps=7]: prior precision: [0.86358756 0.5822763  0.5363262  0.8234246 ], sigma noise: [0.38323632 0.41208065 0.42245948 0.22583278]
+[Epoch=200, n_hypersteps=8]: prior precision: [0.8481649  0.56190187 0.51493555 0.802676  ], sigma noise: [0.37394536 0.3993246  0.40661168 0.22203293]
+[Epoch=200, n_hypersteps=9]: prior precision: [0.8387447  0.54743344 0.49860114 0.7858464 ], sigma noise: [0.36652708 0.38915554 0.3936638  0.21867093]
+[Epoch=200, n_hypersteps=10]: prior precision: [0.83554274 0.5386533  0.48713842 0.77325034], sigma noise: [0.36135763 0.38191912 0.38388562 0.21582605]
+[Epoch=200, n_hypersteps=11]: prior precision: [0.8383903  0.53522503 0.48028374 0.76498663], sigma noise: [0.35865673 0.37777913 0.3773564  0.21354483]
+[Epoch=200, n_hypersteps=12]: prior precision: [0.84677565 0.5367349  0.4777206  0.7610561 ], sigma noise: [0.35847998 0.3767238  0.373984   0.21183465]
+[Epoch=200, n_hypersteps=13]: prior precision: [0.85989743 0.5427152  0.4791034  0.7612828 ], sigma noise: [0.3607258  0.3785849  0.37353498 0.21066235]
+[Epoch=200, n_hypersteps=14]: prior precision: [0.87667257 0.55265063 0.4840689  0.7653365 ], sigma noise: [0.3651517  0.38306078 0.37566188 0.20995963]
+[Epoch=200, n_hypersteps=15]: prior precision: [0.8957584  0.5659692  0.49223018 0.77279466], sigma noise: [0.37139502 0.38973787 0.37993312 0.20963165]
+[Epoch=200, n_hypersteps=16]: prior precision: [0.9155974  0.5820229  0.50317603 0.7832031 ], sigma noise: [0.37899396 0.39810845 0.38585347 0.20956971]
+[Epoch=200, n_hypersteps=17]: prior precision: [0.93449473 0.6000769  0.51645887 0.79603064], sigma noise: [0.38741085 0.40758958 0.39288595 0.20966242]
+[Epoch=200, n_hypersteps=18]: prior precision: [0.95076054 0.6192975  0.53159004 0.8106508 ], sigma noise: [0.39606228 0.41754544 0.40047404 0.20980728]
+[Epoch=200, n_hypersteps=19]: prior precision: [0.9628923  0.63876605 0.5480311  0.8263854 ], sigma noise: [0.40435597 0.42732066 0.4080691  0.20991588]
+[Epoch=200, n_hypersteps=20]: prior precision: [0.9697938  0.6575124  0.56519485 0.842527  ], sigma noise: [0.41173673 0.4362847  0.4151611  0.20991896]
+[Epoch=200, n_hypersteps=21]: prior precision: [0.97091526 0.67457515 0.58245736 0.8583171 ], sigma noise: [0.4177331  0.44388044 0.42131108 0.20976745]
+[Epoch=200, n_hypersteps=22]: prior precision: [0.9663301  0.68908256 0.5991842  0.8730657 ], sigma noise: [0.42199814 0.44967318 0.4261786  0.20943119]
+[Epoch=200, n_hypersteps=23]: prior precision: [0.95669365 0.70033777 0.6147584  0.88616407], sigma noise: [0.42433643 0.45338774 0.42954254 0.20889737]
+[Epoch=200, n_hypersteps=24]: prior precision: [0.9431125  0.7078895  0.62861747 0.8970978 ], sigma noise: [0.42471272 0.45492652 0.4313115  0.20816822]
+[Epoch=200, n_hypersteps=25]: prior precision: [0.9269694  0.71157515 0.64029545 0.90546167], sigma noise: [0.42324257 0.4543678  0.4315203  0.20725891]
+[Epoch=200, n_hypersteps=26]: prior precision: [0.9097637  0.71152294 0.64945555 0.91115004], sigma noise: [0.42016834 0.45194492 0.430318   0.2061943 ]
+[Epoch=200, n_hypersteps=27]: prior precision: [0.8929607  0.7081189  0.65591264 0.9140561 ], sigma noise: [0.41582677 0.44801188 0.42794743 0.2050064 ]
+[Epoch=200, n_hypersteps=28]: prior precision: [0.87786067 0.70194745 0.6596364  0.9144042 ], sigma noise: [0.41061154 0.44300225 0.42471948 0.2037337 ]
+[Epoch=200, n_hypersteps=29]: prior precision: [0.86554086 0.6937141  0.6607472  0.91246307], sigma noise: [0.404938   0.43738696 0.4209844  0.20241794]
+[Epoch=300, n_hypersteps=0]: prior precision: [0.85679513 0.6841704  0.65949386 0.9086024 ], sigma noise: [0.3992111  0.43163556 0.4171036  0.20110232]
+[Epoch=300, n_hypersteps=1]: prior precision: [0.84565336 0.66458076 0.6541959  0.9136176 ], sigma noise: [0.39368632 0.42551282 0.41336372 0.1998712 ]
+[Epoch=300, n_hypersteps=2]: prior precision: [0.83339196 0.6378448  0.6455829  0.9265944 ], sigma noise: [0.38870496 0.4194941  0.4100986  0.19876026]
+[Epoch=300, n_hypersteps=3]: prior precision: [0.8211815 0.6067387 0.6344648 0.9465807], sigma noise: [0.3845486  0.41398016 0.40759715 0.19779992]
+[Epoch=300, n_hypersteps=4]: prior precision: [0.8100033  0.5736678  0.62165415 0.9723999 ], sigma noise: [0.3814252  0.4092761  0.40608472 0.19701417]
+[Epoch=300, n_hypersteps=5]: prior precision: [0.80060667 0.5405588  0.6079117  1.0026889 ], sigma noise: [0.37946045 0.40557998 0.40571058 0.19641705]
+[Epoch=300, n_hypersteps=6]: prior precision: [0.79349184 0.5088509  0.5939063  1.0358518 ], sigma noise: [0.37869573 0.40298122 0.40653878 0.19601071]
+[Epoch=300, n_hypersteps=7]: prior precision: [0.7889024 0.479536  0.5801927 1.0700018], sigma noise: [0.37908936 0.40146706 0.40854636 0.1957855 ]
+[Epoch=300, n_hypersteps=8]: prior precision: [0.7868609  0.45323384 0.56720895 1.1031108 ], sigma noise: [0.38052523 0.4009358  0.4116272  0.19572079]
+[Epoch=300, n_hypersteps=9]: prior precision: [0.7871856  0.43027344 0.55527526 1.1331471 ], sigma noise: [0.38282347 0.40121558 0.41560093 0.19578736]
+[Epoch=300, n_hypersteps=10]: prior precision: [0.78954035 0.41076985 0.5446107  1.1582491 ], sigma noise: [0.38575596 0.40208456 0.42022696 0.19595063]
+[Epoch=300, n_hypersteps=11]: prior precision: [0.79346716 0.39468846 0.53534657 1.1769428 ], sigma noise: [0.38906354 0.40329483 0.4252217  0.19617301]
+[Epoch=300, n_hypersteps=12]: prior precision: [0.7984231  0.38190046 0.5275453  1.1882162 ], sigma noise: [0.39247617 0.4045943  0.43028152 0.19641852]
+[Epoch=300, n_hypersteps=13]: prior precision: [0.80383706 0.37222317 0.5212137  1.1917512 ], sigma noise: [0.39573377 0.40574875 0.43510556 0.19665433]
+[Epoch=300, n_hypersteps=14]: prior precision: [0.80914116 0.36544684 0.5163193  1.1879139 ], sigma noise: [0.39860588 0.40656045 0.43942058 0.19685392]
+[Epoch=300, n_hypersteps=15]: prior precision: [0.8138321  0.3613547  0.51279867 1.1776876 ], sigma noise: [0.40090933 0.4068817  0.4430036  0.19699784]
+[Epoch=300, n_hypersteps=16]: prior precision: [0.81750995 0.3597315  0.510571   1.1624864 ], sigma noise: [0.40252048 0.40662378 0.44569913 0.1970742 ]
+[Epoch=300, n_hypersteps=17]: prior precision: [0.8199081  0.36036578 0.5095393  1.143911  ], sigma noise: [0.40338296 0.40576008 0.44742993 0.19707853]
+[Epoch=300, n_hypersteps=18]: prior precision: [0.8209141  0.36305112 0.50959885 1.1235994 ], sigma noise: [0.4035074  0.4043221  0.44820052 0.19701344]
+[Epoch=300, n_hypersteps=19]: prior precision: [0.82057047 0.36758226 0.5106392  1.1031027 ], sigma noise: [0.40296614 0.40239152 0.44809124 0.19688761]
+[Epoch=300, n_hypersteps=20]: prior precision: [0.81904584 0.3737505  0.5125442  1.0838192 ], sigma noise: [0.40188166 0.40008882 0.4472458  0.19671455]
+[Epoch=300, n_hypersteps=21]: prior precision: [0.81661767 0.38133818 0.5151939  1.0668573 ], sigma noise: [0.40041184 0.39755952 0.44585356 0.19651139]
+[Epoch=300, n_hypersteps=22]: prior precision: [0.8136302  0.39011118 0.51846117 1.0530584 ], sigma noise: [0.3987339  0.39495975 0.44412974 0.1962973 ]
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 21146171.0 ON csl47 CANCELLED AT 2023-08-15T18:00:58 DUE TO TIME LIMIT ***
+slurmstepd: error: *** JOB 21146171 ON csl47 CANCELLED AT 2023-08-15T18:00:58 DUE TO TIME LIMIT ***

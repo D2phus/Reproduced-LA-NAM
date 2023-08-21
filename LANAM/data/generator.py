@@ -18,6 +18,9 @@ def exp_shape2(x):
 def linear_shape(x, slope=0.3, bias=-0.7):
     return slope*x + bias
 
+def sin_shape(x):
+    return torch.sin(x)
+
 def zero_shape(x):
     return torch.zeros_like(x)
 
@@ -38,6 +41,7 @@ def sparse_task():
     gen_funcs = [pow_shape, exp_shape1, exp_shape2, zero_shape, zero_shape, zero_shape, zero_shape, zero_shape]
     gen_funcs_name = [lambda func=x: func.__name__ for x in gen_funcs]
     return gen_funcs, gen_funcs_name
+
 
 class SingleFeatureDataset(torch.utils.data.Dataset):
     def __init__(self, X, y):

@@ -1,2 +1,2 @@
-from .exu import BatchGradExU, ExU
+from .exu import ExU
 from .relu import LinearReLU

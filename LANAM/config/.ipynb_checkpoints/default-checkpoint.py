@@ -6,7 +6,7 @@ from .base import Config
 def defaults() -> Config:
     config = Config(
         
-        experiment_name="LANAM-Grid-1",
+        experiment_name="LANAM-Grid-2",
         data_path = 'LANAM/data/datasets',
         
         likelihood='regression',
@@ -27,7 +27,7 @@ def defaults() -> Config:
         marglik_frequency = 100,
         hidden_sizes=[64],  #hidden linear layers' size 
         activation=True, # use activation or not   
-        activation_cls='relu', 
+        activation_cls='gelu', 
     )
 
     return config

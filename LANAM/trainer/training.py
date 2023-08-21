@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from nam.trainer.losses import penalized_loss
  
 def train(config, 
           model: nn.Module, 

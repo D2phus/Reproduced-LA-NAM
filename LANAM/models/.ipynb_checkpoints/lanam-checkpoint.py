@@ -1,4 +1,6 @@
 """Neural additive model"""
+import copy
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -15,6 +17,10 @@ from typing import List
 from .featurenn import FeatureNN
 from .utils import *
 
+from LANAM.extensions.backpack import BackPackGGNExt
+
+from laplace import Laplace
+
 
 class LaNAM(nn.Module):
     def __init__(
@@ -25,15 +31,13 @@ class LaNAM(nn.Module):
         
         subset_of_weights='all', 
         hessian_structure='full',
+        backend=BackPackGGNExt, 
         prior_mean=0.0, 
         prior_precision=1.0, 
         sigma_noise=1.0, 
         temperature=1.0, 
         ) -> None: # type-check
             """Laplace-approximated additive models.
-            Args:
-            ------------
-            in_features: size of each input sample 
             """
             super(LaNAM, self).__init__()
             self.config = config
@@ -41,6 +45,8 @@ class LaNAM(nn.Module):
         
             self.subset_of_weights = subset_of_weights 
             self.hessian_structure = hessian_structure
+            self.backend = backend
+            
             self.temperature = temperature
             # individual prior for each feature network
             self.prior_mean = prior_mean
@@ -48,13 +54,25 @@ class LaNAM(nn.Module):
             self.sigma_noise = sigma_noise
             
             self.n_outputs = 1
+             
             
-            self._feature_nns = None
+            self._feature_nns = nn.ModuleList([
+                FeatureNN(self.config, 
+                          name=f"FeatureNN_{index}", 
+                          in_features=1, 
+                          feature_index=index, 
+                          subset_of_weights=self.subset_of_weights, 
+                          hessian_structure=self.hessian_structure,
+                          backend=self.backend,
+                          prior_mean=self.prior_mean[index], 
+                          prior_precision=self.prior_precision[index], 
+                          sigma_noise=self.sigma_noise[index], 
+                         temperature=self.temperature)
+                for index in range(self.in_features)
+            ])
             
             self.likelihood = self.config.likelihood
-            self.lossfunc = nn.MSELoss(reduction='sum') if self.likelihood == 'regression' else nn.CrossEntropyLoss(reduction='sum')
             self.factor = 0.5 if self.likelihood=='regression' else 1# constant factor from loss to log likelihood 
-            
             
             
     def extra_repr(self):
@@ -132,7 +150,8 @@ class LaNAM(nn.Module):
                 raise ValueError('Prior precision needs to be at most one-dimensional tensor.')
         else:
             raise ValueError('Prior precision either scalar or torch.Tensor up to 1-dim.')
-         
+        
+        
     @property
     def feature_nns(self): 
         if self._feature_nns is None: # initialize
@@ -143,6 +162,7 @@ class LaNAM(nn.Module):
                           feature_index=index, 
                           subset_of_weights=self.subset_of_weights, 
                           hessian_structure=self.hessian_structure,
+                          backend=self.backend,
                           prior_mean=self.prior_mean[index], 
                           prior_precision=self.prior_precision[index], 
                           sigma_noise=self.sigma_noise[index], 
@@ -150,10 +170,10 @@ class LaNAM(nn.Module):
                 for index in range(self.in_features)
             ])
         else: # update prior
-            for index in range(self.in_features): 
-                self._feature_nns[index].prior_precision = self.prior_precision[index]
-                self._feature_nns[index].sigma_noise = self.sigma_noise[index]
-                
+            for idx, fnn in enumerate(self._feature_nns): 
+                fnn.prior_precision = self.prior_precision[idx]
+                fnn.sigma_noise = self.sigma_noise[idx]
+        
         return self._feature_nns
     
     def _features_output(self, inputs: torch.Tensor) -> Sequence[torch.Tensor]:
@@ -177,6 +197,8 @@ class LaNAM(nn.Module):
             output of each feature net
         """
         fnn = self._features_output(inputs) # list [Tensor(batch_size,  1)]
+        #fnn = [self.feature_nns[index](inputs[:, index]) for index in subset_of_features]
+            
         out = torch.stack(fnn, dim=-1).sum(dim=-1) # sum along the features => of shape (batch_size)
         return out, fnn
     
@@ -201,42 +223,52 @@ class LaNAM(nn.Module):
         self.loss = self.factor*loss 
         
         N = len(loader_fnn[0].dataset)
-        for index in range(self.in_features):
-            self.feature_nns[index].fit(loader_fnn[index], override=override) 
+        
+        for idx, fnn in enumerate(self.feature_nns): 
+            fnn.fit(loader_fnn[idx], override=override) 
+            
         self.n_data += N
             
-    @property 
-    def posterior_covariance(self):
-        """block-diagonal posterior covariance. """
-        factor = self.pos_cov_scale
-        return factor@factor.T
+    #@property 
+    #def posterior_covariance(self):
+    #    """block-diagonal posterior covariance. """
+    #    factor = self.pos_cov_scale
+    #    return factor@factor.T
     
-    @property
-    def pos_cov_scale(self):
-        """the lower-triangular factor of posterior covariance."""
-        return _precision_to_scale_tril(self.posterior_precision)
+    #@property
+    #def pos_cov_scale(self):
+    #    """the lower-triangular factor of posterior covariance."""
+    #    return _precision_to_scale_tril(self.posterior_precision)
     
-    @property
-    def posterior_precision(self): 
-        """block-diagonal posterior precision. """
-        pos_prec = [self.feature_nns[index].posterior_precision for index in range(self.in_features)] 
-        return torch.block_diag(*pos_prec)
+    #@property
+    #def posterior_precision(self): 
+    #    """block-diagonal posterior precision. """
+    #    pos_prec = [self.feature_nns[index].posterior_precision for index in range(self.in_features)] 
+    #    return torch.block_diag(*pos_prec)
     
     def predict(self, x, pred_type='glm', link_approx='probit'): 
         """can only be called after calling `fit` method.
         predictive posterior which can be decomposed across individual feature networks.
         Note that the predictive posterior of features networks may shift to accommodate for a global intercept and should be re-centered around zero before visualization.
+        
+        Args:
+        ----------------
+        x of shape (batch_size, in_features)
+        
         Returns: 
+        -----------------
         f_mu of shape (batch_size)
         f_var of shape (batch_size, 1)
         f_mu_fnn, f_var_fnn of shape (batch_size, in_features)
         """
         f_mu_fnn, f_var_fnn = list(), list()
+        
         for index in range(self.in_features): 
             x_fnn = x[:, index].reshape(-1, 1) # of shape (batch_size, 1)
             f_mu_index, f_var_index = self.feature_nns[index].la(x_fnn, pred_type=pred_type, link_approx=link_approx) 
             f_mu_fnn.append(f_mu_index) 
             f_var_fnn.append(f_var_index)
+            
         f_mu_fnn = torch.cat(f_mu_fnn, dim=1)
         f_var_fnn = torch.cat(f_var_fnn, dim=1)
         return torch.sum(f_mu_fnn, dim=1), torch.sum(f_var_fnn, dim=1), f_mu_fnn, f_var_fnn
@@ -272,8 +304,7 @@ class LaNAM(nn.Module):
             if self.likelihood != 'regression':
                 raise ValueError('Can only change sigma_noise for regression.')
             self.sigma_noise = sigma_noise
-            
-        test_log_marglik = 0.0
+        
         log_marglik += torch.stack([0.5*(fnn.log_det_ratio+fnn.scatter) for fnn in self.feature_nns]).sum()
         
         return self.log_likelihood - log_marglik

@@ -1,9 +1,13 @@
 """DNN-based sub net for each input feature."""
+import copy
+
 import torch
 import torch.nn as nn
 from torch.nn.utils import parameters_to_vector, vector_to_parameters
-from .laplace import laplace
 from .activation import ExU
+
+from laplace import Laplace
+from LANAM.extensions.backpack import BackPackGGNExt
 
 
 class FeatureNN(nn.Module):
@@ -16,6 +20,7 @@ class FeatureNN(nn.Module):
         
         subset_of_weights='all', 
         hessian_structure='full',
+        backend=BackPackGGNExt, 
         prior_mean=0.0, 
         prior_precision=1.0, 
         sigma_noise=1.0, 
@@ -46,6 +51,7 @@ class FeatureNN(nn.Module):
             self.feature_index = feature_index
             self.subset_of_weights = subset_of_weights
             self.hessian_structure = hessian_structure
+            self.backend = backend
             self.prior_mean = prior_mean
             self.prior_precision = prior_precision
             self.sigma_noise = sigma_noise
@@ -58,6 +64,17 @@ class FeatureNN(nn.Module):
             
             self.model = self.setup_model()
             self._la = None
+            
+            
+    def setup_la(self): 
+        self.la  = Laplace(model=self.model, likelihood=self.likelihood,
+                      subset_of_weights=self.subset_of_weights, 
+                      hessian_structure=self.hessian_structure, 
+                      sigma_noise=self.sigma_noise, 
+                      prior_precision=self.prior_precision, 
+                      prior_mean=self.prior_mean, 
+                      temperature=self.temperature, 
+                      backend=self.backend)
 
     def setup_model(self):
         """set up DNN model. 
@@ -94,6 +111,7 @@ class FeatureNN(nn.Module):
             layers.append(nn.Linear(self.hidden_sizes[-1], 1, bias=True))
         return nn.Sequential(*layers)
             
+        
     def forward(self, inputs) -> torch.Tensor:
         """
         Args: 
@@ -105,29 +123,28 @@ class FeatureNN(nn.Module):
         outputs = self.model(outputs)
         return outputs
     
+    
     @property 
-    def la(self):
-        if self._la is None: 
-            self._la = Laplace(self.model, self.likelihood,
-                             subset_of_weights=self.subset_of_weights, 
-                             hessian_structure=self.hessian_structure, 
-                             sigma_noise=self.sigma_noise, # 
-                             prior_precision=self.prior_precision, 
-                             prior_mean=self.prior_mean, 
-                             temperature=self.temperature)
-            
-        else: 
-            self._la.sigma_noise = self.sigma_noise
+    def la(self): 
+        if self._la is None:
+            self._la = Laplace(model=self.model, likelihood=self.likelihood,
+                      subset_of_weights=self.subset_of_weights, 
+                      hessian_structure=self.hessian_structure, 
+                      sigma_noise=self.sigma_noise, 
+                      prior_precision=self.prior_precision, 
+                      prior_mean=self.prior_mean, 
+                      temperature=self.temperature, 
+                      backend=self.backend)
+        else:
             self._la.prior_precision = self.prior_precision
+            self._la.sigma_noise = self.sigma_noise
             
         return self._la
     
+    
     def fit(self, loader, override=True): 
         self.la.fit(loader, override=override)
-    
-    @property
-    def posterior_covariance(self): 
-        return self.la.posterior_covariance
+
     
     @property
     def posterior_precision(self): 
@@ -137,13 +154,19 @@ class FeatureNN(nn.Module):
     def mean(self):
         return self.la.mean
     
+    
     @property 
     def log_det_ratio(self): 
         return self.la.log_det_ratio
     
+    @property
+    def log_det_posterior_precision(self):
+        return self.la.log_det_posterior_precision
+    
     @property 
     def scatter(self): 
         return self.la.scatter 
+    
     
     def log_marginal_likelihood(self, prior_precision=None, sigma_noise=None):
         if prior_precision is not None: 
@@ -152,6 +175,7 @@ class FeatureNN(nn.Module):
             self.sigma_noise = sigma_noise
             
         return self.la.log_marginal_likelihood(self.prior_precision, self.sigma_noise)
+    
     
     def predictive_samples(self, x, pred_type='glm', n_samples=100):
         return self.la.predictive_samples(x, pred_type=pred_type, n_samples=n_samples)

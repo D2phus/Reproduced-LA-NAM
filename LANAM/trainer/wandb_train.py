@@ -1,7 +1,5 @@
 import time 
-from copy import deepcopyimport os
-import sys
-sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir))) # 
+from copy import deepcopy
 from .marglik_training import *
 from LANAM.models import LaNAM
 from LANAM.utils.plotting import *
