@@ -2,6 +2,22 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
  
+    
+def test(likelihood, device, model: nn.Module, dataloader_test) -> float:
+    criterion = lambda f, y: (f-y).square().sum() if likelihood=='regression' else lambda f, y: torch.sum(torch.argmax(f, dim=-1) == y) # mse for regression, accuracy for classification
+    loss = 0.0
+    
+    for  X, y in dataloader_test: 
+        X, y = X.to(device), y.to(device)
+        f_mu, f_mu_fnn= model(X)
+        f, y = f_mu.detach().flatten(), y.flatten() # note the shape
+        step_loss = criterion(f, y)
+        loss += step_loss 
+    
+    loss /= len(dataloader_test.dataset)
+    return loss
+        
+    
 def train(config, 
           model: nn.Module, 
           dataloader_train: torch.utils.data.DataLoader, 

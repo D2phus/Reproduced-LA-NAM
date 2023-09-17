@@ -3,14 +3,11 @@ import torch
 from torch.nn.utils import parameters_to_vector
 from LANAM.utils.output_filter import OutputFilter
 from LANAM.extensions.backpack import BackPackGGNExt
+from LANAM.models.featurenn import FeatureNN
 from laplace import Laplace
 
         
-def feature_interaction_selection(model, 
-                                 train_loader, 
-                                  k=5, 
-                                  subset_of_weights='all', 
-                                ):
+def feature_interaction_selection(model, train_loader, k=5, subset_of_weights='all'):
     """
     Select top k feature interactions among feature pairs. 
     Use fully Hessian approximation: joint posterior information is exactly what we want.
@@ -28,10 +25,12 @@ def feature_interaction_selection(model,
     
     Returns: 
     --------
-    k_pairs, list:
+    k_pairs: list
         top-k feature pairs with more mutual information. k = min(num_all_pairs, k)
+    sorted_mis: Dict{Tuple: float}
+        feature pairs with their mutual information, order by descending mutual information value.
     """
-    if subset_of_weights != 'all':
+    if subset_of_weights not in ['all', 'last_layer']:
         raise ValueError('`subset_of_weights` type is not supported.')
         
     likelihood = model.likelihood
@@ -62,8 +61,8 @@ def feature_interaction_selection(model,
     sorted_mis = {k: v for k, v in sorted(mis.items(), key=lambda item: item[1], reverse=True)}
     k_pairs = list(sorted_mis)[:k] # top-k
     return k_pairs, sorted_mis
-        
-        
+
+    
 def feature_net_params_index(model):
     """The index range of each feature net in the `full`, `all` parameters model posterior precision matrix.
     
@@ -73,7 +72,6 @@ def feature_net_params_index(model):
     """
     in_features = model.in_features 
     P = torch.stack([torch.tensor(len(parameters_to_vector(fnn.parameters()))) for fnn in model.feature_nns]) # (in_features), number of parameters in each feature network 
-    
     fnn_param_index = list()
     for idx in range(in_features):
         s, e = P[:idx].sum().item(), P[:idx+1].sum().item()

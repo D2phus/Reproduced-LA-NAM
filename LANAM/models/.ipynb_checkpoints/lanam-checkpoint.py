@@ -38,10 +38,15 @@ class LaNAM(nn.Module):
         temperature=1.0, 
         ) -> None: # type-check
             """Laplace-approximated additive models.
+            Attrs:
+            ------
+            k_interactions: List[Tuple]
+                top-k feature interaction.
             """
             super(LaNAM, self).__init__()
             self.config = config
             self.in_features = in_features
+            self.k_interactions = None
         
             self.subset_of_weights = subset_of_weights 
             self.hessian_structure = hessian_structure
@@ -77,6 +82,11 @@ class LaNAM(nn.Module):
             
     def extra_repr(self):
         self.feature_nns
+        
+        
+    @property
+    def num_nets(self):
+        return self.in_features if self.k_interactions is None else self.in_features + len(self.k_interactions)
     
     @property
     def sigma_noise(self):
@@ -87,14 +97,15 @@ class LaNAM(nn.Module):
         """The setter for sigma_noise.
         We have individual obervation noise for each feature neural network. 
         """
+        num_feature_net = self.in_features
         if np.isscalar(sigma_noise) and np.isreal(sigma_noise):
-            self._sigma_noise = torch.ones(self.in_features, dtype=torch.float32) * sigma_noise
+            self._sigma_noise = torch.ones(num_feature_net, dtype=torch.float32) * sigma_noise
         elif torch.is_tensor(sigma_noise):
             if sigma_noise.ndim > 1: 
                 raise ValueError('The dimension of sigma noise has to be in [0, 1].')
             if len(sigma_noise) == 1: 
-                self._sigma_noise = torch.ones(self.in_features, dtype=torch.float32) * sigma_noise
-            elif len(sigma_noise) == self.in_features: 
+                self._sigma_noise = torch.ones(num_feature_net, dtype=torch.float32) * sigma_noise
+            elif len(sigma_noise) == num_feature_net: 
                 self._sigma_noise = sigma_noise
             else:
                 raise ValueError('Invalid length of sigma noise.')
@@ -112,14 +123,16 @@ class LaNAM(nn.Module):
         Args:
         prior_mean: real scalar, torch.Tensor of shape (n_features)
         """
+        num_feature_net = self.in_features
+        
         if np.isscalar(prior_mean) and np.isreal(prior_mean):
-            self._prior_mean = torch.ones(self.in_features, dtype=torch.float32) * prior_mean
+            self._prior_mean = torch.ones(num_feature_net, dtype=torch.float32) * prior_mean
         elif torch.is_tensor(prior_mean):
             if prior_mean.ndim > 1: 
                 raise ValueError('The dimension of prior mean has to be in [0, 1].')
             if len(prior_mean) == 1: 
-                self._prior_mean = torch.ones(self.in_features, dtype=torch.float32) * prior_mean
-            elif len(prior_mean) == self.in_features: 
+                self._prior_mean = torch.ones(num_feature_net, dtype=torch.float32) * prior_mean
+            elif len(prior_mean) == num_feature_net: 
                 self._prior_mean = prior_mean
             else:
                 raise ValueError('Invalid length of prior mean.')
@@ -134,15 +147,17 @@ class LaNAM(nn.Module):
     def prior_precision(self, prior_precision):
         """The setter for prior precision.
         We have individual prior for each feature neural network."""
+        num_feature_net = self.in_features
+        
         if np.isscalar(prior_precision) and np.isreal(prior_precision):
-            self._prior_precision = torch.ones(self.in_features, dtype=torch.float32) * prior_precision
+            self._prior_precision = torch.ones(num_feature_net, dtype=torch.float32) * prior_precision
         elif torch.is_tensor(prior_precision):
             if prior_precision.ndim == 0:
                 self._prior_precision = prior_precision.reshape(-1)
             elif prior_precision.ndim == 1:
                 if len(prior_precision) == 1:
-                    self._prior_precision = torch.ones(self.in_features, dtype=torch.float32) * prior_precision
-                elif len(prior_precision) == self.in_features: 
+                    self._prior_precision = torch.ones(num_feature_net, dtype=torch.float32) * prior_precision
+                elif len(prior_precision) == num_feature_net: 
                     self._prior_precision = prior_precision
                 else:
                     raise ValueError('Length of prior precision does not align with architecture.')
@@ -150,7 +165,6 @@ class LaNAM(nn.Module):
                 raise ValueError('Prior precision needs to be at most one-dimensional tensor.')
         else:
             raise ValueError('Prior precision either scalar or torch.Tensor up to 1-dim.')
-        
         
     @property
     def feature_nns(self): 
@@ -176,13 +190,90 @@ class LaNAM(nn.Module):
         
         return self._feature_nns
     
+    @property 
+    def joint_nns(self): 
+        if self._joint_nns is None: 
+            self._joint_nns = nn.ModuleList([
+            FeatureNN(self.config, 
+                  name=f'FeatureNN_{str(indice)}', 
+                  in_features=len(indice),
+                  feature_index=indice,
+                  subset_of_weights=self.subset_of_weights, 
+                  hessian_structure=self.hessian_structure, 
+                  backend=self.backend, 
+                  prior_mean=self.prior_mean[self.in_features+idx], 
+                  prior_precision=self.prior_precision[self.in_features+idx], 
+                  sigma_noise=self.sigma_noise[self.in_features+idx], 
+                  temperature=self.temperature) 
+            for idx, indice in enumerate(self.k_interactions)
+            ])
+            
+        else:
+            for idx, inn in enumerate(self._joint_nns): 
+                inn.prior_precision = self.prior_precision[self.in_features+idx]
+                inn.sigma_noise = self.sigma_noise[self.in_features+idx]
+        
+        return self._joint_nns 
+    
+    @property 
+    def k_interactions(self):
+        return self._k_interactions
+    
+    @k_interactions.setter
+    def k_interactions(self, k_interactions):
+        """The setter for k_interactions."""
+        
+        if k_interactions is None or isinstance(k_interactions, list):
+            self._k_interactions = k_interactions
+        else: 
+            raise ValueError('Invalid data type for `k_interactions`.')
+            
+    def clear_up_joint_feature_nets(self):
+        self.k_interactions = None
+        self._joint_nns = None
+        self.sigma_noise = self.sigma_noise[:self.in_features]
+        self.prior_mean = self.prior_mean[:self.in_features]
+        self.prior_precision = self.prior_precision[:self.in_features]
+        
+    def extend_joint_feature_nets(self, k_interactions, override=True):
+        if override:
+            # clear up former feature nets
+            self.clear_up_joint_feature_nets()
+            
+        if self.k_interactions is None: 
+            self.k_interactions = k_interactions
+        else:
+            self.k_interactions.extend(k_interactions)
+        # TODO
+        pass
+        
+    @property
+    def _H_factor(self): 
+        return 1 / self.sigma_noise.square().sum() / self.temperature
+    
+    @property
+    def additive_sigma_noise(self): 
+        """additive normal distribution, \sigma^2 = \sum_d \sigma_d ^2"""
+        return self.sigma_noise.square().sum().sqrt()
+    
+    @property
+    def log_likelihood(self): 
+        """compute log likelihood after method `fit` has been called. """
+        factor = - self._H_factor
+        if self.likelihood == 'regression':
+            c = self.n_data * self.n_outputs * torch.log(self.additive_sigma_noise * sqrt(2 * pi))
+            return factor * self.loss - c # additive loss
+        else:
+            # for classification Xent == log Cat
+            return factor * self.loss
+    
     def _features_output(self, inputs: torch.Tensor) -> Sequence[torch.Tensor]:
         """
         Returns: 
         ---------
         list [torch.Tensor of shape (batch_size, 1)]: outputs of feature neural nets
         """
-        return [self.feature_nns[index](inputs[:, index]) for index in range(self.in_features)] # feature of shape (1, batch_size)
+        return [self.feature_nns[index](inputs[:, index]) for index in range(self.in_features)] 
             
     def forward(self, inputs) -> Tuple[torch.Tensor, torch.Tensor]:
         """
@@ -272,27 +363,6 @@ class LaNAM(nn.Module):
         f_mu_fnn = torch.cat(f_mu_fnn, dim=1)
         f_var_fnn = torch.cat(f_var_fnn, dim=1)
         return torch.sum(f_mu_fnn, dim=1), torch.sum(f_var_fnn, dim=1), f_mu_fnn, f_var_fnn
-        
-        
-    @property
-    def _H_factor(self): 
-        return 1 / self.sigma_noise.square().sum() / self.temperature
-    
-    @property
-    def additive_sigma_noise(self): 
-        """additive normal distribution, \sigma^2 = \sum_d \sigma_d ^2"""
-        return self.sigma_noise.square().sum().sqrt()
-    
-    @property
-    def log_likelihood(self): 
-        """compute log likelihood after method `fit` has been called. """
-        factor = - self._H_factor
-        if self.likelihood == 'regression':
-            c = self.n_data * self.n_outputs * torch.log(self.additive_sigma_noise * sqrt(2 * pi))
-            return factor * self.loss - c # additive loss
-        else:
-            # for classification Xent == log Cat
-            return factor * self.loss
         
     def log_marginal_likelihood(self, prior_precision=None, sigma_noise=None): 
         """feature-wise log marignal likelihood approximation.

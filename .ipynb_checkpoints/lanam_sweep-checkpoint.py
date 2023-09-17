@@ -28,54 +28,48 @@ from LANAM.utils.wandb import *
 
 import wandb
 
+data_project_name = 'Datasets'
+log_artifact_name = 'concurvity-7'
+table_name = 'concurvity-7'
+load_artifact_name = 'concurvity-7:v0'
+
+project_name = 'LANAM-concurvity'
 
 def setup_dataset(cfg, load_data):
     if load_data:
-        # fetch data and construct dataset from W&B
-        processed_datasets = preprocess_and_log(project_name='LANAM-grid-basic-synthetic', job_type='dataset', artifact_or_name='synthetic-4:v0')
-        trainset = processed_datasets['training']
-        valset = processed_datasets['validation']
-        testset = processed_datasets['test']
+        dataset = load_LANAMSyntheticDataset(data_project_name, load_artifact_name, table_name)
     else:
         # construct dataset from scratch
-        gen_funcs, gen_func_names = task()
-        in_features = len(gen_funcs)
-        sigma = cfg.prior_sigma_noise
-        print(sigma)
-        trainset = ToyDataset(gen_funcs, gen_func_names, num_samples=1000, sigma=sigma)
-        valset = ToyDataset(gen_funcs, gen_func_names, num_samples=200, sigma=sigma)
-        testset = ToyDataset(gen_funcs, gen_func_names, num_samples=50, use_test=True)
-    return trainset, valset, testset
+        dataset = load_synthetic_data(sigma=0.7)
+        # log dataset to W&B
+        log_LANAMSyntheticDataset(dataset,  data_project_name, log_artifact_name, table_name)
+    
+    return dataset
 
 if __name__ == "__main__":
-    # mem=900M, 
     parser = argparse.ArgumentParser()
-    #parser.add_argument('--activation_cls', type=str, help="Activation function class", default='relu')
+    parser.add_argument('--activation_cls', type=str, help="Activation function class", default='relu')
     parser.add_argument('--load_data', type=bool, help="Fetch data from W&B or generate new data", default=True)
     
     # set configuration parameters
     args = parser.parse_args()
     cfg = defaults()
-    #cfg.activation_cls = args.activation_cls
     
     # create W&B run
     wandb.login()
     wandb.finish()
     # setup dataset
-    trainset, valset, testset = setup_dataset(cfg, load_data=args.load_data)
-    train_loader, train_loader_fnn = trainset.loader, trainset.loader_fnn
-    val_loader, val_loader_fnn = valset.loader, valset.loader_fnn
-    X_test, y_test = testset.X, testset.y
+    dataset = setup_dataset(cfg, load_data=args.load_data)
     
     parameters_list = {
         'lr': {
-            'values': [0.1]
+            'values': [0.1, 0.01, 0.001]
         }, 
         'hidden_sizes': {
-            'values':[1024] # single hidden layer
+            'values':[64] # single hidden layer
         }, 
         'activation_cls': {
-            'values': ['exu']
+            'values': [args.activation_cls]
         }, 
     }
     sweep_configuration = {
@@ -86,13 +80,12 @@ if __name__ == "__main__":
     # initialize the sweep 
     sweep_id = wandb.sweep(
         sweep=sweep_configuration, 
-        project='LANAM-grid-basic-synthetic-3.0',
+        project=project_name,
     )
     # training
     wandb.agent(sweep_id, 
                 function=partial(wandb_training, 
-                config=cfg, 
-                train_loader=train_loader, 
-                loader_fnn=train_loader_fnn,
-                testset=testset)) # specify the maximum number of runs
+                                 config=cfg, 
+                                 dataset=dataset
+                                ),)
     

@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F 
 from torch.nn.utils import parameters_to_vector
+from torch.utils.data import Dataset, DataLoader
 
 from copy import deepcopy
 
@@ -10,17 +11,19 @@ from laplace.curvature import BackPackGGN
 from laplace import Laplace
 
 from LANAM.utils.plotting import *
+from LANAM.trainer.training import test
 import wandb
 
 import os
 
 def marglik_training(model,
                      train_loader,
-                     loader_fnn, 
+                     train_loader_fnn, 
+                     test_loader,
                      likelihood, 
                      
                      use_wandb=False,
-                     testset=None,
+                     test_samples=None,
                      backend=BackPackGGN,
                      
                      optimizer_cls=torch.optim.Adam, 
@@ -37,8 +40,7 @@ def marglik_training(model,
                      prior_prec_init=1.0, 
                      sigma_noise_init=1.0, 
                      temperature=1.0,
-                     
-                     plot_kwargs=None,
+                     plot_recovery=False,
                      ): 
     """
     online learning the hyper-parameters.
@@ -47,12 +49,7 @@ def marglik_training(model,
     -----------
     temperature: float
         higher temperature leads to a more concentrated prior.
-    plot_kwargs: dict
-        ploting configuration. default: `plot_additive=False`, `plot_individual=True`
     """    
-    if use_wandb and testset is None:
-        raise ValueError('test set is required for WandB logging.')
-        
     # get device
     device = parameters_to_vector(model.parameters()).device
     log_frequency = 50
@@ -60,10 +57,10 @@ def marglik_training(model,
     model.temperature = temperature
     if use_wandb:
         for fnn in model.feature_nns: 
-            wandb.watch(fnn, log_freq=log_frequency) # log gradients; note that wandb.watch only supports nn.Module object.(not for ModuleList, Tuple, ...)
+            wandb.watch(fnn, log_freq=log_frequency) # log gradients; note that wandb.watch only supports nn.Module object. (not for ModuleList, Tuple, ...)
         
     N = len(train_loader.dataset)
-    P = torch.stack([torch.tensor(len(parameters_to_vector(fnn.parameters()))) for fnn in model.feature_nns]) # (in_features), number of parameters in each feature network 
+    metrics_name = 'MSE' if likelihood=='regression' else 'Cross_Entropy_Loss'
     
     # set up hyperparameters and loss function
     hyperparameters = list()
@@ -103,6 +100,8 @@ def marglik_training(model,
     margliks = list()
     losses = list()
     perfs = list()
+                
+                
     for epoch in range(1, n_epochs+1):
         epochs_loss = 0.0
         epoch_perf = 0
@@ -124,21 +123,21 @@ def marglik_training(model,
             optimizer.step()
                 
             epochs_loss += step_loss*len(y)
-            if likelihood == 'regression': 
+            if likelihood == 'regression': # MSE
                 epoch_perf += (f.detach() - y).square().sum()
-            else:
+            else: # Accuracy
                 epoch_perf += torch.sum(torch.argmax(f.detach(), dim=-1) == y) # the number of correct prediction.
             if scheduler_cls is not None:
                 scheduler.step()
             
         losses.append(epochs_loss / N)  
         perfs.append(epoch_perf / N)
-                
+          
         if use_wandb:
             # saving model training loss and metrics to W&B
             wandb.log({
                     'Loss': losses[-1], 
-                    'Metrics': perfs[-1], 
+                    metrics_name: perfs[-1], 
             })
                 
         # optimize hyper-parameters when epoch >= n_epochs_burnin and epoch == marglik_frequency
@@ -153,9 +152,14 @@ def marglik_training(model,
         model.prior_precision = prior_prec
         for fnn in model.feature_nns:
             fnn._la = None # Re-init laplace for each feature network.
-        model.fit(epoch_perf, loader_fnn)
+        model.fit(epoch_perf, train_loader_fnn)
         
-            
+        if test_samples is not None and plot_recovery: 
+            features, targets, feature_targets = test_samples
+            _, _, f_mu_fnn, f_var_fnn = model.predict(features) # epistemic uncertainty
+            fig = plot_recovered_functions(features, targets, feature_targets, f_mu_fnn, f_var_fnn)    
+                
+                
         # maximize the marginal likelihood
         for idx in range(n_hypersteps):
             hyper_optimizer.zero_grad()
@@ -180,45 +184,34 @@ def marglik_training(model,
                         'Sigma_noise': model.additive_sigma_noise.detach().numpy().item(),
                 })
         
-        print(f'[Epoch={epoch}, n_hypersteps={idx}]: prior precision: {prior_prec.detach().numpy()}, sigma noise: {sigma_noise.detach().numpy()}')
-        print(margliks[-1])
-            
+        print(f'[Epoch={epoch}, MSE: {perfs[-1]}, n_hypersteps={idx}]: prior precision: {prior_prec.detach().numpy()}, sigma noise: {sigma_noise.detach().numpy()}')
+        
         # best model selection.
         if margliks[-1] < best_marglik:
             best_model_dict = deepcopy(model.state_dict())
             best_marglik = margliks[-1]
         
-        if testset is not None:
+        if test_samples is not None and plot_recovery and epoch%15==0: 
+            features, targets, feature_targets = test_samples
+            _, _, f_mu_fnn, f_var_fnn = model.predict(features) # epistemic uncertainty
+            fig = plot_recovered_functions(features, targets, feature_targets, f_mu_fnn, f_var_fnn)    
             
-            X, y, fnn = testset.X, testset.y, testset.fnn
-            f_mu, f_var, f_mu_fnn, f_var_fnn = model.predict(X)
-
-            additive_noise = model.additive_sigma_noise.detach().square()
-            noise = model.sigma_noise.reshape(1, -1, 1).detach().square()
-            pred_var_fnn = f_var_fnn + noise
-            pred_var = f_var + additive_noise
-            std = np.sqrt(pred_var.flatten().detach().numpy())
-            if plot_kwargs is None:
-                plot_kwargs = dict()
-            fig_addi, fig_indiv = plot_uncertainty(X, y, fnn, f_mu, pred_var, f_mu_fnn, pred_var_fnn, **plot_kwargs)
-
-            print(f'Predictive posterior std mean: {std.mean().item()}')
-            # saving predictive posterior standard deviation and fittings to W&B
             if use_wandb:
-                content = {'Predictive_posterior_std_mean': std.mean().item()}
-                if fig_addi is not None:
-                    content['Additive_fitting'] = wandb.Image(fig_addi)
-                if fiig_indiv is not None:
-                    content['Individual_fitting'] = wandb.Image(fig_indiv)
-                    
-                wandb.log(content)
+                wandb.log({
+                    'Recovery_functions': wandb.Image(fig),
+                })
         
     print('MARGLIK: finished training. Recover best model and fit Laplace.')
     if best_model_dict is not None: 
         model.load_state_dict(best_model_dict)
+    best_metrics = test(likelihood, device, model, test_loader)
+    
     # saving model to W&b
     # 4. Log an artifact to W&B
-    #wandb.log_artifact(model)
+    if use_wandb:
+        torch.save(model.state_dict(), os.path.join(wandb.run.dir, 'model.pt'))
+        wandb.log({f'Best_{metrics_name}': best_metrics})
+        
     return model, margliks, losses, perfs
 
 
@@ -226,6 +219,6 @@ def expand_prior_precision(prior_prec, model):
     """expand the prior precision variable to shape (in_features, num_params)
     """
     assert prior_prec.ndim == 1 
-    P = torch.stack([parameters_to_vector(fnn.parameters()) for fnn in model.feature_nns]) # (in_features, num_params)
+    P = torch.stack([parameters_to_vector(fnn.parameters()) for fnn in model.feature_nns]) # number of parameters in each feature net, (in_features, num_params)
     prior_prec = torch.stack([torch.ones_like(param)*prec for prec, param in zip(prior_prec, P)])
     return prior_prec
