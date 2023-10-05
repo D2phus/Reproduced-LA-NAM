@@ -17,7 +17,7 @@ from typing import List
 from .featurenn import FeatureNN
 from .utils import *
 
-from LANAM.extensions.backpack import BackPackGGNExt
+from LANAM.extensions.backpack.custom_modules import BackPackGGNExt
 
 from laplace import Laplace
 

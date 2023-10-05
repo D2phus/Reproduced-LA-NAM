@@ -11,7 +11,7 @@ from laplace.curvature import BackPackGGN
 from laplace import Laplace
 
 from LANAM.utils.plotting import *
-from LANAM.trainer.training import test
+from LANAM.trainer.test import test
 import wandb
 
 import os
@@ -21,9 +21,9 @@ def marglik_training(model,
                      train_loader_fnn, 
                      test_loader,
                      likelihood, 
+                     test_samples=None,
                      
                      use_wandb=False,
-                     test_samples=None,
                      backend=BackPackGGN,
                      
                      optimizer_cls=torch.optim.Adam, 
@@ -52,9 +52,10 @@ def marglik_training(model,
     """    
     # get device
     device = parameters_to_vector(model.parameters()).device
-    log_frequency = 50
+    log_frequency = 200
     in_features = model.in_features
     model.temperature = temperature
+    
     if use_wandb:
         for fnn in model.feature_nns: 
             wandb.watch(fnn, log_freq=log_frequency) # log gradients; note that wandb.watch only supports nn.Module object. (not for ModuleList, Tuple, ...)
@@ -154,7 +155,7 @@ def marglik_training(model,
             fnn._la = None # Re-init laplace for each feature network.
         model.fit(epoch_perf, train_loader_fnn)
         
-        if test_samples is not None and plot_recovery: 
+        if test_samples is not None and plot_recovery:
             features, targets, feature_targets = test_samples
             _, _, f_mu_fnn, f_var_fnn = model.predict(features) # epistemic uncertainty
             fig = plot_recovered_functions(features, targets, feature_targets, f_mu_fnn, f_var_fnn)    
@@ -184,14 +185,14 @@ def marglik_training(model,
                         'Sigma_noise': model.additive_sigma_noise.detach().numpy().item(),
                 })
         
-        print(f'[Epoch={epoch}, MSE: {perfs[-1]}, n_hypersteps={idx}]: prior precision: {prior_prec.detach().numpy()}, sigma noise: {sigma_noise.detach().numpy()}')
+        print(f'[Epoch={epoch}, MSE: {perfs[-1]: .3f}, n_hypersteps={idx}]: additive sigma noise={model.additive_sigma_noise.detach().item(): .3f}')
         
         # best model selection.
         if margliks[-1] < best_marglik:
             best_model_dict = deepcopy(model.state_dict())
             best_marglik = margliks[-1]
         
-        if test_samples is not None and plot_recovery and epoch%15==0: 
+        if test_samples is not None and plot_recovery and epoch%log_frequency==0: 
             features, targets, feature_targets = test_samples
             _, _, f_mu_fnn, f_var_fnn = model.predict(features) # epistemic uncertainty
             fig = plot_recovered_functions(features, targets, feature_targets, f_mu_fnn, f_var_fnn)    
@@ -204,7 +205,7 @@ def marglik_training(model,
     print('MARGLIK: finished training. Recover best model and fit Laplace.')
     if best_model_dict is not None: 
         model.load_state_dict(best_model_dict)
-    best_metrics = test(likelihood, device, model, test_loader)
+    best_metrics = test(likelihood, model, test_loader)
     
     # saving model to W&b
     # 4. Log an artifact to W&B

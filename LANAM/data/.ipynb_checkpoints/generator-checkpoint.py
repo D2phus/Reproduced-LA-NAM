@@ -37,4 +37,3 @@ def synthetic_example(generator=grt):
 
 def sparse_example(generator=grt): 
     return [generator.pow_shape, generator.exp_shape1, generator.exp_shape2, generator.zero_shape, generator.zero_shape, generator.zero_shape, generator.zero_shape, generator.zero_shape]
-

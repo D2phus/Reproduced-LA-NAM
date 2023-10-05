@@ -7,7 +7,7 @@ from torch.nn.utils import parameters_to_vector, vector_to_parameters
 from .activation import ExU
 
 from laplace import Laplace
-from LANAM.extensions.backpack import BackPackGGNExt
+from LANAM.extensions.backpack.custom_modules import BackPackGGNExt
 
 
 class FeatureNN(nn.Module):

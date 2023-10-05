@@ -2,7 +2,7 @@ from itertools import combinations
 import torch 
 from torch.nn.utils import parameters_to_vector
 from LANAM.utils.output_filter import OutputFilter
-from LANAM.extensions.backpack import BackPackGGNExt
+from LANAM.extensions.backpack.custom_modules import BackPackGGNExt
 from LANAM.models.featurenn import FeatureNN
 from laplace import Laplace
 

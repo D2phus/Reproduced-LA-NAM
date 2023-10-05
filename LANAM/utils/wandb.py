@@ -14,6 +14,54 @@ from LANAM.data.base import LANAMDataset, LANAMSyntheticDataset
 
 cfg = defaults()
 
+def log_dataset(dataset: LANAMDataset, 
+                project_name: str, 
+                artifact_name: str, 
+                table_name: str):  
+    """Log dataset to W&B table. 
+    Args:
+    ----
+    dataset: LANAMDataset or LANAMSyntheticDataset
+    """
+    if isinstance(dataset, LANAMDataset): 
+        log_LANAMDataset(dataset, project_name, artifact_name, table_name)
+    elif isinstance(dataset, LANAMSyntheticDataset): 
+        log_LANAMSyntheticDataset(dataset, project_name, artifact_name, table_name)
+    else: 
+        raise ValueError('`dataset` should be an `LANAMDataset` or `LANAMSyntheticDataset` instance.')
+
+def load_dataset(project_name: str, 
+                 artifact_or_name: str, 
+                 table_name: str, 
+                 config=cfg):
+    """fetch dataset from W&B
+    Returns:
+    -----
+    dataset: LANAMDataset or LANAMSyntheticDataset
+    """
+    dataset, metadata = load_table_to_dataframe(project_name, artifact_or_name, table_name)
+    in_features = metadata['in_features']
+    data = dataset.loc[:, :'target']
+    
+    sigma, feature_targets = None, None
+    if 'sigma' in metadata:
+        sigma = metadata['sigma']
+    if 'feature_target1' in dataset.columns: 
+        feature_targets = torch.tensor(dataset.loc[:, 'feature_target1':].values, dtype=torch.float32) # NOTE to specify datatype: automatically convert to double.
+        
+    if sigma is not None and feature_targets is not None:
+        return LANAMSyntheticDataset(config,
+                        data=data,
+                        features_columns=data.columns[:-1],
+                        targets_column=data.columns[-1], 
+                        feature_targets=feature_targets, 
+                        sigma=sigma)
+    else:
+        return LANAMDataset(config,
+                        data=data,
+                        features_columns=data.columns[:-1],
+                        targets_column=data.columns[-1])
+    
 def log_LANAMSyntheticDataset(dataset: LANAMSyntheticDataset, 
                               project_name: str, 
                               artifact_name: str, 
@@ -54,12 +102,12 @@ def log_dataframe_to_table(data: pd.DataFrame, project_name, artifact_name, tabl
         artifact.add(table, table_name)
         run.log({table_name: table})
         run.log_artifact(artifact)
-        
+    
 def load_LANAMDataset(project_name, artifact_or_name, table_name, config=cfg):
     """fetch LANAMDataset from W&B"""
-    _, data = load_table_to_dataframe(project_name, artifact_or_name, table_name)
+    data, _ = load_table_to_dataframe(project_name, artifact_or_name, table_name)
     return LANAMDataset(config,
-                        data_path=data,
+                        data=data,
                         features_columns=data.columns[:-1],
                         targets_column=data.columns[-1])
 
@@ -69,11 +117,10 @@ def load_LANAMSyntheticDataset(project_name, artifact_or_name, table_name, confi
     sigma = metadata['sigma']
     in_features = metadata['in_features']
     data = dataset.loc[:, :'target']
-    #print(data)
-    feature_targets = torch.tensor(dataset.loc[:, 'feature_target1':].values, dtype=torch.float32) # automatically convert to double; rememmber to specify the data type
-    #print(feature_targets.shape)
+    feature_targets = torch.tensor(dataset.loc[:, 'feature_target1':].values, dtype=torch.float32) # NOTE to specify datatype: automatically convert to double.
+    
     return LANAMSyntheticDataset(config,
-                        data_path=data,
+                        data=data,
                         features_columns=data.columns[:-1],
                         targets_column=data.columns[-1], 
                         feature_targets=feature_targets, 
@@ -83,7 +130,7 @@ def load_LANAMSyntheticDataset(project_name, artifact_or_name, table_name, confi
 def load_table_to_dataframe(project_name, artifact_or_name, table_name):
     """load W&B table as pandas.DataFrame data"""
     with wandb.init(project=project_name) as run:
-        # ✔️ declare which artifact we'll be using
+        # declare which artifact we'll be using
         artifact = run.use_artifact(artifact_or_name)
         metadata = artifact.metadata
         #print(metadata)

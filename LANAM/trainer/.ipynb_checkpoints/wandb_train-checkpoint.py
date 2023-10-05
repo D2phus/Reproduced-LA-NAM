@@ -1,9 +1,5 @@
 import time 
 from copy import deepcopy
-from .marglik_training import *
-from LANAM.models import LaNAM
-from LANAM.utils.plotting import *
-from LANAM.config.default import defaults
 
 import torch 
 import torch.nn as nn
@@ -11,8 +7,12 @@ import torch.nn.functional as F
 from torch.nn.utils import parameters_to_vector
 import numpy as np
 
+from LANAM.trainer import marglik_training
+from LANAM.models import LaNAM
+from LANAM.utils.plotting import *
+from LANAM.config.default import defaults
+
 from laplace.curvature import BackPackGGN
-from laplace import Laplace
 
 import wandb
 

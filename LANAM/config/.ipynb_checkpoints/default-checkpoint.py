@@ -13,12 +13,12 @@ def defaults() -> Config:
         likelihood='regression',
         prior_sigma_noise=0.7,
         
-        num_epochs=500,
+        num_epochs=1000,
         batch_size=256,
         
         ## logs
         wandb=False, 
-        log_loss_frequency=100,
+        log_loss_frequency=250,
         
         # for tuning
         lr=1e-1,
@@ -42,9 +42,10 @@ def nam_defaults() -> Config:
         prior_sigma_noise=0.7,
         
         regression=True,
+        likelihood='regression', 
         use_dnn = False, # baseline 
         
-        num_epochs=500,
+        num_epochs=1000,
         batch_size=256,
         shuffle=True, # shuffle the training set or not 
         early_stopping_patience=50,  
@@ -53,7 +54,7 @@ def nam_defaults() -> Config:
         ## logs
         logdir="./output",
         wandb=False, 
-        log_loss_frequency=100,
+        log_loss_frequency=250,
         
         # for tuning
         lr=1e-3,

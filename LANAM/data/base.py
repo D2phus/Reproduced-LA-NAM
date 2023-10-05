@@ -13,14 +13,14 @@ import matplotlib.pyplot as plt
 
 from typing import Tuple, Sequence, Union, List, Dict
 
-#from nam.data import transform_data
 from nam.data import CSVDataset
 
 from LANAM.config import Config
 from LANAM.data.utils import *
 
 class LANAMDataset(CSVDataset): 
-    """The dataset base. Reference: https://github.com/AmrMKayid/nam/blob/main/nam/data/utils.py
+    """The dataset base. 
+    Reference: https://github.com/AmrMKayid/nam/blob/main/nam/data/utils.py
     """
     def __init__(self, config: Config,
                          data: pd.DataFrame,
@@ -167,16 +167,11 @@ class LANAMDataset(CSVDataset):
         
     
 class LANAMSyntheticDataset(LANAMDataset):
-    """The dataset for synthetic data, whose additive structure is known.
+    """The dataset for synthetic data with a known additive structure.
     Args: 
     -----
     feature_targets: Tensor, (num_samples, in_features)
         the targets for each dimension of inputs (features)
-    sigma: float
-        the observation noise
-    
-    Attrs:
-    -----
     sigma: float
         the observation noise
     """
@@ -236,7 +231,7 @@ class LANAMSyntheticDataset(LANAMDataset):
             hist_scale = customize_ylim[1] - customize_ylim[0]
             axs[index].set_ylim(customize_ylim)
             
-            axs[index].hist(features[:, index].numpy(), bins=20, bottom=customize_ylim[0], density=True, weights= hist_scale * np.ones_like(features[:, index].numpy()), alpha=0.5, color='lightblue')
+            axs[index].hist(features[:, index].numpy(), bins=10, bottom=customize_ylim[0], density=True, weights= hist_scale * np.ones_like(features[:, index].numpy()), alpha=0.5, color='lightblue')
             
             axs[index].plot(features[:, index], feature_targets[:, index], '.', color='royalblue')  
             axs[index].set_xlabel(self.features_names[index])

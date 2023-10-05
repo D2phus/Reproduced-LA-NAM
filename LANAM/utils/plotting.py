@@ -12,19 +12,23 @@ import math
 from typing import List
 
  
-def plot_recovered_functions(X, y, feature_out, f_mu_fnn, f_var_fnn): 
+def plot_recovered_functions(X, y, feature_out, f_mu_fnn, f_var_fnn, X_train=None, feature_out_train=None): 
     """plot recovery of known additive structure.
     Args: 
     X: (num_samples, in_features)
         input features.
     y: (num_samples, 1)
-        additive model output.
+        additive truth.
     feature_out: (num_samples, in_features)
-        known functions of each feature.
+        individual truth.
     f_mu_fnn: (num_samples, in_features)
         predictive mean for each feature function. 
     f_var_fnn: (num_samples, in_features, 1)
         predictive variance for each feature function.
+    X_train: (num_samples, in_features)
+        input features of training data.
+    feature_out_train: (num_samples, in_features)
+        individual truth of training data.
     """
     def sort_by_indices(x: torch.Tensor, indices: List):
         """sort x by given indices of the same shape."""
@@ -56,12 +60,14 @@ def plot_recovered_functions(X, y, feature_out, f_mu_fnn, f_var_fnn):
     feature_out -= feature_out.mean(dim=0).reshape(1, -1)
     f_mu_fnn, f_var_fnn = f_mu_fnn.detach().numpy(), f_var_fnn.detach().numpy() 
     std_fnn = np.sqrt(f_var_fnn)
+    if X_train is not None and feature_out_train is not None:
+        feature_out_train -= feature_out_train.mean(dim=0).reshape(1, -1)
     
     feature_out = feature_out.numpy()
     
     cols = 4
     rows = math.ceil(in_features / cols)
-    figsize = (2.5*cols ,2*rows)  
+    figsize = (2*cols ,2*rows)  
     fig, axs = plt.subplots(rows, cols, figsize=figsize)
     axs = axs.ravel() 
     for index in range(in_features): 
@@ -71,13 +77,17 @@ def plot_recovered_functions(X, y, feature_out, f_mu_fnn, f_var_fnn):
         hist_scale = customize_ylim[1] - customize_ylim[0]
         axs[index].set_ylim(customize_ylim)
     
-        axs[index].hist(X[:, index], bins=20, bottom=customize_ylim[0], density=True, weights= hist_scale * np.ones_like(X[:, index].numpy()), alpha=0.5, color='lightblue')
+        axs[index].hist(X[:, index], bins=10, bottom=customize_ylim[0], density=True, weights= hist_scale * np.ones_like(X[:, index].numpy()), alpha=0.5, color='lightblue')
             
         axs[index].plot(X[:, index], feature_out[:, index], '--', label="targeted", color="gray")
         axs[index].plot(X[:, index], f_mu_fnn[:, index], '-', label="prediction", color="royalblue")
         #axs[index].scatter(X[:, index], samples[:, index], c='lightgray', alpha=0.3)
         axs[index].fill_between(X[:, index], lconf, hconf, alpha=0.2)
 
+        if X_train is not None and feature_out_train is not None:
+            axs[index].scatter(X_train[:, index].flatten(), feature_out_train[:, index].flatten(), alpha=0.3, color='tab:orange', label='training points')
+    
+    fig.suptitle('orange: training points, blue dots: targeted, blue solid: prediction')
     fig.tight_layout()
     return fig
 

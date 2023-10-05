@@ -10,8 +10,6 @@ def rbf_basis_function(x, mu, sigma=0.1):
 def polynomial_basis_function(x, power):
     return x**power
 
-
-    
 class BayesianLinearRegression(): 
     def __init__(self, X, y, bf='identity', bf_args=None, sigma_noise=1.0, prior_var=1.0):
         """
@@ -27,8 +25,10 @@ class BayesianLinearRegression():
         num_samples, scalar: the number of training samples
         num_params, scalar: the number of parameters
         """
-        if not bf in ['rbf', 'polynomial', 'identity']: 
+        if bf not in ['rbf', 'polynomial', 'identity']: 
             raise ValueError('the basis function has to be identity, rbf, or polynomial')
+        if bf != 'identity': 
+            raise NotImplementedError
         
         self.bf = bf 
         self.bf_args = bf_args
