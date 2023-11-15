@@ -2,6 +2,13 @@
 | **[Overview](#overview)**
 | **[Reference](#Reference)**
 
+## Setup
+The `nam`, `laplace-torch`, and `backpack` packages are required. 
+```
+pip install nam
+pip install laplace-torch
+pip install backpack-for-pytorch
+```
 ## Overview
 The main project structure is shown below. 
     
