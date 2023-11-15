@@ -14,24 +14,23 @@ class FeatureNN(nn.Module):
         feature_index: int, 
         ) -> None: # type-check
             """
-            There is a DNN-based sub net for each feature. The first hidden layer is selected amongst:
-            1. standard ReLU units
-            2. ExU units
-            Additionally, dropout layers are added to the end of each hidden layer.
+            DNN for each feature. 
             
             Args:
-            in_features: scalar, size of each input sample; default value = 1
-            feature_index: indicate which feature is learn in this subnet
+            -----
+            in_features: 
+                input feature dimensions
+            feature_index: 
+                index of learnt feature
             """
             super(FeatureNN, self).__init__()
             if config.activation_cls not in ['relu', 'exu', 'gelu', 'elu', 'leakyrelu']:
-                raise ValueError('Activation unit should be `gelu`, `relu`, `exu`, `elu`, or `leakyrelu`.')
+                raise ValueError('Activation unit type should be `gelu`, `relu`, `exu`, `elu`, or `leakyrelu`.')
                 
             self.name = name
             self.config = config
             self.in_features = in_features
             self.feature_index = feature_index
-            # self.dropout = nn.Dropout(p=self.config.dropout)
             self.activation_cls = config.activation_cls
             self.hidden_sizes = config.hidden_sizes
             self.model = self.setup_model()
@@ -40,7 +39,9 @@ class FeatureNN(nn.Module):
     def setup_model(self): 
         layers = list()
         hidden_sizes = [self.in_features] + self.hidden_sizes
+        
         if self.activation_cls == "exu":
+            # [ExU, Linear + ReLU...]
             for index, (in_f, out_f) in enumerate(zip(hidden_sizes[:], hidden_sizes[1:])):
                 if index == 0: 
                     layers.append(ExU(in_f, out_f))
@@ -49,6 +50,7 @@ class FeatureNN(nn.Module):
                     layers.append(nn.ReLU())
                 layers.append(nn.Dropout(p=self.config.dropout))
         else: 
+            # [Linear + activation_cls]
             if self.activation_cls == 'gelu': 
                 activation_cls = nn.GELU
             elif self.activation_cls == 'relu':
@@ -57,6 +59,7 @@ class FeatureNN(nn.Module):
                 activation_cls = nn.ELU
             elif self.activation_cls == 'leakyrelu':
                 activation_cls = nn.LeakyReLU
+                
             for in_f, out_f in zip(hidden_sizes[:], hidden_sizes[1:]):
                     layers.append(nn.Linear(in_f, out_f,  bias=True))
                     layers.append(activation_cls())

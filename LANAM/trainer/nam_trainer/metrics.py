@@ -1,6 +1,7 @@
 """metrics for evaluation"""
 import torch 
-
+import math
+    
 def rmse(
     logits: torch.Tensor, 
     targets: torch.Tensor
@@ -9,9 +10,8 @@ def rmse(
     Root mean-squared error for regression 
     Args:
     """
-    criterion = nn.MSELoss()
-    loss = torch.sqrt(criterion(logits.view(-1), targets.view(-1)))
-    return loss
+    loss = (((logits.view(-1) - targets.view(-1)).pow(2)).sum() / targets.numel()).item()
+    return math.sqrt(loss)
 
 def mse(
     logits: torch.Tensor, 

@@ -1,5 +1,6 @@
 from typing import Dict
 
+import copy
 import numpy as np
 import pandas as pd
 import sklearn
@@ -12,6 +13,81 @@ from LANAM.config.default import defaults
 """build dataset from raw data."""
 cfg = defaults()
 
+def load_nonlinearly_dependent_2D_examples(config=cfg, 
+                                           num_samples=10000, 
+                                           sigma=0,
+                                           sampling_type='uniform',      
+                                           generate_functions=[lambda x: torch.zeros_like(x), lambda x: x],                             
+                                           dependent_functions=torch.abs):
+    """generate nonlinearly dependent 2D examples, where X1 = Z, X2 = |Z|. 
+    """
+    if sampling_type not in ['normal', 'uniform']:
+        raise ValueError('Invalid input type for `sampling_type`.')
+    
+    in_features = len(generate_functions)
+    feature_names = [f'X{idx+1}' for idx in range(in_features)]
+    
+    if sampling_type == 'uniform':
+        Z = torch.FloatTensor(num_samples).uniform_(-1, 1)
+    else: 
+        Z = torch.zeros(num_samples)
+        torch.nn.init.trunc_normal_(Z, mean=0, std=1, a=-1, b=1) 
+    
+    X1 = copy.deepcopy(Z)
+    X2 = dependent_functions(copy.deepcopy(Z))
+    X = torch.stack([X1, X2], dim=1)
+    f = torch.stack([generate_functions[idx](x) for idx, x in enumerate(torch.unbind(X, dim=1))], dim=1) 
+    y = f.sum(dim=1)
+    noise = torch.randn_like(y)*sigma
+    y += noise
+
+    data = pd.DataFrame(X, columns = feature_names)
+    data['target'] = pd.Series(y)
+
+    return LANAMSyntheticDataset(config,
+                                 data=data, 
+                                 features_columns=data.columns[:-1], 
+                                 targets_column=data.columns[-1], 
+                                 feature_targets=f, 
+                                 sigma=0)
+
+
+def load_multicollinearity_data(generate_functions, 
+                                config=cfg, 
+                                x_lims=(-1, 1), 
+                                num_samples=10000, 
+                                sigma=0, 
+                                sampling_type='uniform'): 
+    '''build dataset with a known additive structure; features are perfectly correlated, where Xi are fixed to identical samples.'''
+    if sampling_type not in ['normal', 'uniform']:
+        raise ValueError('Invalid input type for `sampling_type`.')
+    
+    in_features = len(generate_functions)
+    feature_names = [f'X{idx+1}' for idx in range(in_features)]
+    
+    if sampling_type == 'uniform':
+        X1 = torch.FloatTensor(num_samples).uniform_(-1, 1)
+    else: 
+        X1 = torch.zeros(num_samples)
+        torch.nn.init.trunc_normal_(X1, mean=x_lims[0]+(x_lims[1]-x_lims[0])/2, std=1, a=x_lims[0], b=x_lims[1])
+        
+    X2 = [copy.deepcopy(X1) for _ in range(in_features-1)] # NOTE: deepcopy!
+    X = torch.stack([X1] + X2, dim=1)
+    f = torch.stack([generate_functions[idx](x) for idx, x in enumerate(torch.unbind(X, dim=1))], dim=1)
+    y = f.sum(dim=1) 
+    noise = torch.randn_like(y)*sigma
+    y += noise
+
+    data = pd.DataFrame(X, columns = feature_names)
+    data['target'] = pd.Series(y)
+
+    return LANAMSyntheticDataset(config,
+                                 data=data, 
+                                 features_columns=data.columns[:-1], 
+                                 targets_column=data.columns[-1], 
+                                 feature_targets=f, 
+                                 sigma=0)
+
 def load_synthetic_data(config=cfg, 
                         x_lims=(0, 1),
                        num_samples=1000,
@@ -19,14 +95,13 @@ def load_synthetic_data(config=cfg,
                        sigma=1, 
                        sampling_type='uniform',
                        ): 
-    """likelihood: regression. 
-    build dataset with a known additive structure. 
+    """build dataset with a known additive structure; features are uncorrelated.
     Args: 
     -----
     sampling_type: str
         the distribution for X sampling. 
         - uniform: U[*x_lims]^in_features, 
-        - normal: N(0.5, 0.2^2) truncated by x_lims
+        - normal: N(x_lims[0]+(x_lims[1]-x_lims[0])/2, 1) truncated by x_lims
     """
     if sampling_type not in ['normal', 'uniform']:
         raise ValueError('Invalid input type for `sampling_type`.')
@@ -38,7 +113,7 @@ def load_synthetic_data(config=cfg,
         X = torch.FloatTensor(num_samples, in_features).uniform_(x_lims[0], x_lims[1])
     else:
         X = torch.zeros(num_samples, in_features)
-        torch.nn.init.trunc_normal_(X, mean=x_lims[0]+(x_lims[1]-x_lims[0])/2, std=(x_lims[1]-x_lims[0])/5, a=x_lims[0], b=x_lims[1])
+        torch.nn.init.trunc_normal_(X, mean=x_lims[0]+(x_lims[1]-x_lims[0])/2, std=1, a=x_lims[0], b=x_lims[1])
     
     feature_targets = torch.stack([generate_functions[index](x_i) for index, x_i in enumerate(torch.unbind(X, dim=1))], dim=1) # (batch_size, in_features) 
     y = feature_targets.sum(dim=1) # of shape (batch_size, 1)

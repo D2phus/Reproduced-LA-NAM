@@ -2,8 +2,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
-
+from LANAM.utils.plotting import concurvity
 
 def mse_loss(
     logits: torch.Tensor, 
@@ -39,15 +38,17 @@ def penalized_loss(
     fnn_out: torch.Tensor, 
     model: nn.Module, 
     targets: torch.Tensor, 
+    conc_reg: bool=True,
 )-> torch.Tensor:
     """
-    Compute penalized loss of NAM
+    Compute penalized loss of NAMtorch 1 dim to 2 dim
     
     Args:
     nam_out of shape (batch_size): model output 
     fnn_out of shape (batch_size, in_features): output of each feature nn
     model: the model that we use
     targets of shape (batch_size): targets of each sample 
+    conc_reg: whether to apply concurvity_regularization; for stability reasons, concurvity regularization is added only after 5% of the total optimization steps.
     """
     def fnn_loss(
         fnn_out: torch.Tensor
@@ -59,7 +60,7 @@ def penalized_loss(
         Args: 
         fnn_out of shape (batch_size, in_features): output of each featrue nn
         """
-        num_fnn = len(fnn_out) # number of feature nets
+        num_fnn = len(fnn_out) # batch_size
         return torch.mean(torch.square(fnn_out), 1).sum() / num_fnn
         
     def weight_decay(
@@ -75,6 +76,7 @@ def penalized_loss(
         
     output_regularization = config.output_regularization
     l2_regularization = config.l2_regularization
+    concurvity_regularization = config.concurvity_regularization
     
     loss = 0.0
     # task dependent function 
@@ -90,7 +92,6 @@ def penalized_loss(
     if l2_regularization > 0:
         loss += l2_regularization * weight_decay(model) # weight decay 
         
+    if conc_reg and concurvity_regularization > 0:
+        loss += concurvity_regularization * concurvity(fnn_out) # concurvity decay
     return loss
-    # l = F.cross_entropy(out, targets)
-    # F.mse_loss(outputs, targets)
-

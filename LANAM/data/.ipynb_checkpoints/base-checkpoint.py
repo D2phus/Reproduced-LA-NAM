@@ -155,12 +155,12 @@ class LANAMDataset(CSVDataset):
                 if index == idx:
                     ax.set_title(f'{self.features_names[idx]}')
                     continue
-                ax.plot(features[:, idx], features[:, index], '.', color='royalblue')
-            axs[cols*(index+1)-1].plot(y, features[:, index], '.', color='royalblue')
+                ax.plot(features[:, idx], features[:, index], '.', color='royalblue', alpha=0.4)
+            axs[cols*(index+1)-1].plot(y, features[:, index], '.', color='royalblue', alpha=0.4)
                 #axs[index].set_title(f"X{index}")
                 
         for idx in range(self.in_features):
-            axs[cols*(rows-1)+idx].plot(features[:, idx], y, '.', color='royalblue')
+            axs[cols*(rows-1)+idx].plot(features[:, idx], y, '.', color='royalblue', alpha=0.4)
         axs[cols*rows-1].set_title('y')
         
         fig.tight_layout()
@@ -186,7 +186,7 @@ class LANAMSyntheticDataset(LANAMDataset):
                          weights_column=weights_column)
         
     def plot_dataset(self, subset=None):
-        """
+        """torch 1 dim to 2 dim
         plot features and corresponding ground truth target functions.
         Args: 
         ----
@@ -212,8 +212,11 @@ class LANAMSyntheticDataset(LANAMDataset):
                 raise ValueError('No test dataset.')
         
         num_bin = 10
-        cols = 4
-        rows = math.ceil(self.in_features / cols)
+        if self.in_features < 5: 
+            cols, rows = self.in_features, 1
+        else: 
+            cols = 4
+            rows = math.ceil(self.in_features / cols)
         figsize = (2*cols ,2*rows)
         fig, axs = plt.subplots(rows, cols, figsize=figsize)
         axs = axs.ravel()  
@@ -255,7 +258,7 @@ class LANAMSyntheticDataset(LANAMDataset):
         features, targets = test_subset[:]
         feature_targets = self.feature_targets[indices, :]
         
-        return features, targets, feature_targets
+        return features, targets, feature_targets, self.features_names
                
         
     def setup_dataloaders(self, val_split: float = 0.1, test_split: float = 0.2) -> Tuple[DataLoader, ...]:
