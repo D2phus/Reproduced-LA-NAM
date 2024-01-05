@@ -38,17 +38,20 @@ if __name__ == "__main__":
     
     run = wandb.init(
     # Set the project where this run will be logged
-    project='accuracy_versus_concurvity_GAM')
+    project='accuracy_versus_concurvity_GAM_v2')
     
     
     # setup dataset
-    data = load_concurvity_data(sigma_1=0.05, sigma_2=0.5, num_samples=1000)
-    # data = load_nonlinearly_dependent_2D_examples(num_samples=1000, dependent_functions=lambda x: torch.sin(2*x)) # uncorrelated features 
+    # data = load_concurvity_data(sigma_1=0.05, sigma_2=0.5, num_samples=1000)
+    
+    data = load_nonlinearly_dependent_2D_examples(num_samples=1000, dependent_functions=lambda x: torch.sin(3*x), sampling_type='normal') # uncorrelated features 
     # generate_funcs =[lambda x: x, lambda x: torch.zeros_like(x)]
     # data = load_multicollinearity_data(generate_functions=generate_funcs, x_lims=(-1, 1), num_samples=1000, sigma=0, sampling_type='uniform')
     
     train_dl, _, val_dl, _ = data.train_dataloaders()
-    test_samples = data.get_test_samples()
+    # test_samples = data.get_test_samples()
+    
+    test_samples = data.get_train_samples()
     
     # criterion 
     metrics = lambda logits, targets: (((logits.view(-1) - targets.view(-1)).pow(2)).sum() / targets.numel()).item()

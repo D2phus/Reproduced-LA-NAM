@@ -10,9 +10,8 @@ import numpy as np
 import copy
 import math 
 
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 
-from LANAM.utils.correlation import *
 
 def adjusted_R_squared(X: torch.Tensor, 
                        y: torch.Tensor, 
@@ -74,7 +73,9 @@ def feature_importance(X: torch.Tensor) -> torch.Tensor:
     return torch.abs(X - X.mean(dim=0)).mean(dim=0)
 
 
-def get_ensemble_prediction(models: List[nn.Module], samples: Tuple[torch.Tensor, torch.Tensor, torch.Tensor]): 
+def get_ensemble_prediction(models: List[nn.Module], samples: Tuple[torch.Tensor, torch.Tensor, torch.Tensor]) -> Tuple[torch.Tensor, torch.Tensor]: 
+    '''ensemble members' prediction.
+    ''' 
     def call_single_model(params, buffers, data):
         return torch.func.functional_call(base_model, (params, buffers), (data,))
 
@@ -82,18 +83,23 @@ def get_ensemble_prediction(models: List[nn.Module], samples: Tuple[torch.Tensor
     base_model = copy.deepcopy(models[0])
     base_model.to('meta')
     params, buffers = torch.func.stack_module_state(models) 
-    pred_map, fnn_map = torch.vmap(call_single_model, (0, 0, None))(params, buffers, X) # (num_ensemble, batch_size, out_features)
-    return pred_map.detach(), fnn_map.detach()
+    pred_map, contributions_map = torch.vmap(call_single_model, (0, 0, None))(params, buffers, X) # (num_ensemble, batch_size, out_features)
+    return pred_map.detach(), contributions_map.detach()
 
 def get_prediction(models: List[nn.Module], samples: Tuple[torch.Tensor, torch.Tensor, torch.Tensor]): 
-    prediction_map, contributions_map = get_ensemble_prediction(models, samples)
-    prediction_mean, feature_contribution_mean, prediction_var, feature_contribution_var = prediction_map.mean(dim=0), contributions_map.mean(dim=0), prediction_map.var(dim=0), contributions_map.var(dim=0) 
-    
+    if isinstance(models, list):
+        # ensembling
+        prediction_map, contributions_map = get_ensemble_prediction(models, samples)
+        prediction_mean, feature_contribution_mean, prediction_var, feature_contribution_var = prediction_map.mean(dim=0), contributions_map.mean(dim=0), prediction_map.var(dim=0), contributions_map.var(dim=0) 
+    else:
+        # probabilistic model 
+        prediction_mean, prediction_var, feature_contribution_mean, feature_contribution_var = models.predict(samples[0])
     return prediction_mean, feature_contribution_mean, prediction_mean, feature_contribution_var
 
-def get_feature_importances(models, samples): 
+def get_feature_importances(models: List[nn.Module], samples: Tuple) -> Dict: 
+    '''Feature importance dictionary.'''
     prediction_mean, feature_contribution_mean, prediction_mean, feature_contribution_var = get_prediction(models, samples)
-    
+
     importances = feature_importance(feature_contribution_mean)
     
     importance_dict = {name: importance for name, importance in zip(samples[3], importances)}
@@ -117,7 +123,7 @@ def plot_feature_importance_errorbar(models, samples, width=0.5):
     plt.xticks(idx + width / 2, names, rotation=90, fontsize='large')
     plt.ylabel('Mean Absolute Value', fontsize='x-large')
     plt.legend(loc='upper right', fontsize='large')
-    plt.title(f'Overall Feature Importance ErrorBar', fontsize='x-large')
+    plt.title(f'Overall Feature Importance Bar', fontsize='x-large')
     
     plt.show()
     
@@ -131,7 +137,7 @@ def plot_feature_importance(models, samples, width=0.5):
     
     importances = feature_importance(feature_contribution_mean)
     
-    fig = plt.figure(figsize=(5, 5))
+    fig = plt.figure(figsize=(3, 3))
     
     idx = torch.arange(in_features)
     plt.bar(idx, importances, width, label='NAMs')
@@ -145,16 +151,16 @@ def plot_feature_importance(models, samples, width=0.5):
 
 
 def plot_pairwise_contribution_correlation(models, samples, pair_idx: Tuple[int, int]): 
-    X, y, shape_functions, feature_names = samples
+    # X, y, shape_functions, feature_names = samples
     idx1, idx2 = pair_idx
-    prediction_map, contributions_map = get_ensemble_prediction(models, X, y)
+    prediction_map, contributions_map = get_ensemble_prediction(models, samples)
     
     fig = plt.figure(figsize=(4, 3))
     for idx, m in enumerate(models): 
         plt.scatter(contributions_map[idx, :, idx1], contributions_map[idx, :, idx2])
         
-    plt.xlabel(f'Feature Contribution {idx1}')
-    plt.ylabel(f'Feature Contribution {idx2}')
+    plt.xlabel(f'Feature Contribution {idx1+1}')
+    plt.ylabel(f'Feature Contribution {idx2+1}')
     
     plt.title(f'Contribution Pair Correlation', fontsize='x-large')
     plt.show()
@@ -220,7 +226,8 @@ def plot_recovered_functions(X, y, shape_functions, feature_contribution_mean, f
     
     for index in range(in_shape_functions): 
         lconf, hconf = feature_contribution_mean[:, index]-2*std_fnn[:, index], feature_contribution_mean[:, index]+2*std_fnn[:, index]
-        customize_ylim = (torch.min(shape_functions) - 0.5, torch.max(shape_functions) + 0.5)
+        customize_ylim = (torch.min(y) - 0.5, torch.max(y) + 0.5)
+        # customize_ylim = (torch.min(shape_functions) - 0.5, torch.max(shape_functions) + 0.5)
         # customize_ylim = (torch.min(shape_functions[:, index])-1, torch.max(shape_functions[:, index])+1)
         hist_scale = customize_ylim[1] - customize_ylim[0]
         axs[index].set_ylim(customize_ylim)
@@ -232,9 +239,24 @@ def plot_recovered_functions(X, y, shape_functions, feature_contribution_mean, f
         axs[index].fill_between(X[:, index], lconf, hconf, alpha=0.2)
 
         if X_train is not None and shape_functions_train is not None:
-            axs[index].scatter(X_train[:, index].flatten(), shape_functions_train[:, index].flatten(), alpha=0.3, color='grey', label='training points')
+            axs[index].scatter(X_train[:, index].flatten(), shape_functions_train[:, index].flatten(), s=14, facecolors="None", edgecolor='gray', label='training points')
     
     # fig.suptitle('orange: training points, blue dots: targeted, blue solid: prediction')
     fig.tight_layout()
     return fig
 
+def plot_3d(x, y, pred, truth=None):
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+
+    ax.scatter(x, y, pred, c='r', marker='o')
+    
+    if truth is not None:
+        ax.scatter(x, y, truth, c='b', marker='o')
+        
+    ax.set_xlabel('input_0')
+    ax.set_ylabel('input_1')
+    ax.set_zlabel('target')
+
+    return fig

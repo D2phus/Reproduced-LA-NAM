@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, List
 
 import copy
 import numpy as np
@@ -13,13 +13,53 @@ from LANAM.config.default import defaults
 """build dataset from raw data."""
 cfg = defaults()
 
+def linear_regression_example(rho, sigma=0, config=cfg, num_samples=1000, min_max=False):
+    """
+    y = X_1 + X_2, X_1, X_2 \sim N(\boldsymbol{0}, \Sigma^{-1}) 
+    \Sigma = [[1, \rho], [\rho, 1]]
+    
+    """
+    input_0, input_1 = np.random.multivariate_normal(np.zeros(2), 2*np.array([[1, rho], [rho, 1]]), size=num_samples).T
+    output_0, output_1 = input_0, input_1
+    y = output_0 + output_1 
+    noise = np.random.randn(*y.shape)*sigma
+    y += noise
+    
+    data = pd.DataFrame()
+    data['input_0'] = pd.Series(input_0)
+    data['input_1'] = pd.Series(input_1)
+    data['target'] = pd.Series(y)
+    
+    return LANAMSyntheticDataset(config, data=data, features_columns=data.columns[:-1], targets_column=data.columns[-1], feature_targets=torch.Tensor(np.stack([output_0, output_1], axis=1)), sigma=sigma, min_max=min_max)
+
+def interaction_example(rho, config=cfg, num_samples=1000, min_max=True): 
+    """
+    y = min(x1, x2) + 0.1*x1 + 0.1*x2, 
+    x1, x2 \sim N(0, [[1, \rho], [\rho, 1]])
+    """
+    input_0, input_1 = np.random.multivariate_normal(np.zeros(2), 2*np.array([[1, rho], [rho, 1]]), size=num_samples).T
+    
+    output_0, output_1 = -0.1*input_0, -0.1*input_1
+    y = np.minimum(input_0, input_1) + output_0 + output_1
+    
+    data = pd.DataFrame()
+    data['input_0'] = pd.Series(input_0)
+    data['input_1'] = pd.Series(input_1)
+    data['target'] = pd.Series(y)
+    
+    return LANAMSyntheticDataset(config, data=data, features_columns=data.columns[:-1], targets_column=data.columns[-1], feature_targets=torch.Tensor(np.stack([output_0, output_1], axis=1)), sigma=0, min_max=min_max)
+
+
 def load_nonlinearly_dependent_2D_examples(config=cfg, 
-                                           num_samples=10000, 
-                                           sigma=0,
-                                           sampling_type='uniform',      
-                                           generate_functions=[lambda x: torch.zeros_like(x), lambda x: x],                             
-                                           dependent_functions=torch.abs):
-    """generate nonlinearly dependent 2D examples, where X1 = Z, X2 = |Z|. 
+                                           num_samples: int=10000, 
+                                           sigma: float=0,
+                                           sampling_type: str='uniform',      
+                                           generate_functions: List=[lambda x: torch.zeros_like(x), lambda x: x],                             
+                                           dependent_functions=torch.abs) -> LANAMSyntheticDataset:
+    """generate nonlinearly dependent 2D examples. 
+    Args: 
+    generate_functions: the additive structure. 
+    dependent_functions: how X_2 is generated from X_1. 
     """
     if sampling_type not in ['normal', 'uniform']:
         raise ValueError('Invalid input type for `sampling_type`.')
@@ -58,7 +98,9 @@ def load_multicollinearity_data(generate_functions,
                                 num_samples=10000, 
                                 sigma=0, 
                                 sampling_type='uniform'): 
-    '''build dataset with a known additive structure; features are perfectly correlated, where Xi are fixed to identical samples.'''
+    '''generate dataset with a known additive structure. features are perfectly correlated, where Xi are fixed to identical samples.
+    
+    NOTE: redundant; can be implemented by method `load_nonlinearly_dependent_2D_examples` above. '''
     if sampling_type not in ['normal', 'uniform']:
         raise ValueError('Invalid input type for `sampling_type`.')
     
@@ -95,7 +137,7 @@ def load_synthetic_data(config=cfg,
                        sigma=1, 
                        sampling_type='uniform',
                        ): 
-    """build dataset with a known additive structure; features are uncorrelated.
+    """build dataset with a known additive structure, with uncorrelated features.
     Args: 
     -----
     sampling_type: str

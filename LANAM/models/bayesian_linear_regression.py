@@ -39,7 +39,9 @@ class BayesianLinearRegression():
         else: 
             self.basis_function = identity_basis_function
         
-        self.Phi = self.expand(X)
+        self.Phi = self.basis_function(X)
+        
+        # self.Phi = self.expand(X)
         self.num_samples, self.num_params = self.Phi.shape
         self.y = y
         

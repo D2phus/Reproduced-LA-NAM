@@ -1,6 +1,7 @@
 import torch
 import pytest 
 
+
 testdata = [
     (torch.randn(10, 3)),
     (torch.randn(2, 3)), 

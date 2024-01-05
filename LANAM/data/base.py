@@ -26,7 +26,8 @@ class LANAMDataset(CSVDataset):
                          data: pd.DataFrame,
                          features_columns: List,
                          targets_column: List,
-                         weights_column: List=None):
+                         weights_column: List=None, 
+                         min_max: bool=True):
         """
         Args: 
         ------
@@ -59,9 +60,10 @@ class LANAMDataset(CSVDataset):
         super().__init__(config, data, features_columns, targets_column, weights_column)
         self.raw_data = data
         
+        self.min_max = min_max # whether to normalize
         self.col_min_max = self.get_col_min_max()
 
-        self.features, self.features_names = transform_data(self.raw_X) # convert categorical data into numeric
+        self.features, self.features_names = transform_data(self.raw_X, min_max=min_max) # categorical to numeric, normalize to (-1, 1)
         self.compute_features() # compute sorted features
         self.in_features = len(self.features_names)
 
@@ -175,7 +177,7 @@ class LANAMSyntheticDataset(LANAMDataset):
     sigma: float
         the observation noise
     """
-    def __init__(self, config, data, features_columns, targets_column, feature_targets, sigma, weights_column=None):
+    def __init__(self, config, data, features_columns, targets_column, feature_targets, sigma, weights_column=None, min_max: bool=True):
         self.feature_targets = feature_targets
         self.sigma = sigma
         
@@ -183,7 +185,8 @@ class LANAMSyntheticDataset(LANAMDataset):
                          data=data,
                          features_columns=features_columns,
                          targets_column=targets_column,
-                         weights_column=weights_column)
+                         weights_column=weights_column, 
+                         min_max=min_max)
         
     def plot_dataset(self, subset=None):
         """torch 1 dim to 2 dim
@@ -260,6 +263,13 @@ class LANAMSyntheticDataset(LANAMDataset):
         
         return features, targets, feature_targets, self.features_names
                
+    def get_train_samples(self): 
+        train_subset = self.train_dl.dataset
+        indices = train_subset.indices
+        features, targets = train_subset[:]
+        feature_targets = self.feature_targets[indices, :]
+        
+        return features, targets, feature_targets, self.features_names
         
     def setup_dataloaders(self, val_split: float = 0.1, test_split: float = 0.2) -> Tuple[DataLoader, ...]:
         def setup_feature_dataloaders(subset, feature_targets):

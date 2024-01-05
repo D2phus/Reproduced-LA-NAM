@@ -29,7 +29,7 @@ class CustomPipeline(Pipeline):
         return xt
     
     
-def transform_data(df: pd.DataFrame):
+def transform_data(df: pd.DataFrame, min_max=True):
     """convert categorical data into numeric
     """
     column_names = df.columns
@@ -53,6 +53,12 @@ def transform_data(df: pd.DataFrame):
     transformers = [('cat', cat_pipe, categorical_cols), ('num', num_pipe, numerical_cols)]
     column_transform = ColumnTransformer(transformers=transformers)
 
-    pipe = CustomPipeline([('column_transform', column_transform), ('dummy', None)])
+    transformation = [('column_transform', column_transform)]
+    if min_max: 
+        transformation.append(('min_max', MinMaxScaler((-1, 1))))
+    transformation.append(('dummy', None))
+    
+    pipe = CustomPipeline(transformation)
     df = pipe.apply_transformation(df)
+    
     return df, new_column_names

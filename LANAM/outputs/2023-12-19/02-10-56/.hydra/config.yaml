@@ -1,0 +1,20 @@
+likelihood: regression
+prior_sigma_noise: 0
+prior_prec_init: 1
+num_epochs: 500
+batch_size: 128
+lr: 0.01
+lr_hyp: 0.1
+n_epochs_burnin: 50
+n_hypersteps: 30
+marglik_frequency: 100
+hidden_sizes:
+- 128
+- 128
+- 128
+activation: true
+activation_cls: gelu
+concurvity_regularization: 0
+perctile_epochs_burnin: 0.05
+wandb: false
+log_loss_frequency: 50

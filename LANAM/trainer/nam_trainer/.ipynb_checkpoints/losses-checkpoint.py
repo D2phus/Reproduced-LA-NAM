@@ -3,6 +3,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from LANAM.utils.plotting import concurvity
+from LANAM.utils.regularizer import * 
 
 def mse_loss(
     logits: torch.Tensor, 
@@ -51,32 +52,43 @@ def penalized_loss(
     conc_reg: whether to apply concurvity_regularization; for stability reasons, concurvity regularization is added only after 5% of the total optimization steps.
     """
     def fnn_loss(
-        fnn_out: torch.Tensor
+        fnn_out: torch.Tensor, 
+        d: int=2
     )->torch.Tensor:
         """
-        Penalizes the L2 norm of the prediction of each feautre net
+        Penalizes the Ld norm of the prediction of each feautre net
         
         note output penalty is set to zero when we use DNN as baseline
         Args: 
         fnn_out of shape (batch_size, in_features): output of each featrue nn
         """
         num_fnn = len(fnn_out) # batch_size
-        return torch.mean(torch.square(fnn_out), 1).sum() / num_fnn
+        if d == 2:
+            losses = torch.mean(torch.square(fnn_out), 1).sum() / num_fnn
+        elif d == 1: 
+            losses = torch.mean(torch.abs(fnn_out), 1).sum() / num_fnn
+        return losses
         
     def weight_decay(
-        model: nn.Module 
+        model: nn.Module, 
+        d: int=2
     )->torch.Tensor:
         """
-        Penalizes the L2 norm of weights in each *feature net*
+        Penalizes the d-norm of weights in each *feature net*
         
         """
         num_networks = len(model.feature_nns)
-        l2_losses = [(p**2).sum() for p in model.parameters()]
-        return sum(l2_losses) / num_networks
+        if d == 2: 
+            losses = [(p**2).sum() for p in model.parameters()] # l2
+        elif d == 1: 
+            losses = [p.abs().sum() for p in model.parameters()] # l1 
+        return sum(losses) / num_networks
         
     output_regularization = config.output_regularization
     l2_regularization = config.l2_regularization
     concurvity_regularization = config.concurvity_regularization
+    l1_regularization = config.l1_regularization
+    hsic_regularization = config.hsic_regularization
     
     loss = 0.0
     # task dependent function 
@@ -87,11 +99,21 @@ def penalized_loss(
         loss += bce_loss(nam_out, targets)
         
     if output_regularization > 0:
-        loss += output_regularization * fnn_loss(fnn_out) # output penalty
+        loss += output_regularization * fnn_loss(fnn_out, d=1) # output penalty
         
     if l2_regularization > 0:
-        loss += l2_regularization * weight_decay(model) # weight decay 
+        loss += l2_regularization * weight_decay(model) # weight decay
         
     if conc_reg and concurvity_regularization > 0:
+        # concurvity regularizer 
         loss += concurvity_regularization * concurvity(fnn_out) # concurvity decay
+        
+    if l1_regularization > 0: 
+        # L1 regularizer 
+        loss += l1_regularization *  weight_decay(model, d=1)
+        
+    if conc_reg and hsic_regularization > 0:
+        # HSIC regularizer 
+        loss += hsic_regularization * estimate_hsic(fnn_out)
+        
     return loss

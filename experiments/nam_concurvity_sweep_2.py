@@ -30,7 +30,7 @@ cfg = toy_default()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--concurvity', type=bool, help="whether to use correlated or uncorrelated features", default=True)
+    parser.add_argument('--base', type=int, help="regularization parameter base", default=1)
     args = parser.parse_args()
     
     # create W&B run
@@ -38,21 +38,23 @@ if __name__ == "__main__":
     wandb.finish()
     
     # setup dataset
-    data = load_concurvity_data(sigma_1=0.05, sigma_2=0.5, num_samples=1000)
+    # data = load_concurvity_data(sigma_1=0.05, sigma_2=0.5, num_samples=1000)
+
+    data = load_nonlinearly_dependent_2D_examples(num_samples=1000, dependent_functions=lambda x: torch.sin(3*x), sampling_type='normal') # uncorrelated features 
     train_dl, _, val_dl, _ = data.train_dataloaders()
     test_samples = data.get_test_samples()
 
-    # data = load_nonlinearly_dependent_2D_examples(num_samples=1000, dependent_functions=lambda x: torch.sin(4*x)) # uncorrelated features 
-    # train_dl, _, val_dl, _ = data.train_dataloaders()
-    # test_samples = data.get_test_samples()
-
     # searching space
+    
+    # base = [1e-4, 1e-3, 1e-2, 1e-1]
+    base = 0.1**(args.base)
+    lams = [base*x for x in range(1, 10)]
+#     for b in base: 
+#         lams += [b*x for x in range(1, 10)]
+#     lams += [1.0]
     parameters_list = {
-        'early_stopping_patience': {
-            'values': [20, 40, 60],
-        },
         'concurvity_regularization': {
-            'values': [0, 0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1, 1]
+            'values': lams
         },
     }
     # wandb sweep configuration 
@@ -64,9 +66,8 @@ if __name__ == "__main__":
     # initialize the sweep 
     sweep_id = wandb.sweep(
         sweep=sweep_configuration, 
-        project='concurvity_regularization_GAM',
+        project='concurvity_regularization_GAM_v9',
     )
-    # training
     wandb.agent(sweep_id, 
             function=partial(train, 
                              config=cfg, 

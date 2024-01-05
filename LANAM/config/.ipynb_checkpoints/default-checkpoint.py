@@ -12,23 +12,28 @@ def defaults() -> Config:
         
         likelihood='regression',
         prior_sigma_noise=0.7,
+        prior_prec_init=1, 
         
-        num_epochs=1000,
-        batch_size=256,
+        num_epochs=500,
+        batch_size=128,
         
         ## logs
         wandb=False, 
-        log_loss_frequency=250,
+        log_loss_frequency=50,
         
         # for tuning
-        lr=1e-1,
+        lr=1e-2,
         lr_hyp = 1e-1,
         n_epochs_burnin=50, 
         n_hypersteps=30, 
         marglik_frequency = 100,
-        hidden_sizes=[64],  #hidden linear layers' size 
+        hidden_sizes=[128, 128, 128],  #hidden linear layers' size 
         activation=True, # use activation or not   
         activation_cls='gelu', 
+        
+        # concurvity regularization
+        concurvity_regularization=0, 
+        perctile_epochs_burnin=0.05, # start concurvity regularization after a certain proportion of training steps
     )
 
     return config
@@ -70,6 +75,8 @@ def nam_defaults() -> Config:
         
         num_ensemble=10, 
         
+        
+        
     )
 
     return config
@@ -97,7 +104,9 @@ def toy_default() -> Config:
         num_epochs=300,
         batch_size=128,
         shuffle=True, # shuffle the training set or not 
-        early_stopping_patience=20,  
+        # early stopping
+        early_stopping_patience=10,  
+        early_stopping_delta=0,
         decay_rate=0, 
         
         ## logs
@@ -105,14 +114,16 @@ def toy_default() -> Config:
         wandb=False, 
         log_loss_frequency=30,
         
-        # regularizations used in vanilla nam.
+        # regularization
         l2_regularization= 0,
         output_regularization=0, 
         dropout= 0, 
         feature_dropout= 0, 
         
-        # concurvity regularization
-        concurvity_regularization=0.5, 
+        l1_regularization = 0, 
+        hsic_regularization = 0, 
+        concurvity_regularization=0, 
+        
         perctile_epochs_burnin=0.05, # start concurvity regularization after a certain proportion of training steps
         
         # model ensembling 

@@ -20,10 +20,11 @@ def ensemble_train_epoch(
     criterion, 
     metrics, 
     optimizers: torch.optim.Adam, 
+    schedulers: torch.optim.lr_scheduler, 
     models: nn.Module, 
     device: str, 
     dataloader: torch.utils.data.DataLoader, 
-    conc_reg: bool=True
+    conc_reg: bool=True, 
 ) -> torch.Tensor: 
     """
     train models with different initialization. 
@@ -61,6 +62,7 @@ def ensemble_train_epoch(
 
         for idx, model in enumerate(models):  
             optimizer = optimizers[idx]
+            scheduler = schedulers[idx]
             
             optimizer.zero_grad()
             preds, fnn_out = model(features)
@@ -72,7 +74,8 @@ def ensemble_train_epoch(
 
             step_loss.backward()
             optimizer.step()
-
+            scheduler.step()
+            
             losses[idx] += step_loss
             metrs[idx] += step_metrics
             Rs[idx] += step_R
