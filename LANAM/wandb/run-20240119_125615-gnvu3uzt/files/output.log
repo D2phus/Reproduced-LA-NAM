@@ -1,3 +1,0 @@
-[EPOCH=10]: Train_Loss:  1.371526, Val_Loss:  1.406733,  Train_RMSE:  1.171122, Val_RMSE:  1.186058, Train_R_perp:  0.000000, Val_R_perp:  0.000000
-[2024-01-19 12:57:03,752][LANAM.trainer.nam_trainer.train][INFO] - [EPOCH=10]: Train_Loss:  1.371526, Val_Loss:  1.406733,  Train_RMSE:  1.171122, Val_RMSE:  1.186058, Train_R_perp:  0.000000, Val_R_perp:  0.000000
-[2024-01-19 13:01:31,663][LANAM.trainer.nam_trainer.train][INFO] - [EPOCH=19]: Early stopping with Val_Loss:  1.401558, Val_RMSE:  1.401558, Val_R_perp:  0.000000

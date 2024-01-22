@@ -1,8 +1,0 @@
-wandb_version: 1
-
-activation_cls:
-  value: gelu
-decay_rate:
-  value: 8.852095723038326e-06
-lr:
-  value: 0.0036836411916164537
