@@ -2,95 +2,81 @@
 import random 
 import copy
 import math 
+import logging 
 
 from types import SimpleNamespace
-from typing import Mapping, Sequence, Tuple
-import numpy as np
+from typing import Mapping, Sequence, Tuple, List 
 
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
+from functorch import vmap
 
 import matplotlib.pyplot as plt 
 
 import wandb
+from tqdm import tqdm
 
 from .losses import penalized_loss
-from .metrics import accuracy
-from .metrics import mae, mse, rmse
-from .epoch import *
+from .metrics import * 
 
 
 from LANAM.models import NAM
-from LANAM.utils.plotting import *
-from LANAM.utils.earlystopping import EarlyStopper
-from LANAM.config import Config
+from LANAM.utils import * 
 
 
-def train(config: Config, 
+log = logging.getLogger(__name__)
+
+def train(config, 
           train_loader: DataLoader, 
           val_loader: DataLoader, 
           test_samples: Tuple=None, 
-          ensemble=True, 
-          use_wandb=False): 
-        """trainer for the ensembled vanilla NAM. 
+          ensemble: bool=True) -> List: 
+        """trainer for (ensembled) vanilla NAM. 
         Args: 
         -----
-        test_samples: Tuple(features, targets, feature_targets)
-            samples for testing
+        config: 
+            configuration. 
+        test_samples: Tuple(features, targets, feature_targets, feature_names)
         ensemble: bool
             whether to use ensemble members for uncertainty estimation
-        use_wandb: bool
-            whether to use W&B
         
         Returns: 
         -----
-        models: List[nn.Module]
-            ensemble models.
+        models: 
+            ensemble members.
         """
-        # get device
+        if config.wandb.use: 
+            run = wandb.init(entity=config.wandb.entity, project=config.wandb.project) 
+
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         in_features = len(train_loader.dataset[0][0])
-        if use_wandb:
-            # initialize sweeps
-            run = wandb.init()
-            # update configurations based on sweeps
-            config.update(**wandb.config)
-            # type check
-            if not isinstance(config.hidden_sizes, list): 
-                config.hidden_sizes = [config.hidden_sizes]
-            
+        
         # model ensembling
         num_ensemble = config.num_ensemble if ensemble else 1 
-        seeds = [*range(num_ensemble)]
+        seeds = [random.randint(0, 1000) for _ in range(num_ensemble)]
+        # seeds = [*range(num_ensemble)]
         
         # set up criterion and metrics
-        criterion = lambda nam_out, fnn_out, model, targets, conc_reg: penalized_loss(config, nam_out, fnn_out, model, targets, conc_reg)
-        metrics = lambda nam_out, targets: mse(nam_out, targets) if config.regression else accuracy(nam_out, targets)
-        
+        criterion = lambda nam_out, fnn_out, model, targets, concurvity_regularization: penalized_loss(config, nam_out, fnn_out, model, targets, concurvity_regularization)
+        metrics = lambda nam_out, targets: mse(nam_out, targets) if config.likelihood == 'regression' else accuracy(nam_out, targets)
         # annotation
-        metrics_name = "RMSE" if config.regression else "Accuracy"
+        metrics_name = "RMSE" if config.likelihood == 'regression' else "Accuracy"
         train_metrics_name, val_metrics_name = 'Train_' + metrics_name, 'Val_' + metrics_name
         train_loss_name, val_loss_name = 'Train_Loss', 'Val_Loss'
         R_name = 'R_perp'
         train_R_name, val_R_name = 'Train_' + R_name, 'Val_' + R_name
         
         # set up model, optimizer, and criterion for ensemble members
-        models = list()
-        optimizers = list()
-        schedulers = list()
-        schedulers = list()
+        models, optimizers, schedulers = list(), list(), list()
         for idx in range(num_ensemble): 
             setup_seeds(seeds[idx])
-            model = NAM(
-              config=config,
-              name=f'NAM-{config.activation_cls}-{idx}',
-              in_features=in_features)
+            model = NAM(config=config, name=f'NAM-{config.activation_cls}-{idx}', in_features=in_features)
             
             optimizer = torch.optim.Adam(model.parameters(), lr=config.lr, weight_decay=config.decay_rate) 
-            # https://zhuanlan.zhihu.com/p/611364321, https://zhuanlan.zhihu.com/p/261134624
-            # decrease learning rate during the whole training process: half the cosine. 
+            # decrease learning rate during the whole training process (half cosine): https://zhuanlan.zhihu.com/p/611364321, https://zhuanlan.zhihu.com/p/261134624
             scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, int(config.num_epochs * len(train_loader)))
             
             models.append(model)
@@ -102,22 +88,22 @@ def train(config: Config,
         
         # training and validation
         for epoch in range(1, config.num_epochs+1):
-            # forward + backward + optimize 
             if epoch < int(config.num_epochs*config.perctile_epochs_burnin):
-                # for stability reason, only after 5% training steps, the concurvity regularization will be applied. 
-                loss_train, metrics_train, R_train, im_train = ensemble_train_epoch(criterion, metrics, optimizers, schedulers, models, device, train_loader, conc_reg=False)
-                loss_val, metrics_val, R_val = ensemble_evaluate_epoch(criterion, metrics, models, device, val_loader, conc_reg=False)
+                # for stability reason, apply the concurvity regularization after 5% training steps
+                loss_train, metrics_train, R_train, im_train = _ensemble_train_epoch(epoch, criterion, metrics, optimizers, schedulers, models, device, train_loader, concurvity_regularization=False)
+                loss_val, metrics_val, R_val = _ensemble_evaluate_epoch(criterion, metrics, models, device, val_loader, concurvity_regularization=False)
             else: 
-                loss_train, metrics_train, R_train, im_train = ensemble_train_epoch(criterion, metrics, optimizers, schedulers, models, device, train_loader, conc_reg=True)
-                loss_val, metrics_val, R_val = ensemble_evaluate_epoch(criterion, metrics, models, device, val_loader, conc_reg=True)
+                loss_train, metrics_train, R_train, im_train = _ensemble_train_epoch(epoch, criterion, metrics, optimizers, schedulers, models, device, train_loader, concurvity_regularization=True)
+                loss_val, metrics_val, R_val = _ensemble_evaluate_epoch(criterion, metrics, models, device, val_loader, concurvity_regularization=True)
                 
                 # early stopping on the penalized loss
-                if early_stopper.early_stop(loss_val):  
-                    print(f'[EPOCH={epoch}]: Early stopping with {val_loss_name}: {loss_val: .6f}, {val_metrics_name}: {metrics_val: .6f}, {val_R_name}: {R_val: .6f}')
+                if early_stopper.early_stop(loss_val):
+                    print(f'[EPOCH={epoch}]: {train_loss_name}: {loss_train: .6f}, {val_loss_name}: {loss_val: .6f},  {train_metrics_name}: {math.sqrt(metrics_train): .6f}, {val_metrics_name}: {math.sqrt(metrics_val): .6f}, {train_R_name}: {R_train: .6f}, {val_R_name}: {R_val: .6f}')
+                    log.info(f'[EPOCH={epoch}]: Early stopping with {val_loss_name}: {loss_val: .6f}, {val_metrics_name}: {metrics_val: .6f}, {val_R_name}: {R_val: .6f}')
                     break
                  
             # logging
-            if use_wandb:
+            if config.wandb.use:
                 wandb.log({
                     train_metrics_name: math.sqrt(metrics_train), 
                     val_metrics_name: math.sqrt(metrics_val), 
@@ -128,43 +114,29 @@ def train(config: Config,
                 })
 
             if epoch % config.log_loss_frequency == 0: 
-                print(f'[EPOCH={epoch}]: {train_loss_name}: {loss_train: .6f}, {val_loss_name}: {loss_val: .6f},  {train_metrics_name}: {metrics_train: .6f}, {val_metrics_name}: {metrics_val: .6f}, {train_R_name}: {R_train: .6f}, {val_R_name}: {R_val: .6f}')
+                print(f'[EPOCH={epoch}]: {train_loss_name}: {loss_train: .6f}, {val_loss_name}: {loss_val: .6f},  {train_metrics_name}: {math.sqrt(metrics_train): .6f}, {val_metrics_name}: {math.sqrt(metrics_val): .6f}, {train_R_name}: {R_train: .6f}, {val_R_name}: {R_val: .6f}')
+                log.info(f'[EPOCH={epoch}]: {train_loss_name}: {loss_train: .6f}, {val_loss_name}: {loss_val: .6f},  {train_metrics_name}: {math.sqrt(metrics_train): .6f}, {val_metrics_name}: {math.sqrt(metrics_val): .6f}, {train_R_name}: {R_train: .6f}, {val_R_name}: {R_val: .6f}')
                 
-                # fitting for each shape functoin 
                 if test_samples is not None:
-                    test_logging(test_samples, models, use_wandb)
+                    _test_logging(config, test_samples, models)
                           
         if test_samples is not None: 
-            test_logging(test_samples, models, use_wandb)
+            _test_logging(config, test_samples, models)
             
         return models
     
     
-def setup_seeds(seed):
-    """Set seeds for everything."""
-    random.seed(seed)
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
-    np.random.seed(seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
-
-def test_logging(test_samples, models, use_wandb): 
-    X, y, shape_functions, names = test_samples
+def _test_logging(config, test_samples, models): 
+    features, targets, feature_targets, feature_names = test_samples
+    prediction_mean, feature_contribution_mean, prediction_var, feature_contribution_var = get_prediction(models, features)
     
-    prediction_mean, feature_contribution_mean, prediction_mean, feature_contribution_var = get_prediction(models, test_samples)
+    R_squared = adjusted_R_squared(features, targets, prediction_mean) 
     
-    importance_fig = plot_feature_importance(models, test_samples)
-    # importance_errorbar_fig = plot_feature_importance_errorbar(models, test_samples)
-    # pairwise_corr_fig = plot_pairwise_contribution_correlation(models, test_samples, (0,1))
-
-    R_squared = adjusted_R_squared(X, y, prediction_mean)
-    
-    # recover shape function
-    recover_fig = plot_recovered_functions(X, y, shape_functions, feature_contribution_mean, feature_contribution_var, center=False)       
+    importance_fig = plot_feature_importance_errorbar(models, features, feature_names)
+    recover_fig = plot_shape_function(features, feature_targets, feature_names, feature_contribution_mean, feature_contribution_var)
+    # recover_fig = plot_recovered_functions(X, y, shape_functions, feature_contribution_mean, feature_contribution_var, center=False) # recover shape functions      
                     
-    if use_wandb:
+    if config.wandb.use:
         wandb.log({
                 'Recover_Function': wandb.Image(recover_fig),
                 'Overall_Feature_Importance': wandb.Image(importance_fig), 
@@ -172,5 +144,106 @@ def test_logging(test_samples, models, use_wandb):
         })
     else: 
         print(f'R_squared: {R_squared.item(): .4f}')
+          
+
+def _ensemble_train_epoch(
+    epoch: int, 
+    criterion, 
+    metrics, 
+    optimizers: torch.optim.Adam, 
+    schedulers: torch.optim.lr_scheduler, 
+    models: nn.Module, 
+    device: str, 
+    dataloader: torch.utils.data.DataLoader, 
+    concurvity_regularization: bool=True
+) -> torch.Tensor: 
+    """
+    train models with different initialization. 
+    Seuquentially.
+    
+    Args:
+    ---------
+    optimizers: list
+        optimizers for each model.
+    models: list
+        ensembling members.
+    concurvity_regularization: bool
+        whether to apply concurvity regularization.
         
+    Returns: 
+    -----
+    loss, metrics, measured concurvity (R_perp), estimated feature importance  
+    
+    """
+    num_ensemble = len(models)
+    in_features = len(dataloader.dataset[0][0])
+    
+    for model in models:
+        model.train()
+    
+    losses, metrs, Rs = [0.0]*len(models), [0.0]*len(models), [0.0]*len(models) 
+    importance = [torch.zeros(in_features)]*len(models) # feature importance estimated on the training set 
         
+    for features, target in tqdm(dataloader, desc=f"Epoch: {epoch}"):
+        features, target = features.to(device), target.to(device) 
+        for idx, model in enumerate(models):  
+            optimizer = optimizers[idx]
+            scheduler = schedulers[idx]
+            
+            optimizer.zero_grad()
+            preds, fnn_out = model(features)
+            
+            step_loss = criterion(preds, fnn_out, model, target, concurvity_regularization)
+            step_loss.backward()
+            optimizer.step()
+            scheduler.step()
+            
+            losses[idx] += step_loss
+            metrs[idx] +=  metrics(preds, target)
+            Rs[idx] += concurvity(fnn_out)
+            importance[idx] += feature_importance(fnn_out)
+                
+    return sum(losses) / num_ensemble / len(dataloader), sum(metrs) / num_ensemble / len(dataloader), sum(Rs) / num_ensemble / len(dataloader), torch.stack(importance, dim=1).detach() / len(dataloader)
+
+def _ensemble_evaluate_epoch(
+    criterion, 
+    metrics, 
+    models: nn.Module, 
+    device: str, 
+    dataloader: torch.utils.data.DataLoader, 
+    concurvity_regularization: bool=True
+) -> torch.Tensor: 
+    """
+    train an ensemble of models with the same minibatch.
+    Use vmap to speed up.
+    
+    Args:
+    ---------
+    optimizers: list
+    models: list
+    """
+    def call_single_model(params, buffers, data):
+        return torch.func.functional_call(base_model, (params, buffers), (data,))
+    
+    num_ensemble = len(models)
+    for model in models:
+        model.eval()
+    
+    base_model = copy.deepcopy(models[0])
+    base_model.to('meta')
+    
+    losses, metrs, Rs = [0.0]*len(models), [0.0]*len(models), [0.0]*len(models) 
+    params, buffers = torch.func.stack_module_state(models) # all modules being stacked together must be the same, including the mode.
+    
+    for (X, y) in dataloader:
+        X, y =  X.to(device), y.to(device)
+            
+        pred_map, fnn_map = torch.vmap(call_single_model, (0, 0, None))(params, buffers, X) # (num_ensemble, batch_size, out_features)
+        for idx, model in enumerate(models):
+            losses[idx] += criterion(pred_map[idx], fnn_map[idx], model, y, concurvity_regularization)
+            metrs[idx] += metrics(pred_map[idx], y)
+            Rs[idx] += concurvity(fnn_map[idx])
+            
+    return sum(losses) / num_ensemble / len(dataloader), sum(metrs) / num_ensemble / len(dataloader), sum(Rs) / num_ensemble / len(dataloader)
+
+

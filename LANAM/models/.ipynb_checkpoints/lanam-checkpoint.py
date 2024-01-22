@@ -5,6 +5,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.distributions.multivariate_normal import _precision_to_scale_tril
+from torch.utils.data import Dataset, DataLoader, TensorDataset, random_split
+
 
 import numpy as np
 
@@ -43,7 +45,7 @@ class LaNAM(nn.Module):
             k_interactions: List[Tuple]
                 top-k feature interaction.
             """
-            super(LaNAM, self).__init__()
+            super().__init__()
             self.config = config
             self.in_features = in_features
             self.k_interactions = None
@@ -293,32 +295,48 @@ class LaNAM(nn.Module):
         out = torch.stack(fnn, dim=-1).sum(dim=-1) # sum along the features => of shape (batch_size)
         return out, fnn
     
-    def fit(self, loss, loader_fnn, override=True): 
-        """fit Laplace approximation for each feature neural net.
-        Args:
-        --------
-        loss: 
-            the summed loss of additive models on the training data. 
-        loader_fnn: list 
-            data loaders for feature networks.  
-        """
-        if override:
+    def fit(self, loss, train_loader, override=True): 
+        if override: 
             self.loss = 0
-            self.n_data = 0
-            
-        if type(loader_fnn) is not list: 
-            loader_fnn = [loader_fnn]
+            self.n_data = 0 
         
+        N = len(train_loader.dataset)
+        features, target = train_loader.dataset[:]
+        self.n_data += N
         if np.isscalar(loss) and np.isreal(loss):
             loss = torch.tensor(loss)
-        self.loss = self.factor*loss 
-        
-        N = len(loader_fnn[0].dataset)
+        self.loss += self.factor*loss # NOTE: +=, accumulated.
         
         for idx, fnn in enumerate(self.feature_nns): 
-            fnn.fit(loader_fnn[idx], override=override) 
+            fnn.fit(DataLoader(TensorDataset(features[:, idx:idx+1], target), batch_size=self.config.batch_size), override)
+        
+        
+   # def fit(self, loss, loader_fnn, override=True): 
+   #     """fit Laplace approximation for each feature neural net.
+   #     Args:
+   #     --------
+   #     loss: 
+   #         the summed loss of additive models on the training data. 
+   #     loader_fnn: list 
+   #         data loaders for feature networks.  
+   #     """
+   #     if override:
+   #         self.loss = 0
+   #         self.n_data = 0
             
-        self.n_data += N
+   #     if type(loader_fnn) is not list: 
+   #         loader_fnn = [loader_fnn]
+        
+   #     if np.isscalar(loss) and np.isreal(loss):
+   #         loss = torch.tensor(loss)
+   #     self.loss = self.factor*loss 
+        
+   #     N = len(loader_fnn[0].dataset)
+        
+   #     for idx, fnn in enumerate(self.feature_nns): 
+   #         fnn.fit(loader_fnn[idx], override=override) 
+            
+   #     self.n_data += N
             
     #@property 
     #def posterior_covariance(self):
@@ -349,7 +367,7 @@ class LaNAM(nn.Module):
         Returns: 
         -----------------
         f_mu of shape (batch_size)
-        f_var of shape (batch_size, 1)
+        f_var of shape (batch_size)
         f_mu_fnn, f_var_fnn of shape (batch_size, in_features)
         """
         f_mu_fnn, f_var_fnn = list(), list()
@@ -361,7 +379,7 @@ class LaNAM(nn.Module):
             f_var_fnn.append(f_var_index)
             
         f_mu_fnn = torch.cat(f_mu_fnn, dim=1)
-        f_var_fnn = torch.cat(f_var_fnn, dim=1)
+        f_var_fnn = torch.cat(f_var_fnn, dim=1).flatten(1)
         return torch.sum(f_mu_fnn, dim=1), torch.sum(f_var_fnn, dim=1), f_mu_fnn, f_var_fnn
         
     def log_marginal_likelihood(self, prior_precision=None, sigma_noise=None): 

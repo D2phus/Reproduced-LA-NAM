@@ -1,0 +1,12 @@
+wandb_version: 1
+
+activation_cls:
+  value: relu
+batch_size:
+  value: 128
+decay_rate:
+  value: 8.747463069210668e-06
+lr:
+  value: 0.001451466901455848
+num_epochs:
+  value: 40

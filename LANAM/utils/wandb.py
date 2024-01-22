@@ -9,10 +9,11 @@ from typing import Dict, Any, Optional, Tuple
 import os
 import sys
 import json
-from LANAM.config.default import defaults
+
+from omegaconf import OmegaConf
+
 from LANAM.data.base import LANAMDataset, LANAMSyntheticDataset
 
-cfg = defaults()
 
 def log_dataset(dataset: LANAMDataset, 
                 project_name: str, 
@@ -30,10 +31,11 @@ def log_dataset(dataset: LANAMDataset,
     else: 
         raise ValueError('`dataset` should be an `LANAMDataset` or `LANAMSyntheticDataset` instance.')
 
+        
 def load_dataset(project_name: str, 
                  artifact_or_name: str, 
                  table_name: str, 
-                 config=cfg):
+                 config):
     """fetch dataset from W&B
     Returns:
     -----
@@ -62,6 +64,7 @@ def load_dataset(project_name: str,
                         features_columns=data.columns[:-1],
                         targets_column=data.columns[-1])
     
+    
 def log_LANAMSyntheticDataset(dataset: LANAMSyntheticDataset, 
                               project_name: str, 
                               artifact_name: str, 
@@ -81,6 +84,7 @@ def log_LANAMSyntheticDataset(dataset: LANAMSyntheticDataset,
     }
     log_dataframe_to_table(data, project_name, artifact_name, table_name, metadata)
 
+    
 def log_LANAMDataset(dataset: LANAMDataset,
                      project_name: str, 
                     artifact_name: str, 
@@ -91,6 +95,7 @@ def log_LANAMDataset(dataset: LANAMDataset,
     }
     
     log_dataframe_to_table(dataset.raw_data, project_name, artifact_name, table_name, metadata)
+    
     
 def log_dataframe_to_table(data: pd.DataFrame, project_name, artifact_name, table_name, metadata: dict=None): 
     """log pandas.DataFrame data to W&B as a table."""
@@ -103,7 +108,8 @@ def log_dataframe_to_table(data: pd.DataFrame, project_name, artifact_name, tabl
         run.log({table_name: table})
         run.log_artifact(artifact)
     
-def load_LANAMDataset(project_name, artifact_or_name, table_name, config=cfg):
+    
+def load_LANAMDataset(project_name, artifact_or_name, table_name, config):
     """fetch LANAMDataset from W&B"""
     data, _ = load_table_to_dataframe(project_name, artifact_or_name, table_name)
     return LANAMDataset(config,
@@ -111,7 +117,8 @@ def load_LANAMDataset(project_name, artifact_or_name, table_name, config=cfg):
                         features_columns=data.columns[:-1],
                         targets_column=data.columns[-1])
 
-def load_LANAMSyntheticDataset(project_name, artifact_or_name, table_name, config=cfg):
+
+def load_LANAMSyntheticDataset(project_name, artifact_or_name, table_name, config):
     """fetch LANAMSyntheticDataset from W&B"""
     dataset, metadata = load_table_to_dataframe(project_name, artifact_or_name, table_name)
     sigma = metadata['sigma']

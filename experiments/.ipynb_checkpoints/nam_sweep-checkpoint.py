@@ -16,11 +16,10 @@ import numpy as np
 sys.path.append(os.path.abspath(os.path.join(os.getcwd(), os.pardir))) # add `LANAM` to system paths
 
 from LANAM.models import NAM 
-from LANAM.trainer.nam_trainer import *
+from LANAM.trainer import *
 from LANAM.config.default import nam_defaults
-from LANAM.data.generator import *
-from LANAM.utils.wandb import *
-from LANAM.utils.plotting import *
+from LANAM.data import *
+from LANAM.utils import *
 
 from experiments.wandbconfig import WandbConfiguration 
 

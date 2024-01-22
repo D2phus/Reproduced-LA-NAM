@@ -1,0 +1,447 @@
+2024-01-19 15:13:19,580 INFO    StreamThr :201922 [internal.py:wandb_internal():86] W&B internal server running at pid: 201922, started at: 2024-01-19 15:13:19.577117
+2024-01-19 15:13:19,597 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status
+2024-01-19 15:13:19,599 INFO    WriterThread:201922 [datastore.py:open_for_write():85] open: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/run-4k85sl9n.wandb
+2024-01-19 15:13:19,600 DEBUG   SenderThread:201922 [sender.py:send():380] send: header
+2024-01-19 15:13:19,611 DEBUG   SenderThread:201922 [sender.py:send():380] send: run
+2024-01-19 15:13:20,024 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: check_version
+2024-01-19 15:13:20,025 INFO    SenderThread:201922 [dir_watcher.py:__init__():211] watching files in: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files
+2024-01-19 15:13:20,025 INFO    SenderThread:201922 [sender.py:_start_run_threads():1122] run started: 4k85sl9n with start time 1705669999.578915
+2024-01-19 15:13:20,025 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: check_version
+2024-01-19 15:13:20,073 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: run_start
+2024-01-19 15:13:20,074 DEBUG   HandlerThread:201922 [system_info.py:__init__():32] System info init
+2024-01-19 15:13:20,074 DEBUG   HandlerThread:201922 [system_info.py:__init__():47] System info init done
+2024-01-19 15:13:20,074 INFO    HandlerThread:201922 [system_monitor.py:start():194] Starting system monitor
+2024-01-19 15:13:20,074 INFO    SystemMonitor:201922 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-01-19 15:13:20,074 INFO    HandlerThread:201922 [system_monitor.py:probe():214] Collecting system info
+2024-01-19 15:13:20,089 DEBUG   HandlerThread:201922 [system_info.py:probe():196] Probing system
+2024-01-19 15:13:20,091 INFO    SystemMonitor:201922 [interfaces.py:start():190] Started cpu monitoring
+2024-01-19 15:13:20,092 DEBUG   HandlerThread:201922 [system_info.py:_probe_git():181] Probing git
+2024-01-19 15:13:20,096 INFO    SystemMonitor:201922 [interfaces.py:start():190] Started disk monitoring
+2024-01-19 15:13:20,099 INFO    SystemMonitor:201922 [interfaces.py:start():190] Started memory monitoring
+2024-01-19 15:13:20,109 INFO    SystemMonitor:201922 [interfaces.py:start():190] Started network monitoring
+2024-01-19 15:13:20,121 DEBUG   HandlerThread:201922 [system_info.py:_probe_git():189] Probing git done
+2024-01-19 15:13:20,121 DEBUG   HandlerThread:201922 [system_info.py:probe():244] Probing system done
+2024-01-19 15:13:20,121 DEBUG   HandlerThread:201922 [system_monitor.py:probe():223] {'os': 'Linux-3.10.0-1160.95.1.el7.x86_64-x86_64-with-glibc2.17', 'python': '3.10.10', 'heartbeatAt': '2024-01-19T13:13:20.089429', 'startedAt': '2024-01-19T13:13:19.561596', 'docker': None, 'cuda': None, 'args': ('activation_cls=elu', 'batch_size=512', 'decay_rate=0.00273150487223048', 'lr=0.05098976554198087', 'num_epochs=63', 'num_layers=6', 'num_units=397'), 'state': 'running', 'program': '/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/main.py', 'codePathLocal': None, 'codePath': 'LANAM/main.py', 'git': {'remote': 'https://github.com/D2phus/Reproduced-LA-NAM.git', 'commit': '9a6b87db5481a8ec183e3e6986fffb40719c7540'}, 'email': 'xinyuzhang_cs@outlook.com', 'root': '/scratch/work/zhangx18/Reproduced-LA-NAM', 'host': 'csl46.int.triton.aalto.fi', 'username': 'zhangx18', 'executable': '/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-04/e0d50272/bin/python', 'cpu_count': 40, 'cpu_count_logical': 40, 'cpu_freq': {'current': 2894.2561250000003, 'min': 1000.0, 'max': 3900.0}, 'cpu_freq_per_core': [{'current': 2973.48, 'min': 1000.0, 'max': 3900.0}, {'current': 3579.254, 'min': 1000.0, 'max': 3900.0}, {'current': 2897.033, 'min': 1000.0, 'max': 3900.0}, {'current': 3365.478, 'min': 1000.0, 'max': 3900.0}, {'current': 2937.622, 'min': 1000.0, 'max': 3900.0}, {'current': 3589.172, 'min': 1000.0, 'max': 3900.0}, {'current': 2981.872, 'min': 1000.0, 'max': 3900.0}, {'current': 1000.061, 'min': 1000.0, 'max': 3900.0}, {'current': 2917.327, 'min': 1000.0, 'max': 3900.0}, {'current': 1000.061, 'min': 1000.0, 'max': 3900.0}, {'current': 2619.171, 'min': 1000.0, 'max': 3900.0}, {'current': 999.908, 'min': 1000.0, 'max': 3900.0}, {'current': 2925.872, 'min': 1000.0, 'max': 3900.0}, {'current': 3167.114, 'min': 1000.0, 'max': 3900.0}, {'current': 2979.583, 'min': 1000.0, 'max': 3900.0}, {'current': 3168.029, 'min': 1000.0, 'max': 3900.0}, {'current': 2900.085, 'min': 1000.0, 'max': 3900.0}, {'current': 3416.442, 'min': 1000.0, 'max': 3900.0}, {'current': 3004.76, 'min': 1000.0, 'max': 3900.0}, {'current': 3581.237, 'min': 1000.0, 'max': 3900.0}, {'current': 2991.18, 'min': 1000.0, 'max': 3900.0}, {'current': 3403.93, 'min': 1000.0, 'max': 3900.0}, {'current': 2920.227, 'min': 1000.0, 'max': 3900.0}, {'current': 1000.061, 'min': 1000.0, 'max': 3900.0}, {'current': 3022.613, 'min': 1000.0, 'max': 3900.0}, {'current': 3157.501, 'min': 1000.0, 'max': 3900.0}, {'current': 2982.635, 'min': 1000.0, 'max': 3900.0}, {'current': 3428.039, 'min': 1000.0, 'max': 3900.0}, {'current': 2940.368, 'min': 1000.0, 'max': 3900.0}, {'current': 3117.675, 'min': 1000.0, 'max': 3900.0}, {'current': 2964.019, 'min': 1000.0, 'max': 3900.0}, {'current': 2873.535, 'min': 1000.0, 'max': 3900.0}, {'current': 2987.976, 'min': 1000.0, 'max': 3900.0}, {'current': 3351.287, 'min': 1000.0, 'max': 3900.0}, {'current': 3190.612, 'min': 1000.0, 'max': 3900.0}, {'current': 3133.85, 'min': 1000.0, 'max': 3900.0}, {'current': 2994.995, 'min': 1000.0, 'max': 3900.0}, {'current': 3430.786, 'min': 1000.0, 'max': 3900.0}, {'current': 2542.724, 'min': 1000.0, 'max': 3900.0}, {'current': 3332.824, 'min': 1000.0, 'max': 3900.0}], 'disk': {'/': {'total': 93.76412200927734, 'used': 4.563999176025391}}, 'memory': {'total': 187.52824783325195}}
+2024-01-19 15:13:20,121 INFO    HandlerThread:201922 [system_monitor.py:probe():224] Finished collecting system info
+2024-01-19 15:13:20,121 INFO    HandlerThread:201922 [system_monitor.py:probe():227] Publishing system info
+2024-01-19 15:13:20,121 DEBUG   HandlerThread:201922 [system_info.py:_save_pip():52] Saving list of pip packages installed into the current environment
+2024-01-19 15:13:20,123 DEBUG   HandlerThread:201922 [system_info.py:_save_pip():68] Saving pip packages done
+2024-01-19 15:13:20,123 DEBUG   HandlerThread:201922 [system_info.py:_save_conda():75] Saving list of conda packages installed into the current environment
+2024-01-19 15:13:21,027 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_created():271] file/dir created: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/conda-environment.yaml
+2024-01-19 15:13:21,028 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_created():271] file/dir created: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/requirements.txt
+2024-01-19 15:13:42,042 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/conda-environment.yaml
+2024-01-19 15:13:42,056 DEBUG   HandlerThread:201922 [system_info.py:_save_conda():87] Saving conda packages done
+2024-01-19 15:13:42,058 INFO    HandlerThread:201922 [system_monitor.py:probe():229] Finished publishing system info
+2024-01-19 15:13:42,066 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:13:42,067 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: keepalive
+2024-01-19 15:13:42,068 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:13:42,071 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: keepalive
+2024-01-19 15:13:42,072 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:13:42,073 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: keepalive
+2024-01-19 15:13:42,073 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:13:42,074 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: keepalive
+2024-01-19 15:13:42,075 DEBUG   SenderThread:201922 [sender.py:send():380] send: files
+2024-01-19 15:13:42,075 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2024-01-19 15:13:42,077 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:13:42,077 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:13:42,086 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:13:42,294 DEBUG   SenderThread:201922 [sender.py:send():380] send: telemetry
+2024-01-19 15:13:42,294 DEBUG   SenderThread:201922 [sender.py:send():380] send: telemetry
+2024-01-19 15:13:42,715 INFO    wandb-upload_0:201922 [upload_job.py:push():131] Uploaded file /tmp/tmpw3dsskhwwandb/f9qcbsci-wandb-metadata.json
+2024-01-19 15:13:43,043 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_created():271] file/dir created: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-metadata.json
+2024-01-19 15:13:43,143 DEBUG   SenderThread:201922 [sender.py:send():380] send: telemetry
+2024-01-19 15:13:43,183 DEBUG   SenderThread:201922 [sender.py:send():380] send: telemetry
+2024-01-19 15:13:45,183 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:13:48,947 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:13:48,948 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:13:48,948 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:13:48,951 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:13:49,048 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_created():271] file/dir created: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:13:50,956 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:13:52,051 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/config.yaml
+2024-01-19 15:13:56,140 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:13:57,076 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:13:57,077 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:13:57,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:13:57,890 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:13:57,891 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:13:57,891 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:13:57,893 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:13:58,057 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:14:01,894 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:14:06,895 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:14:09,087 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:14:09,087 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:14:09,088 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:14:09,090 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:14:10,067 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:14:12,076 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:14:12,077 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:14:12,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:14:12,280 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:14:17,281 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:14:20,109 DEBUG   SystemMonitor:201922 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-01-19 15:14:20,111 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:14:21,936 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:14:21,937 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:14:21,938 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:14:21,939 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:14:22,078 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:14:22,940 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:14:27,077 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:14:27,077 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:14:27,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:14:28,314 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:14:33,314 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:14:35,184 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:14:35,185 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:14:35,185 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:14:35,187 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:14:36,090 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:14:39,188 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:14:42,077 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:14:42,077 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:14:42,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:14:44,256 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:14:48,750 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:14:48,751 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:14:48,751 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:14:48,752 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:14:49,102 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:14:49,753 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:14:50,112 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:14:55,113 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:14:57,077 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:14:57,077 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:14:57,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:15:00,321 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:15:02,414 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:15:02,415 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:15:02,415 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:15:02,416 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:15:03,114 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:15:05,417 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:15:10,418 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:15:12,079 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:15:12,079 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:15:12,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:15:16,210 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:15:16,211 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:15:16,211 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:15:16,211 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:15:16,212 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:15:17,127 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:15:20,113 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:15:22,113 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:15:27,079 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:15:27,079 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:15:27,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:15:27,293 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:15:30,078 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:15:30,079 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:15:30,079 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:15:30,082 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:15:30,138 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:15:33,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:15:38,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:15:42,079 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:15:42,079 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:15:42,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:15:43,313 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:15:43,780 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:15:43,781 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:15:43,781 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:15:43,783 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:15:44,151 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:15:44,151 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_created():271] file/dir created: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/output.log
+2024-01-19 15:15:46,153 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/output.log
+2024-01-19 15:15:48,847 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:15:50,114 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:15:54,114 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:15:57,079 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:15:57,080 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:15:57,084 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:15:57,559 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:15:57,560 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:15:57,560 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:15:57,562 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:15:58,166 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:15:59,563 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:16:04,564 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:16:09,565 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:16:11,378 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:16:11,379 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:16:11,379 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:16:11,382 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:16:12,079 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:16:12,080 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:16:12,084 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:16:12,179 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:16:15,271 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:16:20,114 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:16:21,115 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:16:25,257 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:16:25,258 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:16:25,258 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:16:25,261 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:16:26,192 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:16:26,261 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:16:27,079 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:16:27,080 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:16:27,084 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:16:31,284 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:16:36,285 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:16:39,113 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:16:39,114 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:16:39,114 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:16:39,117 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:16:39,205 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:16:42,080 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:16:42,080 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:16:42,084 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:16:42,269 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:16:47,270 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:16:50,115 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:16:53,116 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:16:53,173 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:16:53,174 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:16:53,174 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:16:53,176 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:16:53,217 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:16:57,082 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:16:57,082 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:16:57,084 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:16:58,293 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:17:03,294 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:17:07,052 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:17:07,053 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:17:07,053 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:17:07,054 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:17:07,230 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:17:09,055 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:17:12,082 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:17:12,083 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:17:12,085 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:17:14,271 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:17:19,272 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:17:20,116 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:17:21,027 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:17:21,028 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:17:21,028 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:17:21,030 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:17:21,242 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:17:25,031 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:17:27,082 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:17:27,083 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:17:27,085 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:17:30,313 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:17:34,945 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:17:34,946 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:17:34,946 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:17:34,947 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:17:35,255 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:17:35,948 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:17:40,949 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:17:42,082 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:17:42,083 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:17:42,085 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:17:46,338 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:17:48,887 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:17:48,887 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:17:48,888 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:17:48,889 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:17:49,294 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:17:50,117 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:17:52,118 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:17:57,082 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:17:57,083 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:17:57,086 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:17:57,274 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:18:02,275 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:18:02,856 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:18:02,856 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:18:02,857 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:18:02,858 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:18:03,356 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:18:04,357 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/output.log
+2024-01-19 15:18:07,896 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:18:12,082 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:18:12,083 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:18:12,086 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:18:13,260 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:18:16,903 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:18:16,904 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:18:16,904 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:18:16,905 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:18:17,419 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:18:18,906 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:18:20,118 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:18:24,120 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:18:27,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:18:27,083 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:18:27,086 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:18:29,315 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:18:30,904 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:18:30,905 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:18:30,905 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:18:30,906 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:18:31,482 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:18:34,907 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:18:39,908 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:18:42,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:18:42,083 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:18:42,086 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:18:44,945 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:18:44,945 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:18:44,946 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:18:44,947 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:18:44,948 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:18:45,545 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:18:49,949 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:18:50,119 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:18:55,120 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:18:57,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:18:57,083 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:18:57,086 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:18:58,985 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:18:58,985 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:18:58,986 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:18:58,987 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:18:59,605 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:19:00,988 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:19:05,989 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:19:10,989 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:19:12,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:19:12,084 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:19:12,087 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:19:13,330 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:19:13,331 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:19:13,332 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:19:13,333 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:19:13,668 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:19:16,334 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:19:20,120 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:19:22,121 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:19:27,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:19:27,084 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:19:27,087 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:19:27,269 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:19:27,401 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:19:27,402 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:19:27,402 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:19:27,403 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:19:27,732 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:19:32,405 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:19:37,406 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:19:41,855 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:19:41,855 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:19:41,856 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:19:41,857 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:19:42,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:19:42,084 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:19:42,087 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:19:42,799 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:19:45,112 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:19:50,113 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:19:50,121 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:19:55,122 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:19:56,004 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:19:56,005 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:19:56,005 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:19:56,006 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:19:56,863 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:19:57,083 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:19:57,084 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:19:57,087 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:20:00,280 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:20:05,281 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:20:10,157 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:20:10,158 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:20:10,158 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:20:10,159 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:20:10,880 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:20:11,160 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:20:12,084 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:20:12,084 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:20:12,087 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:20:16,303 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:20:20,122 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:20:22,123 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:20:24,305 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:20:24,306 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:20:24,306 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:20:24,307 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:20:24,893 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:20:26,895 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/output.log
+2024-01-19 15:20:27,084 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:20:27,084 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:20:27,087 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:20:27,287 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:20:32,288 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:20:37,289 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:20:38,495 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:20:38,496 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:20:38,496 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:20:38,497 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:20:38,906 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:20:42,084 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:20:42,084 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:20:42,088 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:20:43,266 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:20:48,267 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:20:50,129 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:20:52,762 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:20:52,762 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:20:52,763 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:20:52,764 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:20:52,919 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:20:53,765 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:20:57,084 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:20:57,085 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:20:57,088 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:20:59,323 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:21:04,324 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:21:06,922 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:21:06,923 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:21:06,923 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:21:06,924 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:21:06,933 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:21:09,925 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:21:12,084 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:21:12,084 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:21:12,088 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:21:15,306 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:21:20,124 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:21:21,030 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:21:21,031 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:21:21,031 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:21:21,033 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:21:21,034 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:21:21,947 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:21:26,035 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:21:27,084 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:21:27,085 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:21:27,088 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:21:31,336 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:21:35,168 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:21:35,169 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:21:35,169 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:21:35,170 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:21:35,960 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:21:37,171 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:21:42,084 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:21:42,085 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:21:42,088 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:21:42,337 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:21:47,338 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:21:49,354 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: partial_history
+2024-01-19 15:21:49,354 DEBUG   SenderThread:201922 [sender.py:send():380] send: history
+2024-01-19 15:21:49,355 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: summary_record
+2024-01-19 15:21:49,356 INFO    SenderThread:201922 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2024-01-19 15:21:49,973 INFO    Thread-12 :201922 [dir_watcher.py:_on_file_modified():288] file/dir modified: /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_151319-4k85sl9n/files/wandb-summary.json
+2024-01-19 15:21:50,125 DEBUG   SenderThread:201922 [sender.py:send():380] send: stats
+2024-01-19 15:21:53,125 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report
+2024-01-19 15:21:57,084 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: stop_status
+2024-01-19 15:21:57,085 DEBUG   SenderThread:201922 [sender.py:send_request():407] send_request: stop_status
+2024-01-19 15:21:57,088 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: internal_messages
+2024-01-19 15:21:58,291 DEBUG   HandlerThread:201922 [handler.py:handle_request():146] handle_request: status_report

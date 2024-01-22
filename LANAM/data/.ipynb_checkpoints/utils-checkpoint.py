@@ -30,7 +30,14 @@ class CustomPipeline(Pipeline):
     
     
 def transform_data(df: pd.DataFrame, min_max=True):
-    """convert categorical data into numeric
+    """data transformation. 
+    1. categorical to numeric. 
+    2. scale to (-1, 1), defaulted. 
+    Args: 
+    -----
+    df: data frame. 
+    min_max: whether to scale each feature to (-1, 1)
+    
     """
     column_names = df.columns
     new_column_names = []

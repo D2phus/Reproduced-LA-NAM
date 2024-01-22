@@ -1,0 +1,8 @@
+wandb_version: 1
+
+activation_cls:
+  value: elu
+decay_rate:
+  value: 6.14177943628107e-07
+lr:
+  value: 0.04115932199923815

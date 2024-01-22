@@ -12,16 +12,8 @@ class FeatureNN(nn.Module):
         name: str, 
         in_features: int,
         feature_index: int, 
-        ) -> None: # type-check
-            """
-            DNN for each feature. 
-            
-            Args:
-            -----
-            in_features: 
-                input feature dimensions
-            feature_index: 
-                index of learnt feature
+        ) -> None: 
+            """DNN for each feature. 
             """
             super(FeatureNN, self).__init__()
             if config.activation_cls not in ['relu', 'exu', 'gelu', 'elu', 'leakyrelu']:
@@ -32,7 +24,8 @@ class FeatureNN(nn.Module):
             self.in_features = in_features
             self.feature_index = feature_index
             self.activation_cls = config.activation_cls
-            self.hidden_sizes = config.hidden_sizes
+            self.hidden_sizes = [config.num_units for _ in range(config.num_layers)]
+            # self.hidden_sizes = config.hidden_sizes
             self.model = self.setup_model()
             
        
@@ -51,14 +44,8 @@ class FeatureNN(nn.Module):
                 layers.append(nn.Dropout(p=self.config.dropout))
         else: 
             # [Linear + activation_cls]
-            if self.activation_cls == 'gelu': 
-                activation_cls = nn.GELU
-            elif self.activation_cls == 'relu':
-                activation_cls = nn.ReLU
-            elif self.activation_cls == 'elu': 
-                activation_cls = nn.ELU
-            elif self.activation_cls == 'leakyrelu':
-                activation_cls = nn.LeakyReLU
+            cls_dict = {'gelu': nn.GELU, 'relu': nn.ReLU, 'elu': nn.ELU, 'leakyrelu': nn.LeakyReLU}
+            activation_cls = cls_dict[self.activation_cls]
                 
             for in_f, out_f in zip(hidden_sizes[:], hidden_sizes[1:]):
                     layers.append(nn.Linear(in_f, out_f,  bias=True))
@@ -81,8 +68,10 @@ class FeatureNN(nn.Module):
         Return of shape (batch_size, out_features) = (batch_size, 1): a batch of outputs 
         
         """
-        outputs = inputs.unsqueeze(1) # TODO: of shape (batch_size, 1)?
-        outputs = self.model(outputs)
+        if inputs.ndim == 1: 
+            inputs = inputs.unsqueeze(1) # (batch_size, 1)
+
+        outputs = self.model(inputs)
         return outputs
         # mean, variance = self.model(outputs)
         # return mean, variance

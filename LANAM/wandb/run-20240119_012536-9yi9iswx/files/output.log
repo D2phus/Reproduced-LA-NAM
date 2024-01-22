@@ -1,0 +1,10 @@
+[EPOCH=10]: Train_Loss:  0.713056, Val_Loss:  0.881710,  Train_RMSE:  0.844426, Val_RMSE:  0.938994, Train_R_perp:  0.297000, Val_R_perp:  0.309440
+[2024-01-19 01:26:00,027][LANAM.trainer.nam_trainer.train][INFO] - [EPOCH=10]: Train_Loss:  0.713056, Val_Loss:  0.881710,  Train_RMSE:  0.844426, Val_RMSE:  0.938994, Train_R_perp:  0.297000, Val_R_perp:  0.309440
+[EPOCH=20]: Train_Loss:  0.347202, Val_Loss:  0.373232,  Train_RMSE:  0.589238, Val_RMSE:  0.610928, Train_R_perp:  0.246215, Val_R_perp:  0.285820
+[2024-01-19 01:26:00,747][LANAM.trainer.nam_trainer.train][INFO] - [EPOCH=20]: Train_Loss:  0.347202, Val_Loss:  0.373232,  Train_RMSE:  0.589238, Val_RMSE:  0.610928, Train_R_perp:  0.246215, Val_R_perp:  0.285820
+[EPOCH=30]: Train_Loss:  0.265502, Val_Loss:  0.280965,  Train_RMSE:  0.515269, Val_RMSE:  0.530061, Train_R_perp:  0.227265, Val_R_perp:  0.272381
+[2024-01-19 01:26:01,460][LANAM.trainer.nam_trainer.train][INFO] - [EPOCH=30]: Train_Loss:  0.265502, Val_Loss:  0.280965,  Train_RMSE:  0.515269, Val_RMSE:  0.530061, Train_R_perp:  0.227265, Val_R_perp:  0.272381
+[EPOCH=40]: Train_Loss:  0.262155, Val_Loss:  0.271726,  Train_RMSE:  0.512010, Val_RMSE:  0.521274, Train_R_perp:  0.222726, Val_R_perp:  0.265361
+[2024-01-19 01:26:02,384][LANAM.trainer.nam_trainer.train][INFO] - [EPOCH=40]: Train_Loss:  0.262155, Val_Loss:  0.271726,  Train_RMSE:  0.512010, Val_RMSE:  0.521274, Train_R_perp:  0.222726, Val_R_perp:  0.265361
+[EPOCH=50]: Train_Loss:  0.257924, Val_Loss:  0.266344,  Train_RMSE:  0.507862, Val_RMSE:  0.516085, Train_R_perp:  0.214457, Val_R_perp:  0.265382
+[2024-01-19 01:26:03,115][LANAM.trainer.nam_trainer.train][INFO] - [EPOCH=50]: Train_Loss:  0.257924, Val_Loss:  0.266344,  Train_RMSE:  0.507862, Val_RMSE:  0.516085, Train_R_perp:  0.214457, Val_R_perp:  0.265382

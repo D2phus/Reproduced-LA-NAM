@@ -57,7 +57,8 @@ class FeatureNN(nn.Module):
             self.sigma_noise = sigma_noise
             self.temperature = temperature
             
-            self.hidden_sizes = self.config.hidden_sizes
+            self.hidden_sizes = [config.num_units for _ in range(config.num_layers)]
+            # self.hidden_sizes = self.config.hidden_sizes
             self.activation = self.config.activation
             self.activation_cls = self.config.activation_cls
             self.likelihood = self.config.likelihood

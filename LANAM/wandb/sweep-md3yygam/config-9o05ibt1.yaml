@@ -1,0 +1,8 @@
+wandb_version: 1
+
+activation_cls:
+  value: relu
+decay_rate:
+  value: 2.3841519266343403e-06
+lr:
+  value: 0.05428375862662531

@@ -27,8 +27,7 @@ from LANAM.data.generator import *
 from LANAM.data.base import LANAMDataset, LANAMSyntheticDataset
 
 from LANAM.config.default import defaults
-from LANAM.utils.plotting import * 
-from LANAM.utils.wandb import *
+from LANAM.utils import * 
 from experiments.wandbconfig import WandbConfiguration 
 
 import wandb

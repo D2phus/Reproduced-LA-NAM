@@ -1,0 +1,17 @@
+name: sweep
+program: main.py 
+entity: 'xinyu-zhang'
+project: 'accuracy-concurvity-curve-NAMs'
+    
+method: random
+parameters:
+  hsic_regularization: 
+    distribution: log_uniform_values
+    min: 1e1
+    max: 1e4
+command:
+  - ${env}
+  - python
+  - ${program}
+  - ${args_no_hyphens}
+

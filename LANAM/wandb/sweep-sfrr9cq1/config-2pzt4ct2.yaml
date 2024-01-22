@@ -1,0 +1,16 @@
+wandb_version: 1
+
+activation_cls:
+  value: elu
+batch_size:
+  value: 128
+decay_rate:
+  value: 0.001089876642083436
+lr:
+  value: 0.02650704005920677
+num_epochs:
+  value: 87
+num_layers:
+  value: 4
+num_units:
+  value: 168

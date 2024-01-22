@@ -12,16 +12,14 @@ import numpy as np
 from laplace.curvature import BackPackGGN
 from laplace import Laplace
 
-from LANAM.utils.plotting import *
-from LANAM.utils.regularizer import *
-from LANAM.trainer.test import test
+from LANAM.utils import * 
 import wandb
+from tqdm import tqdm
 
 import os
 
 def marglik_training(model,
                      train_loader,
-                     train_loader_fnn, 
                      val_loader,
                      likelihood, 
                      test_samples=None,
@@ -126,7 +124,7 @@ def marglik_training(model,
         epoch_R_perp = 0.0 
         
         # training 
-        for X, y in train_loader:
+        for X, y in tqdm(train_loader, desc=f"Epoch: {epoch}"):
             X, y = X.to(device), y.to(device)
             optimizer.zero_grad()
             
@@ -238,7 +236,7 @@ def marglik_training(model,
         model.prior_precision = prior_prec
         for fnn in model.feature_nns:
             fnn._la = None # Re-init laplace for each feature network.
-        model.fit(epoch_perf, train_loader_fnn)
+        model.fit(epoch_perf, train_loader)
                 
         # maximize the marginal likelihood
         for idx in range(n_hypersteps):
@@ -266,7 +264,7 @@ def marglik_training(model,
                         'Prior_precision_1': prior_prec[1].item(),
                 })
         
-        print(f'[Epoch={epoch}, Train_RMSE: {torch.sqrt(perfs[-1]): .3f}, Train_R_perp: {R_perps[-1]: .3f}, Val_RMSE: {torch.sqrt(val_perf): .3f}, Val_R_perp: {val_R_perp: .3f}, n_hypersteps={idx}]: observed noise={model.additive_sigma_noise.detach().item(): .3f}, prior precision={model.prior_precision.detach()}')
+        print(f'[Epoch={epoch}], Train_RMSE: {torch.sqrt(perfs[-1]): .3f}, Train_R_perp: {R_perps[-1]: .3f}, Val_RMSE: {torch.sqrt(val_perf): .3f}, Val_R_perp: {val_R_perp: .3f}, n_hypersteps={idx}]: observed noise={model.additive_sigma_noise.detach().item(): .3f}, prior precision={model.prior_precision.detach()}')
         
         # best model selection.
         if margliks[-1] < best_marglik:
@@ -307,7 +305,7 @@ def _test_logging(test_samples, model, use_wandb):
     f_mu, _, f_mu_fnn, f_var_fnn = model.predict(features) # epistemic uncertainty
             
     fig = plot_recovered_functions(features, targets, feature_targets, f_mu_fnn.flatten(start_dim=1), f_var_fnn.flatten(start_dim=1))  
-    importance_fig = plot_feature_importance(model, test_samples)
+    importance_fig = plot_feature_importance_errorbar(model, features, feature_names)
     fig_3d = plot_3d(features[:, 0], features[:, 1], f_mu, targets)
     
     R_squared = adjusted_R_squared(features, targets, f_mu)

@@ -33,4 +33,6 @@ def test(likelihood,
     
     loss /= len(dataloader.dataset)
     return loss
+
+
         

@@ -1,0 +1,1 @@
+{"Train_RMSE": 1.1633617019316456, "Val_RMSE": 1.193028855324161, "Train_Loss": 1.3534104824066162, "Val_Loss": 1.423317790031433, "Train_R_perp": 0.0, "Val_R_perp": 0.0, "_timestamp": 1705662048.013507, "_runtime": 272.8227458000183, "_step": 17, "_wandb": {"runtime": 315}}

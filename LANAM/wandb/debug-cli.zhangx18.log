@@ -1,0 +1,1007 @@
+2024-01-19 01:14:01 INFO Running runs: []
+2024-01-19 01:14:01 INFO Agent received command: run
+2024-01-19 01:14:01 INFO Agent starting run with config:
+	activation_cls: relu
+	decay_rate: 3.833084345601615e-06
+	lr: 0.008009030681503769
+2024-01-19 01:14:01 INFO About to run command: /usr/bin/env python main.py activation_cls=relu decay_rate=3.833084345601615e-06 lr=0.008009030681503769
+2024-01-19 01:14:06 INFO Running runs: ['hr5b7ey0']
+2024-01-19 01:14:06 INFO Cleaning up finished run: hr5b7ey0
+2024-01-19 01:14:07 INFO Agent received command: run
+2024-01-19 01:14:07 INFO Agent starting run with config:
+	activation_cls: gelu
+	decay_rate: 1.776535079485875e-06
+	lr: 0.04790318010499588
+2024-01-19 01:14:07 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu decay_rate=1.776535079485875e-06 lr=0.04790318010499588
+2024-01-19 01:14:12 INFO Running runs: ['uafj6514']
+2024-01-19 01:14:12 INFO Cleaning up finished run: uafj6514
+2024-01-19 01:14:12 INFO Agent received command: run
+2024-01-19 01:14:12 INFO Agent starting run with config:
+	activation_cls: elu
+	decay_rate: 9.739913502704224e-06
+	lr: 0.00015010740661146785
+2024-01-19 01:14:12 INFO About to run command: /usr/bin/env python main.py activation_cls=elu decay_rate=9.739913502704224e-06 lr=0.00015010740661146785
+2024-01-19 01:14:17 INFO Running runs: ['03ibh53d']
+2024-01-19 01:14:17 ERROR Detected 3 failed runs in the first 60 seconds, shutting down.
+2024-01-19 01:14:17 INFO To disable this check set WANDB_AGENT_DISABLE_FLAPPING=true
+2024-01-19 01:17:39 INFO Running runs: []
+2024-01-19 01:17:46 INFO Agent received command: run
+2024-01-19 01:17:46 INFO Agent starting run with config:
+	activation_cls: relu
+	decay_rate: 2.3841519266343403e-06
+	lr: 0.05428375862662531
+2024-01-19 01:17:46 INFO About to run command: /usr/bin/env python main.py activation_cls=relu decay_rate=2.3841519266343403e-06 lr=0.05428375862662531
+2024-01-19 01:17:51 INFO Running runs: ['9o05ibt1']
+2024-01-19 01:18:22 INFO Cleaning up finished run: 9o05ibt1
+2024-01-19 01:18:27 INFO Agent received command: run
+2024-01-19 01:18:27 INFO Agent starting run with config:
+	activation_cls: elu
+	decay_rate: 6.14177943628107e-07
+	lr: 0.04115932199923815
+2024-01-19 01:18:27 INFO About to run command: /usr/bin/env python main.py activation_cls=elu decay_rate=6.14177943628107e-07 lr=0.04115932199923815
+2024-01-19 01:18:32 INFO Running runs: ['x0sjhcfu']
+2024-01-19 01:19:09 INFO Cleaning up finished run: x0sjhcfu
+2024-01-19 01:19:15 INFO Agent received command: run
+2024-01-19 01:19:15 INFO Agent starting run with config:
+	activation_cls: relu
+	decay_rate: 7.699230757008217e-06
+	lr: 0.06487567601296028
+2024-01-19 01:19:15 INFO About to run command: /usr/bin/env python main.py activation_cls=relu decay_rate=7.699230757008217e-06 lr=0.06487567601296028
+2024-01-19 01:19:20 INFO Running runs: ['kjfrwcno']
+2024-01-19 01:19:51 INFO Cleaning up finished run: kjfrwcno
+2024-01-19 01:19:51 INFO Agent received command: run
+2024-01-19 01:19:51 INFO Agent starting run with config:
+	activation_cls: elu
+	decay_rate: 1.1528736272018648e-06
+	lr: 0.07890490533234326
+2024-01-19 01:19:51 INFO About to run command: /usr/bin/env python main.py activation_cls=elu decay_rate=1.1528736272018648e-06 lr=0.07890490533234326
+2024-01-19 01:19:56 INFO Running runs: ['lbuy1ryk']
+2024-01-19 01:20:30 INFO Cleaning up finished run: lbuy1ryk
+2024-01-19 01:20:30 INFO Agent received command: run
+2024-01-19 01:20:30 INFO Agent starting run with config:
+	activation_cls: elu
+	decay_rate: 4.860057012323132e-06
+	lr: 0.029402553237843004
+2024-01-19 01:20:30 INFO About to run command: /usr/bin/env python main.py activation_cls=elu decay_rate=4.860057012323132e-06 lr=0.029402553237843004
+2024-01-19 01:20:35 INFO Running runs: ['ihu8qbv8']
+2024-01-19 01:23:03 INFO Running runs: []
+2024-01-19 01:23:04 INFO Agent received command: run
+2024-01-19 01:23:04 INFO Agent starting run with config:
+	activation_cls: gelu
+	decay_rate: 8.852095723038326e-06
+	lr: 0.0036836411916164537
+2024-01-19 01:23:04 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu decay_rate=8.852095723038326e-06 lr=0.0036836411916164537
+2024-01-19 01:23:09 INFO Running runs: ['rg7zji1g']
+2024-01-19 01:24:03 INFO Running runs: []
+2024-01-19 01:24:03 INFO Agent received command: run
+2024-01-19 01:24:03 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 512
+	decay_rate: 6.269759790680486e-06
+	lr: 0.05388306000677384
+	num_epochs: 60
+2024-01-19 01:24:03 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=512 decay_rate=6.269759790680486e-06 lr=0.05388306000677384 num_epochs=60
+2024-01-19 01:24:08 INFO Running runs: ['v3l9kr0k']
+2024-01-19 01:24:40 INFO Cleaning up finished run: v3l9kr0k
+2024-01-19 01:24:47 INFO Agent received command: run
+2024-01-19 01:24:47 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 256
+	decay_rate: 5.6956847958664744e-06
+	lr: 0.007404031945957595
+	num_epochs: 50
+2024-01-19 01:24:47 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=256 decay_rate=5.6956847958664744e-06 lr=0.007404031945957595 num_epochs=50
+2024-01-19 01:24:52 INFO Running runs: ['x2qdhutr']
+2024-01-19 01:25:28 INFO Cleaning up finished run: x2qdhutr
+2024-01-19 01:25:29 INFO Agent received command: run
+2024-01-19 01:25:29 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 4.121119592549823e-06
+	lr: 0.009208972498837746
+	num_epochs: 50
+2024-01-19 01:25:29 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=4.121119592549823e-06 lr=0.009208972498837746 num_epochs=50
+2024-01-19 01:25:34 INFO Running runs: ['9yi9iswx']
+2024-01-19 01:26:10 INFO Cleaning up finished run: 9yi9iswx
+2024-01-19 01:26:15 INFO Agent received command: run
+2024-01-19 01:26:15 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 256
+	decay_rate: 4.3776433724547606e-06
+	lr: 0.008050322344246729
+	num_epochs: 60
+2024-01-19 01:26:15 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=256 decay_rate=4.3776433724547606e-06 lr=0.008050322344246729 num_epochs=60
+2024-01-19 01:26:20 INFO Running runs: ['s380u26k']
+2024-01-19 01:26:56 INFO Cleaning up finished run: s380u26k
+2024-01-19 01:26:56 INFO Agent received command: run
+2024-01-19 01:26:56 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 4.008277122803026e-06
+	lr: 0.019639681387659324
+	num_epochs: 50
+2024-01-19 01:26:56 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=4.008277122803026e-06 lr=0.019639681387659324 num_epochs=50
+2024-01-19 01:27:01 INFO Running runs: ['1n7b3p08']
+2024-01-19 01:27:39 INFO Cleaning up finished run: 1n7b3p08
+2024-01-19 01:27:40 INFO Agent received command: run
+2024-01-19 01:27:40 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 3.081589247320683e-06
+	lr: 0.002989371224886542
+	num_epochs: 50
+2024-01-19 01:27:40 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=3.081589247320683e-06 lr=0.002989371224886542 num_epochs=50
+2024-01-19 01:27:45 INFO Running runs: ['qm15y6e2']
+2024-01-19 01:28:22 INFO Cleaning up finished run: qm15y6e2
+2024-01-19 01:28:22 INFO Agent received command: run
+2024-01-19 01:28:22 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 2.7913738701102e-06
+	lr: 0.006522770824900457
+	num_epochs: 60
+2024-01-19 01:28:22 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=2.7913738701102e-06 lr=0.006522770824900457 num_epochs=60
+2024-01-19 01:28:27 INFO Running runs: ['hkijexfr']
+2024-01-19 01:29:08 INFO Cleaning up finished run: hkijexfr
+2024-01-19 01:29:09 INFO Agent received command: run
+2024-01-19 01:29:09 INFO Agent starting run with config:
+	activation_cls: relu
+	batch_size: 512
+	decay_rate: 4.020813432697184e-06
+	lr: 0.0053075568306155795
+	num_epochs: 60
+2024-01-19 01:29:09 INFO About to run command: /usr/bin/env python main.py activation_cls=relu batch_size=512 decay_rate=4.020813432697184e-06 lr=0.0053075568306155795 num_epochs=60
+2024-01-19 01:29:14 INFO Running runs: ['hus0hj50']
+2024-01-19 01:29:55 INFO Cleaning up finished run: hus0hj50
+2024-01-19 01:29:56 INFO Agent received command: run
+2024-01-19 01:29:56 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 3.0997537291884205e-06
+	lr: 0.013599605959978538
+	num_epochs: 60
+2024-01-19 01:29:56 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=3.0997537291884205e-06 lr=0.013599605959978538 num_epochs=60
+2024-01-19 01:30:01 INFO Running runs: ['ybak1e97']
+2024-01-19 01:30:37 INFO Cleaning up finished run: ybak1e97
+2024-01-19 01:30:37 INFO Agent received command: run
+2024-01-19 01:30:37 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 3.5089835436192267e-06
+	lr: 0.00951349019668596
+	num_epochs: 60
+2024-01-19 01:30:37 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=3.5089835436192267e-06 lr=0.00951349019668596 num_epochs=60
+2024-01-19 01:30:42 INFO Running runs: ['d12zxwat']
+2024-01-19 01:31:24 INFO Cleaning up finished run: d12zxwat
+2024-01-19 01:31:24 INFO Agent received command: run
+2024-01-19 01:31:24 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 2.935002730265033e-06
+	lr: 0.011811433363528577
+	num_epochs: 60
+2024-01-19 01:31:24 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=2.935002730265033e-06 lr=0.011811433363528577 num_epochs=60
+2024-01-19 01:31:29 INFO Running runs: ['fl8k4as6']
+2024-01-19 01:32:05 INFO Cleaning up finished run: fl8k4as6
+2024-01-19 01:32:06 INFO Agent received command: run
+2024-01-19 01:32:06 INFO Agent starting run with config:
+	activation_cls: relu
+	batch_size: 512
+	decay_rate: 2.8463471239416462e-06
+	lr: 0.03154629752372473
+	num_epochs: 50
+2024-01-19 01:32:06 INFO About to run command: /usr/bin/env python main.py activation_cls=relu batch_size=512 decay_rate=2.8463471239416462e-06 lr=0.03154629752372473 num_epochs=50
+2024-01-19 01:32:11 INFO Running runs: ['vf349dwp']
+2024-01-19 01:32:54 INFO Cleaning up finished run: vf349dwp
+2024-01-19 01:32:54 INFO Agent received command: run
+2024-01-19 01:32:54 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 256
+	decay_rate: 5.1340330537019885e-06
+	lr: 0.0010573452873336071
+	num_epochs: 70
+2024-01-19 01:32:54 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=256 decay_rate=5.1340330537019885e-06 lr=0.0010573452873336071 num_epochs=70
+2024-01-19 01:32:59 INFO Running runs: ['db47evaf']
+2024-01-19 01:33:41 INFO Cleaning up finished run: db47evaf
+2024-01-19 01:33:41 INFO Agent received command: run
+2024-01-19 01:33:41 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 256
+	decay_rate: 1.5306495012800514e-06
+	lr: 0.008937009664545593
+	num_epochs: 60
+2024-01-19 01:33:41 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=256 decay_rate=1.5306495012800514e-06 lr=0.008937009664545593 num_epochs=60
+2024-01-19 01:33:46 INFO Running runs: ['80hpx2h9']
+2024-01-19 01:33:51 INFO Cleaning up finished run: 80hpx2h9
+2024-01-19 01:33:52 INFO Agent received command: run
+2024-01-19 01:33:52 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 3.413165955840748e-06
+	lr: 0.011729380120151844
+	num_epochs: 60
+2024-01-19 01:33:52 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=3.413165955840748e-06 lr=0.011729380120151844 num_epochs=60
+2024-01-19 01:33:57 INFO Running runs: ['a4bvavh9']
+2024-01-19 01:33:57 INFO Cleaning up finished run: a4bvavh9
+2024-01-19 01:33:57 INFO Agent received command: run
+2024-01-19 01:33:57 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 256
+	decay_rate: 2.166333446229634e-06
+	lr: 0.019030290174336665
+	num_epochs: 50
+2024-01-19 01:33:57 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=256 decay_rate=2.166333446229634e-06 lr=0.019030290174336665 num_epochs=50
+2024-01-19 01:34:02 INFO Running runs: ['8uc47w6m']
+2024-01-19 01:34:02 INFO Cleaning up finished run: 8uc47w6m
+2024-01-19 01:34:03 INFO Agent received command: run
+2024-01-19 01:34:03 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 256
+	decay_rate: 3.918135805231422e-06
+	lr: 0.004741819141579446
+	num_epochs: 40
+2024-01-19 01:34:03 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=256 decay_rate=3.918135805231422e-06 lr=0.004741819141579446 num_epochs=40
+2024-01-19 01:34:08 INFO Running runs: ['lj59yd9s']
+2024-01-19 01:34:08 INFO Cleaning up finished run: lj59yd9s
+2024-01-19 01:34:08 INFO Agent received command: run
+2024-01-19 01:34:08 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 128
+	decay_rate: 4.460930458742877e-06
+	lr: 0.029096894398894575
+	num_epochs: 60
+2024-01-19 01:34:08 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=128 decay_rate=4.460930458742877e-06 lr=0.029096894398894575 num_epochs=60
+2024-01-19 01:34:13 INFO Running runs: ['umklr563']
+2024-01-19 01:34:13 INFO Cleaning up finished run: umklr563
+2024-01-19 01:34:14 INFO Agent received command: run
+2024-01-19 01:34:14 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 4.617992569015263e-06
+	lr: 0.006764098442427909
+	num_epochs: 60
+2024-01-19 01:34:14 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=4.617992569015263e-06 lr=0.006764098442427909 num_epochs=60
+2024-01-19 01:34:19 INFO Running runs: ['vqj8b2s3']
+2024-01-19 01:34:19 INFO Cleaning up finished run: vqj8b2s3
+2024-01-19 01:34:20 INFO Agent received command: run
+2024-01-19 01:34:20 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 3.486747315603169e-06
+	lr: 0.008173763213392088
+	num_epochs: 60
+2024-01-19 01:34:20 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=3.486747315603169e-06 lr=0.008173763213392088 num_epochs=60
+2024-01-19 01:34:25 INFO Running runs: ['41u9q8jg']
+2024-01-19 01:34:25 INFO Cleaning up finished run: 41u9q8jg
+2024-01-19 01:34:26 INFO Agent received command: run
+2024-01-19 01:34:26 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 128
+	decay_rate: 9.174731427498764e-06
+	lr: 0.07273952453284893
+	num_epochs: 40
+2024-01-19 01:34:26 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=128 decay_rate=9.174731427498764e-06 lr=0.07273952453284893 num_epochs=40
+2024-01-19 01:34:31 INFO Running runs: ['17pcvizq']
+2024-01-19 01:34:31 INFO Cleaning up finished run: 17pcvizq
+2024-01-19 01:34:31 INFO Agent received command: run
+2024-01-19 01:34:31 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 128
+	decay_rate: 7.694701125358784e-07
+	lr: 0.0009508038033886564
+	num_epochs: 40
+2024-01-19 01:34:31 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=128 decay_rate=7.694701125358784e-07 lr=0.0009508038033886564 num_epochs=40
+2024-01-19 01:34:36 INFO Running runs: ['0gkmvfog']
+2024-01-19 01:34:36 INFO Cleaning up finished run: 0gkmvfog
+2024-01-19 01:34:37 INFO Agent received command: run
+2024-01-19 01:34:37 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 2.6649167028461477e-06
+	lr: 0.014404415970854664
+	num_epochs: 60
+2024-01-19 01:34:37 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=2.6649167028461477e-06 lr=0.014404415970854664 num_epochs=60
+2024-01-19 01:34:42 INFO Running runs: ['qi1xskx0']
+2024-01-19 01:34:42 INFO Cleaning up finished run: qi1xskx0
+2024-01-19 01:34:47 INFO Agent received command: run
+2024-01-19 01:34:47 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 2.9868767963418988e-06
+	lr: 0.005261117387284531
+	num_epochs: 60
+2024-01-19 01:34:47 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=2.9868767963418988e-06 lr=0.005261117387284531 num_epochs=60
+2024-01-19 01:34:52 INFO Running runs: ['5nzgg4ek']
+2024-01-19 01:34:57 INFO Cleaning up finished run: 5nzgg4ek
+2024-01-19 01:34:58 INFO Agent received command: run
+2024-01-19 01:34:58 INFO Agent starting run with config:
+	activation_cls: relu
+	batch_size: 128
+	decay_rate: 9.5622491290515e-06
+	lr: 0.0001039413826120337
+	num_epochs: 40
+2024-01-19 01:34:58 INFO About to run command: /usr/bin/env python main.py activation_cls=relu batch_size=128 decay_rate=9.5622491290515e-06 lr=0.0001039413826120337 num_epochs=40
+2024-01-19 01:35:03 INFO Running runs: ['u44lzncn']
+2024-01-19 01:35:03 INFO Cleaning up finished run: u44lzncn
+2024-01-19 01:35:04 INFO Agent received command: run
+2024-01-19 01:35:04 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 256
+	decay_rate: 4.567119635264446e-06
+	lr: 0.009956652080421772
+	num_epochs: 60
+2024-01-19 01:35:04 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=256 decay_rate=4.567119635264446e-06 lr=0.009956652080421772 num_epochs=60
+2024-01-19 01:35:09 INFO Running runs: ['k8xmxiwi']
+2024-01-19 01:35:09 INFO Cleaning up finished run: k8xmxiwi
+2024-01-19 01:35:09 INFO Agent received command: run
+2024-01-19 01:35:09 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 4.289990366922801e-06
+	lr: 0.013558208672673478
+	num_epochs: 60
+2024-01-19 01:35:09 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=4.289990366922801e-06 lr=0.013558208672673478 num_epochs=60
+2024-01-19 01:35:14 INFO Running runs: ['aq0utuhj']
+2024-01-19 01:35:14 INFO Cleaning up finished run: aq0utuhj
+2024-01-19 01:35:15 INFO Agent received command: run
+2024-01-19 01:35:15 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 3.668185402725807e-06
+	lr: 0.011051415313880732
+	num_epochs: 60
+2024-01-19 01:35:15 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=3.668185402725807e-06 lr=0.011051415313880732 num_epochs=60
+2024-01-19 01:35:20 INFO Running runs: ['ey7x56qn']
+2024-01-19 01:35:20 INFO Cleaning up finished run: ey7x56qn
+2024-01-19 01:35:20 INFO Agent received command: run
+2024-01-19 01:35:20 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 3.269151178463378e-06
+	lr: 0.00596023956136244
+	num_epochs: 60
+2024-01-19 01:35:20 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=3.269151178463378e-06 lr=0.00596023956136244 num_epochs=60
+2024-01-19 01:35:25 INFO Running runs: ['gvvnxcv8']
+2024-01-19 01:36:07 INFO Cleaning up finished run: gvvnxcv8
+2024-01-19 01:36:07 INFO Agent received command: run
+2024-01-19 01:36:07 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 4.380450571109397e-06
+	lr: 0.01102950066424664
+	num_epochs: 60
+2024-01-19 01:36:07 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=4.380450571109397e-06 lr=0.01102950066424664 num_epochs=60
+2024-01-19 01:36:12 INFO Running runs: ['4qnn4v2l']
+2024-01-19 01:36:48 INFO Cleaning up finished run: 4qnn4v2l
+2024-01-19 01:47:24 INFO Running runs: []
+2024-01-19 01:47:25 INFO Agent received command: run
+2024-01-19 01:47:25 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 256
+	decay_rate: 2.1306692957859452e-06
+	lr: 0.01143350260505644
+	num_epochs: 50
+2024-01-19 01:47:25 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=256 decay_rate=2.1306692957859452e-06 lr=0.01143350260505644 num_epochs=50
+2024-01-19 01:47:30 INFO Running runs: ['pog0htir']
+2024-01-19 01:48:11 INFO Cleaning up finished run: pog0htir
+2024-01-19 01:48:17 INFO Agent received command: run
+2024-01-19 01:48:17 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 128
+	decay_rate: 5.140048599453864e-06
+	lr: 0.010831428981058915
+	num_epochs: 50
+2024-01-19 01:48:17 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=128 decay_rate=5.140048599453864e-06 lr=0.010831428981058915 num_epochs=50
+2024-01-19 01:48:22 INFO Running runs: ['pna344ht']
+2024-01-19 01:48:27 INFO Cleaning up finished run: pna344ht
+2024-01-19 01:48:28 INFO Agent received command: run
+2024-01-19 01:48:28 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 4.0809342515673435e-06
+	lr: 0.006432610896548744
+	num_epochs: 60
+2024-01-19 01:48:28 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=4.0809342515673435e-06 lr=0.006432610896548744 num_epochs=60
+2024-01-19 01:48:33 INFO Running runs: ['f8yzpdqn']
+2024-01-19 01:48:33 INFO Cleaning up finished run: f8yzpdqn
+2024-01-19 01:48:33 INFO Agent received command: run
+2024-01-19 01:48:33 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 4.017361831968413e-06
+	lr: 0.008359819633716225
+	num_epochs: 60
+2024-01-19 01:48:33 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=4.017361831968413e-06 lr=0.008359819633716225 num_epochs=60
+2024-01-19 01:48:38 INFO Running runs: ['bklyntqa']
+2024-01-19 01:48:38 INFO Cleaning up finished run: bklyntqa
+2024-01-19 01:48:39 INFO Agent received command: run
+2024-01-19 01:48:39 INFO Agent starting run with config:
+	activation_cls: relu
+	batch_size: 128
+	decay_rate: 8.747463069210668e-06
+	lr: 0.001451466901455848
+	num_epochs: 40
+2024-01-19 01:48:39 INFO About to run command: /usr/bin/env python main.py activation_cls=relu batch_size=128 decay_rate=8.747463069210668e-06 lr=0.001451466901455848 num_epochs=40
+2024-01-19 01:48:44 INFO Running runs: ['4w9e0pgf']
+2024-01-19 01:48:44 INFO Cleaning up finished run: 4w9e0pgf
+2024-01-19 01:48:45 INFO Agent received command: run
+2024-01-19 01:48:45 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 4.7269835165344165e-06
+	lr: 0.024241872497652858
+	num_epochs: 60
+2024-01-19 01:48:45 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=4.7269835165344165e-06 lr=0.024241872497652858 num_epochs=60
+2024-01-19 01:48:50 INFO Running runs: ['7g8g1t75']
+2024-01-19 01:48:50 ERROR Detected 5 failed runs in a row, shutting down.
+2024-01-19 01:48:50 INFO To change this value set WANDB_AGENT_MAX_INITIAL_FAILURES=val
+2024-01-19 01:50:15 INFO Running runs: []
+2024-01-19 01:50:16 INFO Agent received command: run
+2024-01-19 01:50:16 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 2.8146787341582826e-06
+	lr: 0.01660774925140527
+	num_epochs: 60
+2024-01-19 01:50:16 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=2.8146787341582826e-06 lr=0.01660774925140527 num_epochs=60
+2024-01-19 01:50:21 INFO Running runs: ['z3ores2k']
+2024-01-19 01:50:26 INFO Cleaning up finished run: z3ores2k
+2024-01-19 01:50:26 INFO Agent received command: run
+2024-01-19 01:50:26 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 3.280470595312183e-06
+	lr: 0.013546270547116195
+	num_epochs: 60
+2024-01-19 01:50:26 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=3.280470595312183e-06 lr=0.013546270547116195 num_epochs=60
+2024-01-19 01:50:31 INFO Running runs: ['vidn6eto']
+2024-01-19 01:50:31 INFO Cleaning up finished run: vidn6eto
+2024-01-19 01:50:32 INFO Agent received command: run
+2024-01-19 01:50:32 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 4.2960207557854994e-06
+	lr: 0.006600618239430294
+	num_epochs: 60
+2024-01-19 01:50:32 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=4.2960207557854994e-06 lr=0.006600618239430294 num_epochs=60
+2024-01-19 01:50:37 INFO Running runs: ['e39c4nvc']
+2024-01-19 01:50:37 ERROR Detected 3 failed runs in the first 60 seconds, shutting down.
+2024-01-19 01:50:37 INFO To disable this check set WANDB_AGENT_DISABLE_FLAPPING=true
+2024-01-19 01:53:17 INFO Running runs: []
+2024-01-19 01:53:17 INFO Agent received command: run
+2024-01-19 01:53:17 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 256
+	decay_rate: 4.2475926841706584e-06
+	lr: 0.011585713775955278
+	num_epochs: 60
+2024-01-19 01:53:17 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=256 decay_rate=4.2475926841706584e-06 lr=0.011585713775955278 num_epochs=60
+2024-01-19 01:53:22 INFO Running runs: ['9rzcu0a3']
+2024-01-19 01:53:33 INFO Cleaning up finished run: 9rzcu0a3
+2024-01-19 01:57:36 INFO Running runs: []
+2024-01-19 01:57:36 INFO Agent received command: run
+2024-01-19 01:57:36 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 512
+	decay_rate: 3.4956439017380528e-06
+	lr: 0.004502480253773334
+	num_epochs: 60
+2024-01-19 01:57:36 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=512 decay_rate=3.4956439017380528e-06 lr=0.004502480253773334 num_epochs=60
+2024-01-19 01:57:42 INFO Running runs: ['hixhxmmb']
+2024-01-19 01:58:33 INFO Cleaning up finished run: hixhxmmb
+2024-01-19 01:59:21 INFO Running runs: []
+2024-01-19 01:59:22 INFO Agent received command: run
+2024-01-19 01:59:22 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 512
+	decay_rate: 2.3740468076549616e-08
+	lr: 0.003901475374244003
+	num_epochs: 70
+2024-01-19 01:59:22 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=512 decay_rate=2.3740468076549616e-08 lr=0.003901475374244003 num_epochs=70
+2024-01-19 01:59:27 INFO Running runs: ['iv8ecat1']
+2024-01-19 02:00:05 INFO Cleaning up finished run: iv8ecat1
+2024-01-19 02:00:09 INFO Agent received command: run
+2024-01-19 02:00:09 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 3.854242005468148e-06
+	lr: 0.013316970376790829
+	num_epochs: 60
+2024-01-19 02:00:09 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=3.854242005468148e-06 lr=0.013316970376790829 num_epochs=60
+2024-01-19 02:00:14 INFO Running runs: ['etrkp860']
+2024-01-19 02:00:55 INFO Cleaning up finished run: etrkp860
+2024-01-19 02:00:56 INFO Agent received command: run
+2024-01-19 02:00:56 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 512
+	decay_rate: 1.0964891097905672e-06
+	lr: 0.0034032398669935023
+	num_epochs: 60
+2024-01-19 02:00:56 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=512 decay_rate=1.0964891097905672e-06 lr=0.0034032398669935023 num_epochs=60
+2024-01-19 02:01:01 INFO Running runs: ['cfi7gxqa']
+2024-01-19 02:01:44 INFO Cleaning up finished run: cfi7gxqa
+2024-01-19 02:01:45 INFO Agent received command: run
+2024-01-19 02:01:45 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 128
+	decay_rate: 3.339055994609248e-06
+	lr: 0.00436444503478553
+	num_epochs: 40
+2024-01-19 02:01:45 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=128 decay_rate=3.339055994609248e-06 lr=0.00436444503478553 num_epochs=40
+2024-01-19 02:01:50 INFO Running runs: ['2swl4w6g']
+2024-01-19 02:02:31 INFO Cleaning up finished run: 2swl4w6g
+2024-01-19 02:02:32 INFO Agent received command: run
+2024-01-19 02:02:32 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 4.706876538557459e-06
+	lr: 0.009060216598682566
+	num_epochs: 60
+2024-01-19 02:02:32 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=4.706876538557459e-06 lr=0.009060216598682566 num_epochs=60
+2024-01-19 02:02:37 INFO Running runs: ['5368ammr']
+2024-01-19 02:03:24 INFO Cleaning up finished run: 5368ammr
+2024-01-19 02:03:59 INFO Running runs: []
+2024-01-19 02:04:00 INFO Agent received command: run
+2024-01-19 02:04:00 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 128
+	decay_rate: 3.085084801237338e-06
+	lr: 0.029298165193710885
+	num_epochs: 50
+2024-01-19 02:04:00 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=128 decay_rate=3.085084801237338e-06 lr=0.029298165193710885 num_epochs=50
+2024-01-19 02:04:05 INFO Running runs: ['otiivmw0']
+2024-01-19 02:04:51 INFO Cleaning up finished run: otiivmw0
+2024-01-19 02:04:52 INFO Agent received command: run
+2024-01-19 02:04:52 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 128
+	decay_rate: 3.885010457140229e-06
+	lr: 0.016311363675564537
+	num_epochs: 40
+2024-01-19 02:04:52 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=128 decay_rate=3.885010457140229e-06 lr=0.016311363675564537 num_epochs=40
+2024-01-19 02:04:57 INFO Running runs: ['55mrx6a9']
+2024-01-19 02:05:38 INFO Cleaning up finished run: 55mrx6a9
+2024-01-19 02:05:39 INFO Agent received command: run
+2024-01-19 02:05:39 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 128
+	decay_rate: 5.2050394916109474e-06
+	lr: 0.007017924175583293
+	num_epochs: 50
+2024-01-19 02:05:39 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=128 decay_rate=5.2050394916109474e-06 lr=0.007017924175583293 num_epochs=50
+2024-01-19 02:05:44 INFO Running runs: ['fiqbrqf5']
+2024-01-19 02:06:25 INFO Cleaning up finished run: fiqbrqf5
+2024-01-19 02:06:26 INFO Agent received command: run
+2024-01-19 02:06:26 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 128
+	decay_rate: 3.546752790785024e-06
+	lr: 0.012214014226156044
+	num_epochs: 40
+2024-01-19 02:06:26 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=128 decay_rate=3.546752790785024e-06 lr=0.012214014226156044 num_epochs=40
+2024-01-19 02:06:31 INFO Running runs: ['4a77ez57']
+2024-01-19 02:07:12 INFO Cleaning up finished run: 4a77ez57
+2024-01-19 02:07:13 INFO Agent received command: run
+2024-01-19 02:07:13 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 128
+	decay_rate: 1.0885437418851289e-06
+	lr: 0.01809222763999268
+	num_epochs: 50
+2024-01-19 02:07:13 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=128 decay_rate=1.0885437418851289e-06 lr=0.01809222763999268 num_epochs=50
+2024-01-19 02:07:18 INFO Running runs: ['ulicq832']
+2024-01-19 02:07:59 INFO Cleaning up finished run: ulicq832
+2024-01-19 02:08:00 INFO Agent received command: run
+2024-01-19 02:08:00 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 128
+	decay_rate: 9.715014334701725e-07
+	lr: 0.035005225924037105
+	num_epochs: 50
+2024-01-19 02:08:00 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=128 decay_rate=9.715014334701725e-07 lr=0.035005225924037105 num_epochs=50
+2024-01-19 02:08:05 INFO Running runs: ['41xpml1z']
+2024-01-19 02:08:46 INFO Cleaning up finished run: 41xpml1z
+2024-01-19 02:08:47 INFO Agent received command: run
+2024-01-19 02:08:47 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 128
+	decay_rate: 2.8482756226800148e-06
+	lr: 0.05428291673403868
+	num_epochs: 50
+2024-01-19 02:08:47 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=128 decay_rate=2.8482756226800148e-06 lr=0.05428291673403868 num_epochs=50
+2024-01-19 02:08:52 INFO Running runs: ['o8o9kn0m']
+2024-01-19 02:09:35 INFO Cleaning up finished run: o8o9kn0m
+2024-01-19 02:09:35 INFO Agent received command: run
+2024-01-19 02:09:35 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 128
+	decay_rate: 2.462322292305256e-06
+	lr: 0.009154464405433764
+	num_epochs: 60
+2024-01-19 02:09:35 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=128 decay_rate=2.462322292305256e-06 lr=0.009154464405433764 num_epochs=60
+2024-01-19 02:09:40 INFO Running runs: ['ttfplr8q']
+2024-01-19 02:10:21 INFO Cleaning up finished run: ttfplr8q
+2024-01-19 12:48:19 INFO Running runs: []
+2024-01-19 12:48:20 INFO Agent received command: run
+2024-01-19 12:48:20 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 256
+	decay_rate: 0.14968688351701254
+	lr: 0.00014039954377275594
+	num_epochs: 70
+	num_layers: 1
+	num_units: 254
+2024-01-19 12:48:20 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=256 decay_rate=0.14968688351701254 lr=0.00014039954377275594 num_epochs=70 num_layers=1 num_units=254
+2024-01-19 12:48:25 INFO Running runs: ['r525k4v5']
+2024-01-19 12:49:21 INFO Cleaning up finished run: r525k4v5
+2024-01-19 12:49:49 INFO Agent received command: run
+2024-01-19 12:49:49 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 128
+	decay_rate: 0.011942219137842758
+	lr: 0.01796568545180126
+	num_epochs: 98
+	num_layers: 4
+	num_units: 233
+2024-01-19 12:49:49 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=128 decay_rate=0.011942219137842758 lr=0.01796568545180126 num_epochs=98 num_layers=4 num_units=233
+2024-01-19 12:49:54 INFO Running runs: ['r1ldpr5u']
+2024-01-19 12:51:01 INFO Cleaning up finished run: r1ldpr5u
+2024-01-19 12:51:02 INFO Agent received command: run
+2024-01-19 12:51:02 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 256
+	decay_rate: 0.13504183701432715
+	lr: 0.03426447886971344
+	num_epochs: 85
+	num_layers: 4
+	num_units: 471
+2024-01-19 12:51:02 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=256 decay_rate=0.13504183701432715 lr=0.03426447886971344 num_epochs=85 num_layers=4 num_units=471
+2024-01-19 12:51:07 INFO Running runs: ['lld6zjep']
+2024-01-19 12:56:05 INFO Cleaning up finished run: lld6zjep
+2024-01-19 12:56:06 INFO Agent received command: run
+2024-01-19 12:56:06 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 256
+	decay_rate: 0.13216943516946847
+	lr: 0.022741325954022916
+	num_epochs: 97
+	num_layers: 5
+	num_units: 301
+2024-01-19 12:56:06 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=256 decay_rate=0.13216943516946847 lr=0.022741325954022916 num_epochs=97 num_layers=5 num_units=301
+2024-01-19 12:56:11 INFO Running runs: ['gnvu3uzt']
+2024-01-19 13:01:40 INFO Cleaning up finished run: gnvu3uzt
+2024-01-19 13:01:41 INFO Agent received command: run
+2024-01-19 13:01:41 INFO Agent starting run with config:
+	activation_cls: relu
+	batch_size: 128
+	decay_rate: 1.9699515081925433e-06
+	lr: 0.0018505104442000223
+	num_epochs: 57
+	num_layers: 2
+	num_units: 466
+2024-01-19 13:01:41 INFO About to run command: /usr/bin/env python main.py activation_cls=relu batch_size=128 decay_rate=1.9699515081925433e-06 lr=0.0018505104442000223 num_epochs=57 num_layers=2 num_units=466
+2024-01-19 13:01:46 INFO Running runs: ['1dn3tr7e']
+2024-01-19 13:03:12 INFO Cleaning up finished run: 1dn3tr7e
+2024-01-19 13:03:17 INFO Agent received command: run
+2024-01-19 13:03:17 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 128
+	decay_rate: 0.001089876642083436
+	lr: 0.02650704005920677
+	num_epochs: 87
+	num_layers: 4
+	num_units: 168
+2024-01-19 13:03:17 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=128 decay_rate=0.001089876642083436 lr=0.02650704005920677 num_epochs=87 num_layers=4 num_units=168
+2024-01-19 13:03:22 INFO Running runs: ['2pzt4ct2']
+2024-01-19 13:04:34 INFO Cleaning up finished run: 2pzt4ct2
+2024-01-19 13:04:34 INFO Agent received command: run
+2024-01-19 13:04:34 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 128
+	decay_rate: 0.0027415437006006395
+	lr: 0.03401989077745426
+	num_epochs: 69
+	num_layers: 1
+	num_units: 363
+2024-01-19 13:04:34 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=128 decay_rate=0.0027415437006006395 lr=0.03401989077745426 num_epochs=69 num_layers=1 num_units=363
+2024-01-19 13:04:40 INFO Running runs: ['iw0kay00']
+2024-01-19 13:05:52 INFO Cleaning up finished run: iw0kay00
+2024-01-19 13:05:52 INFO Agent received command: run
+2024-01-19 13:05:52 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 128
+	decay_rate: 2.4391076343313223e-05
+	lr: 0.00010184152076931452
+	num_epochs: 77
+	num_layers: 2
+	num_units: 360
+2024-01-19 13:05:52 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=128 decay_rate=2.4391076343313223e-05 lr=0.00010184152076931452 num_epochs=77 num_layers=2 num_units=360
+2024-01-19 13:05:57 INFO Running runs: ['glf0akeo']
+2024-01-19 13:07:54 INFO Cleaning up finished run: glf0akeo
+2024-01-19 13:07:55 INFO Agent received command: run
+2024-01-19 13:07:55 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 256
+	decay_rate: 1.018126702806352e-05
+	lr: 0.0008040934924928585
+	num_epochs: 51
+	num_layers: 2
+	num_units: 270
+2024-01-19 13:07:55 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=256 decay_rate=1.018126702806352e-05 lr=0.0008040934924928585 num_epochs=51 num_layers=2 num_units=270
+2024-01-19 13:08:00 INFO Running runs: ['xyzm14z1']
+2024-01-19 15:02:01 INFO Running runs: []
+2024-01-19 15:02:02 INFO Agent received command: run
+2024-01-19 15:02:02 INFO Agent starting run with config:
+	activation_cls: relu
+	batch_size: 512
+	decay_rate: 4.229236393053058e-06
+	lr: 0.06306999438031802
+	num_epochs: 56
+	num_layers: 5
+	num_units: 134
+2024-01-19 15:02:02 INFO About to run command: /usr/bin/env python main.py activation_cls=relu batch_size=512 decay_rate=4.229236393053058e-06 lr=0.06306999438031802 num_epochs=56 num_layers=5 num_units=134
+2024-01-19 15:02:07 INFO Running runs: ['apo63qbv']
+2024-01-19 15:03:14 INFO Cleaning up finished run: apo63qbv
+2024-01-19 15:03:20 INFO Agent received command: run
+2024-01-19 15:03:20 INFO Agent starting run with config:
+	activation_cls: relu
+	batch_size: 128
+	decay_rate: 0.00017009107915246413
+	lr: 0.014286254696289056
+	num_epochs: 96
+	num_layers: 1
+	num_units: 87
+2024-01-19 15:03:20 INFO About to run command: /usr/bin/env python main.py activation_cls=relu batch_size=128 decay_rate=0.00017009107915246413 lr=0.014286254696289056 num_epochs=96 num_layers=1 num_units=87
+2024-01-19 15:03:25 INFO Running runs: ['qyafaspw']
+2024-01-19 15:04:12 INFO Cleaning up finished run: qyafaspw
+2024-01-19 15:04:12 INFO Agent received command: run
+2024-01-19 15:04:12 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 128
+	decay_rate: 9.380295028262256e-05
+	lr: 0.0007998413068490651
+	num_epochs: 40
+	num_layers: 2
+	num_units: 479
+2024-01-19 15:04:12 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=128 decay_rate=9.380295028262256e-05 lr=0.0007998413068490651 num_epochs=40 num_layers=2 num_units=479
+2024-01-19 15:04:17 INFO Running runs: ['dndtvsjz']
+2024-01-19 15:06:16 INFO Cleaning up finished run: dndtvsjz
+2024-01-19 15:06:17 INFO Agent received command: run
+2024-01-19 15:06:17 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 0.2967636914660497
+	lr: 0.00010165470918048022
+	num_epochs: 86
+	num_layers: 6
+	num_units: 361
+2024-01-19 15:06:17 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=0.2967636914660497 lr=0.00010165470918048022 num_epochs=86 num_layers=6 num_units=361
+2024-01-19 15:06:22 INFO Running runs: ['3ja3a39s']
+2024-01-19 15:09:43 INFO Cleaning up finished run: 3ja3a39s
+2024-01-19 15:09:46 INFO Agent received command: run
+2024-01-19 15:09:46 INFO Agent starting run with config:
+	activation_cls: relu
+	batch_size: 128
+	decay_rate: 0.000113634773455193
+	lr: 0.0017421624888924877
+	num_epochs: 43
+	num_layers: 1
+	num_units: 483
+2024-01-19 15:09:46 INFO About to run command: /usr/bin/env python main.py activation_cls=relu batch_size=128 decay_rate=0.000113634773455193 lr=0.0017421624888924877 num_epochs=43 num_layers=1 num_units=483
+2024-01-19 15:09:51 INFO Running runs: ['hkt0oklg']
+2024-01-19 15:10:40 INFO Cleaning up finished run: hkt0oklg
+2024-01-19 15:10:40 INFO Agent received command: run
+2024-01-19 15:10:40 INFO Agent starting run with config:
+	activation_cls: relu
+	batch_size: 128
+	decay_rate: 0.016117555865835617
+	lr: 0.07011040839067037
+	num_epochs: 79
+	num_layers: 5
+	num_units: 203
+2024-01-19 15:10:40 INFO About to run command: /usr/bin/env python main.py activation_cls=relu batch_size=128 decay_rate=0.016117555865835617 lr=0.07011040839067037 num_epochs=79 num_layers=5 num_units=203
+2024-01-19 15:10:45 INFO Running runs: ['q1wkdjwi']
+2024-01-19 15:12:08 INFO Cleaning up finished run: q1wkdjwi
+2024-01-19 15:12:08 INFO Agent received command: run
+2024-01-19 15:12:08 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 256
+	decay_rate: 0.005085910875054129
+	lr: 0.000928474788532212
+	num_epochs: 63
+	num_layers: 1
+	num_units: 11
+2024-01-19 15:12:08 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=256 decay_rate=0.005085910875054129 lr=0.000928474788532212 num_epochs=63 num_layers=1 num_units=11
+2024-01-19 15:12:13 INFO Running runs: ['uifjiv93']
+2024-01-19 15:13:10 INFO Cleaning up finished run: uifjiv93
+2024-01-19 15:13:11 INFO Agent received command: run
+2024-01-19 15:13:11 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 512
+	decay_rate: 0.00273150487223048
+	lr: 0.05098976554198087
+	num_epochs: 63
+	num_layers: 6
+	num_units: 397
+2024-01-19 15:13:11 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=512 decay_rate=0.00273150487223048 lr=0.05098976554198087 num_epochs=63 num_layers=6 num_units=397
+2024-01-19 15:13:16 INFO Running runs: ['4k85sl9n']
+2024-01-19 15:44:11 INFO Running runs: []
+2024-01-19 15:44:12 INFO Agent received command: run
+2024-01-19 15:44:12 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 256
+	decay_rate: 0.0960745286122161
+	lr: 0.0003406427790991
+	num_epochs: 66
+	num_layers: 2
+	num_units: 64
+2024-01-19 15:44:12 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=256 decay_rate=0.0960745286122161 lr=0.0003406427790991 num_epochs=66 num_layers=2 num_units=64
+2024-01-19 15:44:17 INFO Running runs: ['c7hocvcn']
+2024-01-19 15:44:59 INFO Cleaning up finished run: c7hocvcn
+2024-01-19 15:45:05 INFO Agent received command: run
+2024-01-19 15:45:05 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 512
+	decay_rate: 0.038430873177795706
+	lr: 0.009161472019933604
+	num_epochs: 41
+	num_layers: 1
+	num_units: 365
+2024-01-19 15:45:05 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=512 decay_rate=0.038430873177795706 lr=0.009161472019933604 num_epochs=41 num_layers=1 num_units=365
+2024-01-19 15:45:11 INFO Running runs: ['v0cuiatr']
+2024-01-19 15:45:52 INFO Cleaning up finished run: v0cuiatr
+2024-01-19 15:45:52 INFO Agent received command: run
+2024-01-19 15:45:52 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 256
+	decay_rate: 0.0354227320338121
+	lr: 0.010991286723847828
+	num_epochs: 50
+	num_layers: 1
+	num_units: 40
+2024-01-19 15:45:52 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=256 decay_rate=0.0354227320338121 lr=0.010991286723847828 num_epochs=50 num_layers=1 num_units=40
+2024-01-19 15:45:57 INFO Running runs: ['y4yrstlt']
+2024-01-19 15:46:49 INFO Cleaning up finished run: y4yrstlt
+2024-01-19 15:46:49 INFO Agent received command: run
+2024-01-19 15:46:49 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 256
+	decay_rate: 0.07181233014118532
+	lr: 0.006615812754365009
+	num_epochs: 56
+	num_layers: 6
+	num_units: 319
+2024-01-19 15:46:49 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=256 decay_rate=0.07181233014118532 lr=0.006615812754365009 num_epochs=56 num_layers=6 num_units=319
+2024-01-19 15:46:54 INFO Running runs: ['78q6nnk0']
+2024-01-19 15:49:03 INFO Cleaning up finished run: 78q6nnk0
+2024-01-19 15:49:04 INFO Agent received command: run
+2024-01-19 15:49:04 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 512
+	decay_rate: 4.7923224945439413e-05
+	lr: 0.001405182266001635
+	num_epochs: 84
+	num_layers: 4
+	num_units: 371
+2024-01-19 15:49:04 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=512 decay_rate=4.7923224945439413e-05 lr=0.001405182266001635 num_epochs=84 num_layers=4 num_units=371
+2024-01-19 15:49:09 INFO Running runs: ['iacafmsn']
+2024-01-19 15:51:13 INFO Cleaning up finished run: iacafmsn
+2024-01-19 15:51:14 INFO Agent received command: run
+2024-01-19 15:51:14 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 256
+	decay_rate: 9.32596605843508e-05
+	lr: 0.002115857765136438
+	num_epochs: 73
+	num_layers: 2
+	num_units: 460
+2024-01-19 15:51:14 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=256 decay_rate=9.32596605843508e-05 lr=0.002115857765136438 num_epochs=73 num_layers=2 num_units=460
+2024-01-19 15:51:19 INFO Running runs: ['xgyput8d']
+2024-01-19 15:53:35 INFO Cleaning up finished run: xgyput8d
+2024-01-19 15:53:35 INFO Agent received command: run
+2024-01-19 15:53:35 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 512
+	decay_rate: 0.14487346624518063
+	lr: 0.004504405747157503
+	num_epochs: 41
+	num_layers: 2
+	num_units: 140
+2024-01-19 15:53:35 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=512 decay_rate=0.14487346624518063 lr=0.004504405747157503 num_epochs=41 num_layers=2 num_units=140
+2024-01-19 15:53:40 INFO Running runs: ['848hlmnm']
+2024-01-19 15:54:22 INFO Cleaning up finished run: 848hlmnm
+2024-01-19 15:54:22 INFO Agent received command: run
+2024-01-19 15:54:22 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 256
+	decay_rate: 7.579790730726673e-05
+	lr: 0.00012937930472723332
+	num_epochs: 92
+	num_layers: 2
+	num_units: 444
+2024-01-19 15:54:22 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=256 decay_rate=7.579790730726673e-05 lr=0.00012937930472723332 num_epochs=92 num_layers=2 num_units=444
+2024-01-19 15:54:27 INFO Running runs: ['u8uj4fcl']
+2024-01-19 15:56:24 INFO Cleaning up finished run: u8uj4fcl
+2024-01-19 15:56:25 INFO Agent received command: run
+2024-01-19 15:56:25 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 256
+	decay_rate: 0.043451060632055685
+	lr: 0.0018128855161443707
+	num_epochs: 75
+	num_layers: 6
+	num_units: 200
+2024-01-19 15:56:25 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=256 decay_rate=0.043451060632055685 lr=0.0018128855161443707 num_epochs=75 num_layers=6 num_units=200
+2024-01-19 15:56:30 INFO Running runs: ['m1frpa1b']
+2024-01-19 15:57:37 INFO Cleaning up finished run: m1frpa1b
+2024-01-19 15:57:38 INFO Agent received command: run
+2024-01-19 15:57:38 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 128
+	decay_rate: 0.0002616233289283635
+	lr: 0.007642003030301342
+	num_epochs: 74
+	num_layers: 5
+	num_units: 60
+2024-01-19 15:57:38 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=128 decay_rate=0.0002616233289283635 lr=0.007642003030301342 num_epochs=74 num_layers=5 num_units=60
+2024-01-19 15:57:43 INFO Running runs: ['vbriafzl']
+2024-01-19 15:58:45 INFO Cleaning up finished run: vbriafzl
+2024-01-19 15:58:45 INFO Agent received command: run
+2024-01-19 15:58:45 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 128
+	decay_rate: 0.003818272439224988
+	lr: 0.004391189735971752
+	num_epochs: 60
+	num_layers: 2
+	num_units: 275
+2024-01-19 15:58:45 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=128 decay_rate=0.003818272439224988 lr=0.004391189735971752 num_epochs=60 num_layers=2 num_units=275
+2024-01-19 15:58:50 INFO Running runs: ['0wakvixx']
+2024-01-19 16:00:39 INFO Cleaning up finished run: 0wakvixx
+2024-01-19 16:00:40 INFO Agent received command: run
+2024-01-19 16:00:40 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 512
+	decay_rate: 0.1002194647256436
+	lr: 0.002784865231608651
+	num_epochs: 44
+	num_layers: 4
+	num_units: 287
+2024-01-19 16:00:40 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=512 decay_rate=0.1002194647256436 lr=0.002784865231608651 num_epochs=44 num_layers=4 num_units=287
+2024-01-19 16:00:45 INFO Running runs: ['3lx810bv']
+2024-01-19 16:01:47 INFO Cleaning up finished run: 3lx810bv
+2024-01-19 16:01:47 INFO Agent received command: run
+2024-01-19 16:01:47 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 256
+	decay_rate: 2.8762908486296226e-06
+	lr: 0.012269991967652933
+	num_epochs: 62
+	num_layers: 1
+	num_units: 173
+2024-01-19 16:01:47 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=256 decay_rate=2.8762908486296226e-06 lr=0.012269991967652933 num_epochs=62 num_layers=1 num_units=173
+2024-01-19 16:01:52 INFO Running runs: ['89bwzc1u']
+2024-01-19 16:02:39 INFO Cleaning up finished run: 89bwzc1u
+2024-01-19 16:02:39 INFO Agent received command: run
+2024-01-19 16:02:39 INFO Agent starting run with config:
+	activation_cls: gelu
+	batch_size: 128
+	decay_rate: 1.695338243113658e-06
+	lr: 0.05945504258308982
+	num_epochs: 77
+	num_layers: 3
+	num_units: 339
+2024-01-19 16:02:39 INFO About to run command: /usr/bin/env python main.py activation_cls=gelu batch_size=128 decay_rate=1.695338243113658e-06 lr=0.05945504258308982 num_epochs=77 num_layers=3 num_units=339
+2024-01-19 16:02:44 INFO Running runs: ['48tkl4il']
+2024-01-19 16:04:02 INFO Cleaning up finished run: 48tkl4il
+2024-01-19 16:04:03 INFO Agent received command: run
+2024-01-19 16:04:03 INFO Agent starting run with config:
+	activation_cls: elu
+	batch_size: 256
+	decay_rate: 0.013314216238409088
+	lr: 0.0007783988155753517
+	num_epochs: 65
+	num_layers: 3
+	num_units: 263
+2024-01-19 16:04:03 INFO About to run command: /usr/bin/env python main.py activation_cls=elu batch_size=256 decay_rate=0.013314216238409088 lr=0.0007783988155753517 num_epochs=65 num_layers=3 num_units=263
+2024-01-19 16:04:08 INFO Running runs: ['acknfzeg']

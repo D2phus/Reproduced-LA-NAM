@@ -1,0 +1,12 @@
+wandb_version: 1
+
+activation_cls:
+  value: gelu
+batch_size:
+  value: 512
+decay_rate:
+  value: 3.5089835436192267e-06
+lr:
+  value: 0.00951349019668596
+num_epochs:
+  value: 60

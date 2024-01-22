@@ -10,7 +10,6 @@ import numpy as np
 from LANAM.trainer import marglik_training
 from LANAM.models import LaNAM
 from LANAM.utils.plotting import *
-from LANAM.config.default import defaults
 
 from laplace.curvature import BackPackGGN
 

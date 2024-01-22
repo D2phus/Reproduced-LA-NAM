@@ -1,0 +1,166 @@
+{
+    "os": "Linux-3.10.0-1160.105.1.el7.x86_64-x86_64-with-glibc2.17",
+    "python": "3.10.10",
+    "heartbeatAt": "2024-01-18T23:57:53.562764",
+    "startedAt": "2024-01-18T23:57:49.779560",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "activation_cls=elu",
+        "batch_size=512",
+        "decay_rate=3.4956439017380528e-06",
+        "lr=0.004502480253773334",
+        "num_epochs=60"
+    ],
+    "state": "running",
+    "program": "/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/main.py",
+    "codePathLocal": "main.py",
+    "codePath": "LANAM/main.py",
+    "git": {
+        "remote": "https://github.com/D2phus/Reproduced-LA-NAM.git",
+        "commit": "9a6b87db5481a8ec183e3e6986fffb40719c7540"
+    },
+    "email": "xinyuzhang_cs@outlook.com",
+    "root": "/scratch/work/zhangx18/Reproduced-LA-NAM",
+    "host": "pe7.int.triton.aalto.fi",
+    "username": "zhangx18",
+    "executable": "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-04/e0d50272/bin/python3.10",
+    "cpu_count": 24,
+    "cpu_count_logical": 24,
+    "cpu_freq": {
+        "current": 1385.948916666667,
+        "min": 1200.0,
+        "max": 3300.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2826.385,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1200.103,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 2832.183,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1200.103,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1396.331,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1200.103,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 2088.012,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1200.103,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1200.103,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1200.103,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1199.951,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1200.256,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1199.951,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1200.103,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1200.103,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1200.256,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1242.98,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1199.951,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1199.951,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1199.34,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1199.951,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1200.103,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1200.256,
+            "min": 1200.0,
+            "max": 3300.0
+        },
+        {
+            "current": 1199.951,
+            "min": 1200.0,
+            "max": 3300.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 13.331954956054688,
+            "used": 3.792705535888672
+        }
+    },
+    "memory": {
+        "total": 125.82533645629883
+    }
+}

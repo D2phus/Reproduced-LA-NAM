@@ -1,0 +1,40 @@
+name: sweep
+program: main.py 
+entity: 'xinyu-zhang'
+project: 'kernel-based-concurvity-regularization-in-NAMs'
+    
+method: bayes
+metric:
+  name: Val_Loss
+  goal: minimize
+parameters:
+  num_layers: 
+    distribution: int_uniform 
+    min: 1
+    max: 6
+  num_units: 
+    distribution: int_uniform
+    min: 10
+    max: 500
+  activation_cls: 
+    values: ['relu', 'gelu', 'elu']
+  lr: 
+    distribution: log_uniform_values
+    min: 1e-4
+    max: 1e-1
+  decay_rate: 
+    distribution: log_uniform_values
+    min: 1e-6
+    max: 1
+  num_epochs: 
+    distribution: int_uniform 
+    min: 40
+    max: 100
+  batch_size: 
+    values: [128, 256, 512]
+command:
+  - ${env}
+  - python
+  - ${program}
+  - ${args_no_hyphens}
+

@@ -1,0 +1,22 @@
+2024-01-19 16:04:10,699 INFO    MainThread:209300 [wandb_setup.py:_flush():76] Current SDK version is 0.15.12
+2024-01-19 16:04:10,699 INFO    MainThread:209300 [wandb_setup.py:_flush():76] Configure stats pid to 209300
+2024-01-19 16:04:10,699 INFO    MainThread:209300 [wandb_setup.py:_flush():76] Loading settings from /home/zhangx18/.config/wandb/settings
+2024-01-19 16:04:10,699 INFO    MainThread:209300 [wandb_setup.py:_flush():76] Loading settings from /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/outputs/2024-01-19/16-04-08/wandb/settings
+2024-01-19 16:04:10,699 INFO    MainThread:209300 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'entity': 'xinyu-zhang', 'project': 'kernel-based-concurvity-regularization-in-NAMs', 'sweep_id': 'sfrr9cq1', 'root_dir': '/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM', 'run_id': 'acknfzeg', 'sweep_param_path': '/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/sweep-sfrr9cq1/config-acknfzeg.yaml'}
+2024-01-19 16:04:10,699 INFO    MainThread:209300 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'LANAM/main.py', 'program_abspath': '/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/main.py', 'program': '/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/main.py'}
+2024-01-19 16:04:10,699 INFO    MainThread:209300 [wandb_init.py:_log_setup():528] Logging user logs to /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_160410-acknfzeg/logs/debug.log
+2024-01-19 16:04:10,700 INFO    MainThread:209300 [wandb_init.py:_log_setup():529] Logging internal logs to /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_160410-acknfzeg/logs/debug-internal.log
+2024-01-19 16:04:10,700 INFO    MainThread:209300 [wandb_init.py:init():568] calling init triggers
+2024-01-19 16:04:10,700 INFO    MainThread:209300 [wandb_init.py:init():575] wandb.init called with sweep_config: {'activation_cls': 'elu', 'batch_size': 256, 'decay_rate': 0.013314216238409088, 'lr': 0.0007783988155753517, 'num_epochs': 65, 'num_layers': 3, 'num_units': 263}
+config: {}
+2024-01-19 16:04:10,700 INFO    MainThread:209300 [wandb_init.py:init():618] starting backend
+2024-01-19 16:04:10,700 INFO    MainThread:209300 [wandb_init.py:init():622] setting up manager
+2024-01-19 16:04:10,708 INFO    MainThread:209300 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-01-19 16:04:10,710 INFO    MainThread:209300 [wandb_init.py:init():628] backend started and connected
+2024-01-19 16:04:10,722 INFO    MainThread:209300 [wandb_run.py:_config_callback():1324] config_cb None None {'activation_cls': 'elu', 'batch_size': 256, 'decay_rate': 0.013314216238409088, 'lr': 0.0007783988155753517, 'num_epochs': 65, 'num_layers': 3, 'num_units': 263}
+2024-01-19 16:04:10,723 INFO    MainThread:209300 [wandb_init.py:init():720] updated telemetry
+2024-01-19 16:04:10,741 INFO    MainThread:209300 [wandb_init.py:init():753] communicating run to backend with 90.0 second timeout
+2024-01-19 16:04:11,188 INFO    MainThread:209300 [wandb_run.py:_on_init():2220] communicating current version
+2024-01-19 16:04:11,228 INFO    MainThread:209300 [wandb_run.py:_on_init():2229] got version response upgrade_message: "wandb version 0.16.2 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-01-19 16:04:11,229 INFO    MainThread:209300 [wandb_init.py:init():804] starting run threads in backend

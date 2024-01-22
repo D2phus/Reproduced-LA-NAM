@@ -1,0 +1,28 @@
+2024-01-19 15:46:56,962 INFO    MainThread:206601 [wandb_setup.py:_flush():76] Current SDK version is 0.15.12
+2024-01-19 15:46:56,963 INFO    MainThread:206601 [wandb_setup.py:_flush():76] Configure stats pid to 206601
+2024-01-19 15:46:56,963 INFO    MainThread:206601 [wandb_setup.py:_flush():76] Loading settings from /home/zhangx18/.config/wandb/settings
+2024-01-19 15:46:56,963 INFO    MainThread:206601 [wandb_setup.py:_flush():76] Loading settings from /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/outputs/2024-01-19/15-46-55/wandb/settings
+2024-01-19 15:46:56,963 INFO    MainThread:206601 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'entity': 'xinyu-zhang', 'project': 'kernel-based-concurvity-regularization-in-NAMs', 'sweep_id': 'sfrr9cq1', 'root_dir': '/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM', 'run_id': '78q6nnk0', 'sweep_param_path': '/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/sweep-sfrr9cq1/config-78q6nnk0.yaml'}
+2024-01-19 15:46:56,963 INFO    MainThread:206601 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'LANAM/main.py', 'program_abspath': '/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/main.py', 'program': '/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/main.py'}
+2024-01-19 15:46:56,963 INFO    MainThread:206601 [wandb_init.py:_log_setup():528] Logging user logs to /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_154656-78q6nnk0/logs/debug.log
+2024-01-19 15:46:56,963 INFO    MainThread:206601 [wandb_init.py:_log_setup():529] Logging internal logs to /scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/wandb/run-20240119_154656-78q6nnk0/logs/debug-internal.log
+2024-01-19 15:46:56,963 INFO    MainThread:206601 [wandb_init.py:init():568] calling init triggers
+2024-01-19 15:46:56,963 INFO    MainThread:206601 [wandb_init.py:init():575] wandb.init called with sweep_config: {'activation_cls': 'elu', 'batch_size': 256, 'decay_rate': 0.07181233014118532, 'lr': 0.006615812754365009, 'num_epochs': 56, 'num_layers': 6, 'num_units': 319}
+config: {}
+2024-01-19 15:46:56,963 INFO    MainThread:206601 [wandb_init.py:init():618] starting backend
+2024-01-19 15:46:56,963 INFO    MainThread:206601 [wandb_init.py:init():622] setting up manager
+2024-01-19 15:46:56,971 INFO    MainThread:206601 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-01-19 15:46:56,973 INFO    MainThread:206601 [wandb_init.py:init():628] backend started and connected
+2024-01-19 15:46:56,984 INFO    MainThread:206601 [wandb_run.py:_config_callback():1324] config_cb None None {'activation_cls': 'elu', 'batch_size': 256, 'decay_rate': 0.07181233014118532, 'lr': 0.006615812754365009, 'num_epochs': 56, 'num_layers': 6, 'num_units': 319}
+2024-01-19 15:46:56,985 INFO    MainThread:206601 [wandb_init.py:init():720] updated telemetry
+2024-01-19 15:46:57,002 INFO    MainThread:206601 [wandb_init.py:init():753] communicating run to backend with 90.0 second timeout
+2024-01-19 15:46:57,431 INFO    MainThread:206601 [wandb_run.py:_on_init():2220] communicating current version
+2024-01-19 15:46:57,473 INFO    MainThread:206601 [wandb_run.py:_on_init():2229] got version response upgrade_message: "wandb version 0.16.2 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-01-19 15:46:57,473 INFO    MainThread:206601 [wandb_init.py:init():804] starting run threads in backend
+2024-01-19 15:47:19,441 INFO    MainThread:206601 [wandb_run.py:_console_start():2199] atexit reg
+2024-01-19 15:47:19,441 INFO    MainThread:206601 [wandb_run.py:_redirect():2054] redirect: wrap_raw
+2024-01-19 15:47:19,441 INFO    MainThread:206601 [wandb_run.py:_redirect():2119] Wrapping output streams.
+2024-01-19 15:47:19,441 INFO    MainThread:206601 [wandb_run.py:_redirect():2144] Redirects installed.
+2024-01-19 15:47:19,443 INFO    MainThread:206601 [wandb_init.py:init():845] run started, returning control to user process
+2024-01-19 15:48:58,763 WARNING MsgRouterThr:206601 [router.py:message_loop():77] message_loop has been closed

@@ -1,0 +1,7 @@
+[2024-01-18 13:44:37,723][LANAM.trainer.nam_trainer.train][INFO] - [EPOCH=10]: Train_Loss:  0.556926, Val_Loss:  0.574549,  Train_RMSE:  0.721581, Val_RMSE:  0.744341, Train_R_perp:  0.233801, Val_R_perp:  0.236229
+[2024-01-18 13:53:10,091][LANAM.trainer.nam_trainer.train][INFO] - [EPOCH=20]: Train_Loss:  0.572449, Val_Loss:  0.552662,  Train_RMSE:  0.733086, Val_RMSE:  0.724964, Train_R_perp:  0.246012, Val_R_perp:  0.247979
+[2024-01-18 14:01:37,295][LANAM.trainer.nam_trainer.train][INFO] - [EPOCH=30]: Train_Loss:  0.516313, Val_Loss:  0.521626,  Train_RMSE:  0.699232, Val_RMSE:  0.694290, Train_R_perp:  0.221612, Val_R_perp:  0.222268
+[2024-01-18 14:10:12,755][LANAM.trainer.nam_trainer.train][INFO] - [EPOCH=40]: Train_Loss:  0.504427, Val_Loss:  0.513998,  Train_RMSE:  0.688965, Val_RMSE:  0.690019, Train_R_perp:  0.222813, Val_R_perp:  0.229000
+
+
+hsic_regularization = 640.252

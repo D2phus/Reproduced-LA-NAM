@@ -3,4 +3,4 @@
 #SBATCH --mem=500M
 
 # Run your code here
-python3 nam_concurvity_sweep_2.py
+wandb agent --count 1 xinyu-zhang/accuracy-concurvity-curve-NAMs/toqj55ak

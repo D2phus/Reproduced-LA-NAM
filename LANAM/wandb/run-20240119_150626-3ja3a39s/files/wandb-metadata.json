@@ -1,0 +1,248 @@
+{
+    "os": "Linux-3.10.0-1160.95.1.el7.x86_64-x86_64-with-glibc2.17",
+    "python": "3.10.10",
+    "heartbeatAt": "2024-01-19T13:06:27.189749",
+    "startedAt": "2024-01-19T13:06:26.377635",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "activation_cls=gelu",
+        "batch_size=512",
+        "decay_rate=0.2967636914660497",
+        "lr=0.00010165470918048022",
+        "num_epochs=86",
+        "num_layers=6",
+        "num_units=361"
+    ],
+    "state": "running",
+    "program": "/scratch/work/zhangx18/Reproduced-LA-NAM/LANAM/main.py",
+    "codePathLocal": null,
+    "codePath": "LANAM/main.py",
+    "git": {
+        "remote": "https://github.com/D2phus/Reproduced-LA-NAM.git",
+        "commit": "9a6b87db5481a8ec183e3e6986fffb40719c7540"
+    },
+    "email": "xinyuzhang_cs@outlook.com",
+    "root": "/scratch/work/zhangx18/Reproduced-LA-NAM",
+    "host": "csl46.int.triton.aalto.fi",
+    "username": "zhangx18",
+    "executable": "/share/apps/anaconda-ci/fgci-centos7-anaconda/software/anaconda/2023-04/e0d50272/bin/python",
+    "cpu_count": 40,
+    "cpu_count_logical": 40,
+    "cpu_freq": {
+        "current": 2889.956975,
+        "min": 1000.0,
+        "max": 3900.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2896.423,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3591.766,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2943.725,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3448.028,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2939.3,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3599.853,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2909.851,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 1000.061,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2911.071,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 1000.061,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2611.389,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 999.908,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2902.679,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3108.062,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2927.703,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3217.01,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2897.033,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3434.753,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2970.123,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3599.853,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2982.94,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3390.35,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2918.243,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 999.908,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2979.583,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3169.708,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2979.125,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3234.558,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2909.088,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3502.96,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2957.153,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2958.984,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2987.06,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3456.726,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3158.111,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3053.741,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2966.156,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3364.257,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 2528.686,
+            "min": 1000.0,
+            "max": 3900.0
+        },
+        {
+            "current": 3381.652,
+            "min": 1000.0,
+            "max": 3900.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 93.76412200927734,
+            "used": 4.563995361328125
+        }
+    },
+    "memory": {
+        "total": 187.52824783325195
+    }
+}
